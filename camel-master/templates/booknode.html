@@ -1,0 +1,141 @@
+{% load mptt_tags %}
+
+{% recursetree subtree %}
+
+	{% if node.node_class == "content" %}
+		{% if node.node_type == "jax" %}
+			<span class="jax">
+				{{ node.text | safe }}
+			</span>
+
+		{% elif node.node_type == "image" %}
+			<span class="image">
+				<img src="{{ node.image.url }}" width="25%">
+			</span>
+
+		{% elif node.node_type == "tabular" %}
+			<table class="tabular">
+				{{ node.text | safe }}
+			</table>
+
+		{% elif node.node_type == "reference" %}
+			<a href="{% url 'chapter-detail' chapter.pk %}#{{ node.text | safe }}">
+			{% if refs %} 
+				{% for ref in refs %}
+					{% if ref.label and ref.label == node.htex %}
+							{{chapter.number}}.{{ ref.number }} 
+						{% endif %}
+				{% endfor %}
+			{% endif %}</a>
+		{% endif %}
+
+	{% elif node.node_class == "level" %}
+		{% if node.node_type == "chapter" %}
+			<h1 class="chapter">{{ node.number }}. {{ node.title }}</h1>
+			{{ children }}
+		{% elif node.node_type == "section" %}
+			<h2 class="section"> {{ node.parent.number }}.{{ node.number }}&nbsp;{{ node.title }}</h2>
+			{{ children }}
+		{% elif node.node_type == "subsection" %}
+			<h3 class="subsection"> {{ node.parent.parent.number }}.{{ node.parent.number }}.{{ node.number }}&nbsp;{{ node.title }}</h3>
+			{{ children }}
+		{% endif %}
+
+	{% elif node.node_class == "list" %}
+		{% if node.node_type in "itemize" %}
+			<ul class="{{ node.node_type }}">{{ children }}</ul>
+		{% else %}
+			<ol class="{{ node.node_type }}">{{ children }}</ol>
+		{% endif %}
+	
+	{% elif node.node_class == "item" %}
+			<li class="{{ node.node_type }}"> {{ children }}</li>
+
+	{% elif node.node_class == "assignment" %}
+		<div class="{{ node.node_type }}">
+			<div class="blocktitle"> 
+				{% if node.label %} <a id="{{ node.label }}"></a> {% endif %}
+				{% if node.node_type == "homework" %}
+					Homework {{ chapter.number }}.{{ node.number }}	{% if node.title %} ({{ node.title }}) {% endif %}
+				{% elif node.node_type in  "singlechoice|multiplechoice" %}
+					Test {{ chapter.number }}.{{ node.number }}	{% if node.title %} ({{ node.title }}) {% endif %}
+				{% endif %}
+			</div>
+			{{ children }}
+			{% if user.is_authenticated %}
+				{% if node.node_type == "homework" %}
+					<p align="right"><a href="{% url 'homework' node.pk %}"><button>Start</button></a></p>
+				{% elif node.node_type == "singlechoice" %}
+					<p align="right"><a href="{% url 'sctest' node.pk %}"><button>Start</button></a></p>
+				{% elif node.node_type == "multiplechoice" %}
+					<p align="right"><a href="{% url 'sctest' node.pk %}"><button>Start</button></a></p>
+				{% endif %}
+			{% endif %}
+		</div>
+
+	{% elif node.node_class == "theorem" %}
+		<div class="{{ node.node_type }}">
+			<div class="blocktitle"> 
+				{% if node.label %} <a id="{{ node.label }}"></a> {% endif %}
+				{{ node.node_type | title }} {{ chapter.number }}.{{ node.number }}
+				{% if node.title %} ({{ node.title }}) {% endif %}
+			</div>
+			{{ children }}
+		</div>
+
+	{% elif node.node_type in "table|subtable" %}
+		<div class="latextable">
+			<div class="blocktitle">
+				{{ node.node_type | title }} {{ chapter.number }}.{{ node.number }}
+				{% if node.title %} {{ node.title }} {% endif %}
+			</div>
+			{{ children }}
+		</div>
+
+	{% elif node.node_type == "figure" %}
+		<div class="figure">
+			<div class="blocktitle">
+				{{ node.node_type | title }} {{ chapter.number }}.{{ node.number }}
+				{% if node.title %} {{ node.title }} {% endif %}
+			</div>
+			{{ children }}
+		</div> <!-- end figure -->
+
+	{% elif node.node_type == "subfigure" %}
+		<span class="subfigure">
+			{{ children }}
+			<div class="blocktitle">
+				{{ chapter.number }}.{{ node.parent.number }}.{{ node.number }}
+				{% if node.title %} {{ node.title }} {% endif %}
+			</div>
+		</span> <!-- end subfigure -->
+
+	{% elif node.node_class == "box" %}
+		{% if node.node_type in "proof|solution|hint" %}
+			<div class="{{ node.node_type }}">
+				<div class="showhide">
+					<p class="hidebox_title">{{ node.node_type | title }}</p>
+					<div class="inner_hidebox">
+						{{ children }}
+					</div>
+				</div>
+			</div> <!-- end box -->
+		{% elif node.node_type == "answer" %}
+		
+		{% elif node.node_type == "verbatim" %}
+			<div class="verbatim">
+				{{ children }}
+			</div> <!-- end verbatim -->
+		{% elif node.node_type == "center" %}
+			<div class="center">
+				{{ children }}
+			</div> <!-- end center -->
+		{% endif %}
+
+	{% else %}
+		<div class="{{ node.node_type }}"> 
+			{{ children }}
+		</div>
+	{% endif %}
+
+{% endrecursetree %}

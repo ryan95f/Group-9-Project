@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Review {{ book.title }}{% endblock %}
+
+{% block breadcrumbs %}
+  &nbsp;<a href="{% url 'review:index' %}">Review</a>&nbsp;&gt;&nbsp;{{ book.title }}
+{% endblock %}
+
+
+{% block content-main %}
+
+<div class="macros">
+    {% autoescape off %}
+		\( {{ book.new_commands | safe }} \)
+	{% endautoescape %}
+</div>
+
+<h1>Book {{ book.number }}. {{ book.title }}</h1>
+<h2>Questions</h2>
+
+{% for question in questions %}
+  {% include 'review/question_block.html' %}
+{% endfor %}
+
+
+{% endblock %}

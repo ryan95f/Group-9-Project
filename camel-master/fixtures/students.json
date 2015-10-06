@@ -1,0 +1,46 @@
+[
+	{
+	    "model": "auth.user", 
+	    "pk": 101, 
+	    "fields": {
+	        "username": "sdaf", 
+	        "is_active": true, 
+	        "is_staff": false, 
+	        "is_superuser": false, 
+	        "password": "pbkdf2_sha256$12000$8C88M4YIrkHQ$e+d8YW794cMLc11dcOx+6iO8SSEJO6Geko05GaSy32I="
+	    }
+	},
+	{
+	    "pk": 102, 
+	    "model": "auth.user", 
+	    "fields": {
+	        "username": "smike", 
+	        "is_active": true, 
+	        "is_staff": false, 
+	        "is_superuser": false, 
+	        "password": "pbkdf2_sha256$12000$8C88M4YIrkHQ$e+d8YW794cMLc11dcOx+6iO8SSEJO6Geko05GaSy32I=" 
+	    }
+	},
+	{
+	    "pk": 103, 
+	    "model": "auth.user", 
+	    "fields": {
+	        "username": "sjon", 
+	        "is_active": true, 
+	        "is_staff": false, 
+	        "is_superuser": false, 
+	        "password": "pbkdf2_sha256$12000$8C88M4YIrkHQ$e+d8YW794cMLc11dcOx+6iO8SSEJO6Geko05GaSy32I="
+	    }
+	},
+	{
+	    "pk": 104, 
+	    "model": "auth.user", 
+	    "fields": {
+	        "username": "srob", 
+	        "is_active": true, 
+	        "is_staff": false, 
+	        "is_superuser": false, 
+	        "password": "pbkdf2_sha256$12000$8C88M4YIrkHQ$e+d8YW794cMLc11dcOx+6iO8SSEJO6Geko05GaSy32I=" 
+	    }
+	}
+]

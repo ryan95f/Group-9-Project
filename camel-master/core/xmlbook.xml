@@ -1,0 +1,801 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type="text/css" href="xmlbook.css"?>
+<book>
+  <jax/>
+  <chapter label="chap:sets" number="1" title="Set Theory">
+    <jax/>
+    <section number="1" title="Set algebra">
+      <subsection number="1" title="Terminology">
+        <jax>A set is a collection of distinct &lt;i&gt;elements&lt;/i&gt;.</jax>
+        <itemize number="1">
+          <item number="1">
+            <jax>If $a$ is an element of the set $A$, we write this as $a\in A$.</jax>
+          </item>
+          <item number="2">
+            <jax>If $a$ is &lt;i&gt;not&lt;/i&gt; an element of $A$, we write this as $a\notin A$.</jax>
+          </item>
+          <item number="3">
+            <jax>The &lt;i&gt;cardinality&lt;/i&gt; of a set is the number of elements it contains.</jax>
+          </item>
+          <item number="4">
+            <jax>The &lt;i&gt;empty set&lt;/i&gt; contains no elements, and is denoted by $\emptyset$.</jax>
+          </item>
+        </itemize>
+        <jax>Algebra is the study of &lt;i&gt;relations&lt;/i&gt; and &lt;i&gt;operations&lt;/i&gt;.</jax>
+        <itemize number="2">
+          <item number="1">
+            <jax>The basic relations of set algebra are &lt;i&gt;set inclusion&lt;/i&gt; and &lt;i&gt;set equality&lt;/i&gt;.</jax>
+          </item>
+          <item number="2">
+            <jax>The basic operations of set algebra are &lt;i&gt;complementation&lt;/i&gt;, &lt;i&gt;union&lt;/i&gt; and &lt;i&gt;intersection&lt;/i&gt;.</jax>
+          </item>
+        </itemize>
+      </subsection>
+      <subsection number="2" title="Set relations">
+        <definition number="1">
+          <jax>Let $A$ and $B$ be sets.</jax>
+          <enumerate number="3">
+            <item number="1">
+              <jax>If every element of $A$ is also an element of $B$, we say that $A$ is a &lt;i&gt;subset&lt;/i&gt; of $B$.
+&lt;br&gt;This is denoted by $A\subseteq B$.</jax>
+            </item>
+            <item number="2">
+              <jax>If every element of $A$ is an element of $B$, and every element of $B$ is an element of $A$, we say that $A$ and $B$ are &lt;i&gt;equal&lt;/i&gt;. 
+&lt;br&gt;This is denoted by $A=B$.</jax>
+            </item>
+            <item number="3">
+              <jax>If $A$ is a subset of $B$, but $A$ is not equal to $B$, we say that $A$ is a &lt;i&gt;proper subset&lt;/i&gt; of $B$. 
+&lt;br&gt;This is denoted by $A\subset B$.</jax>
+            </item>
+          </enumerate>
+        </definition>
+        <example number="2">
+          <jax>Let $A=\{a,b\}$, $B=\{a,b\}$ and $C=\{a,b,c\}$.</jax>
+          <itemize number="4">
+            <item number="1">
+              <jax>$A$ is a subset of $B$: $A\subseteq B$,</jax>
+            </item>
+            <item number="2">
+              <jax>$A$ is also equal to $B$: $A=B$, and</jax>
+            </item>
+            <item number="3">
+              <jax>$A$ is a proper subset of $C$: $A\subset C$.</jax>
+            </item>
+          </itemize>
+        </example>
+      </subsection>
+      <subsection number="3" title="Set operations">
+        <definition number="3">
+          <jax>Let $A$, $B$ and $\Omega$ be sets, with $A,B\subseteq \Omega$.</jax>
+          <enumerate number="5">
+            <item number="1">
+              <jax>The &lt;i&gt;union&lt;/i&gt; of $A$ and $B$ is the set
+$$
+A\cup B = \{a\in \Omega: a\in A \text{ or }a\in B\}.
+$$</jax>
+            </item>
+            <item number="2">
+              <jax>The &lt;i&gt;intersection&lt;/i&gt; of $A$ and $B$ is the set
+$$
+A\cap B = \{a\in \Omega: a\in A \text{ and }a\in B\}.
+$$</jax>
+            </item>
+            <item number="3">
+              <jax>The &lt;i&gt;complement&lt;/i&gt; of $A$ is the set 
+$$
+A^c=\{a\in \Omega:a\notin A\}.
+$$</jax>
+            </item>
+          </enumerate>
+        </definition>
+        <example number="4">
+          <jax>Let $\Omega=\{a,b,c,d\}$, $A=\{a,b\}$ and $B=\{b,c\}$. Find $A\cup B$, $A\cap B$ and $A^c$.</jax>
+          <solution>
+            <itemize number="6">
+              <item number="1">
+                <jax>$A\cup B = \{a,b,c\}$ is the set of elements in $A$ or $B$ (or both).</jax>
+              </item>
+              <item number="2">
+                <jax>$A\cap B = \{b\}$ is the set of elements in $A$ and $B$.</jax>
+              </item>
+              <item number="3">
+                <jax>$A^c = \{c,d\}$ is the set of elements not in $A$.</jax>
+              </item>
+            </itemize>
+          </solution>
+        </example>
+        <figure number="1" title="The basic set operations.">
+          <jax/>
+          <subfigure number="1" title="Union">
+            <image>AcupB.png</image>
+          </subfigure>
+          <subfigure number="2" title="Intersection">
+            <image>AcapB.png</image>
+          </subfigure>
+          <subfigure number="3" title="Complement">
+            <image>Acomp.png</image>
+          </subfigure>
+        </figure>
+        <table number="1" title="Correspondence with logical operators.">
+          <jax/>
+          <jax>&lt;table class=&quot;tabular&quot;&gt;&lt;tr&gt;&lt;td&gt; 
+Set Theory 		&lt;/td&gt;&lt;td&gt; 			&lt;/td&gt;&lt;td&gt; Logic			&lt;/td&gt;&lt;td&gt;		&lt;/td&gt;&lt;td&gt; &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; 
+Union			&lt;/td&gt;&lt;td&gt; $A\cup B$	&lt;/td&gt;&lt;td&gt; Disjunction 	&lt;/td&gt;&lt;td&gt; OR 	&lt;/td&gt;&lt;td&gt; $\lor$	&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+Intersection		&lt;/td&gt;&lt;td&gt; $A\cap B$	&lt;/td&gt;&lt;td&gt; Conjunction	&lt;/td&gt;&lt;td&gt; AND 	&lt;/td&gt;&lt;td&gt; $\land$&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+Complement		&lt;/td&gt;&lt;td&gt; $A^c$		&lt;/td&gt;&lt;td&gt; Negation		&lt;/td&gt;&lt;td&gt; NOT 	&lt;/td&gt;&lt;td&gt; $\lnot$	&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</jax>
+        </table>
+      </subsection>
+      <subsection number="4" title="Set algebra">
+        <definition number="5">
+          <enumerate number="7">
+            <item number="1">
+              <jax>Commutative property.</jax>
+              <itemize number="8">
+                <item number="1">
+                  <jax>$A\cup B = B\cup A$,</jax>
+                </item>
+                <item number="2">
+                  <jax>$A\cap B = B\cap A$.</jax>
+                </item>
+              </itemize>
+            </item>
+            <item number="3">
+              <jax>Associative property.</jax>
+              <itemize number="9">
+                <item number="1">
+                  <jax>$(A\cup B)\cup C = A\cup (B\cup C)$,</jax>
+                </item>
+                <item number="2">
+                  <jax>$(A\cap B)\cap C = A\cap (B\cap C)$.</jax>
+                </item>
+              </itemize>
+            </item>
+            <item number="3">
+              <jax>Distributive property.</jax>
+              <itemize number="10">
+                <item number="1">
+                  <jax>$A\cup (B\cap C) = (A\cup B)\cap(A\cup C)$,</jax>
+                </item>
+                <item number="2">
+                  <jax>$A\cap (B\cup C) = (A\cap B)\cup(A\cap C)$.</jax>
+                </item>
+              </itemize>
+            </item>
+          </enumerate>
+        </definition>
+        <remark number="6">
+          <jax>A statement such as $A\cup B\cap C$ is ambiguous.</jax>
+        </remark>
+      </subsection>
+    </section>
+    <section number="2" title="De Morgan's laws">
+      <jax>Union and intersection swap roles under complementation.</jax>
+      <theorem label="thm:demorgan_simple" number="7">
+        <jax/>
+        <enumerate number="11">
+          <item number="1">
+            <jax>$(A\cup B)^c = A^c\cap B^c$.</jax>
+          </item>
+          <item number="2">
+            <jax>$(A\cap B)^c = A^c\cup B^c$.</jax>
+          </item>
+        </enumerate>
+      </theorem>
+      <proof>
+        <enumerate number="12">
+          <item number="1">
+            <jax>Let $a\in(A\cup B)^c$. Then $a\notin A$ and $a\notin B$, so $a\in A^c\cap B^c$.
+Hence $(A\cup B)^c\subseteq A^c\cap B^c$.&lt;br&gt;Let $a\in A^c\cap B^c$. Then $a\notin A$ and $a\notin B$, so $a\notin A\cup B$.
+Hence $A^c\cap B^c\subseteq (A\cup B)^c$.&lt;br&gt;Thus it follows that $(A\cup B)^c = A^c\cap B^c$.</jax>
+          </item>
+          <item number="2">
+            <jax>Apply part (1) to the sets $A^c$ and $B^c$: $(A^c\cup B^c)^c = A\cap B$.&lt;br&gt;Then take the complement of both sides: $(A\cap B)^c = A^c\cup B^c$.</jax>
+          </item>
+        </enumerate>
+      </proof>
+    </section>
+    <section number="3" title="Set difference">
+      <definition number="8">
+        <jax>Let $A$, $B$ and $\Omega$ be sets, with $A,B\subseteq \Omega$.</jax>
+        <enumerate number="13">
+          <item number="1">
+            <jax>The &lt;i&gt;set difference&lt;/i&gt; between $A$ and $B$ is the set
+$$
+A\setminus B = \{a\in \Omega : a\in A \text{ and } a\notin B\}. 
+$$</jax>
+          </item>
+          <item number="2">
+            <jax>The &lt;i&gt;symmetric difference&lt;/i&gt; between $A$ and $B$ is the set 
+$$
+A\bigtriangleup B = (A\setminus B) \cup (B\setminus A). 
+$$</jax>
+          </item>
+        </enumerate>
+      </definition>
+      <itemize number="14">
+        <item number="1">
+          <jax>$A\setminus B$ is the set of points that are in $A$ but not in $B$.</jax>
+        </item>
+        <item number="2">
+          <jax>$A\bigtriangleup B$ is the set of points that are in either $A$ or $B$, but not both.</jax>
+        </item>
+      </itemize>
+      <example number="9">
+        <jax>Let $A=\{a,b\}$ and $B=\{b,c\}$. Then</jax>
+        <itemize number="15">
+          <item number="1">
+            <jax>$A\setminus B = \{a\}$</jax>
+          </item>
+          <item number="2">
+            <jax>$A\bigtriangleup B = \{a,c\}$.</jax>
+          </item>
+        </itemize>
+      </example>
+    </section>
+    <section number="4" title="Assignments">
+      <homework number="1">
+        <questions number="16">
+          <question number="1">
+            <jax>Illustrate the basic set operations using Venn diagrams.</jax>
+          </question>
+          <question number="2">
+            <jax>State and prove De Morgan's laws.</jax>
+          </question>
+        </questions>
+      </homework>
+      <jax/>
+    </section>
+  </chapter>
+  <chapter label="chap:events" number="2" title="Events">
+    <jax/>
+    <section number="1" title="A brief history of probability">
+      <jax>Games of chance have been played since antiquity, but the mathematical principles of chance and uncertainty were first established only in the 17th century:
+
+
+
+
+
+&lt;br&gt;</jax>
+      <center>
+        <jax>&lt;table class=&quot;tabular&quot;&gt;&lt;tr&gt;&lt;td&gt;
+1654		&lt;/td&gt;&lt;td&gt; Classical principles 	&lt;/td&gt;&lt;td&gt; Blaise Pascal (1623--1662) &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+    		&lt;/td&gt;&lt;td&gt;						&lt;/td&gt;&lt;td&gt; Pierre de Fermat (1601--1665)  &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+1657		&lt;/td&gt;&lt;td&gt; &lt;i&gt;De Ratiociniis in Ludo Aleae&lt;/i&gt; &lt;/td&gt;&lt;td&gt; Christiaan Huygens (1629--1695) &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+1713		&lt;/td&gt;&lt;td&gt; &lt;i&gt;Ars Conjectandi&lt;/i&gt; &lt;/td&gt;&lt;td&gt; Jakob Bernoulli (1654--1705) &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; 
+1718		&lt;/td&gt;&lt;td&gt; &lt;i&gt;The Doctrine of Chances&lt;/i&gt; &lt;/td&gt;&lt;td&gt; Abraham de Moivre (1667--1754) &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+1812		&lt;/td&gt;&lt;td&gt; &lt;i&gt;Theorie Analytique des Probabilites&lt;/i&gt; &lt;/td&gt;&lt;td&gt; Pierre de Laplace (1749-1827) &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+1919		&lt;/td&gt;&lt;td&gt; Relative frequency &lt;/td&gt;&lt;td&gt; Richard von Mises (1883--1953) &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+1933		&lt;/td&gt;&lt;td&gt; Modern axiomatic theory &lt;/td&gt;&lt;td&gt; Andrey Kolmogorov (1903--1987)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</jax>
+      </center>
+    </section>
+    <section number="2" title="Sample spaces">
+      <definition number="1">
+        <enumerate number="1">
+          <item number="1">
+            <jax>Any process of observation or measurement will be called an &lt;i&gt;experiment&lt;/i&gt; or &lt;i&gt;trial&lt;/i&gt;.</jax>
+          </item>
+          <item number="2">
+            <jax>Any experiment whose outcome is uncertain is called a &lt;i&gt;random experiment&lt;/i&gt;.</jax>
+          </item>
+          <item number="3">
+            <jax>A random experiment has a set of possible &lt;i&gt;outcomes&lt;/i&gt;.</jax>
+          </item>
+          <item number="4">
+            <jax>Each time a random experiment is performed, &lt;i&gt;exactly one&lt;/i&gt; of its outcomes will occur.</jax>
+          </item>
+          <item number="5">
+            <jax>The set of all possible outcomes is called the &lt;i&gt;sample space&lt;/i&gt; of the experiment, denoted by $\Omega$.</jax>
+          </item>
+          <item number="6">
+            <jax>Outcomes are also called &lt;i&gt;elementary events&lt;/i&gt;, and denoted by $\omega\in\Omega$.</jax>
+          </item>
+        </enumerate>
+      </definition>
+      <example number="2">
+        <jax>The sample space of a random experiment is the set of all possible outcomes:</jax>
+        <center>
+          <jax>&lt;table class=&quot;tabular&quot;&gt;&lt;tr&gt;&lt;td&gt;
+&lt;u&gt;Experiment&lt;/u&gt;									&lt;/td&gt;&lt;td&gt; &lt;u&gt;Sample space&lt;/u&gt; &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+A coin is tossed once.									&lt;/td&gt;&lt;td&gt; $\Omega = \{H,T\}$ &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+A six-sided die is rolled once.							&lt;/td&gt;&lt;td&gt; $\Omega=\{1,2,3,4,5,6\}$ &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+A coin is tossed repeatedly until a head occurs.		&lt;/td&gt;&lt;td&gt; $\Omega = \{1,2,3,\ldots\}$ &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+The height of a randomly chosen student is measured: 	&lt;/td&gt;&lt;td&gt; $\Omega = [0,\infty)$
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</jax>
+        </center>
+      </example>
+      <exercise number="3">
+        <jax>Think of a situation in which randomness occurs. Can you describe the set of possible outcomes? Can you write it down using mathematical notation?</jax>
+      </exercise>
+    </section>
+    <section number="3" title="Events">
+      <definition number="4">
+        <itemize number="2">
+          <item number="1">
+            <jax>An &lt;i&gt;event&lt;/i&gt; $A$ is a subset of the sample space, $\Omega$.</jax>
+          </item>
+          <item number="2">
+            <jax>If outcome $\omega$ occurs, we say that event $A$ &lt;i&gt;occurs&lt;/i&gt; if and only if $\omega\in A$.</jax>
+          </item>
+          <item number="3">
+            <jax>Two events $A$ and $B$ with $A\cap B=\emptyset$ are called &lt;i&gt;disjoint&lt;/i&gt; or &lt;i&gt;mutually exclusive&lt;/i&gt;.</jax>
+          </item>
+          <item number="4">
+            <jax>The empty set $\emptyset$ is called the &lt;i&gt;impossible event&lt;/i&gt;.</jax>
+          </item>
+          <item number="5">
+            <jax>The sample space $\Omega$ is called the &lt;i&gt;certain event&lt;/i&gt;.</jax>
+          </item>
+        </itemize>
+      </definition>
+      <remark number="5">
+        <itemize number="3">
+          <item number="1">
+            <jax>If $A$ occurs and $A\subseteq B$, then $B$ must also occur.</jax>
+          </item>
+          <item number="2">
+            <jax>If $A$ occurs and $A\cap B=\emptyset$, then $B$ does not occur.</jax>
+          </item>
+        </itemize>
+      </remark>
+      <example number="6">
+        <jax>A die is rolled once. The sample space can be represented by $\Omega=\{1,2,3,4,5,6\}$.
+We may be interested in whether or not the following events occur:</jax>
+        <center>
+          <jax>&lt;table class=&quot;tabular&quot;&gt;&lt;tr&gt;&lt;td&gt;
+&lt;u&gt;Event&lt;/u&gt; &lt;/td&gt;&lt;td&gt; &lt;u&gt;Subset&lt;/u&gt; &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; 
+The outcome is the number $1$.	&lt;/td&gt;&lt;td&gt; $\{1\}$ &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+The outcome is an even number.	&lt;/td&gt;&lt;td&gt; $\{2,4,6\}$ &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+The outcome is even but does not exceed $3$.	&lt;/td&gt;&lt;td&gt; $\{2,4,6\}\cap\{1,2,3\}$ &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+The outcome is not even			&lt;/td&gt;&lt;td&gt; $\Omega\setminus\{2,4,6\}$
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</jax>
+        </center>
+      </example>
+    </section>
+    <section number="4" title="Families of events">
+      <definition number="7">
+        <jax>Let $\Omega$ be any set.</jax>
+        <enumerate number="4">
+          <item number="1">
+            <jax>The set of all subsets of $\Omega$ is called the &lt;i&gt;power set&lt;/i&gt; of $\Omega$, which we denote by $2^{\Omega}$.</jax>
+          </item>
+          <item number="2">
+            <jax>An arbitrary set $\mathcal{F}$ of subsets of $\Omega$ is called a &lt;i&gt;family of sets over $\Omega$&lt;/i&gt;.</jax>
+          </item>
+        </enumerate>
+      </definition>
+      <jax>Let $\Omega$ be the sample space of some random experiment. 
+If we are interested in events $A$ and $B$, we must also be interested in the following.</jax>
+      <itemize number="5">
+        <item number="1">
+          <jax>Event $A$ &lt;i&gt;or&lt;/i&gt; event $B$ occurs: this is the event $A\cup B$,</jax>
+        </item>
+        <item number="2">
+          <jax>Event $A$ &lt;i&gt;and&lt;/i&gt; event $B$ occur: this is the event $A\cap B$,</jax>
+        </item>
+        <item number="3">
+          <jax>Event $A$ does &lt;i&gt;not&lt;/i&gt; occur: this is the event $A^c$.</jax>
+        </item>
+      </itemize>
+      <jax>skip
+As the basis for investigating random experiments, so that we can consider all events that may be of interest, we must allow only families of sets over $\Omega$ that are &lt;i&gt;closed&lt;/i&gt; under certain set operations.</jax>
+      <definition number="8">
+        <jax>A family of sets $\mathcal{F}$ over $\Omega$ is said to be</jax>
+        <enumerate number="6">
+          <item number="1">
+            <jax>&lt;i&gt;closed under complementation&lt;/i&gt; if $A^c\in\mathcal{F}$ for every $A\in\mathcal{F}$,</jax>
+          </item>
+          <item number="2">
+            <jax>&lt;i&gt;closed under pairwise unions&lt;/i&gt; if $A\cup B\in\mathcal{F}$ for every $A,B\in\mathcal{F}$,</jax>
+          </item>
+        </enumerate>
+      </definition>
+      <definition number="9">
+        <jax>A family of sets $\mathcal{F}$ over $\Omega$ is called a &lt;i&gt;field of sets&lt;/i&gt; over $\Omega$ if</jax>
+        <enumerate number="7">
+          <item number="1">
+            <jax>$\Omega\in\mathcal{F}$,</jax>
+          </item>
+          <item number="2">
+            <jax>$\mathcal{F}$ is closed under complementation, and</jax>
+          </item>
+          <item number="3">
+            <jax>$\mathcal{F}$ is closed under pairwise unions.</jax>
+          </item>
+        </enumerate>
+      </definition>
+      <example label="ex:fields_of_sets" number="10">
+        <jax>A six-sided die is rolled once, and the score is observed. A suitable sample space for this experiment is the set 
+$\Omega=\{1,2,3,4,5,6\}$. The power set of $\Omega$ will always provide a field of sets to work with. However, suppose we are only interested in whether or not the outcome is an even number. In this case, we need only consider the following family of events:
+\[
+\mathcal{F} = \big\{\emptyset, \{1,3,5\}, \{2,4,6\}, \{1,2,3,4,5,6\}\big\}.
+\]
+We can see that $\mathcal{F}$ is a field of sets over $\Omega$, because</jax>
+        <enumerate number="8">
+          <item number="1">
+            <jax>it contains the sample space $\{1,2,3,4,5,6\}$,</jax>
+          </item>
+          <item number="2">
+            <jax>the complement of every set in $\mathcal{F}$ is also contained in $\mathcal{F}$, and</jax>
+          </item>
+          <item number="3">
+            <jax>the union of any two sets in $\mathcal{F}$ is also contained in $\mathcal{F}$.</jax>
+          </item>
+        </enumerate>
+      </example>
+      <theorem number="11" title="Properties of fields">
+        <jax>Let $\mathcal{F}$ be a field over $\Omega$. Then</jax>
+        <enumerate number="9">
+          <item number="1">
+            <jax>$\emptyset\in\mathcal{F}$,</jax>
+          </item>
+          <item number="2">
+            <jax>$\mathcal{F}$ is closed under pairwise intersections,</jax>
+          </item>
+          <item number="3">
+            <jax>$\mathcal{F}$ is closed under set differences.</jax>
+          </item>
+        </enumerate>
+      </theorem>
+      <proof>
+        <enumerate number="10">
+          <item number="1">
+            <jax>We know that $\emptyset = \Omega^c$, and that $\Omega\in\mathcal{F}$. Because $\mathcal{F}$ is closed under complementation, it thus follows that $\emptyset\in\mathcal{F}$.</jax>
+          </item>
+          <item number="2">
+            <jax>Let $A,B\in\mathcal{F}$. By De Morgan's laws, we have that $A\cap B = (A^c\cup B^c)^c$. Because $\mathcal{F}$ is closed under complementation and pairwise unions, it thus follows that $A\cap B\in\mathcal{F}$.</jax>
+          </item>
+          <item number="3">
+            <jax>Let $A,B\in\mathcal{F}$. Set difference can be written as $A\setminus B = A\cap B^c$. Furthermore, by De Morgan's laws we see that $A\cap B^c = (A^c\cup B)^c$. Because $\mathcal{F}$ is closed under complementation and pairwise unions, it thus follows that $A\setminus B\in\mathcal{F}$.</jax>
+          </item>
+        </enumerate>
+      </proof>
+      <table number="1" title="Table of correspondence (Grimmett \&amp; Stirzaker 2001).">
+        <jax/>
+        <jax>&lt;table class=&quot;tabular&quot;&gt;&lt;tr&gt;&lt;td&gt; 
+Notation 			&lt;/td&gt;&lt;td&gt; Set theory			&lt;/td&gt;&lt;td&gt; Probability theory &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; 
+$\Omega$			&lt;/td&gt;&lt;td&gt; Universal set			&lt;/td&gt;&lt;td&gt; Sample space &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; 
+$\omega\in\Omega$	&lt;/td&gt;&lt;td&gt; Element of $\Omega$	&lt;/td&gt;&lt;td&gt; Elementary event, outcome &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+$A\subseteq\Omega$	&lt;/td&gt;&lt;td&gt; Subset of $\Omega$	&lt;/td&gt;&lt;td&gt; Event $A$ &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+$A\subseteq B$		&lt;/td&gt;&lt;td&gt; Inclusion				&lt;/td&gt;&lt;td&gt; If $A$ occurs, then $B$ occurs &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+$A\cup B$			&lt;/td&gt;&lt;td&gt; Union					&lt;/td&gt;&lt;td&gt; $A$ or $B$ occurs &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; 
+$A\cap B$			&lt;/td&gt;&lt;td&gt; Intersection			&lt;/td&gt;&lt;td&gt; $A$ and $B$ occur&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; 
+$A^c$				&lt;/td&gt;&lt;td&gt; Complement of $A$		&lt;/td&gt;&lt;td&gt; $A$ does not occur &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+$A\setminus B$		&lt;/td&gt;&lt;td&gt; Difference			&lt;/td&gt;&lt;td&gt; $A$ occurs, but $B$ does not &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+$A\bigtriangleup B$	&lt;/td&gt;&lt;td&gt; Symmetric difference	&lt;/td&gt;&lt;td&gt; $A$ or $B$ occurs, but not both &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+$\emptyset$			&lt;/td&gt;&lt;td&gt; Empty set 			&lt;/td&gt;&lt;td&gt; Impossible event &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+$\Omega$			&lt;/td&gt;&lt;td&gt; Universal set			&lt;/td&gt;&lt;td&gt; Certain event &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</jax>
+      </table>
+    </section>
+    <section number="5" title="Assignments">
+      <homework number="1">
+        <questions number="11">
+          <question number="1">
+            <jax>Identify a sample space, and the subset corresponding to event $A$, in each of the following scenarios:</jax>
+            <parts number="12">
+              <part number="1">
+                <jax>A coin is tossed three times. $A$ is the event that at least two heads are obtained.</jax>
+                <answer>
+                  <jax>&lt;br&gt;$\Omega	= \{HHH, HHT, HTH, THH, HTT, THT, TTH, TTT\}$ and $A = \{HHH, HHT, HTH, THH\}$. Alternatively, if we are only interested in the number of heads, we could take $\Omega=\{0,1,2,3\}$ and $A=\{2,3\}$.</jax>
+                </answer>
+              </part>
+              <part number="2">
+                <jax>A game of football is played. $A$ is the event that the match ends in a draw.</jax>
+                <answer>
+                  <jax>$\Omega=\{(a,b):a,b = 0,1,2,\ldots\}$ and $A=\{(a,b): a=b\}$ where $a$ and $b$ are the numbers of goals scored by the first and second teams, respectively. Note that this is a (countably) infinite set. 
+&lt;br&gt;Alternatively, we could take $\Omega=\{W,D,L\}$ and $A=\{D\}$ where $W,D,L$ are respectively the events that the first team wins, draws or loses the game.</jax>
+                </answer>
+              </part>
+              <part number="3">
+                <jax>A couple have two children. $A$ is the event that both are girls.</jax>
+                <answer>
+                  <jax>$\Omega=\{GG,GB,BG,BB\}$ and $A=\{GG\}$.
+&lt;br&gt;Alternatively, we could take $\Omega=\{0,1,2\}$ and $A=\{2\}$.</jax>
+                </answer>
+              </part>
+              <part number="4">
+                <jax>A shot hits a circular target of radius 10cm. $A$ is the event that the shot hits within 3cm of the centre.</jax>
+                <answer>
+                  <jax>$\Omega=\{(x,y): x^2+y^2\leq 10^2\}$ and $A=\{(x,y): x^2+y^2\leq 3^2\}$.</jax>
+                </answer>
+              </part>
+            </parts>
+          </question>
+          <question number="2">
+            <jax>A family of sets $\mathcal{F}$ over $\Omega$ is said to be</jax>
+            <itemize number="13">
+              <item number="1">
+                <jax>&lt;i&gt;closed under finite unions&lt;/i&gt; if $A_1\cup A_2\cup\ldots\cup A_n\in\mathcal{F}$ whenever $A_1,A_2,\ldots A_n\in\mathcal{F}$, and</jax>
+              </item>
+              <item number="2">
+                <jax>&lt;i&gt;closed under finite intersections&lt;/i&gt; if $A_1\cap A_2\cap\ldots\cap A_n\in\mathcal{F}$ whenever $A_1,A_2,\ldots A_n\in\mathcal{F}$.</jax>
+              </item>
+            </itemize>
+            <jax>If $\mathcal{F}$ is a field of sets over $\Omega$, show that $\mathcal{F}$ is closed under finite unions and finite intersections.</jax>
+            <answer>
+              <itemize number="14">
+                <item number="1">
+                  <jax>Proof by induction. Suppose that $\mathcal{F}$ is closed under unions of $n$ sets (where $n\geq 2$). Let $A_1,A_2,\ldots,A_{n+1}\in\mathcal{F}$. By the inductive hypothesis, $\cup_{i=1}^nA_i\in\mathcal{F}$. Thus $\cup_{i=1}^{n+1} A_i = \big[\cup_{i=1}^{n} A_i\big] \cup A_{n+1} \in\mathcal{F}$, because $\mathcal{F}$ is closed under pairwise unions.</jax>
+                </item>
+                <item number="2">
+                  <jax>Let $A_1,A_2,\ldots,A_n\in\mathcal{F}$. Then $\cap_{i=1}^n A_i = \big[\cup_{i=1}^n A_i^c\big]^c$ (De Morgan's laws). Hence $\cap_{i=1}^n A_i\in\mathcal{F}$ because $\mathcal{F}$ is closed under complementation and finite unions.</jax>
+                </item>
+              </itemize>
+            </answer>
+          </question>
+        </questions>
+      </homework>
+      <jax/>
+    </section>
+  </chapter>
+  <chapter label="chap:prob" number="3" title="Probability">
+    <jax/>
+    <section number="1" title="Probability measures">
+      <jax>Probability is defined to be a &lt;i&gt;function&lt;/i&gt; that assigns numerical value to random events.</jax>
+      <definition number="1">
+        <jax>Let $\Omega$ be the sample space of some random experiment, and let $\mathcal{F}$ be a field of sets over $\Omega$. A &lt;i&gt;probability measure&lt;/i&gt; on $(\Omega,\mathcal{F})$ is a function 
+\[
+\begin{array}{rccl}
+	\prob:	&amp; \mathcal{F}	&amp; \to	&amp; [0,1] \\[1ex]
+			&amp; A				&amp; \mapsto	&amp; \prob(A)
+\end{array}
+\]
+such that $\prob(\Omega) = 1$, and for any countable collection of pairwise disjoint events $\{A_1,A_2,\ldots\}$,
+\[
+\prob\left(\bigcup_{i=1}^\infty A_i\right) = \sum_{i=1}^{\infty} \prob(A_i).
+\]
+The triple $(\Omega,\mathcal{F},\prob)$ is called a &lt;i&gt;probability space&lt;/i&gt;.</jax>
+      </definition>
+      <remark number="2">
+        <itemize number="1">
+          <item number="1">
+            <jax>The second property is called &lt;i&gt;countable additivity&lt;/i&gt;.</jax>
+          </item>
+          <item number="2">
+            <jax>The number $\prob(A)$ is called the &lt;i&gt;probability&lt;/i&gt; of event $A\in\mathcal{F}$.</jax>
+          </item>
+        </itemize>
+      </remark>
+      <example number="3">
+        <jax>Consider a random experiment in which a fair six-sided die is rolled once.</jax>
+        <itemize number="2">
+          <item number="1">
+            <jax>A suitable sample space for the experiment is $\Omega=\{1,2,3,4,5,6\}$.</jax>
+          </item>
+          <item number="2">
+            <jax>A suitable field of events for the experiment is the power set, $\mathcal{F} = \mathcal{P}(\Omega)$.</jax>
+          </item>
+          <item number="3">
+            <jax>Because the die is fair, a suitable probability measure is given by the function
+\[\begin{array}{rcl}
+\prob:	\mathcal{F} &amp; \to 		&amp; [0,1] \\
+		A			&amp; \mapsto 	&amp; \frac{1}{6}|A|, \qquad\text{where $|A|$ denotes the cardinality of $A$.}
+
+\end{array}\]</jax>
+          </item>
+        </itemize>
+        <jax>&lt;table class=&quot;tabular&quot;&gt;&lt;tr&gt;&lt;td&gt;
+&lt;u&gt;Event&lt;/u&gt;				&lt;/td&gt;&lt;td&gt; &lt;u&gt;Subset&lt;/u&gt; &lt;/td&gt;&lt;td&gt; &lt;u&gt;Probability&lt;/u&gt; &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+The outcome is the number $1$.	&lt;/td&gt;&lt;td&gt; $\{1\}$ &lt;/td&gt;&lt;td&gt; $\prob(A) = 1/6$&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+The outcome is an even number.	&lt;/td&gt;&lt;td&gt; $\{2,4,6\}$  &lt;/td&gt;&lt;td&gt; $\prob(A) = 3/6$&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+The outcome is even but does not exceed $3$.	&lt;/td&gt;&lt;td&gt; $A = \{2,4,6\}\cap\{1,2,3\}$  &lt;/td&gt;&lt;td&gt; $\prob(A) = 1/6$&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+The outcome is not even			&lt;/td&gt;&lt;td&gt; $A = \Omega\setminus\{2,4,6\}$ &lt;/td&gt;&lt;td&gt; $\prob(A) = 3/6$
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</jax>
+      </example>
+      <example number="4">
+        <jax>A fair six-sided die is rolled once. If we are only interested in whether the outcome is an odd or even number, we can take</jax>
+        <itemize number="3">
+          <item number="1">
+            <jax>Sample space: $\Omega=\{1,2,3,4,5,6\}$,</jax>
+          </item>
+          <item number="2">
+            <jax>Events: $\mathcal{F} = \big\{\emptyset,\{1,3,5\},\{2,4,6\},\{1,2,3,4,5,6\}\big\}$</jax>
+          </item>
+          <item number="3">
+            <jax>Probability measure: $\prob(\emptyset)=0$, $\prob(\{1,3,5\})=1/2$, $\prob(\{2,4,6\})=1/2$, $\prob(\{1,2,3,4,5,6\})=1$.</jax>
+          </item>
+        </itemize>
+      </example>
+    </section>
+    <section number="2" title="Properties of probability measures">
+      <theorem label="thm:properties_of_probability_measures" number="5" title="Properties of probability measures">
+        <jax>Let $(\Omega,\mathcal{F},\prob)$ be a probability space, and let $A,B\in\mathcal{F}$.</jax>
+        <enumerate number="4">
+          <item number="1">
+            <jax>Complementarity: $\prob(A^c) = 1 - \prob(A)$.</jax>
+          </item>
+          <item number="2">
+            <jax>$\prob(\emptyset) = 0$,</jax>
+          </item>
+          <item number="3">
+            <jax>Monotonicity: if $A\subseteq B$ then $\prob(A)\leq \prob(B)$.</jax>
+          </item>
+          <item number="4">
+            <jax>Addition rule: $\prob(A\cup B) = \prob(A) + \prob(B) - \prob(A\cap B)$.</jax>
+          </item>
+        </enumerate>
+      </theorem>
+      <proof>
+        <enumerate number="5">
+          <item number="1">
+            <jax>Since $A\cup A^c=\Omega$ is a disjoint union and $\prob(\Omega)=1$, it follows by additivity that 
+\[
+1 = \prob(\Omega) = \prob(A\cup A^c) = \prob(A) + \prob(A^c).
+\]</jax>
+          </item>
+          <item number="2">
+            <jax>Since $\emptyset=\Omega^c$ and $\prob(\Omega)=1$, it follows by complemenarity that
+\[
+\prob(\emptyset) = \prob(\Omega^c) = 1 - \prob(\Omega) = 1 - 1 = 0.
+\]</jax>
+          </item>
+          <item number="3">
+            <jax>Let $A\subseteq B$ and let us write $B = A\cup (B\setminus A)$. 
+
+Since $A$ and $B\setminus A$ are disjoint sets, it follows by additivity that
+\[
+\prob(B) = \prob\big[A\cup (B\setminus A)\big] = \prob(A) + \prob(B\setminus A).
+\]
+Hence, because $\prob(B\setminus A)\geq 0$, it follows that $\prob(B) \geq \prob(A)$.</jax>
+          </item>
+          <item number="4">
+            <jax>Let us write:</jax>
+            <itemize number="6">
+              <item number="1">
+                <jax>$A\cup B = (A\setminus B) \cup (B\setminus A) \cup (A\cap B)$</jax>
+              </item>
+              <item number="2">
+                <jax>$A 		 = (A\setminus B) + (A\cap B)$</jax>
+              </item>
+              <item number="3">
+                <jax>$B 		 = (B\setminus A) + (A\cap B)$</jax>
+              </item>
+            </itemize>
+            <jax>These are disjoint unions, so by additivity,</jax>
+            <itemize number="7">
+              <item number="1">
+                <jax>$\prob(A\cup B) = \prob(A\setminus B) + \prob(B\setminus A) + \prob(A\cap B)$</jax>
+              </item>
+              <item number="2">
+                <jax>$\prob(A) 		= \prob(A\setminus B) + \prob(A\cap B)$</jax>
+              </item>
+              <item number="3">
+                <jax>$\prob(B)		= \prob(B\setminus A) + \prob(A\cap B)$</jax>
+              </item>
+            </itemize>
+            <jax>Hence $\prob(A\cup B) = \prob(A) + \prob(B) - \prob(A\cap B)$, as required.</jax>
+          </item>
+        </enumerate>
+      </proof>
+    </section>
+    <section number="3" title="Exercises">
+      <exercise number="6">
+        <questions number="8">
+          <question number="1">
+            <jax>What does it mean to say that $\prob$ is a probability measure over $(\Omega,\mathcal{F})$?</jax>
+            <answer>
+              <jax>Bookwork. The symbols $\Omega$ (sample space) and $\mathcal{F}$ (field of events) should be defined before giving the definition of $\prob$.</jax>
+            </answer>
+          </question>
+          <question number="2">
+            <jax>Show that $\prob(A\cup B) \leq \prob(A)+\prob(B)$ for any two events $A$ and $B$.</jax>
+            <answer>
+              <jax>First we express $A$, $B$ and $A\cup B$ as disjoint unions: 
+\begin{align*}
+A		&amp; = (A\cap B^c)\cup (A\cap B) \\ 
+B		&amp; = (B\cap A^c)\cup (A\cap B) \\ 
+A\cup B	&amp; = (A\cap B^c)\cup (A\cap B) \cup (B\cap A^c)
+\end{align*}
+By the additivity property of probability measures,
+\begin{align*}
+\prob(A) 		&amp; = \prob(A\cap B^c) + \prob(A\cap B) \\
+\prob(B) 		&amp; = \prob(B\cap A^c) + \prob(A\cap B) \\
+\prob(A\cup B) 	&amp; = \prob(A\cap B^c) + \prob(A\cap B) + \prob(B\cap A^c) \\
+\end{align*}
+From here, it follows that $\prob(A\cup B)=\prob(A)+\prob(B)-\prob(A\cap B)$, and because $\prob(A\cap B)\geq 0$ for any two events $A,B\mathcal{F}$, we see that $\prob(A\cup B) \leq \prob(A)+\prob(B)$, as required.</jax>
+            </answer>
+          </question>
+          <question number="3">
+            <jax>Let $A$ and $B$ be events such that $\prob(A)=0.4$, $\prob(B)=0.5$ and $\prob(A&amp;nbsp;\cup&amp;nbsp;B)=0.8$.&lt;br&gt;Compute the following probabilities:</jax>
+            <parts number="9">
+              <part number="1">
+                <jax>$\prob(A\cap B)$.</jax>
+                <answer>
+                  <jax>$\prob(A\cap B) = \prob(A) + \prob(B) - \prob(A\cup B) = 0.4 + 0.5 - 0.8 = 0.1$.</jax>
+                </answer>
+              </part>
+              <part number="2">
+                <jax>$\prob(A\cup B^c)$.</jax>
+                <answer>
+                  <jax>$\prob(A\cup B^c) = 1 - \prob(B\setminus A) = 1 - \big[\prob(B)-\prob(A\cap B)\big] = 1 - 0.4 = 0.6$.</jax>
+                </answer>
+              </part>
+            </parts>
+          </question>
+        </questions>
+      </exercise>
+    </section>
+    <section number="4" title="Assignments">
+      <singlechoice label="sc:beatles" number="1">
+        <jax/>
+        <questions number="10">
+          <question number="1">
+            <jax>Who is the odd one out?</jax>
+            <choices number="11">
+              <choice number="1">
+                <jax>John</jax>
+              </choice>
+              <choice number="2">
+                <jax>Paul</jax>
+              </choice>
+              <choice number="3">
+                <jax>George</jax>
+              </choice>
+              <correctchoice number="4">
+                <jax>Bingo</jax>
+              </correctchoice>
+            </choices>
+          </question>
+        </questions>
+      </singlechoice>
+      <multiplechoice label="mc:basic_arithmetic" number="2">
+        <jax/>
+        <questions number="12">
+          <question number="1">
+            <jax>Which of the following statements are correct?</jax>
+            <checkboxes number="13">
+              <correctchoice number="1">
+                <jax>$1 + 1 = 2$</jax>
+              </correctchoice>
+              <choice number="2">
+                <jax>$1 + 1 = 3$</jax>
+              </choice>
+              <choice number="3">
+                <jax>$2 + 2 = 3$</jax>
+              </choice>
+              <correctchoice number="4">
+                <jax>$2 +2 = 4$</jax>
+              </correctchoice>
+            </checkboxes>
+          </question>
+        </questions>
+      </multiplechoice>
+      <homework label="hw:probability" number="1">
+        <jax/>
+        <questions number="14">
+          <question number="1">
+            <jax>Let $A$ and $B$ be random events, with probabilities $\prob(A) = 1/2$ and $\prob(B) = 3/4$.</jax>
+            <parts number="15">
+              <part number="1">
+                <jax>Show that $\displaystyle\frac{1}{4}\leq \prob(A\cap B)\leq\frac{1}{2}$.</jax>
+                <answer>
+                  <jax>$A\cap B\subseteq A$ and $A\cap B\subseteq B$ means that:
+\[
+\prob(A\cap B) \leq \min\big\{\prob(A),\prob(B)\big\} = \displaystyle\frac{1}{2}.
+\]
+Furthermore, $\prob(A\cup B)\leq 1$ means that:
+\[
+\prob(A\cap B) = \prob(A)+\prob(B)-\prob(A\cup B) \geq \displaystyle\frac{1}{4}.
+\]</jax>
+                </answer>
+              </part>
+              <part number="2">
+                <jax>Show that $\displaystyle\frac{3}{4}\leq \prob(A\cup B)\leq 1$.</jax>
+                <answer>
+                  <jax>$A\subseteq A\cup B$ and $B\subseteq A\cup B$ means that:
+\[
+\prob(A\cup B) \geq \max\big[\prob(A),\prob(B)\big] = \displaystyle\frac{3}{4}.
+\]
+Furthermore, $\prob(A\cup B)\leq 1$ means that:
+\[
+\prob(A\cup B) \leq \min\{1,\prob(A)+\prob(B)\} = 1.
+\]</jax>
+                </answer>
+              </part>
+            </parts>
+          </question>
+        </questions>
+      </homework>
+      <jax/>
+    </section>
+  </chapter>
+</book>

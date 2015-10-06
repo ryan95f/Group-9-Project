@@ -1,0 +1,6 @@
+Django==1.8.2
+django-extensions==1.4.9
+django-mptt==0.7.4
+gnureadline==6.3.3
+Pillow==2.7.0
+six==1.9.0

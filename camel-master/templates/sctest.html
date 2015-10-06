@@ -1,0 +1,95 @@
+{% extends "chapter_detail.html" %}
+{% load staticfiles %}
+
+{% block title %} 
+	{{ module.code }} {{ assignment.node_type | title }} {{ chapter.number }}.{{ assignment.number }}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+{% endblock %}
+
+{% block content-main %}
+{% spaceless %}
+
+<div class="macros">
+    {% autoescape off %}
+		\( {{ book.new_commands | safe }} \)
+	{% endautoescape %}
+</div>
+
+{% include "chapter_navigation_block.html" %}
+
+<h2>Test {{ chapter.number }}.{{ test.number }}</h2>
+
+<h3> --- single-choice only --- (multiple-choice not yet implemented) --- </h3>
+
+<form action="", method="POST"> {% csrf_token %}
+	{% for hidden in form.hidden_fields %}
+		{{ hidden }}
+	{% endfor %}
+	{% if triplets %}
+		<div class="sctest">
+		{% for question, choices, answer in triplets %}
+		<div class="question-block">
+			<b>Question {{ question.number }}</b><br>
+			<div class="question">
+				{% with question.get_descendants as subtree %}
+						{% include "question_block.html" %}
+				{% endwith %}
+
+				{% if answer %}
+					{% if answer.choice.node_type = "correctchoice" %}
+						<div class="correct_choicesbox">
+					{% else %}
+						<div class="incorrect_choicesbox">
+					{% endif %}
+				{% else %}
+					<div class="choicesbox">
+				{% endif %}
+
+					{% for choice in choices %}
+						<p>
+							<input type="radio" name="question_{{ question.number }}" value="choice_{{ choice.number }}" {% if answer.choice == choice %}checked{% endif %}>
+							{% with choice.get_descendants as subtree %}
+									{% include "booknode.html" %}
+							{% endwith %}
+						</p>
+					{% endfor %}
+				</div> <!-- end choicesbox -->
+			</div> <!-- end question -->
+		</div>
+		{% endfor %}
+		<p align="right"><input name="submit-sctest" type="submit" value="Submit"/></p>
+		</div> <!-- end sctest -->
+
+		{% if submission %}
+			<p align="right"><i>First submitted on {{ submission.created }}</i></p>
+		{% endif %}
+	{% endif %}
+</form>
+
+{% endspaceless %}
+{% endblock %}
+
+{% block browse-horizontal %}
+<span class="left">{% if prev %}<a href="{% url 'sctest' prev.pk %}">&lt; {{ prev.node_type | title }}  {{ prev.get_parent_chapter.number }}.{{ prev.number }}</a>{% endif %}</span>
+<span class="right">{% if next %}<a href="{% url 'sctest' next.pk %}">{{ next.node_type | title }}  {{ next.get_parent_chapter.number }}.{{ next.number }} &gt;</a>{% endif %}</span>
+{% endblock %}
+
+
+{% block sidebar %}
+	{% if toc %}
+	<h4>Tests</h4>
+		<ul>
+		{% for test in toc %}
+			<li><a href="{% url 'sctest' test.pk %}"> {{ test.node_type | title }} {{ test.get_parent_chapter.number }}.{{ test.number }}</a></li>
+		{% endfor %}
+	</ul>
+	{% else %}
+	    <p>No toc</p>
+	{% endif %}
+
+{% endblock %}
+
+

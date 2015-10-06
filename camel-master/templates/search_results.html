@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+{% load staticfiles %}
+
+{% block title %}
+	Search Results
+{% endblock %}
+
+
+{% block content-main %}
+
+<h2>Search results</h2>
+
+<p>You searched for: <strong>{{ query }}</strong></p>
+
+{% if results %}
+    <p>Found {{ results|length }} result{{ results|pluralize }}.</p>
+    <table>
+        {% for result in results %}
+		<tr><td>{{ result.module.code }}</td><td>{{ result.node_type.capitalize }}</td><td>{{ result.number }}.</td><td>{{ result.title }}</tr>
+        {% endfor %}
+	</table>
+{% else %}
+    <p>No titles matched your search criteria.</p>
+{% endif %}
+{% endblock %}
+
+
+
