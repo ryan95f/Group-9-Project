@@ -22,7 +22,7 @@ MODULE_CODES = (
 class Module(models.Model):
 
     # attributes
-    year = models.CharField(max_length=6, choices=ACADEMIC_YEARS)
+    year = models.CharField(max_length=7, choices=ACADEMIC_YEARS)
     code = models.CharField(max_length=7, choices=MODULE_CODES)
     title = models.CharField(max_length=100, null=True, blank=True)
 
