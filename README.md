@@ -12,6 +12,11 @@ $ pip install django-mptt
 $ pip install django-debug-toolbar
 $ pip install django-extensions
 ```
+### Set up datebase & create admin
+```sh
+$ python3 manage.py migrate
+$ python3 manage.py createsuperusers
+```
 ### To run the camal system on django
 ```sh
 $ python3 manage.py runserver
