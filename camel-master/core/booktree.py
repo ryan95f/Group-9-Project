@@ -252,7 +252,7 @@ class Node(object):
                 booknode.text = self.content
                   
         # write to database
-        print booknode
+        print (booknode)
         if commit: 
             booknode.save()
 
@@ -1454,7 +1454,7 @@ def main(args=None):
 
     (options, args) = parser.parse_args()
     if not args:
-        print 'usage: $python doctree.py main.tex (camel.cls)'
+        print ('usage: $python doctree.py main.tex (camel.cls)')
         return
 
     # parse
@@ -1464,21 +1464,21 @@ def main(args=None):
 
     # text output (native format)
     if options.text:
-        print book
+        print (book)
 
     # xml output
     if options.xml:
         xml_file = open("xmlbook.xml","w")
         xml_file.write("%s" % book.prettyprint_xml() )
         xml_file.close()        
-        print book.prettyprint_xml()
+        print (book.prettyprint_xml())
 
     # labels
     if options.labels:
         pairs = book.get_label_mpaths()
         col_width = max( [len(pair[0]) for pair in pairs] ) + 2  # padding
         for pair in pairs:
-            print pair[0].ljust(col_width) + pair[1]
+            print (pair[0].ljust(col_width) + pair[1])
 
     # camel database output
     if options.db:
@@ -1543,7 +1543,7 @@ def main(args=None):
                 lab.book = cbook
                 lab.save()
             else:
-                print lab
+                print (lab)
           
 if __name__ == '__main__':
     main()

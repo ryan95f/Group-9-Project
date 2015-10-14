@@ -40,7 +40,7 @@ class Command(BaseCommand):
 
         # process argument (module code)
         if not args:
-            print 'Usage: python manage.py refresh <module_code> --option'
+            print ('Usage: python manage.py refresh <module_code> --option')
             return
 
         # info
@@ -62,7 +62,7 @@ class Command(BaseCommand):
 
             # text output (native format)
             if options['text']:
-                print tree
+                print (tree)
 
             # xml output
             if options['xml']:
@@ -138,7 +138,7 @@ class Command(BaseCommand):
                     if options['commit']:
                         lab.save()
                     else:
-                        print lab
+                        print (lab)
 
 
 
