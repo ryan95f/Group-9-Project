@@ -1,0 +1,268 @@
+% !TEX root = main.tex
+%======================================================================
+\chapter{Events}\label{chap:events}
+%======================================================================
+
+%\ec{
+\section{A brief history of probability}
+Games of chance have been played since antiquity, but the mathematical principles of chance and uncertainty were first established only in the 17th century:
+%}{
+%\section{Hanes tebygolrwydd}
+%Mae hap-chwarae wedi digwydd ers miloedd of flynyddoedd, ond cafodd seiliau mathemategol hap ac ansicrwydd ond eu sefydlu yn y 17eg ganrif.
+%}
+
+\bigskip
+%\begin{table}[ht]
+%\centering
+%\caption{Milestones in the development of probability theory}
+\begin{center}
+\begin{tabular}{lll}
+1654		& Classical principles 	& Blaise Pascal (1623--1662) \\
+    		&						& Pierre de Fermat (1601--1665)  \\
+1657		& \textit{De Ratiociniis in Ludo Aleae} & Christiaan Huygens (1629--1695) \\
+1713		& \textit{Ars Conjectandi} & Jakob Bernoulli (1654--1705) \\ 
+1718		& \textit{The Doctrine of Chances} & Abraham de Moivre (1667--1754) \\
+1812		& \textit{Theorie Analytique des Probabilites} & Pierre de Laplace (1749-1827) \\
+1919		& Relative frequency & Richard von Mises (1883--1953) \\
+1933		& Modern axiomatic theory & Andrey Kolmogorov (1903--1987)\\
+\end{tabular}
+\end{center}
+%\end{table}
+
+%----------------------------------------------------------------------
+\section{Sample spaces}
+%----------------------------------------------------------------------
+
+\begin{definition}
+\ben
+\it
+Any process of observation or measurement will be called an \emph{experiment} or \emph{trial}.
+\it
+Any experiment whose outcome is uncertain is called a \emph{random experiment}.
+\it
+A random experiment has a set of possible \emph{outcomes}.
+\it
+Each time a random experiment is performed, \emph{exactly one} of its outcomes will occur.
+\it
+The set of all possible outcomes is called the \emph{sample space} of the experiment, denoted by $\Omega$.
+\it
+Outcomes are also called \emph{elementary events}, and denoted by $\omega\in\Omega$.
+\een
+\end{definition}
+
+% example: sample spaces
+\begin{example}
+The sample space of a random experiment is the set of all possible outcomes:
+\begin{center}
+\begin{tabular}{ll}
+\underline{Experiment}									& \underline{Sample space} \\
+A coin is tossed once.									& $\Omega = \{H,T\}$ \\
+A six-sided die is rolled once.							& $\Omega=\{1,2,3,4,5,6\}$ \\
+A coin is tossed repeatedly until a head occurs.		& $\Omega = \{1,2,3,\ldots\}$ \\
+The height of a randomly chosen student is measured: 	& $\Omega = [0,\infty)$
+\end{tabular}
+\end{center}
+\end{example}
+
+\begin{exercise}
+Think of a situation in which randomness occurs. Can you describe the set of possible outcomes? Can you write it down using mathematical notation?
+\end{exercise}
+
+%----------------------------------------------------------------------
+\section{Events}
+%----------------------------------------------------------------------
+
+% defn: events
+\begin{definition}
+\bit
+\it An \emph{event} $A$ is a subset of the sample space, $\Omega$. 
+\it If outcome $\omega$ occurs, we say that event $A$ \emph{occurs} if and only if $\omega\in A$.
+\it Two events $A$ and $B$ with $A\cap B=\emptyset$ are called \emph{disjoint} or \emph{mutually exclusive}.
+\it The empty set $\emptyset$ is called the \emph{impossible event}.
+\it The sample space $\Omega$ is called the \emph{certain event}.
+\eit
+\end{definition}
+
+\begin{remark}
+\bit
+\it If $A$ occurs and $A\subseteq B$, then $B$ must also occur.
+\it If $A$ occurs and $A\cap B=\emptyset$, then $B$ does not occur. 
+\eit
+\end{remark}
+
+% example: die
+\begin{example}
+A die is rolled once. The sample space can be represented by $\Omega=\{1,2,3,4,5,6\}$.
+We may be interested in whether or not the following events occur:
+\begin{center}
+\begin{tabular}{ll}
+\underline{Event} & \underline{Subset} \\ 
+The outcome is the number $1$.	& $\{1\}$ \\
+The outcome is an even number.	& $\{2,4,6\}$ \\
+The outcome is even but does not exceed $3$.	& $\{2,4,6\}\cap\{1,2,3\}$ \\
+The outcome is not even			& $\Omega\setminus\{2,4,6\}$
+\end{tabular}
+\end{center}
+\end{example}
+
+%----------------------------------------------------------------------
+\section{Families of events}
+%----------------------------------------------------------------------
+\begin{definition}
+Let $\Omega$ be any set. 
+\ben
+\it The set of all subsets of $\Omega$ is called the \emph{power set} of $\Omega$, which we denote by $2^{\Omega}$.
+\it An arbitrary set $\mathcal{F}$ of subsets of $\Omega$ is called a \emph{family of sets over $\Omega$}.
+\een
+\end{definition}
+
+Let $\Omega$ be the sample space of some random experiment. 
+If we are interested in events $A$ and $B$, we must also be interested in the following.
+
+\begin{itemize}
+\item Event $A$ \emph{or} event $B$ occurs: this is the event $A\cup B$,
+\item Event $A$ \emph{and} event $B$ occur: this is the event $A\cap B$,
+\item Event $A$ does \emph{not} occur: this is the event $A^c$.
+\end{itemize}
+
+\smallskip
+As the basis for investigating random experiments, so that we can consider all events that may be of interest, we must allow only families of sets over $\Omega$ that are \emph{closed} under certain set operations.
+
+\begin{definition}
+A family of sets $\mathcal{F}$ over $\Omega$ is said to be
+\ben
+\it \emph{closed under complementation} if $A^c\in\mathcal{F}$ for every $A\in\mathcal{F}$, 
+\it \emph{closed under pairwise unions} if $A\cup B\in\mathcal{F}$ for every $A,B\in\mathcal{F}$, 
+%\it \emph{closed under finite unions}	if $\bigcup_{i=1}^{n} A_i\in\mathcal{F}$ for every $A_1,A_2,\ldots A_n\in\mathcal{F}$,
+\een
+\end{definition}
+
+% defn: fields of sets
+\begin{definition}
+A family of sets $\mathcal{F}$ over $\Omega$ is called a \emph{field of sets} over $\Omega$ if
+\begin{enumerate}
+\item $\Omega\in\mathcal{F}$,
+\item $\mathcal{F}$ is closed under complementation, and
+\item $\mathcal{F}$ is closed under pairwise unions.
+\end{enumerate}
+\end{definition}
+
+% example
+\begin{example}\label{ex:fields_of_sets}
+A six-sided die is rolled once, and the score is observed. A suitable sample space for this experiment is the set 
+$\Omega=\{1,2,3,4,5,6\}$. The power set of $\Omega$ will always provide a field of sets to work with. However, suppose we are only interested in whether or not the outcome is an even number. In this case, we need only consider the following family of events:
+\[
+\mathcal{F} = \big\{\emptyset, \{1,3,5\}, \{2,4,6\}, \{1,2,3,4,5,6\}\big\}.
+\]
+We can see that $\mathcal{F}$ is a field of sets over $\Omega$, because
+\ben
+\it it contains the sample space $\{1,2,3,4,5,6\}$,
+\it the complement of every set in $\mathcal{F}$ is also contained in $\mathcal{F}$, and
+\it the union of any two sets in $\mathcal{F}$ is also contained in $\mathcal{F}$.
+\een
+\end{example}
+
+% properties of fields
+\begin{theorem}[Properties of fields]
+Let $\mathcal{F}$ be a field over $\Omega$. Then
+\begin{enumerate}
+\item $\emptyset\in\mathcal{F}$,
+\item $\mathcal{F}$ is closed under pairwise intersections,
+\item $\mathcal{F}$ is closed under set differences.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+\item
+We know that $\emptyset = \Omega^c$, and that $\Omega\in\mathcal{F}$. Because $\mathcal{F}$ is closed under complementation, it thus follows that $\emptyset\in\mathcal{F}$.
+\item
+Let $A,B\in\mathcal{F}$. By De Morgan's laws, we have that $A\cap B = (A^c\cup B^c)^c$. Because $\mathcal{F}$ is closed under complementation and pairwise unions, it thus follows that $A\cap B\in\mathcal{F}$.
+\item
+Let $A,B\in\mathcal{F}$. Set difference can be written as $A\setminus B = A\cap B^c$. Furthermore, by De Morgan's laws we see that $A\cap B^c = (A^c\cup B)^c$. Because $\mathcal{F}$ is closed under complementation and pairwise unions, it thus follows that $A\setminus B\in\mathcal{F}$.
+\end{enumerate}
+\end{proof}
+
+\begin{table}
+\centering
+\caption{Table of correspondence (Grimmett \& Stirzaker 2001).}
+\begin{tabular}{|c|l|l|} \hline
+Notation 			& Set theory			& Probability theory \\ \hline
+$\Omega$			& Universal set			& Sample space \\ 
+$\omega\in\Omega$	& Element of $\Omega$	& Elementary event, outcome \\
+$A\subseteq\Omega$	& Subset of $\Omega$	& Event $A$ \\
+$A\subseteq B$		& Inclusion				& If $A$ occurs, then $B$ occurs \\
+$A\cup B$			& Union					& $A$ or $B$ occurs \\ 
+$A\cap B$			& Intersection			& $A$ and $B$ occur\\ 
+$A^c$				& Complement of $A$		& $A$ does not occur \\
+$A\setminus B$		& Difference			& $A$ occurs, but $B$ does not \\
+$A\bigtriangleup B$	& Symmetric difference	& $A$ or $B$ occurs, but not both \\
+$\emptyset$			& Empty set 			& Impossible event \\
+$\Omega$			& Universal set			& Certain event \\ \hline
+\end{tabular}
+\end{table}
+
+
+%----------------------------------------------------------------------
+\section{Assignments}
+%----------------------------------------------------------------------
+
+%----------------------------------------
+\begin{homework}
+\begin{questions}
+%----------------------------------------
+% events
+\question
+Identify a sample space, and the subset corresponding to event $A$, in each of the following scenarios:
+\begin{parts}
+%--------------------
+\part A coin is tossed three times. $A$ is the event that at least two heads are obtained.
+\begin{answer}
+\par
+$\Omega	= \{HHH, HHT, HTH, THH, HTT, THT, TTH, TTT\}$ and $A = \{HHH, HHT, HTH, THH\}$. Alternatively, if we are only interested in the number of heads, we could take $\Omega=\{0,1,2,3\}$ and $A=\{2,3\}$.
+\end{answer}
+%--------------------
+\part A game of football is played. $A$ is the event that the match ends in a draw.
+\begin{answer}
+$\Omega=\{(a,b):a,b = 0,1,2,\ldots\}$ and $A=\{(a,b): a=b\}$ where $a$ and $b$ are the numbers of goals scored by the first and second teams, respectively. Note that this is a (countably) infinite set. 
+\par
+Alternatively, we could take $\Omega=\{W,D,L\}$ and $A=\{D\}$ where $W,D,L$ are respectively the events that the first team wins, draws or loses the game.
+\end{answer}
+%--------------------
+\part A couple have two children. $A$ is the event that both are girls.
+\begin{answer}
+$\Omega=\{GG,GB,BG,BB\}$ and $A=\{GG\}$.
+\par
+Alternatively, we could take $\Omega=\{0,1,2\}$ and $A=\{2\}$.
+\end{answer}
+%--------------------
+\part A shot hits a circular target of radius 10cm. $A$ is the event that the shot hits within 3cm of the centre.
+\begin{answer}
+$\Omega=\{(x,y): x^2+y^2\leq 10^2\}$ and $A=\{(x,y): x^2+y^2\leq 3^2\}$.
+\end{answer}
+\end{parts}
+%----------------------------------------
+% properties of fields
+\question
+A family of sets $\mathcal{F}$ over $\Omega$ is said to be
+\bit
+\it \emph{closed under finite unions} if $A_1\cup A_2\cup\ldots\cup A_n\in\mathcal{F}$ whenever $A_1,A_2,\ldots A_n\in\mathcal{F}$, and
+\it \emph{closed under finite intersections} if $A_1\cap A_2\cap\ldots\cap A_n\in\mathcal{F}$ whenever $A_1,A_2,\ldots A_n\in\mathcal{F}$.
+\eit
+If $\mathcal{F}$ is a field of sets over $\Omega$, show that $\mathcal{F}$ is closed under finite unions and finite intersections.
+\begin{answer}
+\bit
+\it 
+Proof by induction. Suppose that $\mathcal{F}$ is closed under unions of $n$ sets (where $n\geq 2$). Let $A_1,A_2,\ldots,A_{n+1}\in\mathcal{F}$. By the inductive hypothesis, $\cup_{i=1}^nA_i\in\mathcal{F}$. Thus $\cup_{i=1}^{n+1} A_i = \big[\cup_{i=1}^{n} A_i\big] \cup A_{n+1} \in\mathcal{F}$, because $\mathcal{F}$ is closed under pairwise unions.
+\it
+Let $A_1,A_2,\ldots,A_n\in\mathcal{F}$. Then $\cap_{i=1}^n A_i = \big[\cup_{i=1}^n A_i^c\big]^c$ (De Morgan's laws). Hence $\cap_{i=1}^n A_i\in\mathcal{F}$ because $\mathcal{F}$ is closed under complementation and finite unions.
+\eit
+\end{answer}
+%----------------------------------------
+\end{questions}
+\end{homework}
+%----------------------------------------
+
+%======================================================================
+\endinput
+%======================================================================

@@ -1,0 +1,17 @@
+{% with toc=obj.get_siblings_same_type  %}
+
+	{% for entry in toc %}
+		<p>
+		{% if obj.pk != entry.pk %}
+       		{% if obj.node_type == 'chapter' %}
+    			<a href="{% url 'chapter-detail' entry.pk %}">{{ entry.number }}. {{ entry.title }}</a>
+            {% else %}
+    			<a href="{% url 'chapter-selected' obj.node_type entry.pk %}">{{ entry.number }}. {{ entry.title }}</a>
+            {% endif %}
+		{% else %}
+			{{ entry.number }}. {{ entry.title }}
+		{% endif %}
+		</p>
+	{% endfor %}
+{% endwith %}
+

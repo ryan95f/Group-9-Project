@@ -1,0 +1,53 @@
+{% extends "index.html" %}
+
+{% block title %} 
+	Modules 
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}&gt;&nbsp;<a href="{% url 'module-list' %}">Modules</a>
+{% endblock %}
+
+{% block content-main %}
+<h2><u>Modules</u></h2>
+<br>
+
+{% if object_list %}
+	<table cellpadding=2>
+	  {% for object in object_list %}
+		<tr class="module">
+			<td><a href="{{ object.get_absolute_url }}">{{ object.code }} {{ object.title }}</a></td>
+		</tr>
+	  {% endfor %}
+	</table>
+    {# .... **Now the pagination section** .... #}
+    {% if is_paginated %}
+		<br>
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/modiwlau?page={{ page_obj.previous_page_number }}">&lt;&lt;</a>
+				{% else %}
+                    <a style="visibility:hidden;">&lt;&lt;</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/modiwlauu?page={{ page_obj.next_page_number }}">&gt;&gt;</a>
+				{% else %}
+                    <a style="visibility:hidden;">&gt;&gt;</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+<br>
+
+{% else %}
+    <p>Dim modiwlau yn y gronfa.</p>
+{% endif %}
+
+{% endblock %}
+
+
+

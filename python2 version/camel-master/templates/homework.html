@@ -1,0 +1,179 @@
+{% extends "chapter_detail.html" %}
+{% load staticfiles %}
+
+{% block title %} 
+	{{ module.code }} {{ homework.node_type | title }} {{ chapter.number }}.{{ homework.number }}
+{% endblock %}
+
+{% block scripts %}
+	{{ block.super }} 
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script src="{% static 'core/js/main.js' %}" type"text/javascript"></script>
+	<script src="{% static 'core/js/simple-expand.js' %}"></script>
+	<script type="text/javascript">
+	    $(function () {
+	        $('.youranswer').show();
+	    });
+	</script>
+	
+	<script type="text/javascript">
+	<!--
+		function toggle_visibility(id) {
+			var e = document.getElementById(id);
+			if(e.style.display == 'block')
+				e.style.display = 'none';
+			else
+				e.style.display = 'block';
+		}
+		function toggle_answerboxes() {
+			var elements = document.getElementsByClassName('youranswer');
+			n = elements.length;
+			for (var i = 0; i < n; i++) {
+				var e = elements[i];
+				if(e.style.display == 'block') {
+					e.style.display = 'none';
+				}
+				else {
+					e.style.display = 'block';
+				}
+			}
+		}
+		function hide_youranswers() {
+			var elements = document.getElementsByClassName('youranswer');
+			n = elements.length;
+			for (var i = 0; i < n; i++) {
+				var e = elements[i];
+				e.style.display = 'none';
+			}
+			e = document.getElementById('hide');
+			e.style.display = 'none'
+			e = document.getElementById('show');
+			e.style.display = 'block'
+		}
+		function show_youranswers() {
+			var elements = document.getElementsByClassName('youranswer');
+			n = elements.length;
+			for (var i = 0; i < n; i++) {
+				var e = elements[i];
+				e.style.display = 'block';
+			}
+			e = document.getElementById('hide');
+			e.style.display = 'block'
+			e = document.getElementById('show');
+			e.style.display = 'none'
+		}
+		
+	//-->
+	</script>
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	&gt;<a href="{% url 'homework' homework.pk %}"> {{ homework.node_type | title }} {{ chapter.number }}.{{ homework.number }}</a>
+{% endblock %}
+
+{% block content-main %}
+{% spaceless %}
+
+<div class="macros">
+    {% autoescape off %}
+		\( {{ book.new_commands | safe }} \)
+	{% endautoescape %}
+</div>
+
+<!--div>
+<span style="float:left">
+&larr; <a href="{% url 'chapter-detail' chapter.pk %}">Chapter {{ chapter.number }}</a>
+</span>
+<span style="float:right">
+	<span id="hide">
+		<a href="#" onclick="hide_youranswers()">Hide answers</a>
+	</span>
+	<span id="show" style="display:none">
+		<a href="#" onclick="show_youranswers()">Show answers</a>
+	</span>
+</span>
+</div-->
+
+{% include "chapter_navigation_block.html" %}
+
+<h2>{{ homework.node_type | title }} {{ chapter.number }}.{{ homework.number }}</h2>
+
+	
+{% if pairs %}
+	<div class="homework">
+	{% for question, answer in pairs %}
+	<div class="question-block">
+		<b>Question {{ question.number }}</b><br>
+		<div class="question">
+			{% with question.get_descendants as subtree %}
+					{% include "booknode.html" %}
+			{% endwith %}
+			<div class="answerbox">
+				<a onclick="toggle_visibility('answer{{ question.number }}')">
+					<p class="answerbox_title"><b>Your answer</b></p>
+				</a>
+				<div class="youranswer" style="display:hide;" id="answer{{ question.number }}">
+					{% if answer.text %} 
+						<div class="previewbox"> 
+							{{ answer.text | linebreaks }}
+						</div>
+					{% endif %} 
+					<small>
+					{% if not submission and not answer.is_readonly %}	
+						<!--input name="edit-answer-{{ q.number }}" type="submit" value="Edit"/-->
+						{% if answer %}
+							<p>
+								<a href="{% url "edit-answer" question.pk %}"><button>Edit</button></a>
+								&nbsp;<i>(last saved {{ answer.updated }})</i>
+							</p>
+						{% else %}
+							<p><a href="{% url "edit-answer" question.pk %}"><button>Start</button></a></p>
+						{% endif %}
+					{% else %}
+						<!--i>(submitted)</i-->
+					{% endif %}	
+					</small>
+				</div>
+			</div> <!-- end answerbox -->
+		</div> <!-- end question -->
+	</div>
+	{% endfor %}
+	</div> <!-- end homework -->
+
+	{% if submission %}
+		<p align="right"><i>Submitted on {{ submission.created }}</i></p>
+	{% else %}
+		<form action="" method="POST"> {% csrf_token %}
+			{{ form.user }}
+			{{ form.assignment }}
+			<p align="right"><input name="submit-homework" type="submit" value="Submit Homework"/></p>
+		</form>
+	{% endif %}
+
+{% endif %}
+
+{% endspaceless %}
+{% endblock %}
+
+
+{% block browse-horizontal %}
+<span class="left">{% if prev %}<a href="{% url 'homework' prev.pk %}">&lt; {{ prev.node_type | title }}  {{ prev.get_parent_chapter.number }}.{{ prev.number }}</a>{% endif %}</span>
+<span class="right">{% if next %}<a href="{% url 'homework' next.pk %}">{{ next.node_type | title }}  {{ next.get_parent_chapter.number }}.{{ next.number }} &gt;</a>{% endif %}</span>
+{% endblock %}
+
+
+{% block sidebar %}
+	{% if toc %}
+	<h4>Homeworks</h4>
+		<ul>
+		{% for hwk in toc %}
+			<li><a href="{% url 'homework' hwk.pk %}"> {{ hwk.node_type | title }} {{ hwk.get_parent_chapter.number }}.{{ hwk.number }}</a></li>
+		{% endfor %}
+	</ul>
+	{% else %}
+	    <p>No toc</p>
+	{% endif %}
+
+{% endblock %}
