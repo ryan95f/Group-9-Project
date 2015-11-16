@@ -3,6 +3,8 @@
 \usepackage{geometry}
 \geometry{a4paper}
 
+\usepackage{url}
+
 \linespread{1.2}
 
 \setlength{\parindent}{0pt}
@@ -50,21 +52,34 @@
 
 	\section{Functional Requirements}
 	\subsection{Add methods of checking and comparing student answers from questions. - R}
-	\subsection{Allow logging of student answers to be compared later on. - B}
+	\subsection{Logging of Student Answers}
+	As the primary goal of the system is to allow members of staff to upload tests - in the form of LaTeX documents - with 'interactive' answering features, for the students to access, answer and submit; it seems only natural that these submissions are to be logged and then viewable by the supervising members of staff. A time-stamp should be attached to each submitted answer to allow a deeper understanding of student upload patterns.
 	\subsection{Add deadlines to student homework questions which will prevent late submissions. - M}
 	\subsection{Provide functionality to only see modules a student is enrolled for. - R}
-	\subsection{Provide error checking of end-user input. - B}
+	\subsection{Input Error Checking}
+	In the current version of the system, when the contents of a LaTeX document is passed into the LaTeX parser, there is virtually no validation of this input. The input is wrongly assumed to be already correctly formatted. Although our client informed us that adding validation functionality for the staff uploaded LaTeX test documents was not a necessity, he did request that any arising errors should be safely dealt with i.e. not cause a system crash or corrupt the database.
 	\subsection{Provide exception handling. - M}
 	\subsection{Provide Unit Tests. - R}
 
 	\newpage
 	
 	\section{Non-Functional Requirements}
-	\subsection{Fix bugs on current system.  - B}
+	\subsection{Fix Bugs in the Current System}
+	The current system, as it stands, is in no way acceptable for deployment. There exists an unknown amount of bugs and several poor design-choices which desperately require fixing for the project to be a success. If these issues are not dealt with accordingly, their impact will greatly hinder development and the system would be left unreliable and potentially dangerous.
 	\subsection{Improve navigation reliability when moving between pages - B}
+	When navigating around the current system, it seems that many of the hyper-links are incorrectly using relative address references - as oppose to absolute or referring to the root domain. This results in users of the system being miss-directed when navigating around the site. It even makes some areas of the site completely unacceptable without the user manually changing the file path.  This is likely due to the incorrect usage of Django's URL template tag\footnote{\url{https://docs.djangoproject.com/en/stable/ref/templates/builtins/#url}} and should be solvable without a huge amount of issues.
 	\subsection{Ease of use - M}
 	\subsection{Admin and Developer documentation. - R}
-	\subsection{System should have security permissions to prevent unauthorised access to lecturer areas. - B}
+	\subsection{System Permissions}
+	The system currently features two different types of users - students and staff members. It is required that various additional permission parameters are to be attached to the staff accounts, so that only they are able to access the sensitive areas of the system. These sensitive areas include:
+	\begin{itemize}  
+        \item LaTeX test document upload point
+        \item LaTeX test document manage point
+        \item List of the registered students
+        \item List of the student's test results
+    \end{itemize}
+    Depending on time restraints, it is advisable that Django's automatic admin interface\footnote{\url{https://docs.djangoproject.com/en/stable/ref/contrib/admin/}} not be accessible by staff members. This is because it is an extremely powerful tool that could easily be misused and permanently damage the system's stored data.
+
 	\subsection{Upgrade System for Python3. - M}
 	\subsection{Have maintainable code. - R}
 \end{document}
