@@ -55,10 +55,18 @@
 	\subsection{Logging of Student Answers}
 	As the primary goal of the system is to allow members of staff to upload tests - in the form of LaTeX documents - with 'interactive' answering features, for the students to access, answer and submit; it seems only natural that these submissions are to be logged and then viewable by the supervising members of staff. A time-stamp should be attached to each submitted answer to allow a deeper understanding of student upload patterns.
 	\subsection{Add deadlines to student homework questions which will prevent late submissions. - M}
+	In the brief it specifies that there should be capabilities to ‘complete and submit homework assignments’ and our client has also outlined that a way of adding deadlines to homework questions is something that should be implemented on the system.
+By being able to have deadlines on homework submissions, it would ensure the solutions of the students who miss the deadlines are not marked and their score is not added to their overall grade. It would also allow the grades of these students to not be included in the analysis and comparison of the classes grades.
+After a deadline has passed for a specific coursework, the student should be able to see and write answers for the questions, but not be able to submit it.  And the lecturer should be able to see which students have not submitted.
+A lecturer should also have the option of choosing not to set a deadline.
+
 	\subsection{Provide functionality to only see modules a student is enrolled for. - R}
 	\subsection{Input Error Checking}
 	In the current version of the system, when the contents of a LaTeX document is passed into the LaTeX parser, there is virtually no validation of this input. The input is wrongly assumed to be already correctly formatted. Although our client informed us that adding validation functionality for the staff uploaded LaTeX test documents was not a necessity, he did request that any arising errors should be safely dealt with i.e. not cause a system crash or corrupt the database.
 	\subsection{Provide exception handling. - M}
+	In the brief is specifically states that the existing codebase has no exception handling, and that this needs to be added. By speaking to our client this is a requirement that is of a high priority and will have to be implemented.
+The exception handling in the system would enable us to find and fix bugs easily and quickly during production, it would also enable the code to be maintainable in the future and it would also allow for smooth running for the system.
+
 	\subsection{Provide Unit Tests. - R}
 
 	\newpage
@@ -69,6 +77,7 @@
 	\subsection{Improve navigation reliability when moving between pages - B}
 	When navigating around the current system, it seems that many of the hyper-links are incorrectly using relative address references - as oppose to absolute or referring to the root domain. This results in users of the system being miss-directed when navigating around the site. It even makes some areas of the site completely unacceptable without the user manually changing the file path.  This is likely due to the incorrect usage of Django's URL template tag\footnote{\url{https://docs.djangoproject.com/en/stable/ref/templates/builtins/#url}} and should be solvable without a huge amount of issues.
 	\subsection{Ease of use - M}
+	In the brief it states that ‘the way in which students and teachers interact with the system should also be investigated and the design modified accordingly’. Our client has also made it clear that they would like the system easy enough for the students and teachers to use so that they will not need documentation, and should be intuitive and straight forward to navigate and find the needed information easily.
 	\subsection{Admin and Developer documentation. - R}
 	\subsection{System Permissions}
 	The system currently features two different types of users - students and staff members. It is required that various additional permission parameters are to be attached to the staff accounts, so that only they are able to access the sensitive areas of the system. These sensitive areas include:
@@ -81,5 +90,8 @@
     Depending on time restraints, it is advisable that Django's automatic admin interface\footnote{\url{https://docs.djangoproject.com/en/stable/ref/contrib/admin/}} not be accessible by staff members. This is because it is an extremely powerful tool that could easily be misused and permanently damage the system's stored data.
 
 	\subsection{Upgrade System for Python3. - M}
+	After discussing with our client, upgrading to Python 3 is an optional requirement depending on how easy this change would be and how long that it would take us to change the existing codebase. 
+We would want to move to python 3 as majority of the IO issues have been worked out, and python 2 will eventually become obsolete. By changing to python 3 it means that the system will be more maintainable as more people will know this release of python, and the system would be compatible with more devices for a longer period of time.
+
 	\subsection{Have maintainable code. - R}
 \end{document}
