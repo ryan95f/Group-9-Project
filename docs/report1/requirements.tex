@@ -49,7 +49,13 @@
 	\tableofcontents
 
 	\newpage
-
+	\section{Assumptions}
+	Due to the fixed nature of the current system, there are some aspects that we will need to assume. Firstly, we are assuming that the functionality we are developing for is single threaded. This assumption is being made as the time scale to add threaded functionality is non-existent, and we are developing the system on Django's development server, which cannot simulate a multi-threaded environment. A further assumption we are making is that there will be no additional requirements added when implementation occurs, and these requirements are final. Given the time scale we have to make the system, it would be unlikely that any additional requirements could be completed to high quality. Any additional functionality will be dropped due to development scope. Finally, we are allowed to integrate third party solutions to parts of the system that are out of our range with the development time available. Third party applications include:
+	\begin{itemize}
+		\item JQuery - JavaScript Library
+		\item Bootstrap - CSS Library
+		\item Additional Python modules
+	\end{itemize}
 	\section{Functional Requirements}
 	\subsection{Add methods of checking and comparing student answers from questions. - R}
 	To meet the initial requirement of lexical analysis, functionality will need to be added to student answers to be compared. Functionality that can be included may be graphs and statistics. With this functionality, lecturers are able to see possible trends with particular pieces of work, and see if there are any issues with the work. This functionality can also be expanded as a plagiarism checker, by looking for common answers. The depth of functionality that could be provided is limited to the development scope.
