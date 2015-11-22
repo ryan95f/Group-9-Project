@@ -52,7 +52,7 @@
 
 	\section{Functional Requirements}
 	\subsection{Add methods of checking and comparing student answers from questions. - R}
-	To meet the initial requirement of lexical analysis, functionality will need to be added to allow authorised comparing of results that are entered by students. Functionality that can be included may be graphs and statistics. We these functionality, lecturers are able to see possible trends with particular pieces of work, and see if there are any issues with the work. The depth of functionality that could be provided is limited to the development scope.
+	To meet the initial requirement of lexical analysis, functionality will need to be added to student answers to be compared. Functionality that can be included may be graphs and statistics. With this functionality, lecturers are able to see possible trends with particular pieces of work, and see if there are any issues with the work. This functionality can also be expanded as a plagiarism checker, by looking for common answers. The depth of functionality that could be provided is limited to the development scope.
 	\subsection{Logging of Student Answers}
 	As the primary goal of the system is to allow members of staff to upload tests - in the form of LaTeX documents - with 'interactive' answering features, for the students to access, answer and submit; it seems only natural that these submissions are to be logged and then viewable by the supervising members of staff. A time-stamp should be attached to each submitted answer to allow a deeper understanding of student upload patterns.
 	\subsection{Add deadlines to student homework questions which will prevent late submissions. - M}
@@ -62,7 +62,7 @@ After a deadline has passed for a specific coursework, the student should be abl
 A lecturer should also have the option of choosing not to set a deadline.
 
 	\subsection{Provide functionality to only see modules a student is enrolled for. - R}
-	This requirement will be a proof of concept rather than a fully functional feature due to  permissions of enrolment data being handled by us. If implemented, it will allow the UI for the student to be simple as it will only show their enrolled modules. This makes ease of use better, however this feature is not detrimental to the final system. The functionality of these feature is dependent with time available.
+	This requirement will be a proof of concept rather than a fully functional feature due to not having the permissions of enrolment data. The concept will instead simulate some test data to access the possibility of this feature being added. If the concept is a success, it will allow the UI for the student to be simple, as it will only show their enrolled modules. This add to ease of use, however this feature is not detrimental to the final system. The functionality of these feature is dependent with time available.
 	\subsection{Input Error Checking}
 	In the current version of the system, when the contents of a LaTeX document is passed into the LaTeX parser, there is virtually no validation of this input. The input is wrongly assumed to be already correctly formatted. Although our client informed us that adding validation functionality for the staff uploaded LaTeX test documents was not a necessity, he did request that any arising errors should be safely dealt with i.e. not cause a system crash or corrupt the database.
 	\subsection{Provide exception handling. - M}
@@ -70,7 +70,7 @@ A lecturer should also have the option of choosing not to set a deadline.
 The exception handling in the system would enable us to find and fix bugs easily and quickly during production, it would also enable the code to be maintainable in the future and it would also allow for smooth running for the system.
 
 	\subsection{Provide Unit Tests. - R}
-	All code that is developed will utilise the Django’s already existing test framework along with Python’s testing mechanics. This will be a continuous process in the development sprints, though all tests will be created first before code is created. This will give a good indication of the time each feature requires to be implemented. This will meet the initial requirements proposed in the brief by including these tests. These tests can be run by future developers using Django.
+	All code that is developed will utilise the Django’s already existing test framework along with Python’s testing mechanics. This will be a continuous process in the development sprints, though all tests will be created first before code is written. This will give a good indication of the time each feature requires to be implemented. This will also meet the initial requirements proposed in the brief by including these tests. These tests can be run by future developers using Django.
 
 	\newpage
 	
@@ -82,7 +82,7 @@ The exception handling in the system would enable us to find and fix bugs easily
 	\subsection{Ease of use - M}
 	In the brief it states that ‘the way in which students and teachers interact with the system should also be investigated and the design modified accordingly’. Our client has also made it clear that they would like the system easy enough for the students and teachers to use so that they will not need documentation, and should be intuitive and straight forward to navigate and find the needed information easily.
 	\subsection{Administrator and Developer documentation. - R}
-	Documentation will be required to meet a proposed requirement. The main focus for the documentation will be for the developer, which will be focus on the technical side, such as what is the functionality of particular files, and certain standards in the code . The administrator documentation will be 'lightweight' and will include all the instructions and commands a lecturer will need to use the system. Though the developer documentation will be considered a higher priority over the administrator, as it allows for future development to continue after we have added to the system. Whereas the UI should be self explanatory for a lecturer to not need the guide. 
+	Documentation will be required to meet a proposed requirement. The main focus for the documentation will be for the developer, which will focus on the technical side. It will include details on functionality of particular files and certain standards in the code. The administrator documentation will be 'lightweight' and will include all the instructions and commands a lecturer will need to use the system. Though the developer documentation will be considered a higher priority over the administrator. The documentation will be accessed on the site itself for both developer and administrator. 
 	\subsection{System Permissions}
 	The system currently features two different types of users - students and staff members. It is required that various additional permission parameters are to be attached to the staff accounts, so that only they are able to access the sensitive areas of the system. These sensitive areas include:
 	\begin{itemize}  
@@ -98,5 +98,5 @@ The exception handling in the system would enable us to find and fix bugs easily
 We would want to move to python 3 as majority of the IO issues have been worked out, and python 2 will eventually become obsolete. By changing to python 3 it means that the system will be more maintainable as more people will know this release of python, and the system would be compatible with more devices for a longer period of time.
 
 	\subsection{Have maintainable code. - R}
-	Throughout the development cycle, the aim will be to update and add code that follows a set of standards. These standards will include comments, naming conventions and modularity of files. Upon bringing these standards, it will ensure that future developers will be able to quickly understand the context of a method and maintain high code quality.
+	Throughout the development cycle, the aim will be to update and add code that follows a set of standards. These standards will include comments, naming conventions and modularity of files. For this project, we have been instructed to use the PEP8 Python standard. This standard focuses on using underscores for naming conventions. Upon bringing these standards, it will ensure that future developers will be able to quickly understand the context of a code and continue to maintain high code quality.
 \end{document}
