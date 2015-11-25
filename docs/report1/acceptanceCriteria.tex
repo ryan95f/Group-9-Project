@@ -4,6 +4,8 @@
 \geometry{a4paper}
 
 \usepackage{url}
+\usepackage{array}
+\usepackage[table]{xcolor}
 
 \linespread{1.2}
 
@@ -78,8 +80,19 @@ Students cannot access lecturer-only areas.
     \subsubsection{Key}
     
     
-    TABLE
-    
+		    \setlength{\arrayrulewidth}{1.5\arrayrulewidth}
+		    \setlength{\arrayrulewidth}{1.5\arrayrulewidth}
+	    	\begin{tabular}{|p{2.5cm}|p{2.3cm}|p{2.3cm}|p{2.3cm}|p{2.3cm}|p{2.5cm}|}
+	    		\hline
+	    		Total Risk & \multicolumn{5}{c|}{Impact} \\ \hline
+	    		Likelihood of Happening & \cellcolor{green!25}1.Insignificant {\scriptsize (Minor problem easily handled)} & \cellcolor{green!33}2.Minor {\scriptsize (Some disruption possible)} & \cellcolor{yellow!50}3.Moderate {\scriptsize (Significant time/resources required)} & \cellcolor{orange!50}4.Major {\scriptsize (Project severely damaged)} & \cellcolor{red!66}5.Catastrophic {\scriptsize (Project ruined)} \\[30pt] \hline
+	    		\cellcolor{green!25}1. Highly Unlikely & \cellcolor{green!75}1 Low & \cellcolor{green!75}2 Low & \cellcolor{green!75}3 Low & \cellcolor{yellow!100}4 Moderate & \cellcolor{yellow!100}5 Moderate \\[30pt] \hline
+	    		\cellcolor{green!33}2. Unlikely & \cellcolor{green!75}2 Low & \cellcolor{yellow!100}4 Low & \cellcolor{yellow!100}6 Moderate & \cellcolor{orange!83}8 High & \cellcolor{orange!83}10 High \\[30pt] \hline
+	    		\cellcolor{yellow!50}3. Moderate & \cellcolor{green!75}3 Low & \cellcolor{yellow!100}6 Moderate & \cellcolor{orange!83}9 High & \cellcolor{red!100}12 Extreme & \cellcolor{red!100}15 Extreme \\[30pt] \hline
+	    		\cellcolor{orange!50}4. Likely & \cellcolor{yellow!100}4 Moderate & \cellcolor{orange!83}8 High & \cellcolor{red!100}12 Extreme & \cellcolor{red!100}16 Extreme & \cellcolor{red!100}20 Extreme \\[30pt] \hline
+	    		\cellcolor{red!66}5. Almost Certain & \cellcolor{yellow!100}5 Moderate & \cellcolor{orange!83}10 High & \cellcolor{red!100}15 Extreme & \cellcolor{red!100}20 Extreme & \cellcolor{red!100}25 Extreme \\[30pt] \hline
+	    	\end{tabular}
+	    	
      In order to assess the risks of our project we included the use of a risk map. Firstly we identified the risk that could occur in the duration of our project and then described the effect it would have upon the group. We calculated the total risk by measuring the likelihood of the event occurring, against the impact it would have should it occur. The controls include the contingency, avoidance and how we would cope with the risk if it occurred. This helps us to maintain the project goals and control the overall risk. After the controls are implemented, we then measured the total risk again in the hope it would have improved. We followed the colour schemes of the risk map so it is more visually appealing and clearer to assess how the controls we implemented help. We aimed to achieve the colours of green and yellow for the total risk given the controls. We then analysed the benefits of having the risk controls in place for each risk, and explained the benefits as a paragraph as many interlinked.
      
      
