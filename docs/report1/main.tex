@@ -30,147 +30,72 @@
 % ENDING DOCUMENT PREAMBLE %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-
-\begin{titlepage}
-\newcommand{\HRule}{\rule{\linewidth}{1.5mm}}
-\center
-
-\begin{minipage}{0.4\textwidth}
-\begin{flushleft}
-\textbf{\large CM2305}
-\\
-\emph{\large Group Project}
-\end{flushleft}
-\end{minipage}
-~
-\begin{minipage}{0.4\textwidth}
-\begin{flushright}
-\textbf{\large Module Leader}
-\\
-\emph{\large Dr Frank Langbein} 
-\end{flushright}
-\end{minipage}
-\\[2cm]
-
-{\makeColourful \HRule} 
-\\[2cm]
-{\fontsize{90pt}{0pt}\selectfont \makeColourful{\textsc{First Report}}}
-\\[1.5cm]
-A \LaTeX\ document
-{\makeColourful \HRule}
-\\[6cm]
-
-\textsc{\Large Group 9}
-\\[0.5cm] 
-\textsc{Aimi Daros, Braden Marshall, Cameron Fish, Lucy Robertshaw, Mariza Celliers, Ryan Flynn, Sh’kyra Jordon, Skye Watkins, Thomas Rice.}
-
-\end{titlepage}
-
-\newpage
-\tableofcontents
-\newpage
-
-\input{introduction.tex}
-\input{systemRequirements.tex}
-
-\section{Acceptance Criteria}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum viverra nunc pellentesque finibus. Fusce id diam venenatis, tincidunt tellus sed, commodo sem.
-
-\addcontentsline{toc}{subsection}{Acceptance Criteria for Functional Requirements}
-\subsection*{Acceptance Criteria for Functional Requirements}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum viverra nunc pellentesque finibus. Fusce id diam venenatis, tincidunt tellus sed, commodo sem.
-
-\addcontentsline{toc}{subsection}{Acceptance Criteria for nonfunctional Requirements}
-\subsection*{Acceptance Criteria for nonfunctional Requirements}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum viverra nunc pellentesque finibus. Fusce id diam venenatis, tincidunt tellus sed, commodo sem.
-
-\addcontentsline{toc}{subsection}{Benefit \& Risk Assessment}
-\subsection*{Benefit \& Risk Assessment}
-%Risk map outline to go before paragraph
-
-In order to assess the risks of our project we included the use of a risk map. Firstly we identified the risk that could occur in the duration of our project and then described the effect it would have upon the group. We calculated the total risk by measuring the likelihood of the event occurring, against the impact it would have should it occur. The controls include the contingency, avoidance and how we would cope with the risk if it occurred. This helps us to maintain the project goals and control the overall risk. After the controls are implemented, we then measured the total risk again in the hope it would have improved. We followed the colour schemes of the risk map so it is more visually appealing and clearer to assess how the controls we implemented help. We aimed to achieve the colours of green and yellow for the total risk given the controls. We then analysed the benefits of having the risk controls in place for each risk, and explained the benefits as a whole.
-%completed risk map to go after paragraph
-
-\addcontentsline{toc}{subsection}{Relevant Quality Factors}
-\subsection*{Relevant Quality Factors}
-
-\subsubsection*{Flexibility and Extensibility} 
-
-\subsubsection*{Maintainability and Readability} 
-
-\subsubsection*{Performance and Efficiency} 
-
-\subsubsection*{Scalability} 
-
-\subsubsection*{Availability, Fault Tolerance and Reliability} 
-
-\subsubsection*{Usability and Accessibility} 
-
-\subsubsection*{Platform Compatibility and Portability} 
-
-\subsubsection*{Testability and Manageability} 
-
-\subsubsection*{Security} 
-
-\subsubsection*{Functionality and Correctness} 
-
-\input{lsepi.tex}
-
-\section{Software Development}
-
-\addcontentsline{toc}{subsection}{Nature of CAMEL project}
-\subsection*{Nature of CAMEL project}
-The CAMEL project is basically a prototype e-learning system for mathematics that has been developed by Cardiff School of Mathematics. The existing codebases needs a complete overhaul: documentation, exception handling, unit test and logging are currently non-existent and there are several technical issues to resolve. The way in which students and teachers might interact with the system should also be investigated and the design would be modified accordingly.
- 
-	If the systems are implemented successfully, extensive data in student engagement will become available, which offers the possibility of analyzing patterns of student engagement and collaboration. The project should consider how such information might be extracted and visualized in a useful way. 
-
-\addcontentsline{toc}{subsection}{Agile Model}
-\subsection*{Agile Software Development}
-First and foremost, manifesto for Agile Software Development has laid out four values which is:
-
-\begin{enumerate}[label=(\roman*)]
-\item Individuals and interaction over processes and tools
-\item Working software over comprehensive documentation
-\item Customer collaboration over contract negotiation
-\item Responding to change over following a plan 
-\end{enumerate}
-
-These four values of Agile method are environment that we are currently facing while working with the CAMEL project since our team members need to work together in terms of understanding and breaking the existing code. Since the existing prototype needs to be fixed, a working software is what are we aimed for. Along the way as we overhaul the existing codebase, client involvement is really crucial every now and then, to ensure the prototype is according of the requirements. Besides, our client is working together through the process of overhauling the existing code. Thus, we will respond to change as if our client has any changes to made the requirements that we have agreed on.  
-
-	Secondly, Agile has 12 Principles (Layton, Agile Project Management For Dummies) that are a set of guiding concepts that support teams in implementing agile projects. One of the concepts says the most efficient and effective method to convey information to and within a development team is face-to-face conversation. We have planned to meet up at least once in a week for our group to study the existing code. Furthermore, learning code would need discussion and expertise from each and every one of us. 
-
-\addcontentsline{toc}{subsection}{The Agile Roadmap to Value (Deliverables plan)}
-\subsection*{Next Phases of the Project}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum viverra nunc pellentesque finibus. Fusce id diam venenatis, tincidunt tellus sed, commodo sem.
-
-\newpage
-\begin{thebibliography}{99}
-\addcontentsline{toc}{section}{References}
-
-\bibitem{CDaPA} Copyright Designs and Patent Act (1988)
-\newline
-(\url{https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/462194/Copyright_Designs_and_Patents_Act_1988.pdf})
-
-\bibitem{LSEPI in Computer Tech} Legal, Social, Ethical and Professional Issues in the Application of Computer Technology 
-\newline
-(\url{http://www.macs.hw.ac.uk/macshome/MScComputing/RM/Docs/L4PLESI.pdf})
-
-\bibitem{JiscLegal - Intellectual Prop.} JiscLegal on Intellectual Property
-\newline
-(\url{ http://www.jisclegal.ac.uk/legalareas/copyrightipr/ipressentials.aspx})
-
-\bibitem{DPA:tDPP:S1} Data Protection Act: The Data Protection Principles - Schedule 1
-\newline
-(\url{http://www.legislation.gov.uk/ukpga/1998/29/schedule/1})
-
-\bibitem{DPA:tDPP:S2} Data Protection Act: The Data Protection Principles - Schedule 2
-\newline
-(\url{http://www.legislation.gov.uk/ukpga/1998/29/schedule/2})
-
-\bibitem{DPA:tDPP:S3} Data Protection Act: The Data Protection Principles - Schedule 3
-\newline
-(\url{http://www.legislation.gov.uk/ukpga/1998/29/schedule/3})
-
-\end{thebibliography}
-
+	\begin{titlepage}
+		\newcommand{\HRule}{\rule{\linewidth}{1.5mm}}
+		\center
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushleft}
+				\textbf{\large CM2305}
+				\\
+				\emph{\large Group Project}
+			\end{flushleft}
+		\end{minipage}
+		~
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushright}
+				\textbf{\large Module Leader}
+				\\
+				\emph{\large Dr Frank Langbein} 
+			\end{flushright}
+		\end{minipage}
+		\\[2cm]
+		{\makeColourful \HRule} 
+		\\[2cm]
+		{\fontsize{90pt}{0pt}\selectfont \makeColourful{\textsc{First Report}}}
+		\\[1.5cm]
+		A \LaTeX\ document
+		{\makeColourful \HRule}
+		\\[6cm]
+		\textsc{\Large Group 9}
+		\\[0.5cm] 
+		\textsc{Aimi Daros, Braden Marshall, Cameron Fish, Lucy Robertshaw, Mariza Celliers, Ryan Flynn, Sh’kyra Jordon, Skye Watkins, Thomas Rice.}
+	\end{titlepage}
+	\newpage
+	\tableofcontents
+	\newpage
+	\input{introduction.tex}
+	\input{systemRequirements.tex}
+	\input{acceptanceCritera.tex}
+	\input{lsepi.tex}
+	\input{workPlan.tex}
+	\input{conclusion.tex}
+	\newpage
+	\begin{thebibliography}{99}
+		\addcontentsline{toc}{section}{References}
+			
+		\bibitem{CDaPA} Copyright Designs and Patent Act (1988)
+		\newline
+		(\url{https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/462194/Copyright_Designs_and_Patents_Act_1988.pdf})
+			
+		\bibitem{LSEPI in Computer Tech} Legal, Social, Ethical and Professional Issues in the Application of Computer Technology 
+		\newline
+		(\url{http://www.macs.hw.ac.uk/macshome/MScComputing/RM/Docs/L4PLESI.pdf})
+			
+		\bibitem{JiscLegal - Intellectual Prop.} JiscLegal on Intellectual Property
+		\newline
+		(\url{ http://www.jisclegal.ac.uk/legalareas/copyrightipr/ipressentials.aspx})
+			
+		\bibitem{DPA:tDPP:S1} Data Protection Act: The Data Protection Principles - Schedule 1
+		\newline
+		(\url{http://www.legislation.gov.uk/ukpga/1998/29/schedule/1})
+			
+		\bibitem{DPA:tDPP:S2} Data Protection Act: The Data Protection Principles - Schedule 2
+		\newline
+		(\url{http://www.legislation.gov.uk/ukpga/1998/29/schedule/2})
+			
+		\bibitem{DPA:tDPP:S3} Data Protection Act: The Data Protection Principles - Schedule 3
+		\newline
+		(\url{http://www.legislation.gov.uk/ukpga/1998/29/schedule/3})
+			
+	\end{thebibliography}
 \end{document}
