@@ -50,24 +50,15 @@
 
 	\newpage
 	\section{System Scope}
-	The proposed project that has been put forward to us, is to update and complete the implementation of the current CAMEL system. The existing codebase needs additional functionality, which includes lexical comparisons, logging of student answers and deadline functionality . On top of providing a improved system, documentation and unit tests will also be included.
-
-	To address the clients proposal, CAMEL 2.0 will issues a code standard. This will be PEP8 Python standard, and will be the first priority to implement to the system. Additionally, exception handling will also be added as well as extra code to fix any current bugs that reside. Besides maintaining the code, documentation for a developer and administrator will be added. All of this will be part of an ongoing process during development, with each being equally important.   
-	
-	Addressed functionality (see  functional requirements) will be implemented in agile sprints, the length of the sprint cycle for functionality is dependant on the complexity. For example, lexical comparisons may take longer than adding exception handling, due to the complexity that is required to add this into the codebase. Other functionality, such as database re-design and break down of core functionality will be allotted a time frame during the sprint cycle meetings. The plans for the cycles will be drawn up every week during the implementation stage.   
-	
-	Tests will be added prior to writing the code, though will be written in Django's test framework first. Additional or 'conceptual' functionality will be addressed last, to ensure high code quality throughout. However, due to a fixed time frame, we will only be implementing functionality that is mentioned in the requirements. No additional requirements later on will be added.          	
-	\section{Assumptions}
+	The CAMEL 2.0 prototype (proposed by by Dr Dafydd Evans) will be developed from the 30th November 2015, and completed on the 29th April 2016. The aim of this project is to provide a functionally improved and 'GitHub' ready system that can be downloaded and utilised. The proposed functional requirements include lexical comparison and logging of student answers, unit tests, exception handling and documentation for future developers. Besides from this functionality, enhancements will be made to the user interface, such as navigation between pages, which will improve performance loading. For the back-end of the system, bugs will be fixed as well code being standardised. In addition to the improved code, there will be an architecture resign, this will include modularity of core functionality and a redesign of the database. The back-end re-design should provide additional ease of use to future developers.      
+	\section{System Boundary}
+	During implementation, there will be a heavy focuses on completion of a architecture redesign, and improvements to the code structure, with the introduction of exception and error handling. Functionality with lexical comparisons and student logging will also be priority during implementation. Functionality that will cease to be developed will include enrolled modules and student deadlines, if the functionality above has difficulty being implemented. Documentation for the developer will be an on-going process, but administrator will be completed near the end. The system will not include any documentation for the lecturers or students as the UI should be self explanatory. The addition of upgrading the Python language will be assessed first and will only be dropped if proven difficult to implement within first three days of development. Finally, unit tests will be a further on-going process, and any tests provided in the system will only exist for functionality that was successfully implemented.           
+	\section{System Assumptions}
 	Due to the fixed nature of the current system, there are some aspects that we will need to assume. Firstly, we are assuming that the functionality we are developing for is single threaded. This assumption is being made as the time scale to add threaded functionality is non-existent. Furthermore, we are developing the system on Django's development server, which cannot simulate a multi-threaded environment. 
 	
 	A further assumption we are making is that there will be no additional requirements added when implementation occurs, and these requirements are final. Given the time scale we have to make the system, it would be unlikely that any additional requirements could be completed to a high standard. Any additional functionality will be dropped due to development scope. 
 	
-	Finally, we area assuming that the use of third party software to handle aspects that are out of scope can be integrated into the system. Third party applications that may be include:
-	\begin{itemize}
-		\item JQuery - JavaScript Library
-		\item Bootstrap - CSS Library
-		\item Additional Python modules
-	\end{itemize}
+	Finally, we area assuming that the use of third party software to handle aspects that are out of scope can be integrated into the system. Third party applications that may be include - JQuery (JavaScript library), Bootstrap (CSS library) and additional Python modules
 	\section{Functional Requirements}
 	\subsection{Input Error Checking. - Must Have}
 	In the current version of the system, when the contents of a LaTeX document is passed into the LaTeX parser, there is virtually no validation of this input. The input is wrongly assumed to be already correctly formatted. Although our client informed us that adding validation functionality for the staff uploaded LaTeX test documents was not a necessity, he did request that any arising errors should be safely dealt with i.e. not cause a system crash or corrupt the database.
