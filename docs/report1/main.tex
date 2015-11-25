@@ -1,64 +1,48 @@
-% So I guess it would help you guys to know \command is considered a "switch" command that would switch some "setting" of the block you're in (an equivalent to a block in HTML would be something like everything in <head> ... </head> but here we have \begin{something} ... \end{something} or \command{...}.
-% If you don't want to "switch" the state of that block you can apply a command to a section by writing something like {\command}, I'm rusty so I can't recall if and how that works for every method but just google it
-% As far as I can remember, indenting doesn't matter, putting things on new lines often doesn't matter unless your command is an inline one like the commenting one " % ".
-
 %% Website of the LaTeX Gods: https://en.wikibooks.org/wiki/LaTeX
-
-
-
+\documentclass[a4paper, 12pt, titlepage]{article}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % STARTING DOCUMENT PREAMBLE %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[a4paper, 12pt, titlepage]{article} % Paper size = a4, font = 10pt, titlepage = True, draft = True (to be removed before final compile)
 
-\usepackage[utf8]{inputenc} % \usepackage is a lot like import module
-\usepackage{anyfontsize} % we'll use \fontsize{font}{baseline skip}\selectfont command
-%\usepackage{color} % this lets us typeset in colours
-\usepackage[usenames, dvipsnames]{color} % lets me use commands just like those in the color packages but with way more colours so I can use it instead of the color package - https://en.wikibooks.org/wiki/LaTeX/Colors#The_68_standard_colors_known_to_dvips
-\usepackage{titlesec} % we'll use \titleformat
-
-\usepackage{url} %w we'll use \url{<theurl>}
-
-\usepackage{enumitem} % for numbered lists (so we can do bracketed roman numbering, specifically)
-
-\newcommand{\makeColourful}{\color{MidnightBlue}} % will explain \newcommand later in this doc. This will let me use \makeColourful to make things a shade of colour that I can change from here if I want to change it later.
-
-\newcommand{\makeGrey}{\color{Gray}}
-\newcommand{\makeBlack}{\color{Black}}
-
-\titleformat{\section}{\LARGE \bfseries \makeColourful}{\thesection}{0.7cm}{}[{\hrule}] % \titleformat{\command}{\format}{\label}{sep}{\before}[\after] where \command is the sectioning command to be redefined, \format is the switch commands you want to use to format \commmand (\Large is explained later, \bfseries is the switch command for making text bold-font), \label is the label of the object (optional, but if omitted, will not typeset label next to object, in this cause our label is the section number in caps roman numerals), sep is the horizontal distance between the label and object, \before is "code" to execute before the object, \after is code to execute after the object (note that it is in sq. brackets, thus the code must be contained in {}s inside of that). \titlerule[thickness] is just like \hrule (horizontal line of line-width) but you can adjust the thickness
-
-\titleformat{\subsection}{\Large \bfseries \raggedleft \makeColourful}{}{0}{}[]
-
-\titleformat{\subsubsection}{\large \bfseries \raggedleft \makeColourful}{}{0}{}[]
+\usepackage[utf8]{inputenc}
+\usepackage{anyfontsize}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{titlesec}
+\usepackage{url}
+\usepackage{enumitem}
 
 \title{First Report}
-\author{Group 9} % title and author are actually unnecessary since I put it all in manually on the title page but hey it might show up in the metadata / file properties or something so I'll leave it
+\author{Group 9}
 
-\renewcommand*\contentsname{\fontsize{25}{30}\selectfont Table of Contents} % changing contents page title to fontsize 25pt w/ baseline skip (gap after) to 30pt (pt is omitted but can be used, also generally it is advised to make baseline skip roughly 1.2x fontsize), as far as I know the * after renewcommand is bc the command is long? \command* is generally a slightly altered form of \command, the difference between the two varies for different commands
+\newcommand{\makeColourful}{\color{MidnightBlue}}
+\newcommand{\makeGrey}{\color{Gray}}
+\newcommand{\makeBlack}{\color{Black}}
+\renewcommand*\contentsname{\fontsize{25}{30}\selectfont Table of Contents}
+\renewcommand{\thesection}{\Roman{section}}
 
+\titleformat{\section}{\LARGE \bfseries \makeColourful}{\thesection}{0.7cm}{}[{\hrule}]
+\titleformat{\subsection}{\Large \bfseries \raggedleft \makeColourful}{}{0}{}[]
+\titleformat{\subsubsection}{\large \bfseries \raggedleft \makeColourful}{}{0}{}[]
+\titleformat{\subsubsubsection}{\normalsize \bfseries \raggedleft \makeColourful}{}{0}{}[]
+\titleformat{\subsubsubsubsection}{\normalsize \bfseries \raggedleft \makeColourful}{}{0}{}[]
 
-
-\begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENDING DOCUMENT PREAMBLE %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
 
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{1.5mm}}
+\center
 
-
-\begin{titlepage} % the following 2 lines of "code" will only apply to this block, i.e. it ends after \end{titlepage}
-\newcommand{\HRule}{\rule{\linewidth}{1.5mm}} % New command for the horizontal line (calling it \Hrule and making it call the command \rule{\linewidth}{1.5mm} where \rule is a "make horizonal line" command and the parameters on the end change the thickness (\linewidth) to 1.5mm, effectively changing default thickness if we call \Hrule so we don't have to write it every time)
-
-\center % Centre everything on titlepage/in surrounding block
-
-\begin{minipage}{0.4\textwidth} % "global textwidth of minipage/general block" = 0.4, minipage is a page within a page that just helps with sectioning things up and keeping them in their "boxes" and letting us use commands for pages on them and them alone without affecting the whole page
-\begin{flushleft} % text on LHS
-\textbf{\large CM2305} % \textbf{text} makes text bold-font
-\\ % start new paragraph
-\emph{\large Group Project} % \emph{text} makes text "look italic but not quite", \Large = standardised text size relative to general font size chosen in \documentclass parameters
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft}
+\textbf{\large CM2305}
+\\
+\emph{\large Group Project}
 \end{flushleft}
 \end{minipage}
-~ % hardspace
+~
 \begin{minipage}{0.4\textwidth}
 \begin{flushright}
 \textbf{\large Module Leader}
@@ -66,13 +50,13 @@
 \emph{\large Dr Frank Langbein} 
 \end{flushright}
 \end{minipage}
-\\[2cm] % creates 2cm gap and creates new paragraph
+\\[2cm]
 
 {\makeColourful \HRule} 
 \\[2cm]
-{\fontsize{90pt}{0pt}\selectfont \makeColourful{\textsc{First Report}}} % set fontsize for block to 50pt w/ baseline skip (gap after) to 0pt, usually you make baseline skil 1.2x the fontsize but I'm doing it manually w/ \\[x], textsc{text} makes lowercase chars in text small caps and uppercasechars into big caps 
+{\fontsize{90pt}{0pt}\selectfont \makeColourful{\textsc{First Report}}}
 \\[1.5cm]
-A \LaTeX\ document % \LaTeX returns the word in the funky script (its logo) and the \ after escapes the next space (otherwise it'll think it's part of the command and ignore it when typesetting)
+A \LaTeX\ document
 {\makeColourful \HRule}
 \\[6cm]
 
@@ -82,17 +66,12 @@ A \LaTeX\ document % \LaTeX returns the word in the funky script (its logo) and 
 
 \end{titlepage}
 
-\newpage % Fills rest of page w/ whitespace followed by pagebreak (/vfill does this w/o pagebreak)
-
-\renewcommand{\thesection}{\Roman{section}} % changes command of \thesection (returns current section number) to \Roman{section}(converts "section" to caps roman numerals, where "section" returns a default counter that is counting what section we're one) so that sections are numbered in capitalised roman numerals
-
-\tableofcontents % automatically generates contents page according to blocks labeled "section", "subsection" etc (note you can totally infinitely subsection something, like subsubsection, subsubsubsection etc.
+\newpage
+\tableofcontents
 \newpage
 
 \input{introduction.tex}
-\input{systemRequirements}
-\input{functionalAndNonfunctionalRequirements}
-
+\input{systemRequirements.tex}
 
 \section{Acceptance Criteria}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum viverra nunc pellentesque finibus. Fusce id diam venenatis, tincidunt tellus sed, commodo sem.
@@ -149,7 +128,7 @@ The CAMEL project is basically a prototype e-learning system for mathematics tha
 \subsection*{Agile Software Development}
 First and foremost, manifesto for Agile Software Development has laid out four values which is:
 
-\begin{enumerate}[label=(\roman*)] % enumerate environment creates numbered list, using package "enumerate" lets us write the arg [i], [1], [a], [A] etc to change numbering from lowercase roman numerals, normal numbers, lowercase letters and uppercase letters (respectively) and etc.
+\begin{enumerate}[label=(\roman*)]
 \item Individuals and interaction over processes and tools
 \item Working software over comprehensive documentation
 \item Customer collaboration over contract negotiation
