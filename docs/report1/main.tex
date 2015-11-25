@@ -87,21 +87,12 @@ A \LaTeX\ document % \LaTeX returns the word in the funky script (its logo) and 
 \renewcommand{\thesection}{\Roman{section}} % changes command of \thesection (returns current section number) to \Roman{section}(converts "section" to caps roman numerals, where "section" returns a default counter that is counting what section we're one) so that sections are numbered in capitalised roman numerals
 
 \tableofcontents % automatically generates contents page according to blocks labeled "section", "subsection" etc (note you can totally infinitely subsection something, like subsubsection, subsubsubsection etc.
-
 \newpage
-\section{Introduction} % make section called "Introduction"
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum viverra nunc pellentesque finibus. Fusce id diam venenatis, tincidunt tellus sed, commodo sem.
 
-\section{System Requirements}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum viverra nunc pellentesque finibus. Fusce id diam venenatis, tincidunt tellus sed, commodo sem.
+\input{introduction.tex}
+\input{systemRequirements}
+\input{functionalAndNonfunctionalRequirements}
 
-\addcontentsline{toc}{subsection}{Functional \& Nonfunctional Requirements} % adds next line to the TOC (Table of Contents) and links it to a section called "Functional...ect"
-\subsection*{Functional \& Nonfunctional Requirements} % \subsection*{title} makes a subsection called "title" that isn't added to the TOC (I've done it like this so subsections aren't numbered, I can just do \subsection{x} to get a subsection that would be labeled II.1, I'd have to renew a command like \renewcommand{\thesubsection}{\Roman{subsection}} to make it labelled as II.I)
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum viverra nunc pellentesque finibus. Fusce id diam venenatis, tincidunt tellus sed, commodo sem.
-
-\addcontentsline{toc}{subsection}{System Scope \& Requirements}
-\subsection*{System Scope \& Requirements}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum viverra nunc pellentesque finibus. Fusce id diam venenatis, tincidunt tellus sed, commodo sem.
 
 \section{Acceptance Criteria}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum viverra nunc pellentesque finibus. Fusce id diam venenatis, tincidunt tellus sed, commodo sem.
