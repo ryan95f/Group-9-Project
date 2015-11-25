@@ -3,9 +3,8 @@
 \usepackage{geometry}
 \geometry{a4paper}
 
-\usepackage{url}
-\usepackage{array}
-\usepackage[table]{xcolor}
+\usepackage{xcolor}
+\usepackage{booktabs,colortbl,longtable}
 
 \linespread{1.2}
 
@@ -51,124 +50,234 @@
 	\tableofcontents
 
 	\newpage
-	\section{Testable acceptance criteria}
-    \vspace{0.5cm}
-    \begin{itemize}
-\item The lecturer can set a deadline to a piece of homework after which time, the system will not accept submissions.
-\item The system will make a log of all homework submissions.
-\item The system can compare different homework logs for similarity.
-\item The system can auto mark simple ‘tick-a-box’ style questions.
-\item The system will only allow a student to see content for the module they are enrolled on.
-\item If someone tries to submit Latex that contains errors, the system will stop them.
-\item All errors are handled without system failure.
-\item Unit testing has been completed.
-\item The system has no known bugs.
-\item The end user requires no instruction or documentation on how to navigate the system as it is both simple and easy to use.
-\item Documentation has been completed for system Admins and Developers.
-Students cannot access lecturer-only areas.
-\item The code is written in Python3.
-\item The code is easily readable for maintenance and development.
-\end{itemize}
 	
+	\section{Testable acceptance criteria}
+	
+	    \medskip
+	    
+	    \begin{itemize}
+			\item The lecturer can set a deadline to a piece of homework after which time, the system will not accept submissions.
+			\item The system will make a log of all homework submissions.
+			\item The system can compare different homework logs for similarity.
+			\item The system can auto mark simple ‘tick-a-box’ style questions.
+			\item The system will only allow a student to see content for the module they are enrolled on.
+			\item If someone tries to submit Latex that contains errors, the system will stop them.
+			\item All errors are handled without system failure.
+			\item Unit testing has been completed.
+			\item The system has no known bugs.
+			\item The end user requires no instruction or documentation on how to navigate the system as it is both simple and easy to use.
+			\item Documentation has been completed for system Admins and Developers.
+			\item Students cannot access lecturer-only areas.
+			\item The code is written in Python3.
+			\item The code is easily readable for maintenance and development.
+		\end{itemize}
 
           	
 	\section{Risks and Benefits}
-	
-    \subsection{Risk Assessment}
-    
-    
-    \subsubsection{Key}
-    
-    
-		    \setlength{\arrayrulewidth}{1.5\arrayrulewidth}
-		    \setlength{\arrayrulewidth}{1.5\arrayrulewidth}
-	    	\begin{tabular}{|p{2.5cm}|p{2.3cm}|p{2.3cm}|p{2.3cm}|p{2.3cm}|p{2.5cm}|}
-	    		\hline
-	    		Total Risk & \multicolumn{5}{c|}{Impact} \\ \hline
-	    		Likelihood of Happening & \cellcolor{green!25}1.Insignificant {\scriptsize (Minor problem easily handled)} & \cellcolor{green!33}2.Minor {\scriptsize (Some disruption possible)} & \cellcolor{yellow!50}3.Moderate {\scriptsize (Significant time/resources required)} & \cellcolor{orange!50}4.Major {\scriptsize (Project severely damaged)} & \cellcolor{red!66}5.Catastrophic {\scriptsize (Project ruined)} \\[30pt] \hline
-	    		\cellcolor{green!25}1. Highly Unlikely & \cellcolor{green!75}1 Low & \cellcolor{green!75}2 Low & \cellcolor{green!75}3 Low & \cellcolor{yellow!100}4 Moderate & \cellcolor{yellow!100}5 Moderate \\[30pt] \hline
-	    		\cellcolor{green!33}2. Unlikely & \cellcolor{green!75}2 Low & \cellcolor{yellow!100}4 Low & \cellcolor{yellow!100}6 Moderate & \cellcolor{orange!83}8 High & \cellcolor{orange!83}10 High \\[30pt] \hline
-	    		\cellcolor{yellow!50}3. Moderate & \cellcolor{green!75}3 Low & \cellcolor{yellow!100}6 Moderate & \cellcolor{orange!83}9 High & \cellcolor{red!100}12 Extreme & \cellcolor{red!100}15 Extreme \\[30pt] \hline
-	    		\cellcolor{orange!50}4. Likely & \cellcolor{yellow!100}4 Moderate & \cellcolor{orange!83}8 High & \cellcolor{red!100}12 Extreme & \cellcolor{red!100}16 Extreme & \cellcolor{red!100}20 Extreme \\[30pt] \hline
-	    		\cellcolor{red!66}5. Almost Certain & \cellcolor{yellow!100}5 Moderate & \cellcolor{orange!83}10 High & \cellcolor{red!100}15 Extreme & \cellcolor{red!100}20 Extreme & \cellcolor{red!100}25 Extreme \\[30pt] \hline
-	    	\end{tabular}
-	    	
-     In order to assess the risks of our project we included the use of a risk map. Firstly we identified the risk that could occur in the duration of our project and then described the effect it would have upon the group. We calculated the total risk by measuring the likelihood of the event occurring, against the impact it would have should it occur. The controls include the contingency, avoidance and how we would cope with the risk if it occurred. This helps us to maintain the project goals and control the overall risk. After the controls are implemented, we then measured the total risk again in the hope it would have improved. We followed the colour schemes of the risk map so it is more visually appealing and clearer to assess how the controls we implemented help. We aimed to achieve the colours of green and yellow for the total risk given the controls. We then analysed the benefits of having the risk controls in place for each risk, and explained the benefits as a paragraph as many interlinked.
-     
-     
-     \subsubsection{Risk Assessment Table}
-     
-     TABLE
-     
-     \subsubsection{Controls}
-    \begin{itemize}
-    
-\item Use of google drive
-\item Use of github
-\item Write comments on major updates onto github when committing.
-\item Use of auto-saving software
-\item Save work at least every 20 minutes.
-\item Use of agile model.
-\item Meeting weekly to de-brief.
-\item Regularly updated time-plan.
-\item Agree reasonable functional requirements
-\item Fully document requirements
-\item Routine backups of work made every week.
-\item Thorough planning of each task for time management.
-\item Make sure code is well-structured and documented.
-\item Have multiple people do thorough debugging on different systems.
-\item Create a gantt chart specifying every task to be completed and follow it. 
-\end{itemize}
+		\subsection{Risk Assessment}
+			\definecolor{greenI}{RGB}{226, 239, 217}
+			\definecolor{greenII}{RGB}{197, 224, 179}
+			\definecolor{greenIII}{RGB}{0, 176, 80}
+			
+			\definecolor{yellowI}{RGB}{255, 229, 153}
+			\definecolor{yellowII}{RGB}{255, 255, 0}
+			
+			\definecolor{orangeI}{RGB}{244, 176, 131}
+			\definecolor{orangeII}{RGB}{255, 165, 0}
+			
+			\definecolor{redI}{RGB}{255, 150, 150}
+			\definecolor{redII}{RGB}{255, 0, 0}
+			
+			\subsubsection{Key}
+				\begin{table}[!htb]
+					\begin{center}
+						\caption{Risk Assessment Key}
+						\label{table:riskassessmentkey}
+						\setlength{\aboverulesep}{0pt}
+						\setlength{\belowrulesep}{0pt}
+						\setlength{\extrarowheight}{.75ex}
+						\begin{tabular}{|*{6}{p{2cm}|}}
+							\toprule
+							Likelihood of Happening & \cellcolor{greenI}1.Insignificant {\scriptsize (Minor problem easily handled)} & \cellcolor{greenII}2.Minor {\scriptsize (Some disruption possible)} & \cellcolor{yellowI}3.Moderate {\scriptsize (Significant time/resources required)} & \cellcolor{orangeI}4.Major {\scriptsize (Project severely damaged)} & \cellcolor{redI}5.Catastrophic {\scriptsize (Project ruined)}\\
+							\midrule
+							
+							\cellcolor{greenI}1.Highly Unlikely & \cellcolor{greenIII}1 Low & \cellcolor{greenIII}2 Low & \cellcolor{greenIII}3 Low & \cellcolor{yellowII}4 Moderate & \cellcolor{yellowII}5 Moderate\\
+							\midrule
+							
+							\cellcolor{greenII} 2.Unlikely & \cellcolor{greenIII}2 Low & \cellcolor{yellowII}4 Low & \cellcolor{yellowII}6 Moderate & \cellcolor{orangeII} 8 High & \cellcolor{orangeII}10 High\\
+							\midrule
+							
+							\cellcolor{yellowI}3.Moderate & \cellcolor{greenIII}3 Low & \cellcolor{yellowII}6 Moderate & \cellcolor{orangeII}9 High & \cellcolor{redII}12 Extreme & \cellcolor{redII}15 Extreme\\
+							\midrule
+							
+							\cellcolor{orangeI}4.Likely & \cellcolor{yellowII}4 Moderate & \cellcolor{orangeII}8 High & \cellcolor{redII}12 Extreme & \cellcolor{redII}16 Extreme & \cellcolor{redII}20 Extreme\\
+							\midrule
+							
+							\cellcolor{redI}5.Almost Certain & \cellcolor{yellowII}5 Moderate & \cellcolor{orangeII}10 High & \cellcolor{redII}15 Extreme & \cellcolor{redII}20 Extreme & \cellcolor{redII}25 Extreme\\
+							\bottomrule
+						\end{tabular}
+					\end{center}
+				\end{table}
+			    	
+				In order to assess the risks of our project we included the use of a risk map. Firstly we identified the risk that could occur in the duration of our project and then described the effect it would have upon the group. We calculated the total risk by measuring the likelihood of the event occurring, against the impact it would have should it occur. The controls include the contingency, avoidance and how we would cope with the risk if it occurred. This helps us to maintain the project goals and control the overall risk. After the controls are implemented, we then measured the total risk again in the hope it would have improved. We followed the colour schemes of the risk map so it is more visually appealing and clearer to assess how the controls we implemented help. We aimed to achieve the colours of green and yellow for the total risk given the controls. We then analysed the benefits of having the risk controls in place for each risk, and explained the benefits as a paragraph as many interlinked.
+		     
+		    \subsubsection{Risk Assessment Table}
+				\label{table:riskassessment}
+				\setlength{\aboverulesep}{0pt}
+				\setlength{\belowrulesep}{0pt}
+				\setlength{\extrarowheight}{.75ex}
+				\begin{longtable}{|*{5}{p{2.5cm}|}}
+					\caption{Risk Assessment} \\
+					\toprule
+					Risk & Effect & Total Risk \scriptsize (Likelihood * Impact) & Controls & Total Risk Given Control \scriptsize (Likelihood * Impact) \\
+					\midrule
+					\endfirsthead
+					\multicolumn{5}{c}%
+					{\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
+					\midrule
+					Risk & Effect & Total Risk \scriptsize (Likelihood * Impact) & Controls & Total Risk Given Control \scriptsize (Likelihood * Impact) \\
+					\midrule
+					\endhead
+					\hline \multicolumn{5}{r}{\textit{Continued on next page}} \\
+					\endfoot
+					\midrule
+					\endlastfoot
+					
+					Short-term Illness of team member & Parts of the project may not be complete and the whole team might miss a crucial deadline in regards to when the work is due in. A delay in the project could be caused.  & \cellcolor{yellowII} 6 (3 * 2) & Regular de-briefing with group so all know what each member has done and will do.
+					Write comments on major updates onto GitHub when committing.
+					If it does happen, tasks for that member will be fairly re-assigned to other members. & \cellcolor{greenIII}3 (3 * 1)\\
+					\midrule
+					
+					Team member leaving the group & The effect on the team will be major. Potential delays with areas of the specification/code, or possibly no access to the documentation. & \cellcolor{yellowII} 5 (1 * 5 ) & Regular de-briefing with group so all know what each member has done and will do.
+					
+					If it does happen, tasks for that member will be fairly re-assigned to other members. & \cellcolor{yellowII} 4 (1 * 4)\\
+					\midrule
+					
+					Loss of work (eg. due to corrupt files or forgetting to save) & The effect of this would be major if the loss was of lots of work and was nearing close to handing in date. & \cellcolor{orangeII} 9 (3 * 3) & Use of GitHub/Google Drive/auto-saving software.
+					Everyone will save their work at least every 20 minutes.
+					Routine backups will be made every week.
+					Create a Gantt chart specifying every task to be completed and follow it. 
+					
+					If it does happen we will find the latest version of the work and schedule in the nearest available time to re-do the missing work. & \cellcolor{yellowII} 4 (2 * 2) \\
+					\midrule
+					
+					Overrun on a task and miss a milestone & Delay on work, could cause a knock-on effect of hold ups and delays, thus risking not reaching milestones, and possibly not completing the project on time. & \cellcolor{redII} 12 (3 * 4) & Thorough planning of each task and appropriate deadlines with regular de-briefing with group so all know what is on schedule. 
+					Create a gantt chart specifying every task to be completed and follow it. 
+					
+					If it does happen we will schedule in the nearest available time to complete the given task, and more group members can help the individual or sub team who have overrun. & \cellcolor{yellowII} 6 (2 * 3) \\
+					\midrule
+					
+					Not all functional requirements are met by the deadline. & Parts of the project may not be complete and the whole team might miss a crucial deadline in regards to when the work is due in. A delay in the project could be caused. & \cellcolor{redII} & Agree reasonable functional requirements with client. 
+					Plan time well.
+					Use of agile model could allow for adjustments of requirements.
+					
+					\textbf{If it does happen nothing can be done!} & \cellcolor{yellowII} 5 (1 * 5) \\
+					\midrule
+					
+					Client indisposed & Client criteria might not be met, potential hold ups to project progression. & \cellcolor{yellowII} 6 (3 * 2) & Fully understand task and fully document requirements as and when they’re agreed.
+					
+					If it does happen we should ensure we are regularly having meetings with the client and try to resolve any issues we may have as soon as possible. & \cellcolor{greenIII} 3 (3 * 1) \\
+					\midrule
+					
+					Team member prolonged absence & The effect on the team will be major. Potential delays with areas of the specification/code, or possibly no access to the documentation. & \cellcolor{greenIII}  3 (1 * 3) & Regular de-briefing with group so all know what each member has done and will do.
+					
+					If it does happen, tasks for that member will be fairly re-assigned to other members. & \cellcolor{greenIII} 2 (1 * 2) \\
+					\midrule
+					
+					Server failure (e.g., GitHub goes down, files incompatible with server) & The effect of this would be major if the loss was of lots of work and was nearing close to handing in date, or work was inaccessible during presentation. & \cellcolor{yellowII} 4 (1 * 4) & Routine backups will be made every week on hardware (eg USB)  and other alternative software.
+					
+					If it does happen we will find the latest version of the code that is backed up on another device, either from hardware or software and fill in any gaps that are missing at the earliest convenience. & \cellcolor{greenIII} 3 (1 * 2)\\
+					\midrule
+					
+					Django gets updated & Parts of the code would be unusable and cause bugs, and as a result may need updating/changing. This would take time. & \cellcolor{greenIII} 3 (1 * 3) & Make sure code is well-structured and documented.
+					
+					
+					If it does happen we will use the latest version of the work and schedule in the nearest available time to re-do the missing work. & \cellcolor{greenIII} 2 (1 * 2) \\
+					\midrule
+					
+					Code corrupted, unusable or deleted & This would be a medium effect on the team, as work may need to be remade. & \cellcolor{redII} 12 (3 * 4) & Use of GitHub/Google Drive/auto-saving software.
+					Everyone will save their work at least every 20 minutes.
+					Routine backups will be made every week.
+					
+					If it does happen we will find the latest version of the work and continue from there again. & \cellcolor{yellowII} 4 (1 * 4) \\
+					\midrule
+					
+					Last minute bugs, 1 hour before deadline & The consequences would be major in the event of failure to show the completed project and possibly the loss of marks.  & \cellcolor{redII} 15 (3 * 5) & Have multiple people do thorough debugging on different systems.
+					
+					If it does happen we will ensure two group members check over the code for any final bugs before submission. If any are found they should be fairly easy to resolve as  our code will be organised. & \cellcolor{yellowII} 5 (1 * 5)\\
+					\bottomrule
+				\end{longtable}
+				
+			\newpage
+			
+			\subsubsection{Controls}
+				\begin{itemize}
+					\item Use of google drive
+					\item Use of github
+					\item Write comments on major updates onto github when committing.
+					\item Use of auto-saving software
+					\item Save work at least every 20 minutes.
+					\item Use of agile model.
+					\item Meeting weekly to de-brief.
+					\item Regularly updated time-plan.
+					\item Agree reasonable functional requirements
+					\item Fully document requirements
+					\item Routine backups of work made every week.
+					\item Thorough planning of each task for time management.
+					\item Make sure code is well-structured and documented.
+					\item Have multiple people do thorough debugging on different systems.
+					\item Create a gantt chart specifying every task to be completed and follow it. 
+				\end{itemize}
 
-\subsection{Benefits}
+		\subsection{Benefits}
 
-By conducting our risk assessment we are able to prepare backup plans by writing out all potential risks, and creating controls to minimise the impacts they may have on our group project. We can easily recognise and control risks in the project the clear structure presented. Our Risk Assessment can be used as a referral tool for all members of the group. It creates awareness to the group members, the group is able to undergo controls to reduce the possible risks. With our contingency plan in place, we are also able to save time and effort if in the unlikely event of the risk occurring, thus causing minimal amount of damage to our project as possible. 
+			By conducting our risk assessment we are able to prepare backup plans by writing out all potential risks, and creating controls to minimise the impacts they may have on our group project. We can easily recognise and control risks in the project the clear structure presented. Our Risk Assessment can be used as a referral tool for all members of the group. It creates awareness to the group members, the group is able to undergo controls to reduce the possible risks. With our contingency plan in place, we are also able to save time and effort if in the unlikely event of the risk occurring, thus causing minimal amount of damage to our project as possible. 
 
-\newpage
+		\newpage
     
 	\section{Relevant Quality Factors}
-	\textbf{Flexibility and Extensibility}  
+		\textbf{Flexibility and Extensibility}  
 
-Our software will be very flexible should the client need to modify, remove or add any functionality at a later date. Any requirements that are changed by the client will be easily found within the code, as we are going to document the code so it is clear which part relates to which section of the Camel website or database. Through documentation we can quickly access the required code and fulfil the clients specification change without affecting our system as a whole. This allows extensibility as the system will not be damaged through adding or modifying functionality. As our clients could change their minds on the requirements at any time this is a crucial and relevant quality factor we need for our software. 
+		Our software will be very flexible should the client need to modify, remove or add any functionality at a later date. Any requirements that are changed by the client will be easily found within the code, as we are going to document the code so it is clear which part relates to which section of the Camel website or database. Through documentation we can quickly access the required code and fulfil the clients specification change without affecting our system as a whole. This allows extensibility as the system will not be damaged through adding or modifying functionality. As our clients could change their minds on the requirements at any time this is a crucial and relevant quality factor we need for our software. 
 
-    \textbf{Maintainability and Readability}   
+	    \textbf{Maintainability and Readability}   
     
-Similar to the flexibility aspects of our project, the code will be maintainable should it need to be modified for any corrections. If a bug was to be found at a later date it would be easy to find the section it is related to. The code will be readable through documentation so we can see what the code is trying to do, and try to fix it accordingly. The readability of our code is being maintained through each user documenting their code before uploading it to the GitHub file share. The more documentation we include, the more maintainability can be achieved.
+		Similar to the flexibility aspects of our project, the code will be maintainable should it need to be modified for any corrections. If a bug was to be found at a later date it would be easy to find the section it is related to. The code will be readable through documentation so we can see what the code is trying to do, and try to fix it accordingly. The readability of our code is being maintained through each user documenting their code before uploading it to the GitHub file share. The more documentation we include, the more maintainability can be achieved.
 
-	\textbf{Performance and Efficiency} 
+		\textbf{Performance and Efficiency} 
     
-Our software should react with a quick response time and not have any time delays when the students or lecturers are uploading work. The performance of the response time should only take a few seconds to ensure it is friendly to the user. Efficiency of our software can be increased with resource utilisation and we can ensure performance is achieved by measuring the time it takes to upload an homework assignment. 
+		Our software should react with a quick response time and not have any time delays when the students or lecturers are uploading work. The performance of the response time should only take a few seconds to ensure it is friendly to the user. Efficiency of our software can be increased with resource utilisation and we can ensure performance is achieved by measuring the time it takes to upload an homework assignment. 
 
-	\newpage
+		\newpage
     
-    \textbf{Scalability}   
+	    \textbf{Scalability}   
     
-In relation to performance, the scalability quality factor is also relevant to the software we are fixing and redeveloping. The software system should respond to any actions taken by the user in an acceptable duration of time, independent of what the load size is. The hardware in which the software is being used all also affects scalability so we should ensure the software works within the Windows and Linux labs. Our system will have scalability, meaning the ability of being able to run the interactive website on an increasing amount of machines, handling increasing user interaction, as this will be required for in class tests within the lab environment. We can test the scalability of our software to ensure it is performing to standard by checking its ability to accommodate rising resource demand. All members who want to access Camel should be able to whenever they want, independent of the amount of students logged in. We could calculate the throughput and the resource usage to discover the system's scalability.
+		In relation to performance, the scalability quality factor is also relevant to the software we are fixing and redeveloping. The software system should respond to any actions taken by the user in an acceptable duration of time, independent of what the load size is. The hardware in which the software is being used all also affects scalability so we should ensure the software works within the Windows and Linux labs. Our system will have scalability, meaning the ability of being able to run the interactive website on an increasing amount of machines, handling increasing user interaction, as this will be required for in class tests within the lab environment. We can test the scalability of our software to ensure it is performing to standard by checking its ability to accommodate rising resource demand. All members who want to access Camel should be able to whenever they want, independent of the amount of students logged in. We could calculate the throughput and the resource usage to discover the system's scalability.
         
-	\textbf{Availability, Fault Tolerance and Reliability}   
+		\textbf{Availability, Fault Tolerance and Reliability}   
 
-Our software will integrate the quality factors of availability, fault tolerance and reliability. It should always be available for the user to access the information within it online for a high percentage of the time. It should also still continue to run even if parts are being added or modified. Reliability can be maintained through ensuring the code we create is copied to multiple devices and it is enhanced by features that helps to avoid,detect and repair any faults. We are undertaking a paired programming approach when we implement our code so the software can be more reliably monitored for any changes, and include improved fault tolerance. If it was to crash when deployed, it could be recovered from backed up sources with fault tolerance approaches.
+		Our software will integrate the quality factors of availability, fault tolerance and reliability. It should always be available for the user to access the information within it online for a high percentage of the time. It should also still continue to run even if parts are being added or modified. Reliability can be maintained through ensuring the code we create is copied to multiple devices and it is enhanced by features that helps to avoid,detect and repair any faults. We are undertaking a paired programming approach when we implement our code so the software can be more reliably monitored for any changes, and include improved fault tolerance. If it was to crash when deployed, it could be recovered from backed up sources with fault tolerance approaches.
 
-	\newpage
+		\newpage
 	
-    \textbf{Usability and Accessibility}   
+	    \textbf{Usability and Accessibility}   
 
-Our project has an existing user interface. It is basic in appearance, and will most likely be overhauled upon completion, and rebranded with the university colours. As the project is focused on the functional task of making it work, we will not need to create a user interface. The current user interface is clear in colours and suits our prototype. It is simple and provides wide accessibility for the user. Its navigation is clear and obvious, making the website easily traversable. We will continue to uphold this standard throughout the project, and any parts that we add will be intuitive without any need for documentation. 
+		Our project has an existing user interface. It is basic in appearance, and will most likely be overhauled upon completion, and rebranded with the university colours. As the project is focused on the functional task of making it work, we will not need to create a user interface. The current user interface is clear in colours and suits our prototype. It is simple and provides wide accessibility for the user. Its navigation is clear and obvious, making the website easily traversable. We will continue to uphold this standard throughout the project, and any parts that we add will be intuitive without any need for documentation. 
 
-	\textbf{Platform Compatibility and Portability  }     
+		\textbf{Platform Compatibility and Portability  }     
 
-As our project is browser based, we do not need to be aware of functionality with different operating systems. However, we will ensure that the software we use to create the website and its functionality is the latest version. For example, we are looking at updating the python 2 code to python 3 as it will provide longevity for the future, and the system will be more compatible with more devices and coordinating systems for a longer time.
+		As our project is browser based, we do not need to be aware of functionality with different operating systems. However, we will ensure that the software we use to create the website and its functionality is the latest version. For example, we are looking at updating the python 2 code to python 3 as it will provide longevity for the future, and the system will be more compatible with more devices and coordinating systems for a longer time.
 
-	\textbf{Testability and Manageability}    
+		\textbf{Testability and Manageability}    
 
-The code is developed under Django’s already existing test framework, along with Python’s testing mechanics. This will supply us efficient testing methods for our functions in the project and will be able to be ran again by future developers using Django. 
+		The code is developed under Django’s already existing test framework, along with Python’s testing mechanics. This will supply us efficient testing methods for our functions in the project and will be able to be ran again by future developers using Django. 
 
-	\textbf{Security}    
+		\textbf{Security}    
 
-Security is a very important issue, especially for a website that will cater to a lot of users, and possibly at the same time (e.g, if the class is taking a test). Our website will have additional permission parameters that are attached to staff accounts, so that only staff are able to access the sensitive parts of the system. Depending on our time restraints, we will consider having the Django interface not accessible by staff members as it could be used to permanently damage the system.
+		Security is a very important issue, especially for a website that will cater to a lot of users, and possibly at the same time (e.g, if the class is taking a test). Our website will have additional permission parameters that are attached to staff accounts, so that only staff are able to access the sensitive parts of the system. Depending on our time restraints, we will consider having the Django interface not accessible by staff members as it could be used to permanently damage the system.
     
-    \textbf{Functionality and Correctness}
+	    \textbf{Functionality and Correctness}
 
-We will develop a professional documentation of all of the code for the developer, which will address the technical side of the project. We will also develop a lighter administrator documentation that will include instructions and commands a lecturer will need to use the system. Our code of our project will be uniform in style and consistent throughout, to make readability simpler and easy to understand.
+		We will develop a professional documentation of all of the code for the developer, which will address the technical side of the project. We will also develop a lighter administrator documentation that will include instructions and commands a lecturer will need to use the system. Our code of our project will be uniform in style and consistent throughout, to make readability simpler and easy to understand.
 
 \end{document}
