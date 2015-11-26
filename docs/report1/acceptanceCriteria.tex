@@ -1,79 +1,34 @@
-\documentclass[12pt]{article}
-
-\usepackage[utf8]{inputenc}
-\usepackage[a4paper, margin=1in]{geometry}
-
-\usepackage{xcolor}
-\usepackage{booktabs,colortbl,longtable}
-
-\linespread{1.2}
-
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{1em}
-
-\begin{document}
-	\begin{titlepage}
-		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
-
-		\center
-
-		\textsc{\LARGE Cardiff University}\\[1.5cm]
-		\textsc{\Large Computer Science}\\[0.5cm]
-		\textsc{\large CM2305: System's Design \& Group Project}\\[0.5cm]
-
-		\HRule \\[0.4cm]
-		\textsc{\Large \textbf{CAMEL}}\\[0.1cm]
-		\textsc{\Large \textbf{CA}rdiff \textbf{M}athematics \textbf{E-L}earning}\\[0.7cm]
-		{\huge\bfseries Acceptance Criteria}\\[0.4cm]
-		\HRule \\[1.5cm]
-
-		\begin{minipage}{0.4\textwidth}
-			\begin{flushleft} \large
-				\emph{Authors:}\\
-				\mbox{Lucy \textsc{Robertshaw}}, \mbox{Cameron \textsc{Fish}}, \mbox{Skye \textsc{Watkins}}
-			\end{flushleft}
-		\end{minipage}
-		~
-		\begin{minipage}{0.4\textwidth}
-			\begin{flushright} \large
-				\emph{Clients:} \\
-				\mbox{Stuart \textsc{Allen}}, \mbox{Dafydd \textsc{Evans}}
-			\end{flushright}
-		\end{minipage}\\[3cm]
-
-		{\large \today}\\[2cm]
-
-		\vfill
-	\end{titlepage}
-
-
-	\tableofcontents
-
-	\newpage
+\section{Acceptance Criteria}
+	We consider the following acceptance criteria.
 	
-	\section{Testable acceptance criteria}
-	\begin{itemize}
-	\item The lecturer can set a deadline to a piece of homework after which time, the system will not accept submissions.
-	\item The system will make a log of all homework submissions.
-	\item The system can compare different homework logs for similarity.
-	\item The system can auto mark simple ‘tick-a-box’ style questions.
-	\item The system will only allow a student to see content for the module they are enrolled on.
-	\item If someone tries to submit Latex that contains errors, the system will stop them.
+    \addcontentsline{toc}{subsection}{Testable Acceptance Criteria}
+	\subsection*{Testable acceptance criteria}
+	\begin{enumerate}
+    \item If someone tries to submit Latex that contains errors, the system will stop them.
 	\item All errors are handled without system failure.
 	\item Unit testing has been completed.
+	\item The system will make a log of all homework submissions.
+	\item The system can compare different homework logs for similarity.
+	\item The lecturer can set a deadline to a piece of homework after which time, the system will not accept submissions.
+	\item The system will only allow a student to see content for the module they are enrolled on.
 	\item The system has no known bugs.
-	\item The end user requires no instruction or documentation on how to navigate the system as it is both simple and easy to use.
 	\item Documentation has been completed for system Admins and Developers.
+    \item Django's automatic admin interface is not accessible to anyone except system admins and developers.
+	\item The code is easily readable for maintenance and development.
+    \item The database allows tables for Student, Teacher, Author and Admin.
+    \item The original code has been broken down to become smaller Django 'applications'.
+	\item The end user requires no instruction or documentation on how to navigate the system as it is both simple and easy to use.
 	Students cannot access lecturer-only areas.
 	\item The code is written in Python3.
-	\item The code is easily readable for maintenance and development.
-	\end{itemize}
+	\end{enumerate}
 	
 
     \newpage
     
-	\section{Risks and Benefits}
-		\subsection{Risk Assessment}
+    \addcontentsline{toc}{subsection}{Risks and Benefits}
+	\subsection*{Risks and Benefits}
+    	\addcontentsline{toc}{subsubsection}{Risk Assessment}
+		\subsubsection*{Risk Assessment}
 			\definecolor{greenI}{RGB}{226, 239, 217}
 			\definecolor{greenII}{RGB}{197, 224, 179}
 			\definecolor{greenIII}{RGB}{0, 176, 80}
@@ -87,15 +42,23 @@
 			\definecolor{redI}{RGB}{255, 150, 150}
 			\definecolor{redII}{RGB}{255, 0, 0}
 			
-			\subsubsection{Key}
+			\subsubsection*{Key}
+            
+            In order to assess the risks of our project we included the use of a risk map. Firstly we identified the risk that could occur in the duration of our project and then described the effect it would have upon the group. We calculated the total risk by measuring the likelihood of the event occurring, against the impact it would have should it occur. The controls include the contingency, avoidance and how we would cope with the risk if it occurred. This helps us to maintain the project goals and control the overall risk. After the controls are implemented, we then measured the total risk again in the hope it would have improved. We followed the colour schemes of the risk map so it is more visually appealing and clearer to assess how the controls we implemented help. We aimed to achieve the colours of green and yellow for the total risk given the controls. We then analysed the benefits of having the risk controls in place for each risk, and explained the benefits as a paragraph as many interlinked.
+
 				\begin{table}[!htb]
+					\small
+                \renewcommand{\arraystretch}{1.1}
 					\begin{center}
 						\caption{Risk Assessment Key}
 						\label{table:riskassessmentkey}
 						\setlength{\aboverulesep}{0pt}
 						\setlength{\belowrulesep}{0pt}
 						\setlength{\extrarowheight}{.75ex}
-						\begin{tabular}{|*{6}{p{2cm}|}}
+                        
+                        \scalebox{1.11}{
+                        \hspace{-1.9cm}
+						\begin{tabular}{|p{3.5cm}|*{5}{p{2.5cm}|}}
 							\toprule
 							Total Risk & \multicolumn{5}{c|}{Impact} \\
 							\midrule
@@ -117,18 +80,20 @@
 							
 							\cellcolor{redI}5.Almost Certain & \cellcolor{yellowII}5 Moderate & \cellcolor{orangeII}10 High & \cellcolor{redII}15 Extreme & \cellcolor{redII}20 Extreme & \cellcolor{redII}25 Extreme\\
 							\bottomrule
-						\end{tabular}
+						\end{tabular}}
 					\end{center}
 				\end{table}
 			    	
-				In order to assess the risks of our project we included the use of a risk map. Firstly we identified the risk that could occur in the duration of our project and then described the effect it would have upon the group. We calculated the total risk by measuring the likelihood of the event occurring, against the impact it would have should it occur. The controls include the contingency, avoidance and how we would cope with the risk if it occurred. This helps us to maintain the project goals and control the overall risk. After the controls are implemented, we then measured the total risk again in the hope it would have improved. We followed the colour schemes of the risk map so it is more visually appealing and clearer to assess how the controls we implemented help. We aimed to achieve the colours of green and yellow for the total risk given the controls. We then analysed the benefits of having the risk controls in place for each risk, and explained the benefits as a paragraph as many interlinked.
-		     
-		    \subsubsection{Risk Assessment Table}
-				\label{table:riskassessment}
+\newpage						     
+		    \subsubsection*{Risk Assessment Table}
+            	\label{table:riskassessment}
 				\setlength{\aboverulesep}{0pt}
 				\setlength{\belowrulesep}{0pt}
 				\setlength{\extrarowheight}{.75ex}
-				\begin{longtable}{|*{5}{p{2.5cm}|}}
+                \setlength\LTleft{-0.74in}
+				{\tiny
+				\begin{longtable}{{|p{2.5cm}|p{6cm}|p{1.5cm}|p{7cm}|p{1.5cm}|}}
+					
 					\caption{Risk Assessment} \\
 					\toprule
 					Risk & Effect & Total Risk \scriptsize (Likelihood * Impact) & Controls & Total Risk Given Control \scriptsize (Likelihood * Impact) \\
@@ -145,74 +110,76 @@
 					\midrule
 					\endlastfoot
 					
-					Short-term Illness of team member & Parts of the project may not be complete and the whole team might miss a crucial deadline in regards to when the work is due in. A delay in the project could be caused.  & \cellcolor{yellowII} 6 (3 * 2) & Regular de-briefing with group so all know what each member has done and will do.
+					Short-term Illness of team member & Parts of the project may not be complete and the whole team might miss a crucial deadline in regards to when the work is due in. A delay in the project could be caused.  & \cellcolor{yellowII} 6 ------ (3 * 2) & Regular de-briefing with group so all know what each member has done and will do.
 					Write comments on major updates onto GitHub when committing.
-					If it does happen, tasks for that member will be fairly re-assigned to other members. & \cellcolor{greenIII}3 (3 * 1)\\
+					If it does happen, tasks for that member will be fairly re-assigned to other members. & \cellcolor{greenIII}3 ------ (3 * 1)\\
 					\midrule
 					
-					Team member leaving the group & The effect on the team will be major. Potential delays with areas of the specification/code, or possibly no access to the documentation. & \cellcolor{yellowII} 5 (1 * 5 ) & Regular de-briefing with group so all know what each member has done and will do.
+					Team member leaving the group & The effect on the team will be major. Potential delays with areas of the specification/code, or possibly no access to the documentation. & \cellcolor{yellowII} 5 ------ (1 * 5 ) & Regular de-briefing with group so all know what each member has done and will do.
 					
-					If it does happen, tasks for that member will be fairly re-assigned to other members. & \cellcolor{yellowII} 4 (1 * 4)\\
+					If it does happen, tasks for that member will be fairly re-assigned to other members. & \cellcolor{yellowII} 4 ------ (1 * 4)\\
 					\midrule
 					
-					Loss of work (eg. due to corrupt files or forgetting to save) & The effect of this would be major if the loss was of lots of work and was nearing close to handing in date. & \cellcolor{orangeII} 9 (3 * 3) & Use of GitHub/Google Drive/auto-saving software.
+					Loss of work (eg. due to corrupt files or forgetting to save) & The effect of this would be major if the loss was of lots of work and was nearing close to handing in date. & \cellcolor{orangeII} 9 ------ (3 * 3) & Use of GitHub/Google Drive/auto-saving software.
 					Everyone will save their work at least every 20 minutes.
 					Routine backups will be made every week.
 					Create a Gantt chart specifying every task to be completed and follow it. 
 					
-					If it does happen we will find the latest version of the work and schedule in the nearest available time to re-do the missing work. & \cellcolor{yellowII} 4 (2 * 2) \\
+					If it does happen we will find the latest version of the work and schedule in the nearest available time to re-do the missing work. & \cellcolor{yellowII} 4 ------ (2 * 2) \\
 					\midrule
 					
-					Overrun on a task and miss a milestone & Delay on work, could cause a knock-on effect of hold ups and delays, thus risking not reaching milestones, and possibly not completing the project on time. & \cellcolor{redII} 12 (3 * 4) & Thorough planning of each task and appropriate deadlines with regular de-briefing with group so all know what is on schedule. 
+					Overrun on a task and miss a milestone & Delay on work, could cause a knock-on effect of hold ups and delays, thus risking not reaching milestones, and possibly not completing the project on time. & \cellcolor{redII} 12 ------ (3 * 4) & Thorough planning of each task and appropriate deadlines with regular de-briefing with group so all know what is on schedule. 
 					Create a gantt chart specifying every task to be completed and follow it. 
 					
-					If it does happen we will schedule in the nearest available time to complete the given task, and more group members can help the individual or sub team who have overrun. & \cellcolor{yellowII} 6 (2 * 3) \\
+					If it does happen we will schedule in the nearest available time to complete the given task, and more group members can help the individual or sub team who have overrun. & \cellcolor{yellowII} 6 ------ (2 * 3) \\
 					\midrule
 					
-					Not all functional requirements are met by the deadline. & Parts of the project may not be complete and the whole team might miss a crucial deadline in regards to when the work is due in. A delay in the project could be caused. & \cellcolor{redII} & Agree reasonable functional requirements with client. 
+					Not all functional requirements are met by the deadline. & Parts of the project may not be complete and the whole team might miss a crucial deadline in regards to when the work is due in. A delay in the project could be caused. & \cellcolor{redII} 15 ------ (3 * 5) & Agree reasonable functional requirements with client. 
 					Plan time well.
 					Use of agile model could allow for adjustments of requirements.
 					
-					\textbf{If it does happen nothing can be done!} & \cellcolor{yellowII} 5 (1 * 5) \\
+					\textbf{If it does happen nothing can be done!} & \cellcolor{yellowII} 5 ------ (1 * 5) \\
 					\midrule
 					
-					Client indisposed & Client criteria might not be met, potential hold ups to project progression. & \cellcolor{yellowII} 6 (3 * 2) & Fully understand task and fully document requirements as and when they’re agreed.
+					Client indisposed & Client criteria might not be met, potential hold ups to project progression. & \cellcolor{yellowII} 6 ------ (3 * 2) & Fully understand task and fully document requirements as and when they’re agreed.
 					
-					If it does happen we should ensure we are regularly having meetings with the client and try to resolve any issues we may have as soon as possible. & \cellcolor{greenIII} 3 (3 * 1) \\
+					If it does happen we should ensure we are regularly having meetings with the client and try to resolve any issues we may have as soon as possible. & \cellcolor{greenIII} 3 ------ (3 * 1) \\
 					\midrule
 					
-					Team member prolonged absence & The effect on the team will be major. Potential delays with areas of the specification/code, or possibly no access to the documentation. & \cellcolor{greenIII}  3 (1 * 3) & Regular de-briefing with group so all know what each member has done and will do.
+					Team member prolonged absence & The effect on the team will be major. Potential delays with areas of the specification/code, or possibly no access to the documentation. & \cellcolor{greenIII}  3 ------ (1 * 3) & Regular de-briefing with group so all know what each member has done and will do.
 					
-					If it does happen, tasks for that member will be fairly re-assigned to other members. & \cellcolor{greenIII} 2 (1 * 2) \\
+					If it does happen, tasks for that member will be fairly re-assigned to other members. & \cellcolor{greenIII} 2 ------ (1 * 2) \\
 					\midrule
 					
-					Server failure (e.g., GitHub goes down, files incompatible with server) & The effect of this would be major if the loss was of lots of work and was nearing close to handing in date, or work was inaccessible during presentation. & \cellcolor{yellowII} 4 (1 * 4) & Routine backups will be made every week on hardware (eg USB)  and other alternative software.
+					Server failure (e.g., GitHub goes down, files incompatible with server) & The effect of this would be major if the loss was of lots of work and was nearing close to handing in date, or work was inaccessible during presentation. & \cellcolor{yellowII} 4 ------ (1 * 4) & Routine backups will be made every week on hardware (eg USB)  and other alternative software.
 					
-					If it does happen we will find the latest version of the code that is backed up on another device, either from hardware or software and fill in any gaps that are missing at the earliest convenience. & \cellcolor{greenIII} 3 (1 * 2)\\
+					If it does happen we will find the latest version of the code that is backed up on another device, either from hardware or software and fill in any gaps that are missing at the earliest convenience. & \cellcolor{greenIII} 3 ------ (1 * 2)\\
 					\midrule
 					
-					Django gets updated & Parts of the code would be unusable and cause bugs, and as a result may need updating/changing. This would take time. & \cellcolor{greenIII} 3 (1 * 3) & Make sure code is well-structured and documented.
+					Django gets updated & Parts of the code would be unusable and cause bugs, and as a result may need updating/changing. This would take time. & \cellcolor{greenIII} 3 ------ (1 * 3) & Make sure code is well-structured and documented.
 					
 					
-					If it does happen we will use the latest version of the work and schedule in the nearest available time to re-do the missing work. & \cellcolor{greenIII} 2 (1 * 2) \\
+					If it does happen we will use the latest version of the work and schedule in the nearest available time to re-do the missing work. & \cellcolor{greenIII} 2 ------ (1 * 2) \\
 					\midrule
 					
-					Code corrupted, unusable or deleted & This would be a medium effect on the team, as work may need to be remade. & \cellcolor{redII} 12 (3 * 4) & Use of GitHub/Google Drive/auto-saving software.
+					Code corrupted, unusable or deleted & This would be a medium effect on the team, as work may need to be remade. & \cellcolor{redII} 12 ------ (3 * 4) & Use of GitHub/Google Drive/auto-saving software.
 					Everyone will save their work at least every 20 minutes.
 					Routine backups will be made every week.
 					
-					If it does happen we will find the latest version of the work and continue from there again. & \cellcolor{yellowII} 4 (1 * 4) \\
+					If it does happen we will find the latest version of the work and continue from there again. & \cellcolor{yellowII} 4 ------ (1 * 4) \\
 					\midrule
 					
-					Last minute bugs, 1 hour before deadline & The consequences would be major in the event of failure to show the completed project and possibly the loss of marks.  & \cellcolor{redII} 15 (3 * 5) & Have multiple people do thorough debugging on different systems.
+					Last minute bugs, 1 hour before deadline & The consequences would be major in the event of failure to show the completed project and possibly the loss of marks.  & \cellcolor{redII} 15 ------ (3 * 5) & Have multiple people do thorough debugging on different systems.
 					
-					If it does happen we will ensure two group members check over the code for any final bugs before submission. If any are found they should be fairly easy to resolve as  our code will be organised. & \cellcolor{yellowII} 5 (1 * 5)\\
+					If it does happen we will ensure two group members check over the code for any final bugs before submission. If any are found they should be fairly easy to resolve as  our code will be organised. & \cellcolor{yellowII} 5 ------ (1 * 5)\\
 					\bottomrule
-				\end{longtable}
-				
+				\end{longtable}	}		
 			\newpage
 			
-			\subsubsection{Controls}
+            \addcontentsline{toc}{subsubsection}{Controls}
+			\subsubsection*{Controls}
+            
+            Given the above risk assessment; we implement the following controls to reduce our risks to an acceptable level.
 				\begin{itemize}
 					\item Use of google drive
 					\item Use of github
@@ -230,14 +197,16 @@
 					\item Have multiple people do thorough debugging on different systems.
 					\item Create a gantt chart specifying every task to be completed and follow it. 
 				\end{itemize}
-
-		\subsection{Benefits}
+		
+        \addcontentsline{toc}{subsubsection}{Benefits}
+		\subsection*{Benefits}
 
 			By conducting our risk assessment we are able to prepare backup plans by writing out all potential risks, and creating controls to minimise the impacts they may have on our group project. We can easily recognise and control risks in the project the clear structure presented. Our Risk Assessment can be used as a referral tool for all members of the group. It creates awareness to the group members, the group is able to undergo controls to reduce the possible risks. With our contingency plan in place, we are also able to save time and effort if in the unlikely event of the risk occurring, thus causing minimal amount of damage to our project as possible. 
 
 		\newpage
     
-	\section{Relevant Quality Factors}
+    \addcontentsline{toc}{subsection}{Relevent Quality Factors}
+	\subsection*{Relevant Quality Factors}
 		\textbf{Flexibility and Extensibility}  
 
 		Our software will be very flexible should the client need to modify, remove or add any functionality at a later date. Any requirements that are changed by the client will be easily found within the code, as we are going to document the code so it is clear which part relates to which section of the Camel website or database. Through documentation we can quickly access the required code and fulfil the clients specification change without affecting our system as a whole. This allows extensibility as the system will not be damaged through adding or modifying functionality. As our clients could change their minds on the requirements at any time this is a crucial and relevant quality factor we need for our software. 
@@ -249,8 +218,6 @@
 		\textbf{Performance and Efficiency} 
     
 		Our software should react with a quick response time and not have any time delays when the students or lecturers are uploading work. The performance of the response time should only take a few seconds to ensure it is friendly to the user. Efficiency of our software can be increased with resource utilisation and we can ensure performance is achieved by measuring the time it takes to upload an homework assignment. 
-
-		\newpage
     
 	    \textbf{Scalability}   
     
@@ -260,7 +227,6 @@
 
 		Our software will integrate the quality factors of availability, fault tolerance and reliability. It should always be available for the user to access the information within it online for a high percentage of the time. It should also still continue to run even if parts are being added or modified. Reliability can be maintained through ensuring the code we create is copied to multiple devices and it is enhanced by features that helps to avoid,detect and repair any faults. We are undertaking a paired programming approach when we implement our code so the software can be more reliably monitored for any changes, and include improved fault tolerance. If it was to crash when deployed, it could be recovered from backed up sources with fault tolerance approaches.
 
-		\newpage
 	
 	    \textbf{Usability and Accessibility}   
 
@@ -281,5 +247,3 @@
 	    \textbf{Functionality and Correctness}
 
 		We will develop a professional documentation of all of the code for the developer, which will address the technical side of the project. We will also develop a lighter administrator documentation that will include instructions and commands a lecturer will need to use the system. Our code of our project will be uniform in style and consistent throughout, to make readability simpler and easy to understand.
-
-\end{document}

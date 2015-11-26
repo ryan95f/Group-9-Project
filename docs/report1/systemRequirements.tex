@@ -1,97 +1,52 @@
-\documentclass[12pt]{article}
-
-\usepackage{geometry}
-\geometry{a4paper}
-
-\usepackage{url}
-
-\linespread{1.2}
-
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{1em}
-
-\begin{document}
-	\begin{titlepage}
-		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
-
-		\center
-
-		\textsc{\LARGE Cardiff University}\\[1.5cm]
-		\textsc{\Large Computer Science}\\[0.5cm]
-		\textsc{\large CM2305: System's Design \& Group Project}\\[0.5cm]
-
-		\HRule \\[0.4cm]
-		\textsc{\Large \textbf{CAMEL}}\\[0.1cm]
-		\textsc{\Large \textbf{CA}rdiff \textbf{M}athematics \textbf{E-L}earning}\\[0.7cm]
-		{\huge\bfseries Requirements}\\[0.4cm]
-		\HRule \\[1.5cm]
-
-		\begin{minipage}{0.4\textwidth}
-			\begin{flushleft} \large
-				\emph{Authors:}\\
-				\mbox{Mariza \textsc{Celliers}}, \mbox{Ryan \textsc{Flynn}}, \mbox{Braden \textsc{Marshall}}
-			\end{flushleft}
-		\end{minipage}
-		~
-		\begin{minipage}{0.4\textwidth}
-			\begin{flushright} \large
-				\emph{Clients:} \\
-				\mbox{Stuart \textsc{Allen}}, \mbox{Dafydd \textsc{Evans}}
-			\end{flushright}
-		\end{minipage}\\[3cm]
-
-		{\large \today}\\[2cm]
-
-		\vfill
-	\end{titlepage}
-
-
-	\tableofcontents
-
-	\newpage
-	\section{System Scope}
-	The CAMEL 2.0 prototype (proposed by by Dr Dafydd Evans) will be developed from the 30th November 2015, and completed on the 29th April 2016. The aim of this project is to provide a functionally improved and 'GitHub' ready system that can be downloaded and utilised. The proposed functional requirements include lexical comparison and logging of student answers, unit tests, exception handling and documentation for future developers. Besides from this functionality, enhancements will be made to the user interface, such as navigation between pages, which will improve performance loading. For the back-end of the system, bugs will be fixed as well code being standardised. In addition to the improved code, there will be an architecture resign, this will include modularity of core functionality and a redesign of the database. The back-end re-design should provide additional ease of use to future developers.      
-	\section{System Boundary}
-	During implementation, there will be a heavy focuses on completion of a architecture redesign, and improvements to the code structure, with the introduction of exception and error handling. Functionality with lexical comparisons and student logging will also be priority during implementation. Functionality that will cease to be developed will include enrolled modules and student deadlines, if the functionality above has difficulty being implemented. Documentation for the developer will be an on-going process, but administrator will be completed near the end. The system will not include any documentation for the lecturers or students as the UI should be self explanatory. The addition of upgrading the Python language will be assessed first and will only be dropped if proven difficult to implement within first three days of development. Finally, unit tests will be a further on-going process, and any tests provided in the system will only exist for functionality that was successfully implemented.           
-	\section{System Assumptions}
+\section{Systems Requirements}
+    \addcontentsline{toc}{subsection}{System Scope}
+    \subsection*{System Scope}
+	The CAMEL 2.0 prototype (proposed by by Dr Dafydd Evans) will be developed from the 30th November 2015, and completed on the 29th April 2016. The aim of this project is to provide a functionally improved and 'GitHub' ready system that can be downloaded and utilised. The proposed functional requirements include lexical comparison and logging of student answers, unit tests, exception handling and documentation for future developers. Besides from this functionality, enhancements will be made to the user interface, such as navigation between pages, which will improve performance loading. For the back-end of the system, bugs will be fixed as well as code being standardised. In addition to the improved code, there will be an architecture redesign, this will include modularity of core functionality and a redesign of the database. The back-end re-design should provide additional ease of use to future developers.      
+    \addcontentsline{toc}{subsection}{System Boundary}
+	\subsection*{System Boundary}
+	During implementation, there will be heavy focuses on completion of a architecture redesign, and improvements to the code structure, with the introduction of exception and error handling. Functionality with lexical comparisons and student logging will also be priority during implementation. Functionality that will cease to be developed will include enrolled modules and student deadlines, if the functionality above has difficulty being implemented. Documentation for the developer will be an on-going process, but administrator documentation will be completed near the end. The system will not include any documentation for the lecturers or students as the UI should be self explanatory. The addition of upgrading the Python language will be assessed first and will only be dropped if proven difficult to implement within first three days of development. Finally, unit tests will be a further on-going process, and any tests provided in the system will only exist for functionality that was successfully implemented.           
+    \addcontentsline{toc}{subsection}{System Assumptions}
+	\subsection*{System Assumptions}
 	Due to the fixed nature of the current system, there are some aspects that we will need to assume. Firstly, we are assuming that the functionality we are developing for is single threaded. This assumption is being made as the time scale to add threaded functionality is non-existent. Furthermore, we are developing the system on Django's development server, which cannot simulate a multi-threaded environment. 
 	
 	A further assumption we are making is that there will be no additional requirements added when implementation occurs, and these requirements are final. Given the time scale we have to make the system, it would be unlikely that any additional requirements could be completed to a high standard. Any additional functionality will be dropped due to development scope. 
 	
 	Finally, we area assuming that the use of third party software to handle aspects that are out of scope can be integrated into the system. Third party applications that may be include - JQuery (JavaScript library), Bootstrap (CSS library) and additional Python modules
-	\section{Functional Requirements}
-	\subsection{Input Error Checking. - Must Have}
+    \addcontentsline{toc}{subsection}{Functional Requirements}
+	\subsection*{Functional Requirements}
+	\subsubsection*{1. Input Error Checking. - Must Have}
 	In the current version of the system, when the contents of a LaTeX document is passed into the LaTeX parser, there is virtually no validation of this input. The input is wrongly assumed to be already correctly formatted. Although our client informed us that adding validation functionality for the staff uploaded LaTeX test documents was not a necessity, he did request that any arising errors should be safely dealt with i.e. not cause a system crash or corrupt the database.
-	\subsection{Provide exception handling. - Must Have}
+	\subsubsection*{2. Provide exception handling. - Must Have}
 	In the brief is specifically states that the existing codebase has no exception handling, and that this needs to be added. By speaking to our client this is a requirement that is of a high priority and will have to be implemented.
 The exception handling in the system would enable us to find and fix bugs easily and quickly during production, it would also enable the code to be maintainable in the future and it would also allow for smooth running for the system.
 
-	\subsection{Provide Unit Tests. - Must Have}
+	\subsubsection*{3. Provide Unit Tests. - Must Have}
 	All code that is developed will utilise the Django’s already existing test framework, along with Python’s testing mechanics. This will be a continuous process in the development sprints. Though all tests will be created first, before code is written. This will give a good indication of the time each feature requires to be implemented. By having the tests drawn up first, we allow the requirement to be flexible, and have the ability to make changes if issues occur. It also allows possible extensions to be added in the future, as test first development ensures high code quality. This will also meet the requirement proposed in the brief by including these tests. These tests can be utilised by future developers using Django.
 	
 	
-	\subsection{Add methods of checking and comparing student answers from questions. - Should Have}
+	\subsubsection*{4. Add methods of checking and comparing student answers from questions. - Should Have}
 	To meet the initial requirement of lexical analysis, functionality will need to be added to current student answers to be compared. Functionality that can be included may be graphs and statistics. With this functionality, lecturers are able to see possible trends with particular pieces of work, and see if there are any issues. This functionality can also be expanded as a plagiarism checker, by looking for common answers. The depth of functionality that could be provided is limited to the development scope.
-	\subsection{Logging of Student Answers. - Should Have}
+    
+	\subsubsection*{5. Logging of Student Answers. - Should Have}
 	As the primary goal of the system is to allow members of staff to upload tests - in the form of LaTeX documents - with 'interactive' answering features, for the students to access, answer and submit; it seems only natural that these submissions are to be logged and then viewable by the supervising members of staff. A time-stamp should be attached to each submitted answer to allow a deeper understanding of student upload patterns.
 	
-	\subsection{Add deadlines to student homework questions which will prevent late submissions. - Could Have}
+	\subsubsection*{6. Add deadlines to student homework questions which will prevent late submissions. - Could Have}
 	In the brief it specifies that there should be capabilities to ‘complete and submit homework assignments’ and our client has also outlined that a way of adding deadlines to homework questions is something that should be implemented on the system.
 By being able to have deadlines on homework submissions, it would ensure the solutions of the students who miss the deadlines are not marked and their score is not added to their overall grade. It would also allow the grades of these students to not be included in the analysis and comparison of the classes grades.
 After a deadline has passed for a specific coursework, the student should be able to see and write answers for the questions, but not be able to submit it.  And the lecturer should be able to see which students have not submitted.
 A lecturer should also have the option of choosing not to set a deadline.
 
-	\subsection{Provide functionality to only see modules a student is enrolled for. - Would Have}
+	\subsubsection*{7. Provide functionality to only see modules a student is enrolled for. - Would Have}
 	This requirement will be a proof of concept rather than a fully functional feature, due to not having the permissions to access enrolment data. The concept will instead simulate some test data to assess the possibility of this feature being added. If the concept is a success, it will allow the UI for the student to be simple, as it will only show their enrolled modules. This adds to ease of use, however this feature is not detrimental to the final system. The functionality of these feature is dependent with time available.
 	
-	\newpage
 	
-	\section{Non-Functional Requirements}
-	\subsection{Fix Bugs in the Current System - Must Have}
+    \addcontentsline{toc}{subsection}{Non-Functional Requirements}
+	\subsection*{Non-Functional Requirements}
+	\subsubsection*{8. Fix Bugs in the Current System - Must Have}
 	The current system, as it stands, is in no way acceptable for deployment. There exists an unknown amount of bugs and several poor design-choices which desperately require fixing for the project to be a success. If these issues are not dealt with accordingly, their impact will greatly hinder development and the system would be left unreliable and potentially dangerous.
-	\subsection{Administrator and Developer documentation. - Must Have}
+	\subsubsection*{9. Administrator and Developer documentation. - Must Have}
 	Documentation will be required to meet a proposed requirement. The main focus for the documentation will be for the developer, which will focus on the technical aspects. It will include details on functionality on particular files and certain standards in the code. The administrator documentation will be 'lightweight' and will include all the instructions and commands that are needed to operate the system. Though the developer documentation will be considered a higher priority over the administrator, due to the UI being self explanatory. The documentation will be accessed on the site itself for both developer and administrator. 
-	\subsection{System Permissions. - Must Have}
+	\subsubsection*{10. System Permissions. - Must Have}
 	The system currently features two different types of users - students and staff members. It is required that various additional permission parameters are to be attached to the staff accounts, so that only they are able to access the sensitive areas of the system. These sensitive areas include:
 	\begin{itemize}  
         \item LaTeX test document upload point
@@ -100,19 +55,18 @@ A lecturer should also have the option of choosing not to set a deadline.
         \item List of the student's test results
     \end{itemize}
     Depending on time restraints, it is advisable that Django's automatic admin interface\footnote{\url{https://docs.djangoproject.com/en/stable/ref/contrib/admin/}} not be accessible by staff members. This is because it is an extremely powerful tool that could easily be misused and permanently damage the system's stored data.
-    	\subsection{Have maintainable code. - Must Have}
+    	\subsubsection*{11. Have maintainable code. - Must Have}
 	Throughout the development cycle, the aim will be to update and add code that follows a set of standards. These standards will include comments, naming conventions and modularity of files. For this project, we have been instructed to use the PEP8 Python standard. This standard focuses on using underscores for naming conventions. Upon bringing these standards, it will ensure that future developers will be able to quickly understand the context of a code and continue to maintain high the system for the future.
 	
-	\subsection{Modify database to allow tables for Student, Teacher, Author, Admin. - Must Have}
+	\subsubsection*{12. Modify database to allow tables for Student, Teacher, Author, Admin. - Must Have}
 	Our client has also mentioned to add four more tables into the database to be able to be able to ensure no data is lost and kept in an organised manner for if it needs to be manually accessed. It would also ensure that these attributes can be easily referenced and compared throughout the system.
 	
-	\subsection{Break down the core code to become smaller 'applications' in Django. - Must Have}
+	\subsubsection*{13. Break down the core code to become smaller 'applications' in Django. - Must Have}
 	After the third meeting with our client, he has specified specifically that he would like the code to be broken down and organised into the correct Django ‘applications’. By doing this the Code will be better organised and easier to understand by others therefore more maintainable. If the code was better split up into the applications, it would also cause code reuse to be easier throughout the application, later on if the system expands, or is released to be downloaded and used by the public.
-	\subsection{Ease of use - Should Have}
+	\subsubsection*{14. Ease of use - Should Have}
 	In the brief it states that ‘the way in which students and teachers interact with the system should also be investigated and the design modified accordingly’. Our client has also made it clear that they would like the system easy enough for the students and teachers to use so that they will not need documentation, and should be intuitive and straight forward to navigate and find the needed information easily.
-	\subsection{Improve navigation reliability when moving between pages - Could Have}
+	\subsubsection*{15. Improve navigation reliability when moving between pages - Could Have}
 	When navigating around the current system, it seems that many of the hyper-links are incorrectly using relative address references - as oppose to absolute or referring to the root domain. This results in users of the system being miss-directed when navigating around the site. It even makes some areas of the site completely unacceptable without the user manually changing the file path.  This is likely due to the incorrect usage of Django's URL template tag\footnote{\url{https://docs.djangoproject.com/en/stable/ref/templates/builtins/#url}} and should be solvable without a huge amount of issues.
-	\subsection{Upgrade System for Python3. - Could Have}
+	\subsubsection*{16. Upgrade System for Python3. - Could Have}
 	After discussing with our client, upgrading to Python 3 is an optional requirement depending on how easy this change would be and how long that it would take us to change the existing codebase. 
 We would want to move to python 3 as majority of the IO issues have been worked out, and python 2 will eventually become obsolete. By changing to python 3 it means that the system will be more maintainable as more people will know this release of python, and the system would be compatible with more devices for a longer period of time.
-\end{document}

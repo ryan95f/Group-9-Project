@@ -1,74 +1,8 @@
-\documentclass[12pt]{article}
-
-\usepackage{geometry}
-\geometry{a4paper}
-
-\usepackage{graphicx}
-\graphicspath{{./resources/}}
-
-% Used to import the Gannt chart
-\usepackage{pdfpages}
-
-% For Roman Numeral list
-\usepackage{enumerate}
-
-\usepackage{booktabs,longtable}
-
-% For the Bibliography
-\usepackage[english]{babel}
-\usepackage[backend=bibtex]{biblatex}
-\usepackage{csquotes}
-\addbibresource{./bibliographies/agileSoftwareDevelopment}
-
-\linespread{1.2}
-
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{1em}
-
-\begin{document}
-	\begin{titlepage}
-		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
-		
-		\center
-		
-		\textsc{\LARGE Cardiff University}\\[1.5cm]
-		\textsc{\Large Computer Science}\\[0.5cm]
-		\textsc{\large CM2305: System's Design \& Group Project}\\[0.5cm]
-		
-		\HRule \\[0.4cm]
-		\textsc{\Large \textbf{CAMEL}}\\[0.1cm]
-		\textsc{\Large \textbf{CA}rdiff \textbf{M}athematics \textbf{E-L}earning}\\[0.7cm]
-		{\huge\bfseries Agile Software Development}\\[0.4cm]
-		\HRule \\[1.5cm]
-		
-		\begin{minipage}{0.4\textwidth}
-			\begin{flushleft} \large
-				\emph{Authors:}\\
-				\mbox{Aimi \textsc{Nazihah}}
-			\end{flushleft}
-		\end{minipage}
-		~
-		\begin{minipage}{0.4\textwidth}
-			\begin{flushright} \large
-				\emph{Clients:} \\
-				\mbox{Stuart \textsc{Allen}}, \mbox{Dafydd \textsc{Evans}}
-			\end{flushright}
-		\end{minipage}\\[3cm]
-		
-		{\large \today}\\[2cm]
-		
-		\vfill
-	\end{titlepage}
-	
-	
-	\tableofcontents
-	
-	\newpage
-	
-	\section{Project Management}
+\section{Project Management}
 		There are a few software development methodologies in the software engineering field. For instance, Waterfall, Spiral and Agile. Even though Waterfall Model is popular version of the systems development life cycle as it rigid and linear, it may be not suitable for the CAMEL project because we are not building the system from scratch. This scenario is the same for Spiral Lifecycle Model as the model focuses on early identification and reduction of project risks as the system grows. So, we chose Agile Software Development with the justification in subsection below.
 		
-		\subsection{Agile Software Development}
+        \addcontentsline{toc}{subsection}{Agile Software Development}
+		\subsection*{Agile Software Development}
 			First and foremost, manifesto for Agile Software Development has laid out four values which are \cite{agileArtOfDevelopment}:
 			
 			\begin{enumerate}[i]
@@ -84,9 +18,10 @@
 			
 	\newpage
 	
-	\section{The Agile Roadmap to Value (Deliverables plan)}
+    \addcontentsline{toc}{subsection}{The Agile Roadmap to Value (Deliverables Plan)}
+	\subsection*{The Agile Roadmap to Value (Deliverables plan)}
 		\begin{figure}[htbp]
-			\centerline{\includegraphics{roadmaptovalue.jpg}}
+			\centerline{\includegraphics[width=7cm]{resources/roadmaptovalue.jpg}}
 				\caption{Diagram 1: The Agile Roadmap to Value \cite{agileRoadmapToValue}}
 		\end{figure}
 		
@@ -94,12 +29,14 @@
 		
 		In the first report, we have covered Stage 1, Stage 2 and Stage 3. The first stage we have identified the Product Vision that is briefly planned in the first section of report, which is System Requirements and Acceptance Criteria. In term of the frequency, we can change our planned task and deliverables whenever we need to. For second stage, since we have the existing codebase, even though it is not working right now, we already have the holistic view. Hence, we would improve the interface as we are working on the prototype. Next, in third stage, Table 1 below has described our Release Planning throughout the coursework timeline as a rough guide. 
 		
-		Apart from that, from Stage 4 until Stage 7 and the Product Release, we will explain in much more detail in accordance to our deliverables plan in Table 1.
-		
-		\label{table:agiledeliverablesplan}
+		Apart from that, from Stage 4 until Stage 7 and the Product Release, we will explain in much more detail in accordance to our deliverables plan in Table \ref{table:agiledeliverablesplan}.
+		\newpage
 		\setlength{\aboverulesep}{0pt}
 		\setlength{\belowrulesep}{0pt}
-		\begin{longtable}{|*{3}{p{3cm}|}}
+		{\small
+		\begin{longtable}{{|p{1.7cm}|p{16cm}|p{1.7cm}|}}
+			\caption{Agile deliverables plan}
+			\label{table:agiledeliverablesplan}\\	
 			\toprule
 			No. & Task & 1 \\
 			\midrule
@@ -183,9 +120,11 @@
 			
 			23 & System should have security permissions to prevent unauthorised access to lecturer areas. & 3 \\
 			\midrule
-			
+			%\caption{Agile Deliverable Plan}
+		
 			\bottomrule
-		\end{longtable}
+
+		\end{longtable} }
 		
 		\textbf{Key:} *  -  high priority
 		1st report: 27/11/15 – Initial Group \& Individual Report
@@ -194,37 +133,31 @@
 		
 		The plan of deliverables table shows our aim to complete those tasks by respective reports. Since we are doing the task in pairs or individually, we may get started on high priority tasks and the others in parallel. At the end of the second deliverable, we expect to debug any errors which it initially had, and we will ensure testing of the prototype and ensure it has maintainable code following the standard. Apart from that, the tasks that we aimed to complete on the second and third report, it is more needed to ensure the maintainability to continue to the third report. For the third report, we aimed to complete all the tasks and expect the system working for all stakeholders; lecturers, authors, students and future developers. 
 	
-	\newpage
 	
-	\section{Extreme Programming}
+    \addcontentsline{toc}{subsection}{Extreme Programming}
+	\subsection*{Extreme Programming}
 		Extreme Programming is also featured as a part of the Agile Software Development approach \cite{agileModeling}. Extreme Programming (XP) is also a practice related with software development. I think it is suitable with the nature of our project because Extreme Programming stresses on customer satisfaction \cite{agileXPFlowchart}. Since our project is working closely with our client, our main aim is to have accomplished the requirements that we have agreed on.  It places a strong emphasis on technical practices in addition to the more common teamwork and structural practices \cite{agileArtOfDevelopment}.
-		
-		
+			
 		Apart from that, Extreme Programming emphasizes on teamwork as customers and developers are all in a collaborative team (Extreme Programming, n.d.) \cite{agileXPFlowchart}. It is meant to be implemented in a simple yet effective environment allowing teams to become highly productive. We as a team will also be self-organized to solve problems as efficiently as we can, such as trying to  work on priority tasks based on our capabilities.
 		
 		Starting on second deliverables and continuing into the third report, we aim to get feedback by testing the code on weekly basis. Each requirement that we succeed to implement will deepen unique contributions by each and every team member. 
 		
 		This diagram below shows overview of how XP works.  
 		
-		\begin{figure}[htbp]
-			\centerline{\includegraphics{agileflowchart.jpg}}
+		\begin{figure}[!htbp]
+			\centerline{\includegraphics[width=5cm]{resources/agileflowchart.jpg}}
 			\caption{Diagram 2: XP Flow chart \cite{agileXPFlowchart}}
 		\end{figure}
 		
 		The flow of XP would compliment the situation we had, which is the existing code is an unfinished feature, then we need to identify any requirements that need to be prioritised. As time passes by, we will fulfil more requirements to enhance and improve the CAMEL system until it can be used for end users; students and lecturers.
+\newpage	
+    \addcontentsline{toc}{subsection}{First Group Report Gantt Chart}
+	\subsection*{First Group Report Gantt Chart}
+		In order to keep track of our activities and tasks on a weekly basis, a Gantt chart is used. On the left side of the Gantt chart is a list of tasks with respective starting and finishing date, duration and team members in charged. Each task is represented by a bar, which the date and length of the bar reflects the start date, duration and end date of the task. The Gantt chart for this first report has been attached in the appendices. See \ref{app:gantt}  
 	
-	\newpage
-	
-	\section{First Group Report Gantt Chart}
-		\includepdf[pages=-]{./resources/figureGanttChart.pdf}
-		
-	\newpage
-	
-	\section{Conclusion}
+    \addcontentsline{toc}{subsection}{Conclusion}
+	\subsection*{Conclusion}
 		The software development method we are going to use for working on the CAMEL system is Agile Software Development, and we will specifically be using the XP approach as it compliments the nature of our project. We will try to follow the deliverables as planned so that our client’s requirements are fulfilled. Last but not least, we aimed for a working end-system and maintainability for future development.
-		
-	\newpage
+
 	
-	\printbibliography
-	
-\end{document}
+

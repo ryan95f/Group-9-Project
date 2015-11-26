@@ -1,12 +1,11 @@
 %% Website of the LaTeX Gods: https://en.wikibooks.org/wiki/LaTeX
-\documentclass[12pt, titlepage]{article}
+\documentclass[11pt, titlepage]{article}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % STARTING DOCUMENT PREAMBLE %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[utf8]{inputenc}
-\usepackage[a4paper, margin=1in]{geometry}
-
+\usepackage[a4paper, margin=2cm]{geometry}
 %taken from sysReq:
 \linespread{1.2}
 \setlength{\parindent}{0pt}
@@ -14,16 +13,30 @@
 %
 
 % Taken from acceptanceCriteria
+\usepackage{tabu}
 \usepackage[table, usenames, dvipsnames]{xcolor}
+\usepackage{booktabs,colortbl,longtable}
 \usepackage{graphicx}
+\usepackage{lscape}
+\usepackage[strict]{changepage}
 %
 
+% Taken from agileSoftwareDevelopment
+\usepackage{pdfpages}
+\usepackage[english]{babel}
+%\usepackage[backend=bibtex,bibencoding=ascii]{biblatex}
+\usepackage[style=authoryear,backend=bibtex,bibencoding=ascii]{biblatex}
+\usepackage{csquotes}
+\addbibresource{./bibliographies/agileSoftwareDevelopment}
+\addbibresource{./bibliographies/lsepi.bib}
+\usepackage{enumerate}
+\usepackage[titletoc]{appendix}
+%
 
 \usepackage{anyfontsize}
-%\usepackage[usenames, dvipsnames]{color}
 \usepackage{titlesec}
 \usepackage{url}
-\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
 
 \title{First Report}
 \author{Group 9}
@@ -35,10 +48,10 @@
 \renewcommand{\thesection}{\Roman{section}}
 
 \titleformat{\section}{\LARGE \bfseries \makeColourful}{\thesection}{0.7cm}{}[{\hrule}]
-\titleformat{\subsection}{\Large \bfseries \raggedleft \makeColourful}{}{0}{}[]
-\titleformat{\subsubsection}{\large \bfseries \raggedleft \makeColourful}{}{0}{}[]
-\titleformat{\subsubsubsection}{\normalsize \bfseries \raggedleft \makeColourful}{}{0}{}[]
-\titleformat{\subsubsubsubsection}{\normalsize \bfseries \raggedleft \makeColourful}{}{0}{}[]
+\titleformat{\subsection}{\Large \bfseries \makeColourful}{}{0}{}[]
+\titleformat{\subsubsection}{\large \bfseries \makeColourful}{}{0}{}[]
+\titleformat{\subsubsubsection}{\normalsize \bfseries \makeColourful}{}{0}{}[]
+\titleformat{\subsubsubsubsection}{\normalsize \bfseries \makeColourful}{}{0}{}[]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENDING DOCUMENT PREAMBLE %
@@ -63,13 +76,21 @@
 			\end{flushright}
 		\end{minipage}
 		\\[2cm]
+        
 		{\makeColourful \HRule} 
 		\\[2cm]
 		{\fontsize{90pt}{0pt}\selectfont \makeColourful{\textsc{First Report}}}
 		\\[1.5cm]
 		A \LaTeX\ document
 		{\makeColourful \HRule}
-		\\[6cm]
+		\\[3cm]
+        ~
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushright} \large
+				\emph{Clients:} \\
+				\mbox{Stuart \textsc{Allen}}, \mbox{Dafydd \textsc{Evans}}
+			\end{flushright}
+		\end{minipage}\\[3cm]
 		\textsc{\Large Group 9}
 		\\[0.5cm] 
 		\textsc{Aimi Daros, Braden Marshall, Cameron Fish, Lucy Robertshaw, Mariza Celliers, Ryan Flynn, Sh’kyra Jordon, Skye Watkins, Thomas Rice.}
@@ -78,38 +99,25 @@
 	\tableofcontents
 	\newpage
 	\input{introduction}
-	%\input{./systemRequirements.tex}
-	%\input{./acceptanceCriteria.tex}
+	\input{systemRequirements.tex}
+	\input{acceptanceCriteria.tex}
 	\input{lsepi}
-	\input{workPlan}
+    \newpage
+    \input{agileSoftwareDevelopment.tex}
 	\input{conclusion}
-	\newpage
-	\begin{thebibliography}{99}
-		\addcontentsline{toc}{section}{References}
-			
-		\bibitem{CDaPA} Copyright Designs and Patent Act (1988)
-		\newline
-		(\url{https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/462194/Copyright_Designs_and_Patents_Act_1988.pdf})
-			
-		\bibitem{LSEPI in Computer Tech} Legal, Social, Ethical and Professional Issues in the Application of Computer Technology 
-		\newline
-		(\url{http://www.macs.hw.ac.uk/macshome/MScComputing/RM/Docs/L4PLESI.pdf})
-			
-		\bibitem{JiscLegal - Intellectual Prop.} JiscLegal on Intellectual Property
-		\newline
-		(\url{ http://www.jisclegal.ac.uk/legalareas/copyrightipr/ipressentials.aspx})
-			
-		\bibitem{DPA:tDPP:S1} Data Protection Act: The Data Protection Principles - Schedule 1
-		\newline
-		(\url{http://www.legislation.gov.uk/ukpga/1998/29/schedule/1})
-			
-		\bibitem{DPA:tDPP:S2} Data Protection Act: The Data Protection Principles - Schedule 2
-		\newline
-		(\url{http://www.legislation.gov.uk/ukpga/1998/29/schedule/2})
-			
-		\bibitem{DPA:tDPP:S3} Data Protection Act: The Data Protection Principles - Schedule 3
-		\newline
-		(\url{http://www.legislation.gov.uk/ukpga/1998/29/schedule/3})
-			
-	\end{thebibliography}
+    \newpage
+    \addcontentsline{toc}{section}{References}
+    \printbibliography
+	\begin{appendices}
+		\section{Gantt Chart}
+		\label{app:gantt}
+		\includepdf[pages=-]{./resources/figureGanttChart1.pdf}
+	\end{appendices}
+    
+    
+    
+	
+
+    
+	
 \end{document}
