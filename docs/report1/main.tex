@@ -33,6 +33,8 @@
 \usepackage[titletoc]{appendix}
 %
 
+\usepackage{pdflscape}
+
 \usepackage{anyfontsize}
 \usepackage{titlesec}
 \usepackage{url}
@@ -106,18 +108,19 @@
     \input{agileSoftwareDevelopment.tex}
 	\input{conclusion}
     \newpage
+	\section*{Appendices}
+	\addcontentsline{toc}{section}{Appendices}
+	\begin{appendices}
+		\addcontentsline{toc}{subsection}{Gantt Chart}
+		\label{app:gantt}
+		\subsection*{Gantt Chart}
+		\begin{minipage}{\textwidth}
+			\begin{flushright}
+				\includepdf[scale=0.75,landscape=true]{./resources/figureGanttChart.pdf}
+			\end{flushright}
+		\end{minipage}
+	\end{appendices}
+	\newpage
     \addcontentsline{toc}{section}{References}
     \printbibliography
-	\begin{appendices}
-		\section{Gantt Chart}
-		\label{app:gantt}
-		\includepdf[pages=-]{./resources/figureGanttChart.pdf}
-	\end{appendices}
-    
-    
-    
-	
-
-    
-	
-\end{document}
+   \end{document}
