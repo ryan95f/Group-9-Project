@@ -10,6 +10,12 @@ try:
 except ImportError as e:
     pass
 
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+ALLOWED_HOSTS = []
+
 # SECURITY WARNING: keep the secret key used in production secret!
 # To keep us from pushing the deployed 'SECRET_KEY' into version control,
 # we store it in a local text-file that will not be commited.
