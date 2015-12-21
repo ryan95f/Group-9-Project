@@ -6,7 +6,7 @@ https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 """
 
 try:
-    from settings.base import *  # NOQA
+    from camel2.settings.base import *  # NOQA
 except ImportError as e:
     pass
 

@@ -3,7 +3,7 @@ Setting specific to running Camel in a development environment.
 """
 
 try:
-    from settings.base import *  # NOQA
+    from camel2.settings.base import *  # NOQA
 except ImportError as e:
     pass
 
