@@ -1,0 +1,41 @@
+\documentclass{camel}
+
+% module information
+\academicyear{2015-16}
+\modulecode{MA0000}
+\moduletitle{Test Module}
+
+\booknumber{1}
+\booktitle{Test Book}
+\bookauthor{Dafydd Evans}
+\bookversion{v0.1}
+
+% macros
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\B}{\mathbb{B}}
+
+%------------------------------------------------
+\begin{document}
+	Start of document
+	\chapter{Does this \textbf{CHAPTER} work?}
+		\section{Example \textit{Section}}
+			Testing a working \textit{Hello \textbf{WORLD} I am \textbf{Braden}}
+
+			\subsection{Example Test}
+				\begin{verbatim}
+					This should \textit{remain} as \textbf{Plain Text}.
+				\end{verbatim}
+				End of verbatim \textit{SWEET}
+
+			\subsection{An Equation}
+				\begin{equation}
+					x = \sqrt{16}^2
+				\end{equation}
+		\section{Environment Test}
+			\begin{proof}
+				Test Proof \underline{YAAAY}
+			\end{proof}
+		\section{Final Section}
+			This is the final section \textbf{Does it work?}
+\end{document}
+
