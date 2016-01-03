@@ -1,50 +1,46 @@
 from .node import (
-    ArgumentNode
+    ArgumentNode, Text
 )
 
-from nodes.levels import (
+from .levels import (
     Book, Chapter, Section, Subsection
 )
 
-from nodes.environments.box import (
+from .environments.box import (
     Proof, Verbatim, Center
 )
 
-from nodes.environments.float import (
+from .environments.float import (
     Figure, Subfigure, Table, Subtable,
 )
 
-from nodes.environments.list import (
+from .environments.list import (
     Itemize, Enumerate
 )
 
-from nodes.environments.mathmode import (
+from .environments.mathmode import (
     Equation, EqnArray, Cases, Align, Array
 )
 
-# from nodes.environments.mathmode import (
-#     Theorem, Lemma, Corollary, Definition, Remark, Example, Exercise
-# )
-
-from nodes.commands.command import (
-    Text
+from .environments.theorem import (
+    Theorem, Lemma, Corollary, Definition, Remark, Example, Exercise
 )
 
-from nodes.commands.content import (
+from .commands.content import (
     Image
 )
 
-from nodes.commands.reference import (
+from .commands.reference import (
     Reference, Citation, Label
 )
 
-from nodes.commands.textstyles import (
+from .commands.textstyles import (
     TextIt, TextBf, Underline, Emph
 )
 
-# from nodes.commands.item import (
-#     Item
-# )
+from .commands.item import (
+    Item
+)
 
 
 class Nodes(object):
@@ -102,6 +98,10 @@ def build_default_nodes():
     nodes.add_class(ArgumentNode)
     nodes.set_argument_node_id(ArgumentNode.get_id())
 
+    # Add content text node.
+    nodes.add_class(Text)
+    nodes.set_text_node_id(Text.get_id())
+
     # Add level nodes.
     nodes.add_class(Book)
     nodes.set_root_node_id(Book.get_id())
@@ -132,23 +132,19 @@ def build_default_nodes():
     nodes.add_class(Array)
 
     # Add theorem environment nodes.
-    # nodes.add_class(Theorem)
-    # nodes.add_class(Lemma)
-    # nodes.add_class(Corollary)
-    # nodes.add_class(Definition)
-    # nodes.add_class(Remark)
-    # nodes.add_class(Example)
-    # nodes.add_class(Exercise)
-
-    # Add content text node.
-    nodes.add_class(Text)
-    nodes.set_text_node_id(Text.get_id())
+    nodes.add_class(Theorem)
+    nodes.add_class(Lemma)
+    nodes.add_class(Corollary)
+    nodes.add_class(Definition)
+    nodes.add_class(Remark)
+    nodes.add_class(Example)
+    nodes.add_class(Exercise)
 
     # Add content command nodes.
     nodes.add_class(Image)
 
     # Add list command nodes.
-    # nodes.add_class(Item)
+    nodes.add_class(Item)
 
     # Add reference command nodes.
     nodes.add_class(Reference)
