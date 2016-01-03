@@ -20,7 +20,7 @@ class BookNode(MPTTModel):
     position = models.IntegerField()
 
     # The type of this node. e.g. Chapter, Section, Verbatim, TextIt, ArgumentNode etc...
-    node_type = models.CharField(max_length=50, unique=True)
+    node_type = models.CharField(max_length=50)
 
     class MPTTMeta:
         order_insertion_by = ["position"]
