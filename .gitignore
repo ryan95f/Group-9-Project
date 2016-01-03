@@ -1,3 +1,6 @@
 *.pyc
 *.pyo
 src/camel2/db.sqlite3
+
+# To activate Python virtual environment (See: https://docs.python.org/3/tutorial/venv.html)
+activate.bat
