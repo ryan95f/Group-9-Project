@@ -1,8 +1,6 @@
 import re
 from collections import namedtuple
 
-from nodes.nodes import build_default_nodes
-
 
 class TexBookParser(object):
     """
@@ -11,12 +9,8 @@ class TexBookParser(object):
 
     PreambleCapture = namedtuple("PreambleCapture", "key pattern")
 
-    def __init__(self, nodes=None, preamble_captures=None):
+    def __init__(self, nodes, preamble_captures=None):
         """Initialises the TexParser object."""
-        # Retrieves for us an object which will allow us to search through all our
-        # nodes classes in a variety of ways.
-        if nodes is None:
-            nodes = build_default_nodes()
         self.nodes = nodes
 
         if preamble_captures is None:
@@ -47,7 +41,6 @@ class TexBookParser(object):
         root_node = self.nodes.get_class(self.nodes.root_node_id)
         root_node = root_node()
         root_node.add_children(self.parse_latex(body))
-        print(repr(root_node))
 
         # Read and parse the LaTeX preamble data.
         preamble = self.read_preamble(latex_text)
@@ -56,7 +49,9 @@ class TexBookParser(object):
         # Attach the preamble data onto the book.
         root_node.preamble_data = preamble_data
 
-    def parse_file(self, filepath="main.tex"):
+        return root_node
+
+    def parse_file(self, filepath):
         """
         A convenience function for parsing a LaTeX file into a Python-friendly Book object.
         """
@@ -263,13 +258,3 @@ class TexBookParser(object):
                 children.append(text_node)
 
         return children
-
-
-def main():
-    """Allows us to test the parser."""
-    tex = TexBookParser()
-    tex.parse_file()
-
-
-if __name__ == "__main__":
-    main()
