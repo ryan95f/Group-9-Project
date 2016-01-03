@@ -1,34 +1,6 @@
 import re
 
-from ..node import Node, LeafNode
-
-
-class Text(LeafNode):
-    """A leaf node which just holds some plain text."""
-
-    the_type = "text"
-
-    def __init__(self, content):
-        """Initialise the text leaf node."""
-        super(Text, self).__init__()
-        self.set_content(content)
-
-    def __str__(self):
-        """Returns a nicely printable string of the node."""
-        return self.content
-
-    def __repr__(self):
-        """Return the canonical string representation of the node."""
-        return "%s(\"%s\")" % (self.__class__.__name__, self.content)
-
-    @classmethod
-    def validate_content(cls, content):
-        """Returns a boolean indicating if the content is acceptable for the Text node."""
-        return content == " " if content.isspace() else content != ""
-
-    def set_content(self, content):
-        """Sets the text, allowing us to change it if needed"""
-        self.content = content.strip()
+from ..node import Node
 
 
 class Command(Node):

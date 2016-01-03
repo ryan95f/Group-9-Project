@@ -9,7 +9,7 @@ class LeafNode(object):
 
     def __init__(self):
         """Initialise the leaf node."""
-        pass
+        self.position = 0  # The position of the node in the parent.
 
     def __str__(self):
         """Returns a nicely printable string of the node."""
@@ -75,6 +75,11 @@ class Node(LeafNode):
         """Adds a list of children to the node."""
         if not isinstance(self.children, list):
             self.children = []
+
+        next_position = len(self.children)
+        for child in children:
+            child.position = next_position
+            next_position += 1
         self.children.extend(children)
 
     def add_child(self, child):
@@ -98,3 +103,31 @@ class ArgumentNode(Node):
     def __init__(self, children=None):
         """Initialise the argument node."""
         super(ArgumentNode, self).__init__(children=children)
+
+
+class Text(LeafNode):
+    """A leaf node which just holds some plain text."""
+
+    the_type = "text"
+
+    def __init__(self, content):
+        """Initialise the text leaf node."""
+        super(Text, self).__init__()
+        self.set_content(content)
+
+    def __str__(self):
+        """Returns a nicely printable string of the node."""
+        return self.content
+
+    def __repr__(self):
+        """Return the canonical string representation of the node."""
+        return "%s(\"%s\")" % (self.__class__.__name__, self.content)
+
+    @classmethod
+    def validate_content(cls, content):
+        """Returns a boolean indicating if the content is acceptable for the Text node."""
+        return content == " " if content.isspace() else content != ""
+
+    def set_content(self, content):
+        """Sets the text, allowing us to change it if needed"""
+        self.content = content.strip()
