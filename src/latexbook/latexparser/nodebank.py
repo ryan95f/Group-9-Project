@@ -1,4 +1,4 @@
-class Nodes(object):
+class NodeBank(object):
     """Holds together all our nodes classes - providing several functions to navigate through them."""
 
     def __init__(self):
