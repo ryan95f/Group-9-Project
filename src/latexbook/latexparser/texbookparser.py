@@ -51,14 +51,6 @@ class TexBookParser(object):
 
         return root_node
 
-    def parse_file(self, filepath):
-        """
-        A convenience function for parsing a LaTeX file into a Python-friendly Book object.
-        """
-        with open(filepath) as f:
-            latex_text = f.read()
-            return self.parse(latex_text)
-
     def prepare_latex_text(self, latex_text):
         """
         Prepare the LaTeX text for parsing. This includes tasks such as removing the comments.
