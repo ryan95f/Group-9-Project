@@ -27,7 +27,6 @@ class Command(BaseCommand):
         latex_file = options["latex_file"]
         latex_document = latex_file.read()
 
-        nodes = build_default_nodes()
         parser = TexBookParser(book_nodes)
         book_node = parser.parse(latex_document)
 
