@@ -46,8 +46,8 @@ For more information regarding the parser, refer to 'latexbook/latexparser/texbo
 """
 
 # Import our 'Nodes' class.
-from latexbook.latexparser.nodes import (
-    Nodes
+from latexbook.latexparser.nodebank import (
+    NodeBank
 )
 
 # Import all the nodes that we want the parser to utilise.
@@ -96,7 +96,7 @@ from latexbook.latexparser.nodes.commands.item import (
 )
 
 # This is used to configure our parser, so that we only get build a tree using the nodes we're interested in.
-BOOKNODES = Nodes()
+BOOKNODES = NodeBank()
 
 # Add argument node.
 BOOKNODES.add_class(ArgumentNode)

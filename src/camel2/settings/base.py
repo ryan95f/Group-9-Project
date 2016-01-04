@@ -21,8 +21,9 @@ import os
 
 # To avoid over-complicating our base settings file, our LaTeXBook settings get their own file!
 try:
-    from camel2.settings.components.latexbook import *  # NOQA
+    from camel2.settings.components.latexbook import BOOKNODES  # NOQA
 except ImportError as e:
+    print(e)
     pass
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
