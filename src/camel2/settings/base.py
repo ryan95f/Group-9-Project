@@ -13,8 +13,8 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 NOTES:
 - Please follow the Django-PEP8 coding-style
   https://docs.djangoproject.com/en/1.9/internals/contributing/writing-code/coding-style/
-- The project is called 'camel2' as Django reported a conflict
-error when attempting to use 'camel'.
+- The project is called 'camel2' as Django reported a name conflict
+  error when attempting to use 'camel'.
 """
 
 import os
@@ -22,8 +22,7 @@ import os
 # To avoid over-complicating our base settings file, our LaTeXBook settings get their own file!
 try:
     from camel2.settings.components.latexbook import BOOKNODES  # NOQA
-except ImportError as e:
-    print(e)
+except ImportError as error:
     pass
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
