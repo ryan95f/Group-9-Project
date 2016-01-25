@@ -30,4 +30,4 @@ class Command(BaseCommand):
         parser = TexBookParser(book_nodes)
         book_node = parser.parse(latex_document)
 
-        write_to_django_database(book_nodes, book_node)
+        write_to_django_database(book_node)
