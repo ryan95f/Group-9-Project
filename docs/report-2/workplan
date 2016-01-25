@@ -1,0 +1,16 @@
+\section{Work Plan}
+	
+    \addcontentsline{toc}{subsection}{Time Plan}
+	\subsection*{Time Plan}
+    
+    \addcontentsline{toc}{subsection}{Milestones and deliverables}
+	\subsection*{Milestones and deliverables}
+
+	\addcontentsline{toc}{subsection}{Justification of feasibility}
+	\subsection*{Software architecture and data design}
+    
+    \addcontentsline{toc}{subsubsection}{Risk assessment}
+	\subsubsection*{Risk assessment}
+	\addcontentsline{toc}{subsubsection}{Risk mitigation}
+	\subsubsection*{Risk mitigation}
+
