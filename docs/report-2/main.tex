@@ -1,0 +1,151 @@
+%% Website of the LaTeX Gods: https://en.wikibooks.org/wiki/LaTeX
+\documentclass[11pt, titlepage]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% STARTING DOCUMENT PREAMBLE %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, margin=2cm]{geometry}
+%taken from sysReq:
+\linespread{1.2}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+%
+
+% Taken from acceptanceCriteria
+\usepackage{tabu}
+\usepackage[table, usenames, dvipsnames]{xcolor}
+\usepackage{booktabs,colortbl,longtable}
+\usepackage{graphicx}
+\usepackage{lscape}
+\usepackage[strict]{changepage}
+%
+
+% Taken from agileSoftwareDevelopment
+\usepackage{pdfpages}
+\usepackage[english]{babel}
+%\usepackage[backend=bibtex,bibencoding=ascii]{biblatex}
+\usepackage[style=authoryear,backend=bibtex,bibencoding=ascii]{biblatex}
+\usepackage{csquotes}
+\addbibresource{./bibliographies/agileSoftwareDevelopment}
+\addbibresource{./bibliographies/lsepi.bib}
+\usepackage{enumerate}
+\usepackage[titletoc]{appendix}
+%
+
+\usepackage{pdflscape}
+
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\usepackage{url}
+\usepackage[shortlabels]{enumitem}
+
+\title{Insert exciting report name here}
+\author{Group 9}
+
+\newcommand{\makeColourful}{\color{MidnightBlue}}
+\newcommand{\makeGrey}{\color{Gray}}
+\newcommand{\makeBlack}{\color{Black}}
+\renewcommand*\contentsname{\fontsize{25}{30}\selectfont Table of Contents}
+\renewcommand{\thesection}{\Roman{section}}
+
+\titleformat{\section}{\LARGE \bfseries \makeColourful}{\thesection}{0.7cm}{}[{\hrule}]
+\titleformat{\subsection}{\Large \bfseries \makeColourful}{}{0}{}[]
+\titleformat{\subsubsection}{\large \bfseries \makeColourful}{}{0}{}[]
+\titleformat{\subsubsubsection}{\normalsize \bfseries \makeColourful}{}{0}{}[]
+\titleformat{\subsubsubsubsection}{\normalsize \bfseries \makeColourful}{}{0}{}[]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ENDING DOCUMENT PREAMBLE %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+	\begin{titlepage}
+		\newcommand{\HRule}{\rule{\linewidth}{1.5mm}}
+		\center
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushleft}
+				\textbf{\large CM2305}
+				\\
+				\emph{\large Group Project}
+			\end{flushleft}
+		\end{minipage}
+		~
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushright}
+				\textbf{\large Module Leader}
+				\\
+				\emph{\large Frank \textsc{Langbein}} 
+			\end{flushright}
+		\end{minipage}
+		\\[2cm]
+        
+		{\makeColourful \HRule} 
+		\\[2cm]
+		{\fontsize{90pt}{0pt}\selectfont \makeColourful{\textsc{Insert exciting report name here}}}
+		\\[1.5cm]
+		A \LaTeX\ document
+		{\makeColourful \HRule}
+		\\[3cm]
+        ~
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushright} \large
+				\emph{Clients:} \\
+				\mbox{Stuart \textsc{Allen}}, \mbox{Dafydd \textsc{Evans}}
+			\end{flushright}
+		\end{minipage}\\[3cm]
+\textsc{\Large Supervisor: }\textsc{Nyala Noe}
+
+		\textsc{\Large Group 9}
+\linebreak
+\linebreak
+		\begin{minipage}{0.32\textwidth}
+			\begin{flushleft}
+				\textbf{1438496: }\textsc{Aimi Daros}\\
+				\textbf{1421079: }\textsc{Braden Marshall}\\
+				\textbf{1205387: }\textsc{Cameron Fish}
+			\end{flushleft}
+		\end{minipage}
+		~
+		\begin{minipage}{0.32\textwidth}
+			\begin{flushleft}
+				\textbf{1446183: }\textsc{Lucy Robertshaw}\\
+				\textbf{1430523: }\textsc{Mariza Celliers}\\
+				\textbf{1420030: }\textsc{Ryan Flynn}
+			\end{flushleft}
+		\end{minipage}
+		~
+		\begin{minipage}{0.32\textwidth}
+			\begin{flushleft}
+				\textbf{1328278: }\textsc{Sh’kyra Jordon}\\
+				\textbf{1429326: }\textsc{Skye Watkins}\\
+				\textbf{1427572: }\textsc{Thomas Rice}
+			\end{flushleft}
+		\end{minipage}
+
+	\end{titlepage}
+	\newpage
+	\tableofcontents
+	\newpage
+	\input{introduction}
+	\input{progresstowardssolving.tex}
+	\input{justification.tex}
+    \newpage
+    \input{workplan.tex}
+	\input{conclusion}
+    \newpage
+	\section*{Appendices}
+	\addcontentsline{toc}{section}{Appendices}
+	\begin{appendices}
+		\addcontentsline{toc}{subsection}
+		\label{app:gantt}
+		\subsection*{Gantt Chart}
+		\begin{minipage}{\textwidth}
+			\begin{flushright}
+				%\includepdf[scale=0.75,landscape=true]{./resources/figureGanttChart.pdf}
+			\end{flushright}
+		\end{minipage}
+	\end{appendices}
+	\newpage
+    \addcontentsline{toc}{section}{References}
+    \printbibliography
+   \end{document}
