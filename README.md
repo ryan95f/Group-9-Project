@@ -14,12 +14,11 @@ CAMEL E - Learning System developed Group 9
  pip install Pillow
 ```
 
-**Note:** For Mac users running this with Python3, Pillow requires an additional install package. To aquire this package via brew:
+**Note:** For OS X users running this with Python3, Pillow requires an additional package to be installed. To aquire this package via brew:
 ```sh
  $ brew install libtiff libjpeg webp little-cms2
 ```
-
-
+[Get Brew from here!](http://brew.sh)
 ### Set up datebase & create admin
 ```sh
  py manage.py migrate
