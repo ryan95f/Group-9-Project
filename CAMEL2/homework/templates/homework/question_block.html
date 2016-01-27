@@ -1,0 +1,35 @@
+{% load mptt_tags %}
+
+{% recursetree subtree %}
+		{% if node.node_class == "content" %}
+			{% if node.node_type == "image " %}
+				<span class="image">
+					<img src="{{ node.image.url }}" width="25%">
+				</span>
+			{% else %}
+				{{ node.text | safe }}
+			{% endif %}
+		
+		{% elif node.node_class == "list" %}
+			{% if node.node_type == "parts" %}
+				<ol class="parts"> {{ children }} </ol>
+			{% elif node.node_type == "subparts" %}
+				<ol class="subparts"> {{ children }} </ol>
+			{% elif node.node_type == "enumerate" %}
+				<ol class="enumerate"> {{ children }} </ol>
+			{% elif node.node_type == "itemize" %}
+				<ul class="itemize"> {{ children }}	</ul>
+			{% endif %}
+		
+		{% elif node.node_class == "item" %}
+			{% if node.node_type == "part" %}
+				<li class="part"> {{ children }} </li>
+			{% elif node.node_type == "subpart" %}
+				<li class="subpart"> {{ children }} </li>
+			{% elif node.node_type == "item" %}
+				<li class="item"> {{ children }} </li>
+			{% endif %}
+
+		{% endif %}
+
+{% endrecursetree %}

@@ -1,0 +1,52 @@
+{% extends "core/base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+	Cardiff Maths e-Learning
+{% endblock %}
+
+{% block breadcrumbs %}
+	&nbsp;
+	{% if user.is_authenticated %}
+		<a href="{% url 'user:user_home' user.pk %}">{{ user.username }}</a>
+	{% else %}
+		<a href="{% url 'core.views.index' %}">home</a>
+	{% endif %}
+{% endblock %}
+
+
+{% block content-main %}
+{% if user.is_authenticated %}
+	<p>Logged in as <b>{{ user.username }}</b></p>
+{% endif %}
+
+{% if debug %}
+	<p>Debug: <b>{{ debug }}</b></p>
+{% endif %}
+<ul>
+	<li><a href="/module/">Modules</a></li>
+</ul>
+<br/>
+
+{% endblock %}
+
+{% block sidebar %}
+    <h3>Links</h3>
+    <ul>
+        <li><a href="http://www.cardiff.ac.uk/maths">Cardiff School of Mathematics</a></li>
+		<li><a href="http://www.github.com/dimbyd/camel">Camel on GitHub</a></li>
+    </ul>
+{% endblock %}
+
+{% block content-secondary %}
+    <h3>Contacts</h3>
+    <ul>
+        <li><a href="mailto:someone@example.com">camel@cardiff.ac.uk</a></li>
+    </ul>
+{% endblock %}
+
+
+
+
+
+

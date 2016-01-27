@@ -1,0 +1,164 @@
+/*
+filename: xmlcamel.css
+author: scmde
+date: 13 Jan 2015
+
+purpose: stylesheet for xml booktree
+*/
+
+/* floats */
+figure {
+    display: block;
+    content: attr(source);
+    border: 1px solid;
+    margin: 5px;
+    padding: 3px;
+    background-color:lightgreen;
+}
+figure:before {
+    display:block;
+    content: "Figure " attr(number) ": " attr(caption);
+}
+figure:after {
+    display: block;
+    content: attr(source);
+    font-family: monospace;
+}
+
+/* divisions */
+book {
+    display:block;
+    margin:10px;
+    background-color:lightblue;
+    font-family:verdana,helvetica,sans-serif;
+}
+book:before {
+    font-size: 150%;
+    content: attr(code) " " attr(title) " " attr(year)
+}
+book:after {
+    content: "The End"
+}
+chapter {
+    display:block;
+    border: 1px solid;
+    padding: 5px;
+    background-color:lightyellow;
+}
+chapter:before {
+    display:block;
+    font-size: 130%;
+    content: attr(number) ". " attr(title);
+    font-weight:bold;
+}
+
+/* lists */
+itemize {
+    display:block;
+    list-style: disc;
+    list-style-position: inside;
+}
+enumerate {
+    display:block;
+    counter-reset: Item;
+    list-style: decimal inside;
+}
+item {
+    display: list-item;
+}
+item:before {
+    counter-increment: Item;
+}
+
+/* exercises */
+theorem {
+    display:block;
+    border: 1px solid;
+    padding: 5px;
+    background-color:lightgray;
+}
+theorem:before {
+    display:block;
+    content: "Theorem " attr(number) " " attr(title);
+    font-weight:bold;
+}
+proof {
+    display:block;
+    border: 1px solid;
+    padding: 5px;
+    background-color:lightgray;
+}
+proof:before {
+    display:block;
+    content: "Proof ";
+    font-weight:bold;
+}
+
+/* exercises */
+exercise {
+    display:block;
+    border: 1px solid;
+    padding: 5px;
+    background-color:lightgreen;
+}
+exercise:before {
+    display:block;
+    content: "Exercise " attr(number) " " attr(title);
+    font-weight:bold;
+}
+questions {
+    display:block;
+    counter-reset: Question;
+    list-style: decimal inside;
+}
+questions:before {
+    display:block;
+    content: "Questions";
+    font-weight:bold;
+}
+question {
+    display: list-item;
+}
+parts {
+    display:block;
+    counter-reset: Part;
+    list-style: lower-alpha inside;
+}
+part {
+    display: list-item;
+    /* content: counter(list, lower-alpha) ") "; */
+    padding-left: 2em;
+}
+choices {
+    display:block;
+    counter-reset: Choice;
+    list-style: square inside;
+}
+choice {
+    display: list-item;
+    padding-left: 2em;
+}
+correctchoice {
+    display: list-item;
+    padding-left: 2em;
+}
+answer {
+    display:block;
+    background-color:lightpink;
+    /* text-indent: 2em; */
+	padding: 5px;
+    /* display:none; */
+}
+answer:before {
+    display:block;
+    content: "Answer";
+    font-weight:bold;
+}
+
+/* mathjax blocks */
+jax {
+    display:block;
+    /* background-color:lightyellow; */
+}
+
+

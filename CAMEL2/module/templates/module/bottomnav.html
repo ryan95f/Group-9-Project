@@ -1,0 +1,6 @@
+{% with next=obj.get_next_same_type prev=obj.get_prev_same_type  %}
+
+    <span class="left">{% if prev %}<a href="{{ prev.get_pretty_url }}">&lt; {{ prev.number }}. {{ prev.title }}</a>{% endif %}</span>
+    <span class="right">{% if next %}<a href="{{ next.get_pretty_url }}">{{ next.number }}. {{ next.title }} &gt;</a>{% endif %}</span>
+
+{% endwith %}

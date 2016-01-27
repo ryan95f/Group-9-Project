@@ -1,0 +1,234 @@
+% !TEX root = main.tex
+%======================================================================
+\chapter{Probability}\label{chap:prob}
+%======================================================================
+
+%----------------------------------------------------------------------
+\section{Probability measures}
+%----------------------------------------------------------------------
+Probability is defined to be a \emph{function} that assigns numerical value to random events.
+
+\begin{definition}
+Let $\Omega$ be the sample space of some random experiment, and let $\mathcal{F}$ be a field of sets over $\Omega$. A \emph{probability measure} on $(\Omega,\mathcal{F})$ is a function 
+\[
+\begin{array}{rccl}
+	\prob:	& \mathcal{F}	& \to	& [0,1] \\[1ex]
+			& A				& \mapsto	& \prob(A)
+\end{array}
+\]
+such that $\prob(\Omega) = 1$, and for any countable collection of pairwise disjoint events $\{A_1,A_2,\ldots\}$,
+\[
+\prob\left(\bigcup_{i=1}^\infty A_i\right) = \sum_{i=1}^{\infty} \prob(A_i).
+\]
+The triple $(\Omega,\mathcal{F},\prob)$ is called a \emph{probability space}.
+\end{definition}
+
+\begin{remark}
+\bit
+\it The second property is called \emph{countable additivity}.
+\it The number $\prob(A)$ is called the \emph{probability} of event $A\in\mathcal{F}$.
+\eit
+\end{remark}
+
+% example: die
+\begin{example}
+Consider a random experiment in which a fair six-sided die is rolled once.
+\bit
+\it A suitable sample space for the experiment is $\Omega=\{1,2,3,4,5,6\}$.
+\it A suitable field of events for the experiment is the power set, $\mathcal{F} = \mathcal{P}(\Omega)$.
+\it Because the die is fair, a suitable probability measure is given by the function
+\[\begin{array}{rcl}
+\prob:	\mathcal{F} & \to 		& [0,1] \\
+		A			& \mapsto 	& \frac{1}{6}|A|, \qquad\text{where $|A|$ denotes the cardinality of $A$.}
+
+\end{array}\] 
+\eit
+
+\begin{tabular}{lcc}
+\underline{Event}				& \underline{Subset} & \underline{Probability} \\
+The outcome is the number $1$.	& $\{1\}$ & $\prob(A) = 1/6$\\
+The outcome is an even number.	& $\{2,4,6\}$  & $\prob(A) = 3/6$\\
+The outcome is even but does not exceed $3$.	& $A = \{2,4,6\}\cap\{1,2,3\}$  & $\prob(A) = 1/6$\\
+The outcome is not even			& $A = \Omega\setminus\{2,4,6\}$ & $\prob(A) = 3/6$
+\end{tabular}
+\end{example}
+
+% example
+\begin{example}
+A fair six-sided die is rolled once. If we are only interested in whether the outcome is an odd or even number, we can take
+\bit
+\it Sample space: $\Omega=\{1,2,3,4,5,6\}$,
+\it Events: $\mathcal{F} = \big\{\emptyset,\{1,3,5\},\{2,4,6\},\{1,2,3,4,5,6\}\big\}$
+\it Probability measure: $\prob(\emptyset)=0$, $\prob(\{1,3,5\})=1/2$, $\prob(\{2,4,6\})=1/2$, $\prob(\{1,2,3,4,5,6\})=1$.
+\eit
+\end{example}
+
+%----------------------------------------------------------------------
+\section{Properties of probability measures}
+%----------------------------------------------------------------------
+
+% theorem: properties of probability measures
+\begin{theorem}[Properties of probability measures]\label{thm:properties_of_probability_measures}
+Let $(\Omega,\mathcal{F},\prob)$ be a probability space, and let $A,B\in\mathcal{F}$. 
+\ben
+\it Complementarity: $\prob(A^c) = 1 - \prob(A)$.
+\it $\prob(\emptyset) = 0$,
+\it Monotonicity: if $A\subseteq B$ then $\prob(A)\leq \prob(B)$.
+\it Addition rule: $\prob(A\cup B) = \prob(A) + \prob(B) - \prob(A\cap B)$.
+\een
+\end{theorem}
+
+% proof
+\begin{proof}
+\ben
+\it % complementarity
+Since $A\cup A^c=\Omega$ is a disjoint union and $\prob(\Omega)=1$, it follows by additivity that 
+\[
+1 = \prob(\Omega) = \prob(A\cup A^c) = \prob(A) + \prob(A^c).
+\]
+\it % emptyset
+Since $\emptyset=\Omega^c$ and $\prob(\Omega)=1$, it follows by complemenarity that
+\[
+\prob(\emptyset) = \prob(\Omega^c) = 1 - \prob(\Omega) = 1 - 1 = 0.
+\]
+\it % monotonicity
+Let $A\subseteq B$ and let us write $B = A\cup (B\setminus A)$. 
+
+Since $A$ and $B\setminus A$ are disjoint sets, it follows by additivity that
+\[
+\prob(B) = \prob\big[A\cup (B\setminus A)\big] = \prob(A) + \prob(B\setminus A).
+\]
+Hence, because $\prob(B\setminus A)\geq 0$, it follows that $\prob(B) \geq \prob(A)$.
+
+\it % addition rule
+Let us write:
+\bit
+\it $A\cup B = (A\setminus B) \cup (B\setminus A) \cup (A\cap B)$
+\it $A 		 = (A\setminus B) + (A\cap B)$
+\it $B 		 = (B\setminus A) + (A\cap B)$
+\eit
+These are disjoint unions, so by additivity, 
+\bit
+\it $\prob(A\cup B) = \prob(A\setminus B) + \prob(B\setminus A) + \prob(A\cap B)$
+\it $\prob(A) 		= \prob(A\setminus B) + \prob(A\cap B)$
+\it $\prob(B)		= \prob(B\setminus A) + \prob(A\cap B)$
+\eit
+Hence $\prob(A\cup B) = \prob(A) + \prob(B) - \prob(A\cap B)$, as required.
+\een
+\end{proof}
+
+
+%----------------------------------------------------------------------
+\section{Exercises}
+%----------------------------------------------------------------------
+
+\begin{exercise}
+\begin{questions}
+\question % bookwork
+What does it mean to say that $\prob$ is a probability measure over $(\Omega,\mathcal{F})$?
+\begin{answer}
+Bookwork. The symbols $\Omega$ (sample space) and $\mathcal{F}$ (field of events) should be defined before giving the definition of $\prob$.
+\end{answer}
+\question % subadditivity
+Show that $\prob(A\cup B) \leq \prob(A)+\prob(B)$ for any two events $A$ and $B$.
+\begin{answer}
+First we express $A$, $B$ and $A\cup B$ as disjoint unions: 
+\begin{align*}
+A		& = (A\cap B^c)\cup (A\cap B) \\ 
+B		& = (B\cap A^c)\cup (A\cap B) \\ 
+A\cup B	& = (A\cap B^c)\cup (A\cap B) \cup (B\cap A^c)
+\end{align*}
+By the additivity property of probability measures,
+\begin{align*}
+\prob(A) 		& = \prob(A\cap B^c) + \prob(A\cap B) \\
+\prob(B) 		& = \prob(B\cap A^c) + \prob(A\cap B) \\
+\prob(A\cup B) 	& = \prob(A\cap B^c) + \prob(A\cap B) + \prob(B\cap A^c) \\
+\end{align*}
+From here, it follows that $\prob(A\cup B)=\prob(A)+\prob(B)-\prob(A\cap B)$, and because $\prob(A\cap B)\geq 0$ for any two events $A,B\mathcal{F}$, we see that $\prob(A\cup B) \leq \prob(A)+\prob(B)$, as required.
+\end{answer}
+\question % numerical
+Let $A$ and $B$ be events such that $\prob(A)=0.4$, $\prob(B)=0.5$ and $\prob(A~\cup~B)=0.8$.\par
+Compute the following probabilities:
+\begin{parts}
+\part 
+$\prob(A\cap B)$.
+\begin{answer}
+$\prob(A\cap B) = \prob(A) + \prob(B) - \prob(A\cup B) = 0.4 + 0.5 - 0.8 = 0.1$.
+\end{answer}
+\part 
+$\prob(A\cup B^c)$.
+\begin{answer}
+$\prob(A\cup B^c) = 1 - \prob(B\setminus A) = 1 - \big[\prob(B)-\prob(A\cap B)\big] = 1 - 0.4 = 0.6$.
+\end{answer}
+\end{parts}
+\end{questions}
+\end{exercise}
+
+
+%----------------------------------------------------------------------
+\section{Assignments}
+%----------------------------------------------------------------------
+%---------------------------------------
+\begin{singlechoice}\label{sc:beatles}
+\begin{questions} 
+\question Who is the odd one out?  
+	\begin{choices} 
+	\choice John %\begin{feedback} Wrong \end{feedback}
+	\choice Paul
+	\choice George
+	\correctchoice Bingo
+	\end{choices} 
+\end{questions}
+\end{singlechoice}
+%----------------------------------------
+
+%---------------------------------------
+\begin{multiplechoice}\label{mc:basic_arithmetic}
+\begin{questions} 
+\question Which of the following statements are correct?  
+	\begin{checkboxes} 
+	\correctchoice $1 + 1 = 2$
+	\choice $1 + 1 = 3$
+	\choice $2 + 2 = 3$
+	\correctchoice $2 +2 = 4$
+	\end{checkboxes} 
+\end{questions}
+\end{multiplechoice}
+%----------------------------------------
+
+\begin{homework}\label{hw:probability}
+\begin{questions}
+\question
+Let $A$ and $B$ be random events, with probabilities $\prob(A) = 1/2$ and $\prob(B) = 3/4$. 
+\begin{parts}
+\part 
+Show that $\displaystyle\frac{1}{4}\leq \prob(A\cap B)\leq\frac{1}{2}$.
+\begin{answer}
+$A\cap B\subseteq A$ and $A\cap B\subseteq B$ means that:
+\[
+\prob(A\cap B) \leq \min\big\{\prob(A),\prob(B)\big\} = \displaystyle\frac{1}{2}.
+\]
+Furthermore, $\prob(A\cup B)\leq 1$ means that:
+\[
+\prob(A\cap B) = \prob(A)+\prob(B)-\prob(A\cup B) \geq \displaystyle\frac{1}{4}.
+\]
+\end{answer}
+\part 
+Show that $\displaystyle\frac{3}{4}\leq \prob(A\cup B)\leq 1$.
+\begin{answer}
+$A\subseteq A\cup B$ and $B\subseteq A\cup B$ means that:
+\[
+\prob(A\cup B) \geq \max\big[\prob(A),\prob(B)\big] = \displaystyle\frac{3}{4}.
+\]
+Furthermore, $\prob(A\cup B)\leq 1$ means that:
+\[
+\prob(A\cup B) \leq \min\{1,\prob(A)+\prob(B)\} = 1.
+\]
+\end{answer}
+\end{parts}
+\end{questions}
+\end{homework}
+
+%======================================================================
+\endinput
+%======================================================================

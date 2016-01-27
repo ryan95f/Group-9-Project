@@ -1,0 +1,17 @@
+<div>
+<span style="float:left">
+&larr; <a href="{% url 'module:chapter_detail' chapter.pk %}">Chapter {{ chapter.number}}. {{ chapter.title }}</a>
+</span>
+<span style="float:right">
+<a href="{% url 'module:chapter_selected' 'theorem' chapter.pk %}">Theorems</a>
+|
+<a href="{% url 'module:chapter_selected' 'example' chapter.pk %}">Examples</a>
+|
+<a href="{% url 'module:chapter_selected' 'exercise' chapter.pk %}">Exercises</a>
+|
+<a href="{% url 'module:chapter_selected' 'test' chapter.pk %}">Tests</a>
+|
+<a href="{% url 'module:chapter_selected' 'homework' chapter.pk %}">Homework</a>
+</span>
+</div>
+<br />
