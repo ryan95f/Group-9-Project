@@ -18,7 +18,7 @@ CAMEL E - Learning System developed Group 9
 ```sh
  $ brew install libtiff libjpeg webp little-cms2
 ```
-[Get Brew from here!](http://brew.sh)
+** Don't have brew installed: **[Get Brew from here!](http://brew.sh)
 ### Set up datebase & create admin
 ```sh
  py manage.py migrate
