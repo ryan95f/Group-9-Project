@@ -123,34 +123,36 @@ class TexBookParser(object):
         We leave all detection of the start/end of nodes to the nodes themselves, this allows us to extend
         the parser without further complicating this method. It also opens the door to being able to parse
         more complex LaTeX files as we can abandon the use of Regex, allowing us correctly detect
-        commands - such as a italic text within a level node's title argument.
+        commands - such as a italic plain-text within a level node's title argument.
 
         The logic for this method is fairly simple:
         We go through the inputted LaTeX, checking for matches with each node configured for use in the
-        parser. These positive matches are then sorted in order of appearance.
+        parser. These positive matches are then sorted into ascending order of appearance.
 
-        Next, we begin to iterate over the matches. During each iteration, we work out the parent of the
-        current match. This is done using a while loop and a stack. Each time we pop out a level, we be
-        sure to create a new Text node and fill its content with all text between the current node and the
-        last match.
+        Next, we begin to iterate over our captured matches. During each iteration, we work out the parent of
+        the current match. This is done using a while loop and a stack. Each time we pop out a level, we create
+        a new Text node and fill its content with all the plain-text between the current node and our last match.
 
-        We now check that the parent is allowed children. We also check that the current match does not
-        occur prior to the start of the parent. The reason for this is described later on...
+        We now check that the parent is allowed children. We also then check that the current match does not
+        occur prior to the start of the parent. We shall describe the reason for this later on...
 
-        We now create an instance of the match's node and recurse through its arguments, making sure that
-        they're valid. If the current argument is valid, we make a recursive call and parse the arguments
-        content string into this method - giving us a Python object representation. We make these objects
-        children of a new Argument node, which itself is to be made a child of the current node.
+        We now create an instance of the node for the current match and, if applicable, we iterate through the
+        match's arguments, making sure that they're valid. If the current argument is valid, we make a recursive
+        call and parse the current argument's content string into this method - returning a Python object representation.
+        We make these objects children of a new Argument node, which itself is to be made a child of the current node.
 
         Similar to earlier in the stack, we create a new Text node and fill its content with everything
         since the last match, or since the end of the most recently popped stack node.
 
-        If the stack is empty, the new Text node is of the highest level and should be appended to the
-        list of children. Otherwise, it should be made a child of the item sitting ontop of the stack.
-        We now add the current match's node using the same reasoning and push it onto the stack.
+        We then perform a peak onto the stack. If the stack is empty, the newly created Text node is to be
+        appended to the children list. Otherwise, if the stack is not empty, the newly created Text node is
+        to be attached as a child to whatever node is currently at the top of the stack.
+
+        We now repeat the above reasoning with the instance of the node for the current match and then push
+        that node onto the stack.
 
         Once we've iterated over each match, we pop everything off the stack creating Text nodes for
-        any remaining text. When the stack is empty, we create a Text node for all - if any - text left
+        any remaining text. When the stack is empty, we create a Text node for all - if any - plain-text left
         unprocessed.
         """
         children = []
