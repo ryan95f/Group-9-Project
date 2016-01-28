@@ -1,5 +1,7 @@
 from collections import namedtuple
 
+# This is the object that is returned when a node's 'to_html' method is called.
+NodeHTML = namedtuple("NodeHTML", "prefix_text process_children suffix_text")
 
 class LeafNode(object):
     """An abstract class which represents a leaf node on a tree."""
@@ -37,6 +39,11 @@ class LeafNode(object):
         """
         return []
 
+    @classmethod
+    def to_html(cls, arguments=None):
+        """Called when we want to convert this node into HTML. Returns an instance of 'NodeHTML'."""
+        return NodeHTML(prefix_text=None, process_children=False, suffix_text=None)
+
 
 class Node(LeafNode):
     """
@@ -71,6 +78,17 @@ class Node(LeafNode):
             arguments += "]"
         return "%s(%s)" % (self.__class__.__name__, arguments)
 
+    @classmethod
+    def validate_arguments(cls, arguments):
+        """Returns if the given arguments are valid."""
+        arguments = arguments.strip()
+        return arguments != ""
+
+    @classmethod
+    def to_html(cls, arguments=None):
+        """Called when we want to convert this node into HTML. Returns an instance of 'NodeHTML'."""
+        return NodeHTML(prefix_text=None, process_children=True, suffix_text=None)
+
     def add_children(self, children):
         """Adds a list of children to the node."""
         if not isinstance(self.children, list):
@@ -86,12 +104,6 @@ class Node(LeafNode):
         """Adds a single child to the node."""
         self.add_children([child])
 
-    @classmethod
-    def validate_arguments(cls, arguments):
-        """Returns if the given arguments are valid."""
-        arguments = arguments.strip()
-        return arguments != ""
-
 
 # Not the most ideal way of implementing Node arguments,
 # but it will allow for our arguments to have children nodes.
@@ -105,14 +117,14 @@ class ArgumentNode(Node):
         super(ArgumentNode, self).__init__(children=children)
 
 
-class Text(LeafNode):
+class TextNode(LeafNode):
     """A leaf node which just holds some plain text."""
 
     the_type = "text"
 
     def __init__(self, content):
         """Initialise the text leaf node."""
-        super(Text, self).__init__()
+        super(TextNode, self).__init__()
         self.set_content(content)
 
     def __str__(self):
