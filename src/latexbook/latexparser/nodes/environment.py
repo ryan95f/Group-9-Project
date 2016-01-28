@@ -1,6 +1,6 @@
 import re
 
-from ..node import Node
+from .node import Node
 
 
 class EnvironmentNode(Node):

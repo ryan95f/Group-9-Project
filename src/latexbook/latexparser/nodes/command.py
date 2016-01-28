@@ -1,15 +1,15 @@
 import re
 
-from ..node import Node
+from .node import Node
 
 
-class Command(Node):
+class CommandNode(Node):
     """A node which gives some Text, or other commands, a semantic meaning."""
     the_type = "command"
 
     def __init__(self, children=None):
         """Initialise the command Node."""
-        super(Command, self).__init__(children=children)
+        super(CommandNode, self).__init__(children=children)
 
     @classmethod
     def get_start_regex(cls):
