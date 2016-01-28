@@ -1,0 +1,18 @@
+{% load mptt_tags %}
+{% load latex_html %}
+
+{% recursetree root_node %}
+	{% latex_node_to_html node as node_html %}
+
+	{% if node_html.prefix_text != None %}
+		{{ node_html.prefix_text | safe }}
+	{% endif %}
+
+	{% if not node.is_leaf_node and node_html.process_children %}
+		{{ children }}
+	{% endif %}
+
+	{% if node_html.suffix_text != None %}
+		{{ node_html.suffix_text | safe }}
+	{% endif %}
+{% endrecursetree %}
