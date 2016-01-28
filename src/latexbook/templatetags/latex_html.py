@@ -1,26 +1,28 @@
 from collections import namedtuple
 
 from django import template
+from django.conf import settings
 
 register = template.Library()
 
-NodeHTML = namedtuple("NodeHTML", "prefix_text process_children suffix_text")
-
 @register.assignment_tag
 def latex_node_to_html(node):
-	"""Converts a LaTeX node (from the database) into some HTML."""
-	the_node_html = NodeHTML(prefix_text="", process_children=True, suffix_text="")
+    """Converts a LaTeX node (from the database) into some HTML."""
+    node_object = settings.BOOKNODES.get_class(node.node_type)
 
-	if node.node_type == "text":
-		the_node_html = NodeHTML(
-			prefix_text = "<span>" + node.content,
-			process_children = False,  # Not strickly required as a text node will NEVER have children.
-			suffix_text = "</span>"
-		)
-	elif not node.is_leaf_node():
-		the_node_html = NodeHTML(
-			prefix_text = "<div class=" + node.node_type + ">",
-			process_children = True,
-			suffix_text = "</div>"
-		)
-	return the_node_html
+    # Check if the node is a 'text' BookNode.
+    if node.node_type == settings.BOOKNODES.text_node_id:
+        # Checks if this BookNode does actually have a One-to-One relation with TextNode.
+        # This should ALWAYS be True, otherwise something has gone wrong!
+        if hasattr(node, "text_node"):
+            text_node_content = node.text_node.content
+            the_node_html = node_object.to_html(text_node_content)
+
+    # Check that the node isn't an argument node (as the parent will handle their display).
+    elif node.node_type != settings.BOOKNODES.argument_node_id:
+        arguments = node.get_children().filter(node_type=settings.BOOKNODES.argument_node_id)
+        the_node_html = node_object.to_html(arguments)
+    else:
+        the_node_html = node_object.to_html()
+
+    return the_node_html
