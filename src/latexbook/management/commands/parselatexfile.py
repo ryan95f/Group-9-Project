@@ -22,12 +22,15 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        book_nodes = settings.BOOKNODES
+        if hasattr(settings, "BOOKNODES"):
+            book_nodes = settings.BOOKNODES
 
-        latex_file = options["latex_file"]
-        latex_document = latex_file.read()
+            latex_file = options["latex_file"]
+            latex_document = latex_file.read()
 
-        parser = TexBookParser(book_nodes)
-        book_node = parser.parse(latex_document)
+            parser = TexBookParser(book_nodes)
+            book_node = parser.parse(latex_document)
 
-        write_to_django_database(book_node)
+            write_to_django_database(book_node)
+        else:
+            raise CommandError("BOOKNODES could not be aquired from your settings!")
