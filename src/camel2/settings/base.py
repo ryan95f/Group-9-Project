@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     # Third-party applications
     'mptt',
     # Project applications
-    'latexbook'
+    'latexbook',
+    # Project core (glues everything together)
+    'camelcore',
 ]
 
 MIDDLEWARE_CLASSES = [

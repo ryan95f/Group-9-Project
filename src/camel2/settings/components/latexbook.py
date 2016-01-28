@@ -51,47 +51,47 @@ from latexbook.latexparser.nodebank import (
 )
 
 # Import all the nodes that we want the parser to utilise.
-from latexbook.latexparser.nodes.node import (
-    ArgumentNode, Text
+from camelcore.latexparser.nodes.node import (
+    ArgumentNode, TextNode
 )
 
-from latexbook.latexparser.nodes.levels import (
+from camelcore.latexparser.nodes.levels import (
     Book, Chapter, Section, Subsection
 )
 
-from latexbook.latexparser.nodes.environments.box import (
+from camelcore.latexparser.nodes.environments.box import (
     Proof, Verbatim, Center
 )
 
-from latexbook.latexparser.nodes.environments.float import (
+from camelcore.latexparser.nodes.environments.float import (
     Figure, Subfigure, Table, Subtable,
 )
 
-from latexbook.latexparser.nodes.environments.list import (
+from camelcore.latexparser.nodes.environments.list import (
     Itemize, Enumerate
 )
 
-from latexbook.latexparser.nodes.environments.mathmode import (
+from camelcore.latexparser.nodes.environments.mathmode import (
     Equation, EqnArray, Cases, Align, Array
 )
 
-from latexbook.latexparser.nodes.environments.theorem import (
+from camelcore.latexparser.nodes.environments.theorem import (
     Theorem, Lemma, Corollary, Definition, Remark, Example, Exercise
 )
 
-from latexbook.latexparser.nodes.commands.content import (
+from camelcore.latexparser.nodes.commands.content import (
     Image
 )
 
-from latexbook.latexparser.nodes.commands.reference import (
+from camelcore.latexparser.nodes.commands.reference import (
     Reference, Citation, Label
 )
 
-from latexbook.latexparser.nodes.commands.textstyles import (
+from camelcore.latexparser.nodes.commands.textstyles import (
     TextIt, TextBf, Underline, Emph
 )
 
-from latexbook.latexparser.nodes.commands.item import (
+from camelcore.latexparser.nodes.commands.item import (
     Item
 )
 
@@ -103,8 +103,8 @@ BOOKNODES.add_class(ArgumentNode)
 BOOKNODES.set_argument_node_id(ArgumentNode.get_id())
 
 # Add content text node.
-BOOKNODES.add_class(Text)
-BOOKNODES.set_text_node_id(Text.get_id())
+BOOKNODES.add_class(TextNode)
+BOOKNODES.set_text_node_id(TextNode.get_id())
 
 # Add level nodes.
 BOOKNODES.add_class(Book)
