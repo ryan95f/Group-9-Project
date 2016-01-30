@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'latexbook',
     # Project core (glues everything together)
     'camelcore',
+    # user login and logout section
+    'user',
 ]
 
 MIDDLEWARE_CLASSES = [

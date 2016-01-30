@@ -19,5 +19,12 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    
+    # go to core to obtain index
+    url(r'^$', 'camelcore.views.index', name='index'),
+
+    # user app
+    url(r'^user/', include('user.urls', namespace="user")),
+
     url(r"^latexbook/", include("latexbook.urls")),
 ]

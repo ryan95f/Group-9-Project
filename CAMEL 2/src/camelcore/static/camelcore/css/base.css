@@ -1,0 +1,738 @@
+/*
+base.css for camel project
+
+Layout is as follows
+style, scripts
+title
+container
+	header
+		logo, banner, global-nav
+	breadcrumbs
+	columnwrap
+		content-main
+			
+			browse-horizontal
+			content-secondary
+		sidebar
+	footer
+
+
+
+*/
+
+/* for CaMeL logo - rips off LaTeX */
+.textlogo {
+  font-family: Times, "Times New Roman", serif;	
+  letter-spacing: 1.5px;
+}
+
+.textlogo sup {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.75em;
+  vertical-align: 0.25em;
+  margin-left: -0.32em;
+  margin-right: -0.19em;
+}
+
+.textlogo sub {
+  text-transform: uppercase;
+  vertical-align: -0.5ex;
+  margin-left: -0.15em;
+  margin-right: -0.15em;
+  font-size: 1em;
+}
+
+/* blocks and boxes */
+div.blocktitle {
+  	font-size: 90%;
+	text-align: left;
+	font-weight: bold;
+} 
+p.hidebox_title {
+	font-weight: bold;
+	text-align: left;
+  	font-size: 75%;
+	margin-right:3px;
+	margin-top:0px;
+    margin-bottom:0px;   
+} 
+/* show/hide */
+div.answer, div.solution {
+    display: hidden;
+	cursor: pointer;
+	/* background:lightyellow; */
+	background:lightyellow;
+    border:1px solid #000;
+	padding:3px;
+}
+p.answer_title, p.hidebox_title {
+	text-align: left;
+  	font-size: 75%;
+	margin-right:3px;
+	margin-top:0px;
+    margin-bottom:0px;
+    
+} 
+
+div.choicesbox, div.incorrect_choicesbox, div.correct_choicesbox {
+	background:WhiteSmoke;
+    border:1px solid #000;
+	padding:0px
+}
+
+div.incorrect_choicesbox {
+	background:tomato;
+}
+
+div.correct_choicesbox {
+	background:lightgreen;
+}
+
+div.choicebox, div.incorrect_choicebox, div.correct_choicebox {
+    border:1px solid #000;
+	padding:0px
+}
+
+div.answerbox {
+    display: hidden;
+	cursor: pointer;
+	background:MistyRose;
+    border:1px solid #000;
+	padding:0px
+}
+div.editbox {
+    border:1px solid #000;
+	padding:2px
+}
+div.previewbox {
+    display: hidden;
+	cursor: pointer;
+	background:lightgrey;
+    border:1px solid #000;
+	padding:2px
+}
+p.answerbox_title {
+	text-align: left;
+  	font-size: 75%;
+	margin-right:3px;
+	margin-top:0px;
+    margin-bottom:0px;
+    
+} 
+div.answerbox a:link {
+    color:black; 
+    text-decoration: none;
+}
+div.answerbox a:hover {
+    color:black; 
+    text-decoration: underline;
+}
+
+
+div.inner_hidebox {
+    background-color:#FFFFE0;
+    display: hidden;
+	padding: 5px;
+}
+
+p.answerbuttons {
+    border:1px solid #000;
+	align:right;
+}
+
+/*
+div.inner_solution {
+    background-color:#FFFFE0;
+    display: hidden;
+	padding: 5px;
+}
+*/
+div.step {
+    display: hidden;
+	cursor: pointer;
+}
+
+div.inner_step {
+    background-color:#E9F9ED;
+	border-style:solid;
+	border-width:1px; 
+    display: hidden;
+	padding: 5px;
+}
+
+.visible > div {
+  display: block;
+}
+
+.hidden > div {
+  display: none
+}
+
+#maintitle {
+    border:1px solid #000;
+  	font-size:175%;
+	text-align:center;
+    margin:0;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+/* spacing between blocks */
+p + p, li + li, div + div { 
+    margin-top: 10px;
+}
+
+/* prevent macros from flashing up at the start */
+div.macros {
+	display: none;
+}
+
+/* chapter and section headers */
+h1.section {
+	padding:0px;
+  	font-size:150%;
+}
+/* monospace font (for code blocks) */
+.mono {
+	text-align:		left;
+  	font-family: 	monospace;
+  	white-space: 	pre;
+  	font-size: 		125%;
+	letter-spacing:	2px;
+	visibility: 	visible;
+    position: 		absolute;
+}
+
+table.chapters {
+	border-spacing:25px 0px;
+}
+table.tabular {
+	border-collapse: collapse;
+    margin-left:auto; 
+    margin-right:auto;
+}
+table.tabular td {
+    border:1px solid #000;
+	padding:5px;
+}
+table.exercises td {
+    border:1px solid #000;
+}
+table.exercises {
+    border:1px solid #000;
+}
+/* styles for latex blocks */
+div.theorem, div.lemma, div.proof, div.remark, div.definition, div.homework, div.singlechoice, div.multiplechoice, div.example, div.exercise, div.question, div.question-block, div.answerbox {
+    border:1px solid #000;
+	padding:3px;
+	
+}
+
+div.latextable {
+    border:1px solid #000;
+	padding:3px;
+	background:WhiteSmoke;
+}
+
+
+/* styles for hideboxes */
+div.proof, div.answer, div.solution {
+    border:1px solid #000;
+	padding:1px;
+	padding-left:5px;
+	
+}
+
+ol.questions {
+}
+
+ol.parts {
+	list-style-type:lower-alpha;
+}
+
+ol.subparts {
+	list-style-type:lower-roman;
+}
+
+ol.choices {
+	list-style-type:upper-alpha;
+}
+
+li.question {
+    border:1px solid #000;
+	padding:3px;
+	background:MistyRose;
+}
+div.theorem {
+	background:MistyRose;
+}
+div.lemma {
+	background:MistyRose;
+}
+div.proof {
+	background:lightyellow;
+}
+div.remark {
+	background:lavenderblush;
+}
+div.definition {
+	background:lavender;
+}
+div.example {
+	background:WhiteSmoke;
+}
+div.homework {
+	background:pink;
+	padding:5px;
+}
+div.singlechoice, div.multiplechoice {
+	background:lightblue;
+	padding:5px;
+}
+div.solution {
+	background:antiquewhite;
+}
+div.exercise {
+	background:lightblue;
+}
+div.question-block {
+	background:lightblue;
+}
+div.question {
+	background:lightyellow;
+}
+div.answer {
+	background:antiquewhite;
+}
+/*
+div.answerbox {
+	background:white;
+}
+*/
+/* figures */
+div.figure {
+    border:1px solid #000;
+	padding:3px;
+	background:WhiteSmoke;
+}
+/*
+div.solution {
+	background:lightyellow;
+    border:1px solid #000;
+	padding:3px;
+}
+*/
+
+/* bibliography */
+ul.citation {
+    list-style-type: none;
+}
+li.title {
+	font-style: italic;
+}
+li.author {
+	text-decoration: underline;
+}
+
+/* body */
+body {
+    margin:0;
+    padding:0;
+	background:fff;
+}
+body, th, td {
+    font:12px/1.4em Verdana,sans-serif;
+}
+
+/** BLOCKS ***/
+
+/* container */
+#container {
+	margin-top: 0;
+	margin-left: auto;
+    margin-right: auto;
+    position:relative;
+    /* min-width:55em;
+    max-width:100em; */
+	min-width:768px;
+	max-width:1024px;
+	/* background:rgba(78,180,247,1.00); */
+	float:top;
+}
+
+/* header */
+#header {
+    position:relative;
+    height:55px;
+	background:#D7D9F7;
+	border-left:1px solid #000;
+	border-right:1px solid #000;
+	border-bottom:1px solid #000;
+}
+#header h1#logo {
+    margin:0;
+    width:100px;
+    height:40px;
+    position:absolute;
+    bottom:20px;
+    left:10px;
+}
+#header h1#banner {
+    margin:5;
+    position:absolute;
+    bottom:2px;
+    left:70px;
+}
+
+/* global navigation */
+#nav-global {
+    position:absolute;
+    margin:0;
+    bottom:0;
+    right:0;
+    font-family:"Trebuchet MS",sans-serif;
+    white-space:nowrap;
+	height:60px;
+}
+#nav-global li {
+    display:block;
+    float:left;
+    list-style-type:none;
+    margin:0;
+    padding:0;
+}
+#nav-global a {
+    display:block;
+    float:left;
+    padding:30px 16px 10px 16px;
+	background:d7d9f7;
+}
+
+/* breadcrumbs */
+#breadcrumbs {
+	font:italic 90%/1.2em "Trebuchet MS",sans-serif;
+    line-height:15px;
+    border:1px solid #000;
+}
+
+/* columnwrap: contains main-column and sidebar */
+#columnwrap {
+    background:#4c50cb;
+    padding-bottom:10px;
+    display: block;
+    /* border:1px solid #000; */
+    /* border-right:1px solid #000; */
+    border:1px solid #000;
+}
+#columnwrap:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+/* content-main */
+#content-main {
+    width:80%;
+    float:left;
+    padding-bottom:10px;
+    border-bottom:1px solid #000;
+}
+#content-main * {
+    margin-left:22px;
+    margin-right:24px;
+}
+#content-main * * {
+    margin-left:0;
+    margin-right:0;
+}
+
+/* sidebar */
+.sidebar {
+    width:20%;
+    float:right;
+    font-size:92%;
+/*
+	border-top:1px solid #000;
+    border-left:1px solid #000;
+    border-bottom:1px solid #000;
+*/
+}
+
+.sidebar * {
+    margin-left:14px;
+    margin-right:14px;
+}
+.sidebar * * {
+    margin-left:0;
+    margin-right:0;
+}
+
+/* content-secondary */
+#content-secondary {
+    clear:both;
+    margin-left:0;
+    margin-right:0;
+    margin-bottom:-10px;
+    padding:10px 24px;
+    border-top:1px solid #000;
+    border-right:1px solid #000;
+
+}
+
+/* horizontal browse */
+#browse-horizontal {
+    margin:1.5em 0 0 0;
+    padding:0.25em 1em 0.25em 1em; 
+    overflow:hidden;
+	font:italic 90%/1.2em "Trebuchet MS",sans-serif;
+    line-height:10px;
+	display:block;
+    border-top:1px solid #000;
+    border-right:1px solid #000;
+    border-bottom:1px solid #000;
+	vertical-align:center;
+/*
+	float: bottom;
+*/
+}
+#browse-horizontal .left {
+	float:left;
+}
+/*
+#browse-horizontal .middle {
+	float: right;
+	position: relative;
+ 	right: 50%;
+ 	text-align: left;
+}
+*/
+#browse-horizontal .right {
+    float:right;
+}
+
+/* footer */
+#footer {
+    clear:both;
+    padding:10px 20px;
+    font-size:90%;
+}
+
+/*** STYLES ***/
+
+/* headings */
+h1,h2,h3,h4 {
+    margin-top:.8em;
+    font-family:"Trebuchet MS",sans-serif;
+    font-weight:bold;
+}
+h1 {
+    font-size:160%;
+    margin-top:1.0em;
+    margin-bottom:.5em;
+    line-height:1.1em;
+}
+h2 {
+    font-size:140%;
+    margin-top:1.5em;
+    margin-bottom:.5em;
+    line-height:1.2em;
+}
+h3 {
+    font-size:120%;
+    margin-top:1.5em;
+    margin-bottom:.5em;
+}
+h4 {
+    font-size:110%;
+    font-weight:bold;
+    margin-bottom:-2px;
+    margin-top:1.2em;
+}
+h5 {
+    font-size:1em;
+    font-weight:bold;
+    margin-top:1.5em;
+    margin-bottom:3px;
+}
+p, ul, dl {
+    margin-top:.6em;
+    margin-bottom:.8em;
+}
+hr {
+	color:black;
+    height:2px;
+    border:1;
+}
+ul.toc {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+ul {
+    padding-left:2em;
+}
+ol {
+    padding-left:30px;
+}
+
+/* blockquotes in sidebar */
+.sidebar blockquote {
+    margin-top:1.5em;
+    margin-bottom:1.5em;
+}
+.sidebar blockquote p {
+    font:italic 175%/1.2em "Trebuchet MS",sans-serif;
+}
+.sidebar blockquote cite {
+    display:block;
+    font-style:normal;
+    line-height:1.2em;
+    margin-top:-.8em;
+}
+
+/**************************************************
+CU COLOURS
+
+#A60514     red
+#D7D9F7     lilac
+#4C50CB     puce
+
+#E9F9ED		palegreen
+#FFFFE0		paleyellow
+#E6EDF5		palemauve
+
+#6AA7EA     nice blue
+
+***************************************************/
+
+/* content blocks */
+#container {
+	background-color:#e9f9ed;
+}
+body {
+	/*background:#FFFFE0;*/
+	background:#e9f9ed;
+}
+#breadcrumbs {
+    background:#D7D9F7;
+}
+#columnwrap {
+    background:#fff;
+}
+#content-main {
+	background:white; 
+    color:black;
+}
+.sidebar {
+    background-color:#D7D9F7;
+	color:black;
+}
+#content-secondary {
+    background:#D7D9F7;
+    color:black;
+}
+#browse-horizontal {
+    background:#D7D9F7;
+    color:black;
+}
+
+/* links */
+a:link, a:visited { 
+    color:#a60514; 
+    text-decoration: none;
+}
+#nav-global a {
+    background:#D7D9F7; /* same as header background */
+}
+#content-main a:link, #content-main a:visited {
+    color:#a60514;
+    text-decoration:underline;
+}
+#content-secondary a:link, #content-secondary a:visited {
+    color:#a60514;
+    text-decoration:none;
+}
+#browse-horizontal a:link, #browse-horizontal a:visited, #content-related a:link, #content-related a:visited {
+    color:#a60514;
+    text-decoration:none;
+}
+
+/* hover */
+a:hover {
+    color:#4c50cb; 
+    text-decoration: none;
+}
+#nav-global a:hover {
+    color:#4c50cb;
+}
+#content-main a:hover {
+    color:blue;
+    text-decoration:none;
+}
+#content-main a:hover {
+    color:black;
+    text-decoration:none;
+}
+#content-secondary a:hover {
+    background:none;
+    color:#4c50cb;
+}
+#content-related a:hover, #browse-horizontal a:hover {
+    background:none;
+    color:#4c50cb;
+}
+#footer a:hover {
+    color:#4c50cb;
+    text-decorationtion:none;
+}
+
+/* commaon  */
+h1,h2,h3,h4 {
+    color:black;
+}
+hr {
+	color:black;
+    height:2px;
+    border:0;
+}
+
+/* content-main */
+#content-main h3 {
+/*	background:#E6EDF5F5; /* palemauve */
+    color:black;
+}
+#content-main h2 {
+/*	background:#E9F9ED; /* palegreen */
+    color:black;
+}
+#content-main h1 {
+/*	background:#FFFFE0; /* paleyellow */
+    color:black;
+}
+
+/* content-secondary */
+#content-secondary h2, #content-secondary h3 {
+    color:black;
+}
+
+/* sidebar */
+.sidebar h2, .sidebar h3 {
+    color:black;
+}
+.sidebar blockquote p {
+    color:#94da3a;
+}
+.sidebar blockquote cite {
+    color:#94da3a;
+}
+
+/* footer */
+#footer {
+    color:#487858;
+}
+
+
+
