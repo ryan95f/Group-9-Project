@@ -1,0 +1,22 @@
+{% extends "camelcore/base.html" %}
+{% load static %}
+
+{% block title %}
+	Cardiff Maths e-Learning
+{% endblock %}
+
+
+{% block content-main %}
+<div>
+	{% if modules|length > 0 %}
+	<h1>Modules Available</h1>
+		{% for mo in modules %}
+			<!-- Test URL Provided -->
+			<a href="/module/">{{ mo.code }} - {{ mo.title }}</a>
+		{% endfor %}
+	{% else %}
+		<h1>No Modules Available</h1>
+	{% endif %}
+</div>
+
+{% endblock %}

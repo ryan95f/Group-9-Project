@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'camelcore',
     # user login and logout section
     'user',
+    # module section of application
+    'module',
 ]
 
 MIDDLEWARE_CLASSES = [
