@@ -12,20 +12,13 @@
 	{% else %}
 		<a href="{% url 'camelcore.views.index' %}">home</a>
 	{% endif %}
-	<span> > </span> <a href="{% url 'module:module_index' %}">Modules</a>
+	<span> > </span><a href="{% url 'module:module_index' %}">Modules</a>
+	<span> > </span><a href="{% url 'module:module_detail' module.pk %}">Modules</a>
 {% endblock %}
-
 
 {% block content-main %}
 <div>
-	{% if modules|length > 0 %}
-	<h1>Modules Available</h1>
-		{% for mo in modules %}
-			<a href="{% url 'module:module_detail' mo.pk %}">{{ mo.code }} - {{ mo.title }}</a>
-		{% endfor %}
-	{% else %}
-		<h1>No Modules Available</h1>
-	{% endif %}
+	<h1>{{ module.code }}</h1>
+	<p>The module title is {{ module.title }}</p>
 </div>
-
 {% endblock %}
