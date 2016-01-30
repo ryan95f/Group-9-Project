@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Module, BookNode, TextNode, Book
+
+admin.site.register(Module)
+admin.site.register(BookNode)
+admin.site.register(TextNode)
+admin.site.register(Book)

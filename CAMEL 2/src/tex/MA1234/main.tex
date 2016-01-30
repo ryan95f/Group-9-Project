@@ -1,0 +1,61 @@
+%------------------------------------------------
+% main.tex - MA1500 2015-16
+%------------------------------------------------
+% uncomment one of these lines
+%\documentclass{camel}
+%\documentclass[blanks]{camel}
+\documentclass[answers]{camel}
+%\documentclass[screen]{camel}
+
+% mandatory settings
+\academicyear{2015-16}
+\modulecode{MA1234}
+\moduletitle{Probability Theory}
+\booknumber{1}
+
+% optional settings
+\booktitle{Lecture Notes}
+%\bookauthor{Dafydd Evans}
+%\bookdate{\today}
+\bookversion{v1.0}
+
+% figures
+\usepackage{graphicx}
+\graphicspath{{./figures/}}
+\DeclareGraphicsExtensions{.png,.pdf,.jpeg,.gif}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% naughty
+\def\it{\item}
+\def\bit{\begin{itemize}}
+\def\eit{\end{itemize}} 
+\def\ben{\begin{enumerate}}
+\def\een{\end{enumerate}}
+
+% macros
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\supp}{\text{supp}}
+\newcommand{\prob}{\mathbb{P}}
+\newcommand{\expe}{\mathbb{E}}
+\newcommand{\var}{\text{Var}}
+\newcommand{\cov}{\text{Cov}}
+\newcommand{\mode}{\text{Mode}}
+
+
+%------------------------------------------------
+\begin{document}
+\makefrontmatter
+%------------------------------------------------
+\input{01_sets}
+\input{02_events}
+\input{03_probability}
+% \input{04_conditional}
+% \input{05_independence}
+%------------------------------------------------
+\end{document}
+%------------------------------------------------
+
