@@ -7,7 +7,8 @@
 
 
 {% block breadcrumbs %}
-	&nbsp;<a href="{% url 'user:user_home' user.pk %}">{{ user.username }}</a>
+	&nbsp;
+	<a href="{% url 'user:user_home' user.pk %}">{{ user.username }}</a>
 {% endblock %}
 
 

@@ -6,14 +6,11 @@
 {% endblock %}
 
 {% block breadcrumbs %}
-	&nbsp;
-	{% if user.is_authenticated %}
-		<a href="{% url 'user:user_home' user.pk %}">{{ user.username }}</a>
-	{% else %}
-		<a href="{% url 'camelcore.views.index' %}">home</a>
-	{% endif %}
-	<span> > </span><a href="{% url 'module:module_index' %}">Modules</a>
-	<span> > </span><a href="{% url 'module:module_detail' module.pk %}">Modules</a>
+	{{ block.super }}
+	>
+	<a href="{% url 'module:module_index' %}">Modules</a>
+	>
+	<a href="{% url 'module:module_detail' module.pk %}">Modules</a>
 {% endblock %}
 
 {% block content-main %}
