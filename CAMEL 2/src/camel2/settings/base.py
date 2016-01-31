@@ -67,7 +67,7 @@ ROOT_URLCONF = 'camel2.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['camel2\\templates'],
+        'DIRS': ['camel2/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -133,7 +133,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    'camel2\\static'
+    'camel2/static'
 ]
 
 
