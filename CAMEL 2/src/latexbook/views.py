@@ -35,6 +35,5 @@ def show_test(request):
     return render(
         request,
         "latexbook/recurselatextree.html",
-        {"root_node": BookNode.objects.all()},
-        content_type="application/xhtml+xml"
+        {"root_node": BookNode.objects.all()}
     )
