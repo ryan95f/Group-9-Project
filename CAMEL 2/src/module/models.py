@@ -14,3 +14,7 @@ class Module(models.Model):
     # We use ManyToMany as a Book could be in multiple modules and a module can
     # have multiple books.
     books = models.ManyToManyField(Book)
+
+    def __str__(self):
+    	# String when object requested
+    	return self.code + " - " + self.title
