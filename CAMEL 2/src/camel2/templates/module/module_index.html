@@ -1,4 +1,4 @@
-{% extends "camelcore/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block title %}
@@ -18,7 +18,14 @@
 
 {% block content-main %}
 <div>
-	<h1>{{ book }}</h1>
+	{% if modules|length > 0 %}
+	<h1>Modules Available</h1>
+		{% for mo in modules %}
+			<a href="{% url 'module:module_detail' mo.pk %}">{{ mo.code }} - {{ mo.title }}</a>
+		{% endfor %}
+	{% else %}
+		<h1>No Modules Available</h1>
+	{% endif %}
 </div>
 
 {% endblock %}
