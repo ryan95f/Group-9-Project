@@ -23,6 +23,9 @@ class BookNode(MPTTModel):
     # The type of this node. e.g. Chapter, Section, Verbatim, TextIt, ArgumentNode etc...
     node_type = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.node_type
+
     class MPTTMeta:
         order_insertion_by = ["position"]
 
@@ -40,6 +43,9 @@ class TextNode(models.Model):
     # The actual plain-text for the node.
     content = models.TextField()
 
+    def __str__(self):
+        return self.content
+
 
 class Book(models.Model):
     """A book."""
@@ -54,3 +60,6 @@ class Book(models.Model):
         primary_key=True,
         related_name="book"
     )
+
+    def __str__(self):
+        return self.title + " by " + self.author
