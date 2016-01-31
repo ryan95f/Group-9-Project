@@ -29,5 +29,5 @@ urlpatterns = [
     # module app
     url(r'^module/', include('module.urls', namespace="module")),
 
-    url(r"^latexbook/", include("latexbook.urls")),
+    url(r"^latexbook/", include("latexbook.urls", namespace="latexbook")),
 ]
