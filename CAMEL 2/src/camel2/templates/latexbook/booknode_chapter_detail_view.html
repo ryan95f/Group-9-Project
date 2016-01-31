@@ -1,3 +1,35 @@
-<h1>{{ book }}</h1>
-<h2>Chapter {{ chapter }}</h2>
+{% extends "latexbook/booknode_detail_view.html" %}
+{% load staticfiles %}
+
+{% block title %}
+	Fucking Chapter
+{% endblock %}
+
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	>
+	<a href="{% url 'latexbook:latexbook_booknode_chapter_detail' book.pk chapter.pk %}">{{ chapter }}</a>
+{% endblock %}
+
+
+{% block content-main %}
+	<h1>{{ book }}</h1>
+	<h2>{{ chapter }}</h2>
+	<p>
+		There seems to be an issue regarding calling 'latexbook/recurselatextree.html' within a template context.
+		I suspect that this issue is identical to the issue encountered when trying to render a level node's arguments to HTML.
+	</p>
+	<p>
+		From my observations, Django MPTT can detect decendents correctly, but seems to remove the assosiation when we enter the template context.
+	</p>
+	{% comment "Read the above^^" %}
+	{% include 'latexbook/recurselatextree.html' with root_node=chapter %}
+	{% endcomment %}
+{% endblock %}
+
+
+
+
+
 
