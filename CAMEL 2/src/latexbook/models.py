@@ -41,24 +41,12 @@ class TextNode(models.Model):
     content = models.TextField()
 
 
-class Module(models.Model):
-    """A module."""
-
-    code = models.CharField(primary_key=True, max_length=6)
-
-    title = models.CharField(max_length=64)
-
-
 class Book(models.Model):
     """A book."""
     title = models.CharField(max_length=64)
 
     # Preferably, this would be a ManyToMany relation to teacher users.
     author = models.CharField(max_length=64)
-
-    # We use ManyToMany as a Book could be in multiple modules and a module can
-    # have multiple books.
-    module_codes = models.ManyToManyField(Module)
 
     book_root_node = models.OneToOneField(
         BookNode,
