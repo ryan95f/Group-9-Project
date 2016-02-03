@@ -49,17 +49,17 @@ class TextNode(models.Model):
 
 class Book(models.Model):
     """A book."""
-    title = models.CharField(max_length=64)
-
-    # Preferably, this would be a ManyToMany relation to teacher users.
-    author = models.CharField(max_length=64)
-
     book_root_node = models.OneToOneField(
         BookNode,
         on_delete=models.CASCADE,
         primary_key=True,
         related_name="book"
     )
+
+    title = models.CharField(max_length=64)
+
+    # Preferably, this would be a ManyToMany relation to teacher users.
+    author = models.CharField(max_length=64)
 
     def __str__(self):
         return self.title + " by " + self.author
