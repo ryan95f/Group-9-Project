@@ -26,24 +26,15 @@ class BookNodeChapterDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(BookNodeChapterDetailView, self).get_context_data(**kwargs)
         chapter = self.get_object()    
-        context["book"] = chapter.parent # == <class 'latexbook.models.BookNode'> not MPTT format
-        context["chapter"] = chapter # == <class 'latexbook.models.BookNode'> not the correct MPTT Format
-        context['root'] = BookNode.objects.all()
+        context["book"] = chapter.parent
+        # .get_descendants(include_self=True) used to make it recurse and
+        # ensure correct  object type (Do not change).
+        context["chapter"] = chapter.get_descendants(include_self=True)
         return context
 
 
 def show_test(request, module_pk):
     #http://127.0.0.1:8000/module/MA0000/test/ 
-
-    #print(type(BookNode.objects.get(pk=1))) == <class 'latexbook.models.BookNode'>
-    print(type(BookNode.objects.all())) # == <class 'mptt.querysets.TreeQuerySet'>( we want this )
-    # shows the effect 
-
-    # return render(
-    #     request,
-    #     "latexbook/recurselatextree.html",
-    #     {"root_node": BookNode.objects.get(pk=1)}
-    # )
 
     return render(
         request,
