@@ -39,7 +39,7 @@ class Chapter(OriginalChapter):
     @classmethod
     def to_html(cls, arguments=None):
         """Called when we want to convert this node into HTML. Returns an instance of 'NodeHTML'."""
-        title_nodes = arguments[0].get_children()
+        title_nodes = arguments[0].get_descendants()
         title_html = loader.render_to_string(
             template_name="latexbook/recurselatextree.html",
             context={"root_node": title_nodes}
