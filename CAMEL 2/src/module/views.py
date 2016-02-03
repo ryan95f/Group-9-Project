@@ -1,6 +1,4 @@
-from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render
-from django.core.urlresolvers import reverse
 
 from module.models import Module
 from latexbook.models import Book
