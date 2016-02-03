@@ -17,11 +17,14 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from camelcore.views import index as camelcore_index
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     
     # go to core to obtain index
-    url(r'^$', 'camelcore.views.index', name='index'),
+    url(r'^$', camelcore_index, name='index'),
 
     # user app
     url(r'^user/', include('user.urls', namespace="user")),
