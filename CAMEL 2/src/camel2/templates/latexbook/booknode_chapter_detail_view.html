@@ -26,6 +26,9 @@
 	{% comment "Read the above^^" %}
 	{% include 'latexbook/recurselatextree.html' with root_node=chapter %}
 	{% endcomment %}
+
+	{% include 'latexbook/recurselatextree.html' with root_node=root %}
+
 {% endblock %}
 
 
