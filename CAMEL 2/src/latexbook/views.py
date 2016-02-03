@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.template import RequestContext
 from django.views.generic.detail import DetailView
 
-from .models import BookNode
+from .models import BookNode, Book
 
 
 class BookNodeDetailView(DetailView):
@@ -12,9 +12,9 @@ class BookNodeDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(BookNodeDetailView, self).get_context_data(**kwargs)
-        book = self.get_object()
-        context["book"] = book
-        context["chapters"] = book.get_descendants().filter(node_type="chapter")
+        book_node = self.get_object()
+        context["book"] = book_node.book
+        context["chapters"] = book_node.get_descendants().filter(node_type="chapter")
         return context
 
 
