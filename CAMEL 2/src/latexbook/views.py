@@ -14,6 +14,7 @@ class BookNodeDetailView(DetailView):
         context = super(BookNodeDetailView, self).get_context_data(**kwargs)
         book_node = self.get_object()
         context["book"] = book_node.book
+        context["module_number"] = self.kwargs['module_pk']
         context["chapters"] = book_node.get_descendants().filter(node_type="chapter")
         return context
 
