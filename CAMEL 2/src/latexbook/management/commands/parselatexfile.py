@@ -2,9 +2,11 @@ from argparse import FileType
 
 from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
+from django.db import transaction
 
 from latexbook.latexparser.texbookparser import TexBookParser
 from latexbook.parseradapter import write_to_django_database
+from latexbook.models import BookNode
 
 class Command(BaseCommand):
     help = "Parses a LaTeX book file into a Django-friendly form."
@@ -31,6 +33,9 @@ class Command(BaseCommand):
             parser = TexBookParser(book_nodes)
             book_node = parser.parse(latex_document)
 
-            write_to_django_database(book_node)
+            with transaction.atomic():
+                with BookNode.objects.disable_mptt_updates():
+                    write_to_django_database(book_node)
+                BookNode.objects.rebuild()
         else:
             raise CommandError("BOOKNODES could not be aquired from your settings!")
