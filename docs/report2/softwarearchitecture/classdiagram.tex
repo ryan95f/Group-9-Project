@@ -9,5 +9,40 @@
 		Throughout the remainder of this section, we shall discuss our chosen designs for the system; providing the reasoning for our decisions.
 	
 	\subsubsection{Components}
+		We have decided to adopt Django's design-philosophy and have placed high emphasis on the reusability and "pluggability" of our system's components. These philosophies are very common amongst the open-source scene; due to the ease involved with integration into of projects.
+		
+		Django specifies that a project is split into many smaller applications, which are each decoupled from the project as a whole. These applications can be extended to work seamlessly with one another. After extensive study into the system's current state and goals, we have briefly identified several possible applications for our system.
+		
+		Below is a partially ambiguous description of the functionality for these applications; just to provide some insight as to their role. This shall later be extended upon...
+		
+		\begin{itemize}
+			\item \textbf{Core}:
+				\begin{itemize}
+					\item Unique to this system's project; not feasibly reusable.
+					\item Glues together the functionality of the other applications.
+					\item Provide our project with any trivial functionality - such as the view for an index page.
+				\end{itemize}
+
+			\item \textbf{LaTeXBook}:
+				\begin{itemize}
+					\item Contains a parser to read LaTeX files into a Python object tree representation.
+					\item An adapter capable of writing the LaTeX objects into a database.
+					\item Suitable forms that staff can use to submit their own LaTeX files.
+					\item Django views, and templates, capable of reading the LaTeX objects from the database and rendering them into HTML.
+				\end{itemize}
+				
+			\item \textbf{Module}:
+				\begin{itemize}
+					\item Modules which student users are enrolled into.
+					\item Staff users can manage modules.
+					\item A module consist of various learning materials which can be browsed.
+				\end{itemize} 
+
+			\item \textbf{Homework}:
+				\begin{itemize}
+					\item Provides tests that student users are able to take.
+					\item Staff users can analyse various aspects of the taken tests.
+				\end{itemize} 
+		\end{itemize}
 	
 	\subsubsection{Diagram}
