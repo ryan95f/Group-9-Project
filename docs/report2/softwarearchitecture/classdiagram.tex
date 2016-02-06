@@ -1,6 +1,6 @@
 \subsection{Class Diagram}
 	\subsubsection{Introduction}
-		In order to efficiently create a robust and manageable system, it is critical that we consider its individual components and identify how they should interact with one another. Doing so will aid us in avoiding writing code of poor quality; which would be difficult to follow and debug should something go wrong.
+		In order to efficiently create a robust and manageable system, it is critical that we consider its individual components and identify how they should interact with one-another. Doing so will aid us in avoiding writing code of poor quality; which would be difficult to follow and debug should something go wrong.
 		
 		The first step to be made is that of identifying the components of our system. This can sometimes be quite a grey area, as it is not always clear where the functionality of a single component should end. To help avoid restricting ourselves too heavily regarding the role of our system's components, we shall first deeply explore the various design patterns available to us and how they could be integrated to solve some of the problems proposed by the system.
 	
@@ -11,7 +11,7 @@
 	\subsubsection{Components}
 		We have decided to adopt Django's design-philosophy and have placed high emphasis on the reusability and "pluggability" of our system's components. These philosophies are very common amongst the open-source scene; due to the ease involved with integration into of projects.
 		
-		Django specifies that a project is split into many smaller applications, which are each decoupled from the project as a whole. These applications can be extended to work seamlessly with one another. After extensive study into the system's current state and goals, we have briefly identified several possible applications for our system.
+		Django specifies that a project is split into many smaller applications, which are each decoupled from the project as a whole. These applications can be extended to work seamlessly with one-another. After extensive study into the system's current state and goals, we have briefly identified several possible applications for our system.
 		
 		Below is a partially ambiguous description of the functionality for these applications; just to provide some insight as to their role. This shall later be extended upon...
 		
@@ -46,3 +46,8 @@
 		\end{itemize}
 	
 	\subsubsection{Diagram}
+		In many cases, it is desirable to visualise the components of a particular system. This is done to create a better understanding of the role for the various components and how they relate to one-another.
+		
+		The standard convention for these visualisations is through the use of  Unified Modeling Language (UML) diagrams.
+		
+		Below is a UML diagram which represents the current system. However, please note, to avoid over-complicating the diagram, we have not included the diagram components for many of the objects provided by Django - unless absolutely necessary.
