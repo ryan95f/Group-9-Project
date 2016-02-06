@@ -26,6 +26,7 @@
 %\usepackage[backend=bibtex,bibencoding=ascii]{biblatex}
 \usepackage[style=authoryear,backend=bibtex,bibencoding=ascii]{biblatex}
 \usepackage{csquotes}
+% Add bibliography resources.
 \addbibresource{./bibliographies/example}
 \usepackage{enumerate}
 \usepackage[titletoc]{appendix}
@@ -69,7 +70,7 @@
 			\end{flushleft}
 		\end{minipage}
 		~
-\vspace{3cm}
+		\vspace{3cm}
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushright}
 				\textbf{\large Module Leader}
@@ -88,14 +89,14 @@
 		{\makeColourful \HRule}
 		\\[1cm]
         ~
-\textsc{\Large Clients: }\textsc{ Stuart Allen, Dafydd Evans}
-\linebreak
-\linebreak
-\textsc{\Large Supervisor: }\textsc{Nyala Noe}
+		\textsc{\Large Clients: }\textsc{ Stuart Allen, Dafydd Evans}
+		\linebreak
+		\linebreak
+		\textsc{\Large Supervisor: }\textsc{Nyala Noe}
 
 		\textsc{\Large Group 9}
-\linebreak
-\linebreak
+		\linebreak
+		\linebreak
 		\begin{minipage}{0.32\textwidth}
 			\begin{flushleft}
 				\textbf{1438496: }\textsc{Aimi Daros}\\
@@ -120,27 +121,34 @@
 			\end{flushleft}
 		\end{minipage}
 	\end{titlepage}
-% END TITLEPAGE %%%%%%%%%%%%%%%%%%%%
 	\newpage
+	
 	\tableofcontents
+	
 	\newpage
-%%%%% SECTIONS%%%%%
+	
+	%%%%%   SECTIONS   %%%%%
 	\input{example}
-	\input{classdiagram}
+	\input{softwarearchitecture/main}
+	%%%%% END SECTIONS %%%%%
+	
 	\newpage
+
 	\section*{Appendices}
-	\addcontentsline{toc}{section}{Appendices}
-	\begin{appendices}
-		\addcontentsline{toc}{subsection}{Gantt Chart}
-		\label{app:gantt}
-		\subsection*{Gantt Chart}
-		\begin{minipage}{\textwidth}
-			\begin{flushright}
-				%\includepdf[scale=0.75,landscape=true]{./resources/example.pdf}
-			\end{flushright}
-		\end{minipage}
-	\end{appendices}
+		\addcontentsline{toc}{section}{Appendices}
+		\begin{appendices}
+			\addcontentsline{toc}{subsection}{Gantt Chart}
+			\label{app:gantt}
+			\subsection*{Gantt Chart}
+			\begin{minipage}{\textwidth}
+				\begin{flushright}
+					%\includepdf[scale=0.75,landscape=true]{./resources/example.pdf}
+				\end{flushright}
+			\end{minipage}
+		\end{appendices}
+
 	\newpage
+	
     \addcontentsline{toc}{section}{References}
     \printbibliography
    \end{document}
