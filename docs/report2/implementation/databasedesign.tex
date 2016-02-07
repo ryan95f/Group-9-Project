@@ -1,2 +1,13 @@
 \subsection{Database Design}
-	The current model that was provided with the current build of CAMEL will be used with the same naming structure, except additional modifications will be made with some models and new models will be added. Changes to the current models will be done to ensure that additional functionality can work correctly. Such example of a major change that have been implemented has occurred from the introduction new parser. This parser modifies the BookNode model by removing Mpath, as it is not longer required. The main aim of the changes to the database it to ensure compatibility with newer functionality, though it will not have a large impact for usability with the new system.\\
+	The current model that was provided with the current build of CAMEL will be used with the same naming structure, except additional modifications will be made with some models along with new models will be added. Changes to the current models will be done to ensure that additional functionality can work correctly. One example of the change that occurred was the introduction of a new parser into CAMEL. This parser modifies the BookNode model by removing Mpath. The main aim of the changes to the database it to ensure compatibility with newer functionality, though it will not have a large impact for usability with the new system.\\
+	
+	The models that will be included in CAMEL will be:
+	\begin{itemize}
+		\item BookNode:
+		\item TextNode:
+		\item Book:
+		\item Module:
+	\end{itemize}
+	
+	We will also be utilising some pre-existing tables that have been included with Django. One of these is Users which is the backbone of creating the Students, Administrator and Lecturer accounts. We have decided to use this table as it provides much of the functionality that we need in terms of security that could take some time to implement ourselves. For example, restrictions can be easily applied as Django has already provided this functionality. Additionally, security is greater with using User as Django has also provided a 'hash and salt' hashing mechanism in the table to protect user passwords. By using Django tables, much of our time can be focused on development and we can guarantee that the data is secure which is important to any institution.\\
+	
