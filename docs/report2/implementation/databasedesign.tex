@@ -3,10 +3,13 @@
 	
 	The models that will be included in CAMEL will be:
 	\begin{itemize}
-		\item BookNode:
-		\item TextNode:
-		\item Book:
-		\item Module:
+		\item \textbf{BookNode}: This object relates to different Latex components that make up the whole document. Each BookNode contains a parent node, unless is the root node which remains null. Each node has a parent as it allows it to be accessed by Django - MPTT when traversing through the nodes to generate a page. The BookNode is used in other tables to link the page together.     
+		
+		\item \textbf{TextNode}: Each TextNode contains the text that was contained inside latex markup. These objects will contain the relevant information that will be outputted by Django - MPTT when renders the relevant HTML during the web page rendering process. Each TextNode has a parent BookNode, which contains the location for it.  
+		
+		\item \textbf{Book}: This is the object that will provide a connection between the BookNode object and the Module object. This allows modules to select which books are relevant and add them to the list that the student can access to study from and complete tasks on. The Book object will take a 'root' (start of latex book) BookNode object to allow the connection. 
+		
+		\item \textbf{Module}: This object relates to the module a student will take. It will contain the current year of study and provides a link for students to access relevant books and tasks that are required to be completed. Each module will contain a number of relevant books for them to study from.
 	\end{itemize}
 	
 	We will also be utilising some pre-existing tables that have been included with Django. One of these is Users which is the backbone of creating the Students, Administrator and Lecturer accounts. We have decided to use this table as it provides much of the functionality that we need in terms of security that could take some time to implement ourselves. For example, restrictions can be easily applied as Django has already provided this functionality. Additionally, security is greater with using User as Django has also provided a 'hash and salt' hashing mechanism in the table to protect user passwords. By using Django tables, much of our time can be focused on development and we can guarantee that the data is secure which is important to any institution.\\
