@@ -1,19 +1,29 @@
 \subsection{System Components}
 	\subsubsection{Introduction}
-		In order to efficiently create a robust and manageable system, it is critical that we consider its individual components and identify how they should interact with one-another. Doing so will aid us in avoiding writing code of poor quality; which would be difficult to follow and debug should something go wrong.
+		The system, as a whole, can essentially be broken down into a combination of many smaller tasks. These tasks are then able to be grouped together based upon their dependency with one another - we shall call these components. This process is often known as decomposition.
 		
-		The first step to be made is that of identifying the components of our system. This can sometimes be quite a grey area, as it is not always clear where the functionality of a single component should end. To help avoid restricting ourselves too heavily regarding the role of our system's components, we shall first deeply explore the various design patterns available to us and how they could be integrated to solve some of the problems proposed by the system.
+		Decomposition allows the programmer to then interact with these smaller, decoupled components as a black-box - as they are only required to be knowledgeable of the interface, rather than the implementation. This is highly beneficial when a working on larger projects, as a team, where it is not very feasible for each programmer to be well-versed regarding the logic involved in the solutions for each task required by the system.
+		
+		Another note-worthy benefit of decomposition, is that it unlocks the ability for your components to be designed in such a way that they can integrated into other projects - this is known as reusability. The appeal of this idea expands further when we consider that some of these components our system would require have already been created, and submitted, for anybody to use freely. This is one of the major drives in open-source software.
+		
+		Decomposition plays a key role in many programming languages. For example, most popular programming languages - such as C++, Java and Python - feature some implementation of the object-oriented paradigm. Object-oriented programming provides the programmer with the tools to abstract from the logic involved in using the solutions to particular tasks.
+		
+		In order for us to efficiently create a robust and manageable system, it is not only critical that we carefully consider all of the individual components that are required. But that we also deeply explore the various design patterns available to us and how we can integrate these into our components so that their interfaces enable them to interact with one-another in an intuitive manner.
+		
+		The process of identifying the components for our system can sometimes be quite complicated, as it is not always clear where the functionality of a single component should end. To help avoid restricting ourselves too heavily regarding designating the role of our system's components, we should consider the structure, and utilities, Django has already provided us with.
 	
-		However, as discussed previously, the system is to be built using Python's Django Framework.  Therefore a series of abstractions have already been made available to us; greatly simplifying the overall task of developing the system. Given this, we are now able to focus on designing just the core requirements of the system.
+		As discussed previously, Django is the Python web-framework in which our system is to be built upon. Therefore a series of abstractions have already been made available to us; greatly simplifying the overall task of developing the system. Given this, we are now able to apply more focus onto the design of the system's core tasks.
 		
-		Throughout the remainder of this section, we shall discuss our chosen designs for the system; providing the reasoning for our decisions.
+		Throughout the remainder of this section, we shall discuss the components, and their designs, in greater detail and provide reason as to why we believe the decisions we have made are beneficial.
 	
 	\subsubsection{Components}
-		We have decided to adopt Django's design-philosophy and have placed high emphasis on the reusability and "pluggability" of our system's components. These philosophies are very common amongst the open-source scene; due to the ease involved with integration into of projects.
+		As we've decided to build our system upon Django's, it's also recommended that we also adopt their design-philosophy and place a high emphasis on the reusability and "pluggability" of our system's components. These philosophies are very common amongst the open-source scene; due to the ease involved with integration into other projects.
 		
-		Django specifies that a project is split into many smaller applications, which are each decoupled from the project as a whole. These applications can be extended to work seamlessly with one-another. After extensive study into the system's current state and goals, we have briefly identified several possible applications for our system.
+		Django specifies that a project is split into many smaller components, known as applications. It is often preferred that these applications are decoupled from each-other, and the project as whole, as much as possible. This makes the process of integrating an existing component into a new project much easier and far less time consuming. These applications can then be extended to work seamlessly with one-another.
 		
-		Below is a partially ambiguous description of the functionality for these applications; just to provide some insight as to their role. This shall later be extended upon...
+		After an extensive study into the system's current state and goals, we have briefly identified the following possible applications for our system's Django project.
+		
+		Please note that this is just a brief outline as to the functionality of each application and some ambiguities do exist. However, we can rest-assured as these can later progress upon them and develop a more concise view of the structure for our system to-be.
 		
 		\begin{itemize}
 			\item \textbf{Core}:
