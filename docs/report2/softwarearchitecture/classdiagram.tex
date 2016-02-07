@@ -1,7 +1,11 @@
 \subsection{Class Diagram}
 	\subsubsection{Introduction}
-		In many cases, it is desirable to visualise the components of a particular system. This is done to create a better understanding of the role for the various components and how they relate to one-another.
+		In many cases, it is desirable to visualise the components of a particular system. This is done to create a better understanding of the role for each of the various components and how they relate to one-another.
 		
-		The standard convention for these visualisations is through the use of Unified Modeling Language (UML) diagrams.
+		The standard convention for these visualisations is through the use of Unified Modeling Language (UML) diagrams. UML provides us with a globally accepted, well-known approach to constructing a diagram of a software system. 
 		
-		Below is a UML diagram which represents the current system. However, please note, to avoid over-complicating the diagram, we have not included the diagram components for many of the objects provided by Django - unless absolutely necessary.
+		Due to our system's reliance on Django, it is rather infeasible, and unnecessary, of us to construct a diagram for the system as a whole; as it would only really be useful if we recursed into Django's objects.
+		
+		However, as it happens, the \LaTeX Parser has no direct need to be coupled with Django, so it makes sense to design a diagram to illustrate how we intend the parser to look.
+		
+		\input{softwarearchitecture/resources/umldiagramparser}
