@@ -10,6 +10,7 @@
 		\begin{figure}[h]
 			\includegraphics[scale=0.40]{softwarearchitecture/img/caml_mvc_abstract_diagram}
 			\caption{Django Model View Controller Design}
+			\centering
 		\end{figure}
 		
 		The flow of the diagram is that when a web page is requested by the user via the URL, the URL file will redirect this to a view file. This file is the controller that will look at the request, and obtain any models to complete the request. The models will then pull data about itself from the database, which is then passed to the view function. The view will then finally return the page that the user requested along with any model data it need. The view will render the HTML and Django template language to create the final web page that the user interacts with. The rendering of the page allows the template to be re-used to provide different content.\\ 		
