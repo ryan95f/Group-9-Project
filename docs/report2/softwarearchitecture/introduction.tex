@@ -25,16 +25,16 @@
 	
 	\textbf{Continuing Non-Functional Requirements}
 	\begin{itemize}
-		\item Documentation for developer
-		\item System permissions
-		\item Maintainable code
-		\item Breakdown of core application
-		\item Python3 Upgrade
-		\item Improve navigation
+		\item Documentation for developer: Documentation for the system will be included as originality intended to allow the future developers of CAMEL to understand what core code does. As originally requested with documentation, it will all be provided.    
+		\item System permissions: This requirement is still able to be met with the use of Django's user permissions that can easily allow both lecturers and students to access areas that have the correct permissions. 
+		\item Maintainable code: This requirement is in the process of being done as we re-code the CAMEL application. To date the code that has been implemented has been written to keep this requirement in mind.
+		\item Breakdown of core application: A requirement that has already been met and was successfully implemented. The new code base currently has the core application separated into many cohesive applications that do specific tasks, as was introduced from the start in the new system.   
+		\item Python3 Upgrade: This requirement has been successfully tested and can be implemented throughout the system. One of the main motivations for the overhaul of the code was to ensure that Python3 can be rolled out as the original system had some differances that prevented Python from being introduced.   
+		\item Improve navigation: Another requirement that we have met to date. Navigation has been resolved by splitting the core urls file down as the large amount of look up queries was hindering performance.
 	\end{itemize}
 	
 	\textbf{Dropped Non-Functional Requirements}
 	\begin{itemize}
-		\item Fix bugs with current system	
+		\item Fix bugs with current system: The introduction of overhauling the existing system has led to this being dropped as we intend to re-implement code and bug test each part as it is introduced. The current system that is being developed will have it's own bugs that are not part of the original code base.   
 	\end{itemize}
 	
