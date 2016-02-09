@@ -1,14 +1,18 @@
 \subsection{Revised Requirements}
-	For the development of CAMEL we have decided to revise some of the existing requirements that we proposed in the first report. We have decided to change a few of the requirements as we have decided to go with a different approach to development than we originally intended in the first report. As a group, we have decided to remake the CAMEL system from scratch to not only allow natural implementation of many of the requirements such as error handling, Python3 and maintainable code. This ensures that the system has support for clear and efficient code throughout, but allows easy integration of any future applications into CAMEL.\\    
+	For the development of CAMEL, we have decided to revise some of the existing requirements that were proposed in the first report. We have decided to change a few of the requirements as we have decided to go with a different approach to develop CAMEL than we originally intended in the first report. As a group, we have decided to remake the CAMEL system from scratch to allow natural implementation of many of the requirements, such as error handling, Python3 and maintainable code. By applying a complete code overhaul, we believe we can provide a better system in terms of quality and efficiency over using the existing code base.\\    
 	
 	\subsubsection{Functional Requirements}
-	\textbf{Continuing Functional Requirements}
+	\underline{\textbf{Continuing Functional Requirements}}
 	\begin{itemize}
-		\item Provide Error handling and exception handling: This requirement will be continued and considered from the ground up with the new code base that we are currently developing. With the code that has been considered so far, error handling has already been applied.  
-		\item Provide Unit Tests of code: Unit tests are currently in the stage of being implemented soon and will also occur naturally as we develop the CAMEL system. 
-		\item Add methods to compare student answers: We have decided to continue to support this requirement as we believe that many of the changes that we are making to CAMEL will allow for easy integration of this functionality. This will be a property of CAMEL that will be added at the end as the code base refactoring is currently the main priority.    
-		\item Logging of student answers: With the new code base under development, this functionality will be continued as we believe that this can be easily integrated when implementation of the homework application is included. Submitted and saved answers will be saved to the database. 
-		\item Include deadlines in tests: Another piece of functionality that we will be carrying on with. This will be implemented and factored in when the homework application is refactored. The deadline will be displayed on screen and if a student does not complete the test, a message will be included.    
+		\item Provide Error handling and exception handling: We have continued and considered this requirement from the ground up with the system that we are currently developing. With the code that has been written so far, error handling has already been applied to ensure CAMEL can handle any possible errors. The error handling has been naturally applied to the system, and we are on track to ensure the system covers all possible errors. 
+		
+		\item Provide Unit Tests of code: Unit tests are currently in the stage of being implemented soon, and will also occur naturally as we develop the CAMEL system with additional functionality.. 
+		
+		\item Add methods to compare student answers: We have decided to continue to support this requirement as we believe that many of the changes that we are making to CAMEL will allow for easy integration of additional functionality, such as this. Development on comparing student answers will start as soon as the refactoring of the code is completed.  
+		
+		\item Logging of student answers: With the new code base under development, this functionality will be also be implemented as we believe that this can be easily integrated when developing the homework application. This functionality will be added when development on the homework application begins.   
+		
+		\item Include deadlines in tests: Another piece of functionality that we will be carrying on with. This will be implemented and factored in when the homework application is being implemented. The deadline will be displayed on screen and if a student does not complete the test, a message will be included.    
 	\end{itemize}
 	
 	\textbf{Dropped Functional Requirements}
@@ -19,18 +23,26 @@
 	\subsubsection{Non-Functional Requirements}
 	\textbf{New Non-Functional Requirements}
 	\begin{itemize}
-		\item New parser implementation: One of the main additions that we decided to tackle with the next build for CAMEL was the introduction of a new parser. We decided that this needed to be included as the current parser had a few flaws when it came to creating the HTML, plus required the entire database entry of the book to be re-added to included. In our current build, a new parser has been included that allows for new latex markup to be introduced relatively quickly, while keeping the code maintainable which was not present in the original build.    
-		\item Re-factoring of existing codebase: To allow for the requirements of Python3, implementability and error handling, we have also decided to re-code much of the existing code to improve the quality and efficiency of it. By having all new code written, it also allows the integrations of the new parser to be implemented without causing compatibility issues. In our current build of CAMEL you can see the newly introduced code that is being add, which meets current requirements.  
+		
+		\item New parser implementation: One of the main additions that we decided to tackle with the next build for CAMEL was the introduction of a new parser. We decided that a new parser had to be implemented as there was a few flaws with the code and it was generally very hard to work with. In our current build, a new parser has been included that allows for new latex markup to be introduced relatively quickly, while keeping the code maintainable which was not present in the original build.    
+		
+		\item Re-factoring of existing codebase: To allow for many of the requirements above to be easily introduced, we have decided to re-write much of the existing code to improve the quality and efficiency of it. By having all new code written, it also allows the integrations of the new parser to be implemented without causing compatibility issues. In the current build of CAMEL, you can see the newly introduced code meets many of the requirements, such as Python3, error handling and maintainability. 
 	\end{itemize}
 	
 	\textbf{Continuing Non-Functional Requirements}
 	\begin{itemize}
-		\item Documentation for developer: Documentation for the system will be included as originality intended to allow the future developers of CAMEL to understand what core code does. As originally requested with documentation, it will all be provided.    
-		\item System permissions: This requirement is still able to be met with the use of Django's user permissions that can easily allow both lecturers and students to access areas that have the correct permissions. 
-		\item Maintainable code: This requirement is in the process of being done as we re-code the CAMEL application. To date the code that has been implemented has been written to keep this requirement in mind.
-		\item Breakdown of core application: A requirement that has already been met and was successfully implemented. The new code base currently has the core application separated into many cohesive applications that do specific tasks, as was introduced from the start in the new system.   
-		\item Python3 Upgrade: This requirement has been successfully tested and can be implemented throughout the system. One of the main motivations for the overhaul of the code was to ensure that Python3 can be rolled out as the original system had some differances that prevented Python from being introduced.   
-		\item Improve navigation: Another requirement that we have met to date. Navigation has been resolved by splitting the core urls file down as the large amount of look up queries was hindering performance.
+		
+		\item Documentation for developer: Documentation for the system will be included as originality intended to allow future developers of CAMEL to understand what core code does.  
+		
+		\item System permissions: The use of system permissions can be introduced relatively quickly with Django's pre-existing user permissions that can easily allow for separation of lecturer and student areas.    
+		
+		\item Maintainable code: This requirement is in the process of being done as we re-write CAMEL. To date the code that has been implemented has been written to keep this requirement in mind and conform to the PEP8 standard.
+		
+		\item Breakdown of core application: A requirement that has already been met and was successfully implemented. The new code base currently has the core application separated into many cohesive applications that do specific tasks. This can be seen in the code that we have attached.
+		
+		\item Python3 Upgrade: Python3 has been successfully tested and can be implemented throughout the system. One of the main motivations for the overhaul of the code was to ensure that Python3 can be rolled out as the original system had some differences that prevented Python3 from being introduced. Such as some of the libraries having different function names with the newer version of Python.    
+		
+		\item Improve navigation: Another requirement that we have met to date. Navigation has been resolved by splitting the core 'url' file down, as the large amount of look up queries was hindering performance.
 	\end{itemize}
 	
 	\textbf{Dropped Non-Functional Requirements}
