@@ -13,14 +13,14 @@
 	
 	\textbf{Dropped Functional Requirements}
 	\begin{itemize}
-		\item Provide functionality of enrolled modules for students	
+		\item Provide functionality of enrolled modules for students: We decided to drop this requirement as it would only be a proof of concept rather than something that we can included into the system. We have decided to focus on items that we can implement rather than have development time spent on items that cannot be fully implemented.  
 	\end{itemize}
 		
 	\subsubsection{Non-Functional Requirements}
 	\textbf{New Non-Functional Requirements}
 	\begin{itemize}
-		\item New parser implementation
-		\item Re-factoring of existing codebase
+		\item New parser implementation: One of the main additions that we decided to tackle with the next build for CAMEL was the introduction of a new parser. We decided that this needed to be included as the current parser had a few flaws when it came to creating the HTML, plus required the entire database entry of the book to be re-added to included. In our current build, a new parser has been included that allows for new latex markup to be introduced relatively quickly, while keeping the code maintainable which was not present in the original build.    
+		\item Re-factoring of existing codebase: To allow for the requirements of Python3, implementability and error handling, we have also decided to re-code much of the existing code to improve the quality and efficiency of it. By having all new code written, it also allows the integrations of the new parser to be implemented without causing compatibility issues. In our current build of CAMEL you can see the newly introduced code that is being add, which meets current requirements.  
 	\end{itemize}
 	
 	\textbf{Continuing Non-Functional Requirements}
