@@ -36,7 +36,7 @@
 					\item Provide our project with any trivial functionality - such as the view for an index page.
 				\end{itemize}
 
-			\item \textbf{LaTeXBook}:
+			\item \textbf{\LaTeX Book}:
 				\begin{itemize}
 					\item Contains a parser to read LaTeX files into a Python object tree representation.
 					\item An adapter capable of writing the LaTeX objects into a database.
@@ -66,16 +66,41 @@
 		\end{itemize}
 
 	\subsubsection{The \textit{Core} Application}
-		Blah, blah, blah
+		As has been repeatedly stated, one of the main motives during the design process was the idea of usability. Thankfully, Django already contains a wide range of infrastructure intended to make this motive feasibly possible.
+		
+		Splitting up a system into components which are decoupled from one-another is highly ideal in many situations. However, for this concept to work successfully, there must be some mechanism present which will tie the components together; combining their functionality to produce the desired outcome. This is where our \textit{Core} application comes in...
+		
+		The \textit{Core} application will be explicitly unique to the CAMEL project. There will be \emph{no} intention for it to be reusable in 'unrelated' projects. It's role is to couple the other applications together - so that their functionalities can become combined.
 	
-	\subsubsection{The \textit{LaTeXBook} Application}
-		Blah, blah, blah
+	\subsubsection{The \textit{\LaTeX Book} Application}
+		\textit{\LaTeX Book} is to be the only application with any direct involvement with \LaTeX. It is to contain the parser which is capable of parsing \LaTeX files into a form in which Python (the primary programming language for our system) can make sense of.
+		
+		Along with the parser, \textit{\LaTeX Book} should also contain the Django Models which represent the relations which are to be stored within the database.
+		
+		However, as the \LaTeX files have no direct dependency with Django; it would be senseless to apply that dependency during our implementation of the parser. Therefore, we need to design an adapter capable of writing our "Pythonised" \LaTeX file into the database.
+		
+		\textit{\LaTeX Book} must also contain the functionality which allows a set group of users to submit their own \LaTeX files which are then able to be parsed and written into the database. This should also handle the case for when the uploaded \LaTeX file requires more files from the user - such as other \LaTeX documents or images.
+		
+		Finally, \textit{\LaTeX Book} must specify the Django views and templates that hold the capabilities to read the previously stored \LaTeX files from the database and render them into HTML - as per requested by the current visiting user.
 	
 	\subsubsection{The \textit{Module} Application}
-		Blah, blah, blah
+		The \textit{Module} application serves quite a simple role. It allows for Staff Members to create modules in which they are able to enrol students upon. The Staff Members are then able to add various learning materials to these modules; so that the enrolled students can access them.
+		
+		In regards to CAMEL, the primary learning material will be the \LaTeX 'books' parsed by the \textit{\LaTeX Book} application and also the tests managed by the \textit{Homework} application.
+		
+		We can interpret this application almost as an arbiter for Student users over the functionality of our other applications.
+		
 	
 	\subsubsection{The \textit{Homework} Application}
-		Blah, blah, blah
+		The \textit{Homework} application should create the functionality for certain users to answer and submit forms containing their solutions for particular tests. The solutions which are submitted, for these tests, should then be analysable by particular users based upon a specified permission.
+		
+		The \textit{Core} application will extend upon this functionality making it so that Staff Members can add tests - which are included in the \LaTeX books parsed by the \textit{\LaTeX Book} Application - as learning materials to certain modules.
+		
+		It is then to make it so that a Staff Member can attach start-dates and end-dates for certain test-module combinations; so that a Student is only able to view a test and submit their solutions to it within the given time-frame.
 		
 	\subsubsection{The \textit{User} Application}
-		Blah, blah, blah
+		The \textit{User} application is, in most likelihood, the smallest of all our system's applications. It is to only contain the functionality required for a user to login and logout of the system.
+		
+		Thankfully, Django already contains the ground-works which will allow us to quite easily develop a fairly robust authentication system.
+		
+		This application should also create for us the ability to assign certain users to a particular user-group - either Student or Staff Member. These permissions are to be required by the \textit{Core} application so it is able to configure and extend our other applications.
