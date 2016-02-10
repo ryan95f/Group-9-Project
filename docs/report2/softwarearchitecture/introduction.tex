@@ -4,15 +4,16 @@
 	\subsubsection{Functional Requirements}
 	\underline{\textbf{New Functional Requirements}}
 	\begin{itemize}
-		\item Provide functionality for lecturer to add modules:
-		\item Provide functionality for lecturer to add latex books to CAMEL:
+		\item Provide functionality for lecturer to add modules: We have decided to add some functionality for the lecturer as with the current state it requires a lecturer to go into the database. For security reasons, we do not want a lecturer to have this sort of access or risk the possibility of have data tampered with. With the current time scale, we believe that this sort of form can be easily implemented within a day and will not affect other requirements. 
+		
+		\item Provide functionality for lecturer to add latex books to CAMEL: From looking at our original requirements, we can to the conclusion that this requirement was missing from the original design, as a means to add files is required on the site. With the current aim at the moment is the develop a new parser. This could be limited in functionality due to time if the parser has any possible bugs and a way is needed to pull pictures from the files, but if successfully implemented it could be a nice addition.
 	\end{itemize}
 	
 	\underline{\textbf{Continuing Functional Requirements}}
 	\begin{itemize}
 		\item Provide Error handling and exception handling: We have continued and considered this requirement from the ground up with the system that we are currently developing. With the code that has been written so far, error handling has already been applied to ensure CAMEL can handle any possible errors. The error handling has been naturally applied to the system, and we are on track to ensure the system covers all possible errors. 
 		
-		\item Provide Unit Tests of code: Unit tests are currently in the stage of being implemented soon, and will also occur naturally as we develop the CAMEL system with additional functionality.  
+		\item Provide Unit Tests of code: Unit tests are currently in the stage of being implemented soon, and will also occur naturally as we develop the CAMEL system with additional functionality. 
 		
 		\item Add methods to compare student answers: We have decided to continue to support this requirement as we believe that many of the changes that we are making to CAMEL will allow for easy integration of additional functionality, such as this. Development on comparing student answers will start as soon as the refactoring of the code is completed.  
 		
@@ -38,9 +39,9 @@
 	\underline{\textbf{Continuing Non-Functional Requirements}}
 	\begin{itemize}
 		
-		\item Documentation for developer: Documentation for the system will be included as originality intended to allow future developers of CAMEL to understand what core code does.  
+		\item Documentation for developer: Documentation for the system will be included as originality intended to allow future developers of CAMEL to understand what core code does. We are assuming that this documentation will be available online with CAMEL, so we will be utilising a Django module to document all code as it is completed.
 		
-		\item System permissions: The use of system permissions can be introduced relatively quickly with Django's pre-existing user permissions that can easily allow for separation of lecturer and student areas.    
+		\item System permissions: The use of system permissions can be introduced relatively quickly with Django's pre-existing user permissions that can easily allow for separation of lecturer and student areas. We are assuming that the main users are a student and lecturer who will not have access to the database. This will be handled by a third user called 'admin' that will overlook all data. 
 		
 		\item Maintainable code: This requirement is in the process of being done as we re-write CAMEL. To date the code that has been implemented has been written to keep this requirement in mind and conform to the PEP8 standard.
 		
