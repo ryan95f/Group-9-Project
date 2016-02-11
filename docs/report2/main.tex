@@ -55,6 +55,10 @@
 % simplified
 ]{pgf-umlcd}
 
+% Allows us to create more readible references:
+\usepackage{hyperref}
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{\autoref*{#1} \nameref*{#1}, on page \pageref*{#1}}}
+
 \title{Second Report}
 \author{Group 9}
 
