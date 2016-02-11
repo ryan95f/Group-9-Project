@@ -1,0 +1,68 @@
+\subsubsection*{Risk Assessment Table}
+            	\label{table:riskassessment}
+				\setlength{\aboverulesep}{0pt}
+				\setlength{\belowrulesep}{0pt}
+				\setlength{\extrarowheight}{.75ex}
+                \setlength\LTleft{-0.74in}
+				{\tiny
+				\begin{longtable}{{|p{2.5cm}|p{1.5cm}|p{7cm}|p{1.5cm}|p{6cm}|}}
+					
+					\caption{Risk Assessment} \\
+					\toprule
+					Risk  & Total Risk \scriptsize (Likelihood * Impact) & Controls & Total Risk Given Control \scriptsize (Likelihood * Impact) & Strategy for Risk Mitigation\\
+					\midrule
+					\endfirsthead
+					\multicolumn{5}{c}%
+					{\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
+					\midrule
+					Risk  & Total Risk \scriptsize (Likelihood * Impact) & Controls & Total Risk Given Control \scriptsize (Likelihood * Impact) & Strategy for Risk Mitigation\\
+					\midrule
+					\endhead
+					\hline \multicolumn{5}{r}{\textit{Continued on next page}} \\
+					\endfoot
+					\midrule
+					\endlastfoot
+					
+					Short-term Illness of team member & \cellcolor{yellowII} 6 (3 * 2) & Regular de-briefing with group so all know what each member has done and will do.
+					Write comments on major updates onto GitHub when committing.
+					If it does happen, tasks for that member will be fairly re-assigned to other members. & \cellcolor{greenIII}3 (3 * 1) & If it does happen, tasks for that member will be fairly re-assigned to other members.  Contact can be made to the team member to see when they may return to assign another member who has a lower workload to take their tasks.\\
+					\midrule
+					
+					Team member leaving the group & \cellcolor{yellowII} 5 (1 * 5 ) & Regular de-briefing with group so all know what each member has done and will do. & \cellcolor{yellowII} 4 (1 * 4) & If it does happen, tasks for the missing member will be fairly re-assigned to other members. Otherwise, we could communicate with supervisor and lecturer for alternatives: e.g. drop some requirements.\\
+					\midrule
+					
+					Loss of work (eg. due to corrupt files or forgetting to save) & \cellcolor{orangeII} 9 (3 * 3) & Use of GitHub/Google Drive/auto-saving software. Everyone will save their work at least every 20 minutes.
+					Routine backups will be made every week.
+					Create a Gantt chart specifying every task to be completed and follow it.  & \cellcolor{yellowII} 4 (2 * 2) & If it does happen we will find the latest version of the work and schedule in the nearest available time to re-do the missing work. We will also reload the latest version of work as the majority of members have the system backed up onto multiple machines. Any individual work is recommended to be uploaded to group’s google drive. For interrupted work, we will keep all our code on our own github for the purpose of fulfilling our project and fork it to the clients repository on GitHUb as a whole at the end when the project is complete.\\
+					\midrule
+					
+					Overrun on a task and miss a milestone & \cellcolor{redII} 12 (3 * 4) & Thorough planning of each task and appropriate deadlines with regular de-briefing with group so all know what is on schedule. Create a gantt chart specifying every task to be completed and follow it. & \cellcolor{yellowII} 6 (2 * 3) & If it does happen we will schedule in the nearest available time to complete the given task, and more group members can help the individual or sub team who have overrun. We will submit the current work we have if we are close to a deadline and feel we aren't able to meet it.\\
+					\midrule
+					
+					Not all functional requirements are met by the deadline. & \cellcolor{redII} 15 (3 * 5) & Agree reasonable functional requirements with client. 
+					Plan time well.
+					Use of agile model could allow for adjustments of requirements.
+					
+					\textbf{If it does happen nothing can be done!} & \cellcolor{yellowII} 5(1 * 5) & We will make an internal deadline in order to complete all requirements as possible, and as a contingency submit what we have.\\
+					\midrule
+					
+					Client indisposed & \cellcolor{yellowII} 6 (3 * 2) & Fully understand task and fully document requirements as and when they’re agreed. & \cellcolor{greenIII} 3 (3 * 1) & If it does happen we should ensure we are regularly having meetings with the client and try to resolve any issues we may have as soon as possible.\\
+					\midrule
+					
+					Team member prolonged absence & \cellcolor{greenIII}  3 (1 * 3) & Regular de-briefing with group so all know what each member has done and will do. & \cellcolor{greenIII} 2 (1 * 2) & If it does happen, tasks for the missing member will be fairly re-assigned to other members. Otherwise, we could communicate with supervisor and lecturer for alternative: e.g. drop some requirements.\\
+					\midrule
+					
+					Server failure (e.g., GitHub goes down, files incompatible with server) & \cellcolor{yellowII} 4 (1 * 4) & Routine backups will be made every week on hardware (eg USB)  and other alternative software. & \cellcolor{greenIII} 3 (1 * 2) & If it does happen we will find the latest version of the code that is backed up on another device, either from hardware or software and fill in any gaps that are missing at the earliest convenience.\\
+					\midrule
+					
+					Django gets updated & \cellcolor{greenIII} 3 (1 * 3) & Make sure code is well-structured and documented. & \cellcolor{greenIII} 2 (1 * 2) & If it does happen we will continue to use the latest version we have been using and schedule in the nearest available time to complete work. \\
+					\midrule
+					
+					Code corrupted, unusable or deleted & \cellcolor{redII} 12 (3 * 4) & Use of GitHub/Google Drive/auto-saving software.
+					Everyone will save their work at least every 20 minutes.
+					Routine backups will be made every week. & \cellcolor{yellowII} 4 (1 * 4) & If it does happen we will find the latest version of the work and continue from there again. Then, we will work overtime until we produce working code.\\
+					\midrule
+					
+					Last minute bugs, 1 hour before deadline & \cellcolor{redII} 15 (3 * 5) & Have multiple people do thorough debugging on different systems. & \cellcolor{yellowII} 5 (1 * 5) & If it does happen we will ensure we work overtime to ensure there are no final bugs before submission. If any are found they should be fairly easy to resolve as our code will be organised.\\
+					\bottomrule
+				\end{longtable}	}

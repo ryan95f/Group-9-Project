@@ -1,0 +1,68 @@
+\subsection*{Class Diagram}
+\addcontentsline{toc}{subsection}{Class Diagram}
+	\subsubsection*{Introduction}
+		In many cases, it is desirable to visualise the components of a particular system. This is done to create a better understanding of the role for each of the various components and how they relate to one-another.
+		
+		The standard convention for these visualisations is through the use of Unified Modeling Language (UML) diagrams. UML provides us with a globally accepted, well-known approach to constructing a diagram of a software system. 
+		
+		Due to our system's reliance on Django, it is rather infeasible, and unnecessary, of us to construct a diagram for the system as a whole; as it would only really be useful if we recursed into Django's objects.
+		
+		However, as it happens, the \LaTeX Parser has no direct need to be coupled with Django, so it makes sense to design a diagram to illustrate how we intend the parser to look.
+		
+	\subsubsection*{The \LaTeX Parser}
+		The \LaTeX parser's goal is to take a \LaTeX file as input and output the contents of that file as a tree represented using custom objects in Python.
+		
+		However, as \LaTeX is considered to be Turing complete, the process of correctly parsing such a file is incredibly difficult; far exceeding the scope, and requirements, of this project.
+		
+		Despite this, it still remains feasible for us to construct a parser capable of parsing files with a \LaTeX-like format; capturing a wide range of semantic definitions in the document.
+		
+		Taking this into account, we have decided to design the \LaTeX parser in such a way that its capabilities can be extended to a moderate degree.
+		
+		The concept behind the parser is as following:
+		An object, \TeX BookParser, contains the main functionality required for parsing a \LaTeX file. This object is completely oblivious as to how a \LaTeX command's contents/arguments are obtaining; it is only responsible for constructing the tree.
+		
+		This \TeX BookParser is given an object, NodeBank, which contains several configurations for the parser - along with a few functions for convenience.
+		
+		Among NodeBank's configurations is a key-value map, which maps an ID to a subclass of LeafNode. This LeafNode is an abstract class which, when subclassed, represents a possible node in the tree.
+		
+		Each node is used to capture the details of a single particular \LaTeX command. During the parsing of a \LaTeX file, the \TeX BookParser object will check with each node in the NodeBank to determine any matches.
+		
+		If \TeX BookParser determines that the content of a particular node contains no further nodes, it will create an instance of a special type of node called TextNode. A TextNode is a leaf-node whose contents is only plain-text.
+		
+		If a \LaTeX command has any arguments, \TeX BookParser will create an instance of a special type of node called ArgumentNode. This new instance of ArgumentNode will be made a child of the initial \LaTeX command's node.
+		
+		To make creating new nodes easier, we have identified three primary different types of commands in \LaTeX. These will contain the logic required for identifying matches and capturing a \LaTeX command's content and arguments.
+		
+		These are to be used as a super-class, with the new sub-class being customised as appropriate and added into the NodeBank.
+		
+		The three different types of commands are as follows:
+		\begin{enumerate}
+			\item Command Nodes e.g.
+				\begin{verbatim}
+					\textbf{Example},
+					\ref{ExampleReference} 
+				\end{verbatim}
+			
+			\item Environment Nodes e.g.
+				\begin{verbatim}
+					\begin{itemize} 
+						\item First item 
+						\item Second item
+					\end{itemize},
+					
+					\begin{center}
+						Hello World!
+					\end{center},
+				\end{verbatim}
+			
+			\item Level Nodes e.g.
+				\begin{verbatim}
+					\chapter{Example Chapter}
+						\section{Example Section}
+							\subsection{Example Subsection}
+								\subsubsection{Example Subsubsection}
+				\end{verbatim}
+		\end{enumerate}
+		
+		A visual representation of the structure described aboved is listed below, in UML:
+		\input{resources/umldiagramparser}

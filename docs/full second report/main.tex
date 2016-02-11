@@ -1,0 +1,164 @@
+\documentclass[11pt, titlepage]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% STARTING DOCUMENT PREAMBLE %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, margin=2cm]{geometry}
+\usepackage{graphicx}
+
+% Allows our sections to automatically to be on a new-page.
+\usepackage{titlesec}
+%\newcommand{\sectionbreak}{\clearpage}
+%\newcommand{\subsectionbreak}{\clearpage}
+
+%taken from sysReq:
+\linespread{1.2}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+%
+
+% Taken from acceptanceCriteria
+\usepackage{tabu}
+\usepackage[table, usenames, dvipsnames]{xcolor}
+\usepackage{booktabs,colortbl,longtable}
+\usepackage{graphicx}
+\usepackage{lscape}
+\usepackage[strict]{changepage}
+%
+
+\usepackage{pdfpages}
+\usepackage[english]{babel}
+%\usepackage[backend=bibtex,bibencoding=ascii]{biblatex}
+\usepackage[style=authoryear,backend=bibtex,bibencoding=ascii]{biblatex}
+\usepackage{csquotes}
+
+\MakeOuterQuote{"}
+
+% Add bibliography resources.
+\addbibresource{./bibliographies/example}
+\usepackage{enumerate}
+\usepackage[titletoc]{appendix}
+%
+
+\usepackage{pdflscape}
+
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\usepackage{url}
+\usepackage[shortlabels]{enumitem}
+
+
+% The following is required for Software Architecture -> Class Diagram:
+\usepackage[
+% school,
+% simplified
+]{pgf-umlcd}
+
+\title{Second Report}
+\author{Group 9}
+
+\newcommand{\makeColourful}{\color{MidnightBlue}}
+\newcommand{\makeGrey}{\color{Gray}}
+\newcommand{\makeBlack}{\color{Black}}
+\renewcommand*\contentsname{\fontsize{25}{30}\selectfont Table of Contents}
+\renewcommand{\thesection}{\Roman{section}}
+
+\titleformat{\section}{\LARGE \bfseries \makeColourful}{\thesection}{0.7cm}{}[{\hrule}]
+\titleformat{\subsection}{\Large \bfseries \makeColourful}{}{0}{}[]
+\titleformat{\subsubsection}{\large \bfseries \makeColourful}{}{0}{}[]
+\titleformat{\subsubsubsection}{\normalsize \bfseries \makeColourful}{}{0}{}[]
+\titleformat{\subsubsubsubsection}{\normalsize \bfseries \makeColourful}{}{0}{}[]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ENDING DOCUMENT PREAMBLE %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%BEGIN TITLEPAGE%%%%%%%%%%%%%%%%%%%
+	\begin{titlepage}
+		\newcommand{\HRule}{\rule{\linewidth}{1.5mm}}
+		\center
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushleft}
+				\textbf{\large CM2305}
+				\\
+				\emph{\large Group Project}
+			\end{flushleft}
+		\end{minipage}
+		~
+		\vspace{3cm}
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushright}
+				\textbf{\large Module Leader}
+				\\
+				\emph{\large Frank \textsc{Langbein}} 
+			\end{flushright}
+		\end{minipage}
+		\\[2cm]
+        
+		{\makeColourful \HRule} 
+		\\[2cm]
+		{\fontsize{90pt}{0pt}\selectfont \makeColourful{\textsc{CAMEL}}}
+		{\fontsize{60pt}{0pt}\selectfont \makeColourful{\textsc{Intermediate Report}}}
+		\\[1.5cm]
+		A \LaTeX\ document
+		{\makeColourful \HRule}
+		\\[1cm]
+        ~
+		\textsc{\Large Clients: }\textsc{ Stuart Allen, Dafydd Evans}
+		\linebreak
+		\linebreak
+		\textsc{\Large Supervisor: }\textsc{Nyala Noe}
+
+		\textsc{\Large Group 9}
+		\linebreak
+		\linebreak
+		\begin{minipage}{0.32\textwidth}
+			\begin{flushleft}
+				\textbf{1438496: }\textsc{Aimi Daros}\\
+				\textbf{1421079: }\textsc{Braden Marshall}\\
+				\textbf{1205387: }\textsc{Cameron Fish}
+			\end{flushleft}
+		\end{minipage}
+		~
+		\begin{minipage}{0.32\textwidth}
+			\begin{flushleft}
+				\textbf{1446183: }\textsc{Lucy Robertshaw}\\
+				\textbf{1430523: }\textsc{Mariza Celliers}\\
+				\textbf{1420030: }\textsc{Ryan Flynn}
+			\end{flushleft}
+		\end{minipage}
+		~
+		\begin{minipage}{0.32\textwidth}
+			\begin{flushleft}
+				\textbf{1328278: }\textsc{Sh’kyra Jordon}\\
+				\textbf{1429326: }\textsc{Skye Watkins}\\
+				\textbf{1427572: }\textsc{Thomas Rice}
+			\end{flushleft}
+		\end{minipage}
+	\end{titlepage}
+	\newpage
+	
+	\tableofcontents
+	
+	\newpage
+	
+	%%%%%   SECTIONS   %%%%%
+	\input{introduction}
+	\input{softwarearchitecture/main}
+    
+    \newpage
+    
+	\input{implementation/main}
+    \input{testing/main}
+	\input{workplan/main}
+	\input{conclusion}
+    \newpage
+    \input{appendices/main}
+	%%%%% END SECTIONS %%%%%
+
+	\newpage
+	
+    \addcontentsline{toc}{section}{References}
+    \printbibliography
+   \end{document}
