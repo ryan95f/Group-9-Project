@@ -1,10 +1,19 @@
 \subsection*{How Good Quality Code is Being Developed}
 \addcontentsline{toc}{subsection}{Good Quality Code}
 
-To create ‘good quality code’ a number of criteria have to be met. So far in our software development cycle we have focused on overhauling the code base to increase the system's usability, performance, understandability, and correctness.\\
+We have a professional obligation to maintain a high level of competence and integrity. Part of this pertains to creating ‘good quality code’ which requires a number of criteria have to be met. So far in our software development cycle we have focused on overhauling the code base to increase the system's usability, performance, understandability, and correctness.\\
 
 We have done this by finding the areas of improvement in the system firstly by informally testing the user interface to find the parts which do not work in the ways that they should. We then viewed the files in their entirety to find major issues in the way the system had been designed, and therefore remodelling the way the system will work by changing the file structures and removing redundant code. This allowed us to find the areas of weakness of this base which would need to be adapted before we implemented any additional features.\\
 
 This above has been done by splitting the areas of work into different sections and delegating them off to the more confident members of the team, keeping in contact using github and instant messaging whilst progress was being made. This enabled us to keep track of the different changes, and keep the other members aware of what has been happening.\\
 
 When we move on from improving the code given to us, to adding features we will then be focusing on more criteria for ‘good quality code’ such as interoperability, reliability and maintainability.\\
+
+We considered CAMEL’s error managing system and how we could improve or build on it. The two main approaches to error handling are defensive coding  and exception handling.\\
+
+Defensive coding is limited to only being capable of managing errors a coder can expect or plan for, where as our favoured choice of exception handling has the benefit of catching all errors. However we must be aware that exception handling overuse and reliant code can become less readable and thus less maintainable after the fact.\footnote{\url{ www.hanselman.com/blog/GoodExceptionManagementRulesOfThumb.aspx}, created: 30-08-06, accessed 03-02-16} 
+
+Of course this also deeply affects our professional integrity. In order to address this we must best adhere to recommended practice; our code should only throw exceptions for errors that are abnormal, rare and if you will, exceptional. \footnote{\url{ www.joelonsoftware.com/items/2003/10/13.html}, created: 13-10-03, accessed 03-02-16}
+
+
+
