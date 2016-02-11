@@ -9,8 +9,8 @@
 
 % Allows our sections to automatically to be on a new-page.
 \usepackage{titlesec}
-\newcommand{\sectionbreak}{\clearpage}
-\newcommand{\subsectionbreak}{\clearpage}
+%\newcommand{\sectionbreak}{\clearpage}
+%\newcommand{\subsectionbreak}{\clearpage}
 
 %taken from sysReq:
 \linespread{1.2}
@@ -47,6 +47,7 @@
 \usepackage{titlesec}
 \usepackage{url}
 \usepackage[shortlabels]{enumitem}
+
 
 % The following is required for Software Architecture -> Class Diagram:
 \usepackage[
@@ -143,28 +144,18 @@
 	\newpage
 	
 	%%%%%   SECTIONS   %%%%%
-	\input{example}
 	\input{introduction}
 	\input{softwarearchitecture/main}
+    
+    \newpage
+    
 	\input{implementation/main}
+    \input{testing/main}
 	\input{workplan/main}
 	\input{conclusion}
+    \newpage
+    \input{appendices/main}
 	%%%%% END SECTIONS %%%%%
-	
-	\newpage
-
-	\section*{Appendices}
-		\addcontentsline{toc}{section}{Appendices}
-		\begin{appendices}
-			\addcontentsline{toc}{subsection}{Gantt Chart}
-			\label{app:gantt}
-			\subsection*{Gantt Chart}
-			\begin{minipage}{\textwidth}
-				\begin{flushright}
-					%\includepdf[scale=0.75,landscape=true]{./resources/example.pdf}
-				\end{flushright}
-			\end{minipage}
-		\end{appendices}
 
 	\newpage
 	

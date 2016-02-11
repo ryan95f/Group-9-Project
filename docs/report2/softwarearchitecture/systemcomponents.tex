@@ -1,5 +1,6 @@
-\subsection{System Components}
-	\subsubsection{Introduction}
+\subsection*{System Components}
+\addcontentsline{toc}{subsection}{System Components}
+	\subsubsection*{Introduction}
 		The system, as a whole, can essentially be broken down into a combination of many smaller tasks. These tasks are then able to be grouped together based upon their dependency with one another - we shall call these components. This process is often known as decomposition.
 		
 		Decomposition allows the programmer to then interact with these smaller, decoupled components as a black-box - as they are only required to be knowledgeable of the interface, rather than the implementation. This is highly beneficial when a working on larger projects, as a team, where it is not very feasible for each programmer to be well-versed regarding the logic involved in the solutions for each task required by the system.
@@ -16,7 +17,7 @@
 		
 		Throughout the remainder of this section, we shall discuss the components, and their designs, in greater detail and provide reason as to why we believe the decisions we have made are beneficial.
 	
-	\subsubsection{Component Overview}
+	\subsubsection*{Component Overview}
 		As we've decided to build our system upon Django, it's also recommended that we also adopt their design-philosophy and place a high emphasis on the reusability and "pluggability" of our system's components. These philosophies are very common amongst the open-source scene; due to the ease involved with integration into other projects.
 		
 		Django specifies that a project is split into many smaller components, known as applications. It is often preferred that these applications are decoupled from each-other, and the project as whole, as much as possible. This makes the process of integrating an existing component into a new project much easier and far less time consuming. These applications can then be extended to work seamlessly with one-another.
@@ -65,14 +66,14 @@
 			
 		\end{itemize}
 
-	\subsubsection{The \textit{Core} Application}
+	\subsubsection*{The \textit{Core} Application}
 		As has been repeatedly stated, one of the main motives during the design process was the idea of usability. Thankfully, Django already contains a wide range of infrastructure intended to make this motive feasibly possible.
 		
 		Splitting up a system into components which are decoupled from one-another is highly ideal in many situations. However, for this concept to work successfully, there must be some mechanism present which will tie the components together; combining their functionality to produce the desired outcome. This is where our \textit{Core} application comes in...
 		
 		The \textit{Core} application will be explicitly unique to the CAMEL project. There will be \emph{no} intention for it to be reusable in 'unrelated' projects. It's role is to couple the other applications together - so that their functionalities can become combined.
 	
-	\subsubsection{The \textit{\LaTeX Book} Application}
+	\subsubsection*{The \textit{\LaTeX Book} Application}
 		\textit{\LaTeX Book} is to be the only application with any direct involvement with \LaTeX. It is to contain the parser which is capable of parsing \LaTeX files into a form in which Python (the primary programming language for our system) can make sense of.
 		
 		Along with the parser, \textit{\LaTeX Book} should also contain the Django Models which represent the relations which are to be stored within the database.
@@ -83,7 +84,7 @@
 		
 		Finally, \textit{\LaTeX Book} must specify the Django views and templates that hold the capabilities to read the previously stored \LaTeX files from the database and render them into HTML - as per requested by the current visiting user.
 	
-	\subsubsection{The \textit{Module} Application}
+	\subsubsection*{The \textit{Module} Application}
 		The \textit{Module} application serves quite a simple role. It allows for Staff Members to create modules in which they are able to enrol students upon. The Staff Members are then able to add various learning materials to these modules; so that the enrolled students can access them.
 		
 		In regards to CAMEL, the primary learning material will be the \LaTeX 'books' parsed by the \textit{\LaTeX Book} application and also the tests managed by the \textit{Homework} application.
@@ -91,14 +92,14 @@
 		We can interpret this application almost as an arbiter for Student users over the functionality of our other applications.
 		
 	
-	\subsubsection{The \textit{Homework} Application}
+	\subsubsection*{The \textit{Homework} Application}
 		The \textit{Homework} application should create the functionality for certain users to answer and submit forms containing their solutions for particular tests. The solutions which are submitted, for these tests, should then be analysable by particular users based upon a specified permission.
 		
 		The \textit{Core} application will extend upon this functionality making it so that Staff Members can add tests - which are included in the \LaTeX books parsed by the \textit{\LaTeX Book} Application - as learning materials to certain modules.
 		
 		It is then to make it so that a Staff Member can attach start-dates and end-dates for certain test-module combinations; so that a Student is only able to view a test and submit their solutions to it within the given time-frame.
 		
-	\subsubsection{The \textit{User} Application}
+	\subsubsection*{The \textit{User} Application}
 		The \textit{User} application is, in most likelihood, the smallest of all our system's applications. It is to only contain the functionality required for a user to login and logout of the system.
 		
 		Thankfully, Django already contains the ground-works which will allow us to quite easily develop a fairly robust authentication system.

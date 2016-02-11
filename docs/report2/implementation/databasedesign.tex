@@ -1,4 +1,5 @@
-\subsection{Database Design}
+\subsection*{Database Design}
+\addcontentsline{toc}{subsection}{Database Design}
 	For the database of CAMEL, we have decided to to take the pre-existing database and modify it to suit the needs of the new intended parser. Much of the models that were already provided will be used, though there will be some changes with them, such as BookNode and TextNode. The possible limitation of changing the current models will mean that current code may not be compatible. However as we intent to re-write much of the current code this should not be an issue. One design aspect that we have already applied to CAMEL was separating each model to now reside in its appropriate application rather than being in one cluttered file. This can be seen in the code that is attached.\\ 
 	
 	The models that will be included in CAMEL:
@@ -21,7 +22,7 @@
 	We will also be utilising some pre-existing tables that have been included with Django. One of these is Users which is the backbone of creating the Students, Administrator and Lecturer accounts. We have decided to use this table as it provides much of the functionality that we need in terms of security that could take some time to implement ourselves. For example, restrictions can be easily applied as Django has already provided this functionality. Additionally, security is greater with using User as Django has also provided a 'hash and salt' hashing mechanism in the table to protect user passwords.\\	
 	
 	\begin{figure}[h]
-		\includegraphics[scale=0.45]{implementation/img/database_design}
+		\includegraphics[scale=0.45]{img/database_design}
 		\caption{CAMEL Database Design}
 	\end{figure}
 	
