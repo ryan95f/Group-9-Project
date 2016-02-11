@@ -5,7 +5,9 @@
 		
 		Although the thinking required for some of these problems is rather trivial, that is not the case for every problem identified during the development of our system... In fact, we encountered several problems which required comprehensive study, along with thinking in conscientious manner, in order to formulate a robust solution.
 		
-		Throughout the remainder of this subsection, we shall discuss the problems which we encountered, along with our solutions to said problems - provided in formats such as structured english and pseudocode.
+		Throughout the remainder of this subsection, we shall discuss the problems which we encountered, along with our solutions to said problems.
+		
+		To create the opportunity for us to more efficiently spend our time on the system, we have not include pseudocode but instead included parts of our current Python code due to its high readability and similarities to the English language.
 		
 	\subsubsection*{\LaTeX Parser}
 		As we have discussed previously (\fullref{sssec:latexparser}), our \LaTeX parser is comparatively complex with regards to the system's other components. Thus, we shall describe and break down the reasoning behind how our algorithms work. Due to our parser's logic being split into several components, we have accordingly categorised our reasoning into their respective components.
@@ -47,10 +49,7 @@
 		
 		Finally, when the stack has been emptied, we create our last \textit{TextNode} for all, if any, plain-text that it remains within our passed \LaTeX.
 		
-		The pseudocode for this process is listed below:
-
-		
-		The implemented, and documented, Python code for this process is listed below:
+		Below we have an implemented, and documented, Python code-listing for the process described above:
 		\custpythonlstinputlisting{resources/parselatex.py}
 		
 	\subsubsection*{\LaTeX Parser's \textit{CommandNode}}
