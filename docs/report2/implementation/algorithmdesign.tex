@@ -47,6 +47,27 @@
 		
 		Finally, when the stack has been emptied, we create our last \textit{TextNode} for all, if any, plain-text that it remains within our passed \LaTeX.
 		
+		The pseudocode for this process is listed below:
+
+		
+		The implemented, and documented, Python code for this process is listed below:
+		\begin{center}
+			\lstinputlisting[
+				breaklines=true,
+				language=Python,
+				numbers=left,
+				numbersep=5pt,
+				numberstyle=\tiny\color{gray},
+				showstringspaces=false,
+				basicstyle=\footnotesize\ttfamily,
+				keywordstyle=\bfseries\color{orange},
+				commentstyle=\itshape\color{red},
+				stringstyle=\color{green}
+			]{resources/parselatex.py}
+		\end{center}
+		
+		
+		
 	\subsubsection*{\LaTeX Parser's \textit{CommandNode}}
 		As per our design, the \textit{CommandNode} is used to capture \LaTeX commands such as '\verb\textbf{Example}\' and '\verb\ref{ExampleReference}\'.
 		
