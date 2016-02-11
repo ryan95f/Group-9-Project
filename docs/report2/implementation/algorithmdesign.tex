@@ -12,8 +12,7 @@
 		
 		It is advised that the reader be aware of the priorly referenced section; as our algorithms will build from those design choices.
 		
-	\subsubsection*{\LaTeX Parser's \TeX BookParser}
-		
+	\subsubsection*{\LaTeX Parser's \TeX BookParser} \label{sssec:texbookparser}
 		Firstly, we shall begin to describe how the logic behind our \TeX BookParser's \textit{parse\_latex} method.
 		
 		The function of \textit{parse\_latex} is to take the contents bounded between the \verb\begin{document}\ ... \verb\end{document}\ commands as input. The output is a list of \textit{Nodes} representing all the immediate children of the given \LaTeX document. Each of these immediate \textit{Nodes} contain the applicable pointers to any children and argument \textit{Nodes}. Hence this output can be used to form a tree, of the given \LaTeX file, in a form which Python can more-easily process further.
@@ -30,7 +29,7 @@
 		
 		Hence the current match's parent \textit{Node} is the \textit{Node} obtained by performing a peek on the stack (item 'on-top' of the stack). In the case where the stack is empty, we know that the current match must be an immediate child of the inputted \LaTeX.
 		
-		Next, we must check whether the parent \textit{Node} is allowed children - in the case where the stack is empty, we assume this to always be true. We must also then check that the command for the current match does not occur prior to the start of the parent match; the reason for this is described further on.
+		Next, we must check whether the parent \textit{Node} is allowed children - in the case where the stack is empty, we assume this to always be true. We must also then check that the command for the current match does not occur prior to the start of the parent match.
 
 		We are now able to create an instance of the sub-class of \textit{LeafNode} for the current match and, if applicable, we iterate through the current match's arguments, confirming that they're valid.
 		
@@ -49,6 +48,21 @@
 		Finally, when the stack has been emptied, we create our last \textit{TextNode} for all, if any, plain-text that it remains within our passed \LaTeX.
 		
 	\subsubsection*{\LaTeX Parser's \textit{CommandNode}}
+		As per our design, the \textit{CommandNode} is used to capture \LaTeX commands such as '\verb\textbf{Example}\' and '\verb\ref{ExampleReference}\'.
+		
+		This is a much simpler task than that described previously (\fullref{sssec:texbookparser}).
+		
+		The logic is as follows:
+		We shall use regular expressions to identify matches for the start-string of our \LaTeX commands e.g. \\textbf{ and \\ref{. Next, we apply a simple bracket-counter which allows us to correctly identify the matching closing bracket.
+				
+		The process for this bracket-counter is described in the following steps:
+		\begin{enumerate}
+			\item Initiate a counter at 1 - as our regular expression's start-string contains '\{'.
+			\item Iterate through each character occurring after the start-string's match end-position.
+			\item If the current character is '\{' increment the counter by 1. Otherwise, if the current character is '\}' decrement the counter by 1. Making sure the previous character is not an escape character.
+			\item If the counter is 0, we have identified the closing-braces, and the \LaTeX command's content is that bounded between the start-braces and closing-braces. We can now discontinue our iteration.
+			\item If we have finished our iteration without encountering a matching closing-braces, there is an issue regarding the input text.
+		\end{enumerate}
 	
 	\subsubsection*{\LaTeX Parser's \textit{EnvironmentNode}}
 	
