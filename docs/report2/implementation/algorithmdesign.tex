@@ -51,22 +51,7 @@
 
 		
 		The implemented, and documented, Python code for this process is listed below:
-		\begin{center}
-			\lstinputlisting[
-				breaklines=true,
-				language=Python,
-				numbers=left,
-				numbersep=5pt,
-				numberstyle=\tiny\color{gray},
-				showstringspaces=false,
-				basicstyle=\footnotesize\ttfamily,
-				keywordstyle=\bfseries\color{orange},
-				commentstyle=\itshape\color{red},
-				stringstyle=\color{green}
-			]{resources/parselatex.py}
-		\end{center}
-		
-		
+		\custpythonlstinputlisting{resources/parselatex.py}
 		
 	\subsubsection*{\LaTeX Parser's \textit{CommandNode}}
 		As per our design, the \textit{CommandNode} is used to capture \LaTeX commands such as '\verb\textbf{Example}\' and '\verb\ref{ExampleReference}\'.
@@ -84,7 +69,51 @@
 			\item If the counter is 0, we have identified the closing-braces, and the \LaTeX command's content is that bounded between the start-braces and closing-braces. We can now discontinue our iteration.
 			\item If we have finished our iteration without encountering a matching closing-braces, there is an issue regarding the input text.
 		\end{enumerate}
-	
+		
+		The following details about the enclosed content of each match are stored in one of Python's namedtuple types, bearing the structure as follows:
+			namedtuple("PreambleCapture", """
+				inner\_start\_index, inner\_end\_index,
+				outer\_start\_index, outer\_end\_index,
+				arguments
+			""")
+		
+		An array of these namedtuples are then returned to the parser.
+		
+		The implementation of this process is shown below:
+		\custpythonlstinputlisting{resources/commandnode.py}
+		
 	\subsubsection*{\LaTeX Parser's \textit{EnvironmentNode}}
-	
+		\textit{EnvironmentNode} solves a similar problem to \textit{CommandNode}, however it is instead used to capture \LaTeX commands such as:
+		\begin{verbatim}
+			\begin{itemize} 
+				\item First item 
+				\item Second item
+			\end{itemize},
+			
+			\begin{center}
+				Hello World!
+			\end{center},
+		\end{verbatim}
+		
+		Clearly, the logic required to capture the contents of an \textit{EnvironmentNode} is different than that for a \textit{CommandNode}. The text bound between the \\begin and \\end commands is the content that the current command contains; thus the content we need to capture.
+		
+		The \textit{EnvironmentNode} utilises the same storage and returning procedure as that defined for the \textit{CommandNode}.
+		
+		The implementation of this process is shown below:
+		\custpythonlstinputlisting{resources/environmentnode.py}
+		
 	\subsubsection*{\LaTeX Parser's \textit{LevelNode}}
+		Similarly, to both \textit{CommandNode} and \textit{EnvironmentNode}, \textit{LevelNode} is used to capture \LaTeX commands such as:
+		\begin{verbatim}
+			\chapter{Example Chapter}
+				\section{Example Section}
+					\subsection{Example Subsection}
+						\subsubsection{Example Subsubsection}
+		\end{verbatim}
+		
+		As again, the logic required to capture the contents of an \textit{LevelNode} is different than that for a \textit{CommandNode} and am \textit{EnvironmentNode}. The text that is needed to be captured lies within the bounds of the current \textit{LevelNode} command and a later define \textit{LevelNode} of an equal to, or greater than hierarchical meaning.
+		
+		The \textit{LevelNode} utilises the same storage and returning procedure as that defined for the \textit{CommandNode}.
+		
+		The implementation of this process is shown below:
+		\custpythonlstinputlisting{resources/levelnode.py}
