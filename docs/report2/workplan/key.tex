@@ -1,0 +1,50 @@
+			\definecolor{greenI}{RGB}{226, 239, 217}
+			\definecolor{greenII}{RGB}{197, 224, 179}
+			\definecolor{greenIII}{RGB}{0, 176, 80}
+			
+			\definecolor{yellowI}{RGB}{255, 229, 153}
+			\definecolor{yellowII}{RGB}{255, 255, 0}
+			
+			\definecolor{orangeI}{RGB}{244, 176, 131}
+			\definecolor{orangeII}{RGB}{255, 165, 0}
+			
+			\definecolor{redI}{RGB}{255, 150, 150}
+			\definecolor{redII}{RGB}{255, 0, 0}
+            
+            \begin{table}[!htb]
+					\small
+                \renewcommand{\arraystretch}{1.1}
+					\begin{center}
+						\caption{Risk Assessment Key}
+						\label{table:riskassessmentkey}
+						\setlength{\aboverulesep}{0pt}
+						\setlength{\belowrulesep}{0pt}
+						\setlength{\extrarowheight}{.75ex}
+                        
+                        \scalebox{1.11}{
+                        \hspace{-1.9cm}
+						\begin{tabular}{|p{3.5cm}|*{5}{p{2.5cm}|}}
+							\toprule
+							Total Risk & \multicolumn{5}{c|}{Impact} \\
+							\midrule
+							
+							Likelihood of Happening & \cellcolor{greenI}1.Insignificant {\scriptsize (Minor problem easily handled)} & \cellcolor{greenII}2.Minor {\scriptsize (Some disruption possible)} & \cellcolor{yellowI}3.Moderate {\scriptsize (Significant time/resources required)} & \cellcolor{orangeI}4.Major {\scriptsize (Project severely damaged)} & \cellcolor{redI}5.Catastrophic {\scriptsize (Project ruined)}\\
+							\midrule
+							
+							\cellcolor{greenI}1.Highly Unlikely & \cellcolor{greenIII}1 Low & \cellcolor{greenIII}2 Low & \cellcolor{greenIII}3 Low & \cellcolor{yellowII}4 Moderate & \cellcolor{yellowII}5 Moderate\\
+							\midrule
+							
+							\cellcolor{greenII} 2.Unlikely & \cellcolor{greenIII}2 Low & \cellcolor{yellowII}4 Low & \cellcolor{yellowII}6 Moderate & \cellcolor{orangeII} 8 High & \cellcolor{orangeII}10 High\\
+							\midrule
+							
+							\cellcolor{yellowI}3.Moderate & \cellcolor{greenIII}3 Low & \cellcolor{yellowII}6 Moderate & \cellcolor{orangeII}9 High & \cellcolor{redII}12 Extreme & \cellcolor{redII}15 Extreme\\
+							\midrule
+							
+							\cellcolor{orangeI}4.Likely & \cellcolor{yellowII}4 Moderate & \cellcolor{orangeII}8 High & \cellcolor{redII}12 Extreme & \cellcolor{redII}16 Extreme & \cellcolor{redII}20 Extreme\\
+							\midrule
+							
+							\cellcolor{redI}5.Almost Certain & \cellcolor{yellowII}5 Moderate & \cellcolor{orangeII}10 High & \cellcolor{redII}15 Extreme & \cellcolor{redII}20 Extreme & \cellcolor{redII}25 Extreme\\
+							\bottomrule
+						\end{tabular}}
+					\end{center}
+				\end{table}
