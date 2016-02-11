@@ -57,6 +57,23 @@
 
 % The following is required for Implementation -> Algorithm Design:
 \usepackage{listings}
+\newcommand*{\custpythonlstinputlisting}[1]{
+	\begin{center}
+		\lstinputlisting[
+		breaklines=true,
+		language=Python,
+		numbers=left,
+		numbersep=5pt,
+		numberstyle=\tiny\color{gray},
+		showstringspaces=false,
+		basicstyle=\footnotesize\ttfamily,
+		keywordstyle=\bfseries\color{orange},
+		commentstyle=\itshape\color{red},
+		stringstyle=\color{green}
+		]{#1}
+	\end{center}
+}
+	
 
 % Allows us to create more readible references:
 \usepackage{hyperref}
