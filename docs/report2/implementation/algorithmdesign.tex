@@ -8,4 +8,40 @@
 		Throughout the remainder of this subsection, we shall discuss the problems which we encountered, along with our solutions to said problems - provided in formats such as structured english and pseudocode.
 		
 	\subsubsection*{\LaTeX Parser}
-		Hello \fullref{sssec:latexparser} test
+		As we have discussed previously (\fullref{sssec:latexparser}), our \LaTeX parser is comparatively complex with regards to the system's other components. Thus, we shall describe and break down the reasoning behind how our algorithms work.
+		
+		It is advised that the reader be aware of the priorly referenced section; as our algorithms will build from those design choices.
+		
+		Firstly, we shall begin to describe how the logic behind our \TeX BookParser's \textit{parse\_latex} method.
+		
+		The function of \textit{parse\_latex} is to take the contents bounded between the \verb\begin{document}\ ... \verb\end{document}\ commands as input. The output is a list of nodes representing all the immediate children of the given \LaTeX document. Each of these immediate nodes contain the applicable pointers to any children and argument nodes. Hence this output can be used to form a tree, of the given \LaTeX file, in a form which Python can more-easily process further.
+		
+		One of the primary concepts behind this parser is that we leave all the direct logic required to capture the details of a \LaTeX command to the LeafNode class, this allows us to further extend the parser quite significantly without overcomplicating the functionality of our \textit{parse\_latex} method. This logic required to capture a LaTeX command will be discussed later on.
+		
+		Now, onto how \textit{parse\_latex} performs its task:
+		it begins by iterating through each of the Nodes which have been appended to \textit{NodeBank}, checking with that Node if there exists any occurring matches inside of the text which was passed into \textit{parse\_latex}. These collected matches are then sorted into ascending order of appearance.
+		
+		Next, we begin to iterate through our sorted list of collected matches.
+		During each iteration, we work out the current match's parent node. This is done using the stack data-structure and a while-loop.
+		
+		Each time we escape out the content of a particular node, we pop it out from the stack; creating a new \textit{TextNode} whose plain-text content is all the text bounded between our current match and our previous match.
+		
+		Hence the current match's parent node is the node obtained by performing a peek on the stack (item 'on-top' of the stack). In the case where the stack is empty, we know that the current match must be an immediate child of the inputted \LaTeX.
+		
+		Next, we must check whether the parent node is allowed children - in the case where the stack is empty, we assume this to always be true. We must also then check that the command for the current match does not occur prior to the start of the parent match; the reason for this is described further on.
+
+		We are now able to create an instance of the sub-class of \textit{LeafNode} for the current match and, if applicable, we iterate through the current match's arguments, confirming that they're valid.
+		
+		We now build a tree for each valid argument's contents by making a recursive call to \textit{parse\_latex}; parsing the current valid argument's text content. If the returned array is not empty, we instantiate an \textit{ArgumentNode} and add all the Nodes in the returned array as children to our newly instanced \textit{ArgumentNode}.
+		
+		All of these instanced \textit{ArgumentNodes} are then added, as children, to our \textit{Node} for the current match.
+		
+		Similar to earlier, regarding the stack used to identify the parent \textit{Node} for our current match, we create a new \textit{TextNode} and set its content to be all the plain-text bounded between our current node and either the last match, or the most-recently popped \textit{Node} from the stack.
+		
+		Assuming the newly created \textit{TextNode} contains valid content, we shall append it as a child to the \textit{Node} obtained through performing a 'peek' onto the stack. In the case where the stack is empty, we simply append it to the array containing the immediate children of the passed \LaTeX.
+		
+		This above reasoning is then applied onto the \textit{Node} instance of the current match. We can now push our \textit{Node} instance onto the stack.
+		
+		The entire above process is repeated until we have iterated over each of our captured match. Once completed, we iteratively pop the remaining \textit{Nodes} from the stack and create \textit{TextNodes} for the remaining plain-text which had been missed.
+		
+		Finally, when the stack has been emptied, we create our last Text node for all, if any, plain-text that it remains within our passed \LaTeX.
