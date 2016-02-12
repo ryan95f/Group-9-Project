@@ -26,4 +26,32 @@
 	\begin{itemize}
 		\item Fix bugs with current system: The overhauling of the current system, meant that much of the current issues with CAMEL will be resolved with newer high quality code. As we are not explicitly fixing bugs on the original code base, this requirement is dropped as it was aimed at fixing only them. By having a new system means that we will have a new set of bugs to deal with that are not related to the original CAMEL system.
 	\end{itemize}
-	
+
+	\subsection*{Updated Legal, Social, Ethical and Professional Considerations}
+	This section contains an updated outlook on legal, social, ethical and professional issues associated with CAMEL. It is not exhaustive, but provides a space to explore issues that were not mentioned elsewhere in the document.
+
+	\underline{\textbf{Functional Requirements}}
+	\begin{itemize}
+		\item Analysing student answers (lexical comparison to measure collaboration and engagement): Lexical analysis of student submitted answers can be reliable, consistent and appropriately indiscriminate and thus can provide a less socially objectionable system for plagiarism detection.
+			However the validity of information yielded from such a system is questionable. This is especially true within subjects of science, where answers of an explanatory or computational nature may appear very similar yet actually be suitably original. This brings into question the credibility of this system. Though since all such software carries the same uncertainty, it should not affect the professional integrity of CAMEL.
+			Any teachers that are misled to rely too heavily on such a system may treat a student unfairly if wrongly accused. As long as teachers are well informed that results are not definitive and should only be used as an indication of potential plagiarism, this should not be of much social concern. It is also prudent to remember that providing such a disclaimer and keeping other professionals properly informed is a professional obligation we must adhere to.
+
+		\item Logging student answers: Since this information is not classed as personal information, storage of student’s answers should not breach the Data Protection Act. The exception to this is the attachment of the student’s identity to the piece of work. In order to comply with the spirit and word of the law, as well as common ethical practice, access to this information should be restricted only to those who need it and the information itself should not be kept longer than necessary.
+			Students may wish to remain anonymous. Refusing this option could lead to socially based objection. It would also take control away from the student, hurting the system’s usability. This would of course in turn damage the professional success of CAMEL.
+			A functionality of anonymity must be implemented anyway, since marking cannot be implemented fairly without it. In fact, non-anonymous marking would conflict with protocol for most academic establishments within our target market. This would reduce CAMELs software quality from a professional aspect.
+
+		\item Allowing deadlines on student assignments to prevent late submissions: Since this may decide the fate of any given student’s final mark, the presence of any errors in this process could cause users significant issues.
+			Though this is a social consideration, it should be noted that an error like this could drive users away and hurt the professional integrity of CAMEL.
+			A potential work around could be a period of grace after a deadline. This could allow students time to rectify the problem or find an alternative. Unfortunately this method will not discriminate those who submitted late by their own fault. This is unfair to students who adhered to the deadline as they should have.
+			An alternative is the allowance of late submissions that are then flagged for individual consideration later.
+	\end{itemize}
+
+	\underline{\textbf{Non-Functional Requirements}}
+	\begin{itemize}
+		\item Breaking down core code:CAMEL is a project created and run mainly by few individuals. Breaking down, restructuring or refactoring this code will change it greatly. This change could make the code far less familiar and recognizable to those individuals.
+			If these individuals cannot adapt, this could either inhibit CAMEL’s short to mid-term maintainability and growth or force its creators to depend on more expensive means of developing and maintaining it via more professional teams of experienced developers. Ethically this is an undesirable outcome.
+			The individuals in question will be debriefed and somewhat trained to the nature of the new system as a means of rectifying this issue.
+
+		\item Ease of use – disinclusion of documentation to teach users how to use CAMEL: Intuitive systems often lack much documentation to guide a new user on how to use it.
+			This will not give rise to any issues regarding the professionalism of the quality of CAMEL as software as long as it truly is intuitive and usable. Consideration must be given to all potential users, including minorities such as older less tech-savvy teachers/mature students, international students coming from a less technologically advanced background and those with accessibility needs such as impaired vision or dyslexia. This is not an exhaustive list of examples.
+	\end{itemize}
