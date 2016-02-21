@@ -18,7 +18,7 @@
 	<h1>{{ module.code }} - {{ module.title }}</h1>
 	<p>Books available for {{ module.code }}:</p>
 	{% for book in module.books.all %}
-		<a href="{% url 'module:latexbook:booknode_detail' module.pk book.pk %}">{{ book }}</a><br>
+		<a href="{% url 'module:latexbook:booknode_detail' module.pk book.pk %}">{{ book }}</a><br><br>
 	{% endfor %}
 </div>
 {% endblock %}
