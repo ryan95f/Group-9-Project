@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'user',
     # module section of application
     'module',
+    # homework section of application
+    'homework',
 ]
 
 MIDDLEWARE_CLASSES = [
