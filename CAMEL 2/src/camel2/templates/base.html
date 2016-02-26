@@ -75,7 +75,9 @@
         <ul id="nav-global">
             <li id="nav-index"><a href="/">Home</a></li>
             <li id="nav-modules"><a href="/module/">Modules</a></li>
-
+            {% if user.is_staff %}
+                <li id="nav-review"><a href="{% url 'module:module_dashboard' %}">Module Dashboard</a></li>
+            {% endif %}
             <li id="nav-users">
                 {% if user.is_authenticated %}
                     <a href="/user/logout/">Logout</a>
