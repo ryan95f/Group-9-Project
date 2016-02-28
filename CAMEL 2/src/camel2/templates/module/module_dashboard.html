@@ -10,16 +10,56 @@
 {% endblock %}
 
 {% block content-main %}
+<script type="text/javascript">
+	$(document).ready( function(){
+		$("#new_module_show").click( function(){
+			if ( $( ".form_block" ).is( ":hidden" ) ) {
+				$(".form_block").slideDown("slow");
+				$(this).html("Close");
+			}else{
+				$(".form_block").slideUp("slow");
+				$(this).html("Create Module");
+			}
+		});
+	});
+</script>
 <div>
-	{% if modules|length > 0 %}
+	<table id="module_table">
+	{% if module|length > 0 %}
 	<h1>Modules Available</h1>
-		{% for mo in modules %}
-			<a href="/">{{ mo.code }} - {{ mo.title }}</a>
+		
+		{% for mo in module %}
+			<tr>
+				<th>{{ mo.code }}</th>
+				<th>{{ mo.year }}</th>
+				<th>{{ mo.title }}</th>
+			</tr>
 		{% endfor %}
 	{% else %}
 		<h1>No Modules Available</h1>
 		<p><i>Please create a new module</i></p>
 	{% endif %}
-	<button>Create Module</button>
+	</table>
+	<button id="new_module_show">Create Module</button>
+	<form action="{% url 'module:new_module' %}" method="post">
+	<div class="form_block">
+		{% csrf_token %}
+		<div>
+			{{ form.code.label }}
+			{{ form.code }}
+		</div>
+		<div>
+			{{ form.year.label }}
+			{{ form.year }}
+		</div>
+		<div>
+			{{ form.title.label }}
+			{{ form.title }}
+			{{ form.submit }}
+		</div><br>	
+		<input id="form_submit" type="submit" value="Add Module" />
+	</div>
+</form>
+<script type="text/javascript" src="{% static 'module/js/ajax_new_module.js' %}"></script>
 </div>
 {% endblock %}

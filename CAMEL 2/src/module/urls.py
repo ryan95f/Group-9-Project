@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^(?P<pk>\M\w+)/$', views.module_detail, name="module_detail"),
     url(r"^(?P<module_pk>\w+)/", include("latexbook.urls", namespace="latexbook")),
     url(r'^Dashboard/$', ModuleView.as_view(), name='module_dashboard'),
+    url(r'^NewModule/$', views.new_module, name="new_module"),
 ]
