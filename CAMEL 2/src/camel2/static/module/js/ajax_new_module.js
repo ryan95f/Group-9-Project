@@ -1,6 +1,11 @@
 $(document).ready( function(){
 	$("#form_submit").click( function(){
+        $('#id_title').css('background-color', "#FFF");
 		event.preventDefault();
+        if(!($('#id_title').val().length > 0)){
+            $('#id_title').css('background-color', "#ff4d4d");
+            return;
+        }
 		new_module_request();
 
 	});
@@ -49,6 +54,7 @@ function show_new_module(json){
 			"<th>" + json.module_code + "</th>" + 
 			"<th>" + json.module_year + "</th>" + 
 			"<th>" + json.module_title + "</th>" + 
+            "<th><button>Edit " + json.module_code + "</button></th>" + 
 		"</tr>"
 		);
 }

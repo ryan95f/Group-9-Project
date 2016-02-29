@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.core.exceptions import ObjectDoesNotExist
 from django.views import generic
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 
 from module.models import Module
 from module.forms import ModuleForm
@@ -14,12 +14,22 @@ class ModuleIndexView(generic.ListView):
     def get_queryset(self):
         return Module.objects.all()
 
-class ModuleView(generic.View):
-	template_name = 'module/module_dashboard.html'
-	module = Module.objects.all()
-	
-	def get(self, request):
-		return render(request, self.template_name, {'module' : self.module, 'form' : ModuleForm })
+class ModuleDashboardView(generic.base.TemplateView):
+    template_name = 'module/module_dashboard.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ModuleDashboardView, self).get_context_data(**kwargs)
+        context['module'] = Module.objects.all()
+        context['form'] = ModuleForm()
+        return context
+
+class ModuleDetailsView(generic.base.TemplateView):
+    template_name = 'module/module_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ModuleDetailsView, self).get_context_data(**kwargs)
+        context['module'] = get_object_or_404(Module, pk=kwargs['pk'])
+        return context
 
 
 def new_module(request):
@@ -29,12 +39,7 @@ def new_module(request):
 			# return response that module alreay exists
 			return JsonResponse({'key_exists' : request.POST['module_code']})
 		except ObjectDoesNotExist:
-			# add new module
 			module = Module(request.POST['module_code'], request.POST['module_year'], request.POST['module_title'])
 			module.save()
 			return JsonResponse(request.POST)
-
-def module_detail(request, pk):
-	module = get_object_or_404(Module, pk=pk)
-	return render(request,'module/module_detail.html', {'module' : module })
-
+            

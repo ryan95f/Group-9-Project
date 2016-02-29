@@ -16,11 +16,13 @@
 <div>
 	{% if modules|length > 0 %}
 	<h1>Modules Available</h1>
+		<p>All modules that are currenly available to be used on CAMEL. If there is an issue with the modules you see, please contact your lecturer.</p>
 		{% for mo in modules %}
-			<a href="{% url 'module:module_detail' mo.pk %}">{{ mo.code }} - {{ mo.title }}</a>
+			<a href="{% url 'module:module_detail' mo.pk %}">{{ mo.code }} - {{ mo.title }}</a><br><br>
 		{% endfor %}
 	{% else %}
 		<h1>No Modules Available</h1>
+		<p>There is currently no modules on CAMEL.</p>
 	{% endif %}
 </div>
 
