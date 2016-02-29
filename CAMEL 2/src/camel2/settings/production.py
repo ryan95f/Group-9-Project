@@ -5,10 +5,7 @@ Read before deployment:
 https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 """
 
-try:
-    from camel2.settings.base import *  # NOQA
-except ImportError as e:
-    pass
+from camel2.settings.base import *  # NOQA
 
 
 # SECURITY WARNING: don't run with debug turned on in production!

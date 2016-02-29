@@ -20,10 +20,7 @@ NOTES:
 import os
 
 # To avoid over-complicating our base settings file, our LaTeXBook settings get their own file!
-try:
-    from camel2.settings.components.latexbook import BOOKNODES  # NOQA
-except ImportError as error:
-    pass
+from camel2.settings.components.latexbook import BOOKNODES, LATEX_NODE_TEMPLATE_PATHS  # NOQA
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

@@ -2,10 +2,7 @@
 Setting specific to running Camel in a development environment.
 """
 
-try:
-    from camel2.settings.base import *  # NOQA
-except ImportError as e:
-    pass
+from camel2.settings.base import *  # NOQA
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
