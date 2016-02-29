@@ -1,7 +1,5 @@
 from collections import namedtuple
 
-# This is the object that is returned when a node's 'to_html' method is called.
-NodeHTML = namedtuple("NodeHTML", "prefix_text process_children suffix_text")
 
 class LeafNode(object):
     """An abstract class which represents a leaf node on a tree."""
@@ -38,11 +36,6 @@ class LeafNode(object):
         ")
         """
         return []
-
-    @classmethod
-    def to_html(cls, arguments=None):
-        """Called when we want to convert this node into HTML. Returns an instance of 'NodeHTML'."""
-        return NodeHTML(prefix_text=None, process_children=False, suffix_text=None)
 
 
 class Node(LeafNode):
@@ -83,11 +76,6 @@ class Node(LeafNode):
         """Returns if the given arguments are valid."""
         arguments = arguments.strip()
         return arguments != ""
-
-    @classmethod
-    def to_html(cls, arguments=None):
-        """Called when we want to convert this node into HTML. Returns an instance of 'NodeHTML'."""
-        return NodeHTML(prefix_text=None, process_children=True, suffix_text=None)
 
     def add_children(self, children):
         """Adds a list of children to the node."""

@@ -8,7 +8,7 @@
 		{{ node_html.prefix_text | safe }}
 	{% endif %}
 
-	{% if not node.is_leaf_node and node_html.process_children %}
+	{% if not node.is_leaf_node and node|process_children %}
 		{{ children}}
 	{% endif %}
 

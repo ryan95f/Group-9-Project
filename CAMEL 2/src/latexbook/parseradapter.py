@@ -1,3 +1,5 @@
+"""A few utilities which are used to help make our LaTeX parser work well with Django."""
+
 from django.conf import settings
 
 from latexbook.models import BookNode, TextNode

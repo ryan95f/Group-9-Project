@@ -1,5 +1,3 @@
-from latexbook.latexparser.nodes.node import NodeHTML
-from latexbook.latexparser.nodes.levels import LevelNode
 from latexbook.latexparser.nodes.command import CommandNode
 
 class Item(CommandNode):

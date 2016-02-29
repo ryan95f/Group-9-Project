@@ -2,16 +2,16 @@
 To avoid over-complicating our base settings file, our LaTeXBook settings get their own file!
 This module simply defines each Node that we intend to capture when parsing a LaTeX document body.
 
-For the sake of conveinence, I shall try to briefly describe the logic behind how the LaTeXBook application works...
+For the sake of convenience, I shall try to briefly describe the logic behind how the LaTeXBook application works...
 There are two 'main' types of nodes; a node which just holds plain-text and a node which 'may' be the parent of a
-plain-text node. These parent nodes shall be refered to as book-nodes and they include things such as:
+plain-text node. These parent nodes shall be referred to as book-nodes and they include things such as:
 Chapters, Sections, Include-Graphics, Text-Styles, Arguments etc...
 
 In an ordinary LaTeX document, there are three identifiable types of commands:
     - Regular Commands: A standard LaTeX command which is often presented following format:
         \\commandname{commandarguments}
 
-        These inlcude:
+        These include:
         Include-Graphics, Reference, Label, Text-Styles etc...
 
     - Level Commands: A regular command which becomes the parent of all below commands and text until another level
@@ -26,7 +26,7 @@ In an ordinary LaTeX document, there are three identifiable types of commands:
     - Environment Commands: An environment is similar to a level command, except its contents end with a explicitly
         defined end block.
 
-        These inlcude:
+        These include:
         Proof, Figure, Itemize, Theorem etc...
 
 The parser checks the document against each node to locate all matches. This allows the logic behind how a node works
@@ -95,6 +95,9 @@ from camelcore.latexparser.nodes.commands.item import (
     Item
 )
 
+LATEX_NODE_TEMPLATE_PATHS = {}
+
+
 # This is used to configure our parser, so that we only get build a tree using the nodes we're interested in.
 BOOKNODES = NodeBank()
 
@@ -105,58 +108,93 @@ BOOKNODES.set_argument_node_id(ArgumentNode.get_id())
 # Add content text node.
 BOOKNODES.add_class(TextNode)
 BOOKNODES.set_text_node_id(TextNode.get_id())
+LATEX_NODE_TEMPLATE_PATHS[TextNode.get_id()] = "latexbook/nodes/misc"
 
 # Add level nodes.
 BOOKNODES.add_class(Book)
 BOOKNODES.set_root_node_id(Book.get_id())
+LATEX_NODE_TEMPLATE_PATHS[Book.get_id()] = "latexbook/nodes/levels"
 BOOKNODES.add_class(Chapter)
+LATEX_NODE_TEMPLATE_PATHS[Chapter.get_id()] = "latexbook/nodes/levels"
 BOOKNODES.add_class(Section)
+LATEX_NODE_TEMPLATE_PATHS[Section.get_id()] = "latexbook/nodes/levels"
 BOOKNODES.add_class(Subsection)
+LATEX_NODE_TEMPLATE_PATHS[Subsection.get_id()] = "latexbook/nodes/levels"
 
 # Add box environment nodes.
 BOOKNODES.add_class(Proof)
+LATEX_NODE_TEMPLATE_PATHS[Proof.get_id()] = "latexbook/nodes/environments/box"
 BOOKNODES.add_class(Verbatim)
+LATEX_NODE_TEMPLATE_PATHS[Verbatim.get_id()] = "latexbook/nodes/environments/box"
 BOOKNODES.add_class(Center)
+LATEX_NODE_TEMPLATE_PATHS[Center.get_id()] = "latexbook/nodes/environments/box"
 
 # Add float environment nodes.
 BOOKNODES.add_class(Figure)
+LATEX_NODE_TEMPLATE_PATHS[Figure.get_id()] = "latexbook/nodes/environments/float"
 BOOKNODES.add_class(Subfigure)
+LATEX_NODE_TEMPLATE_PATHS[Subfigure.get_id()] = "latexbook/nodes/environments/float"
 BOOKNODES.add_class(Table)
+LATEX_NODE_TEMPLATE_PATHS[Table.get_id()] = "latexbook/nodes/environments/float"
 BOOKNODES.add_class(Subtable)
+LATEX_NODE_TEMPLATE_PATHS[Subtable.get_id()] = "latexbook/nodes/environments/float"
 
 # Add list environment nodes.
 BOOKNODES.add_class(Itemize)
+LATEX_NODE_TEMPLATE_PATHS[Itemize.get_id()] = "latexbook/nodes/environments/list"
 BOOKNODES.add_class(Enumerate)
+LATEX_NODE_TEMPLATE_PATHS[Enumerate.get_id()] = "latexbook/nodes/environments/list"
 
 # Add mathmode environment nodes.
 BOOKNODES.add_class(Equation)
+LATEX_NODE_TEMPLATE_PATHS[Equation.get_id()] = "latexbook/nodes/environments/mathmode"
 BOOKNODES.add_class(EqnArray)
+LATEX_NODE_TEMPLATE_PATHS[EqnArray.get_id()] = "latexbook/nodes/environments/mathmode"
 BOOKNODES.add_class(Cases)
+LATEX_NODE_TEMPLATE_PATHS[Cases.get_id()] = "latexbook/nodes/environments/mathmode"
 BOOKNODES.add_class(Align)
+LATEX_NODE_TEMPLATE_PATHS[Align.get_id()] = "latexbook/nodes/environments/mathmode"
 BOOKNODES.add_class(Array)
+LATEX_NODE_TEMPLATE_PATHS[Array.get_id()] = "latexbook/nodes/environments/mathmode"
 
 # Add theorem environment nodes.
 BOOKNODES.add_class(Theorem)
+LATEX_NODE_TEMPLATE_PATHS[Theorem.get_id()] = "latexbook/nodes/environments/theorem"
 BOOKNODES.add_class(Lemma)
+LATEX_NODE_TEMPLATE_PATHS[Lemma.get_id()] = "latexbook/nodes/environments/theorem"
 BOOKNODES.add_class(Corollary)
+LATEX_NODE_TEMPLATE_PATHS[Corollary.get_id()] = "latexbook/nodes/environments/theorem"
 BOOKNODES.add_class(Definition)
+LATEX_NODE_TEMPLATE_PATHS[Definition.get_id()] = "latexbook/nodes/environments/theorem"
 BOOKNODES.add_class(Remark)
+LATEX_NODE_TEMPLATE_PATHS[Remark.get_id()] = "latexbook/nodes/environments/theorem"
 BOOKNODES.add_class(Example)
+LATEX_NODE_TEMPLATE_PATHS[Example.get_id()] = "latexbook/nodes/environments/theorem"
 BOOKNODES.add_class(Exercise)
+LATEX_NODE_TEMPLATE_PATHS[Exercise.get_id()] = "latexbook/nodes/environments/theorem"
 
 # Add content command nodes.
 BOOKNODES.add_class(Image)
+LATEX_NODE_TEMPLATE_PATHS[Image.get_id()] = "latexbook/nodes/commands/content"
 
 # Add list command nodes.
 BOOKNODES.add_class(Item)
+LATEX_NODE_TEMPLATE_PATHS[Item.get_id()] = "latexbook/nodes/commands/list"
 
 # Add reference command nodes.
 BOOKNODES.add_class(Reference)
+LATEX_NODE_TEMPLATE_PATHS[Reference.get_id()] = "latexbook/nodes/commands/reference"
 BOOKNODES.add_class(Citation)
+LATEX_NODE_TEMPLATE_PATHS[Citation.get_id()] = "latexbook/nodes/commands/reference"
 BOOKNODES.add_class(Label)
+LATEX_NODE_TEMPLATE_PATHS[Label.get_id()] = "latexbook/nodes/commands/reference"
 
 # Add text style command nodes.
 BOOKNODES.add_class(TextIt)
+LATEX_NODE_TEMPLATE_PATHS[TextIt.get_id()] = "latexbook/nodes/commands/textstyles"
 BOOKNODES.add_class(TextBf)
+LATEX_NODE_TEMPLATE_PATHS[TextBf.get_id()] = "latexbook/nodes/commands/textstyles"
 BOOKNODES.add_class(Underline)
+LATEX_NODE_TEMPLATE_PATHS[Underline.get_id()] = "latexbook/nodes/commands/textstyles"
 BOOKNODES.add_class(Emph)
+LATEX_NODE_TEMPLATE_PATHS[Emph.get_id()] = "latexbook/nodes/commands/textstyles"

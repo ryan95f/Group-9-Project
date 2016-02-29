@@ -1,0 +1,14 @@
+{% block prefix %}
+	<div class="latex_level_subsection">
+		<h4>
+			{% if node.get_children|length > 0 and node.get_children.0.node_type == "argumentnode" and node.get_children.0.get_descendants|length > 0 %}
+				{% include 'latexbook/recurselatextree.html' with root_node=node.get_children.0.get_descendants %}
+			{% else %}
+				Untitled Subsection
+			{% endif %}
+		</h4>
+{% endblock%}
+
+{% block suffix %}
+	</div>
+{% endblock%}
