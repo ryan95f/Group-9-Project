@@ -7,12 +7,14 @@ from module.models import Module
 from module.forms import ModuleForm
 from latexbook.models import Book
 
+
 class ModuleIndexView(generic.ListView):
     template_name = 'module/module_index.html'
     context_object_name = 'modules'
 
     def get_queryset(self):
         return Module.objects.all()
+
 
 class ModuleDashboardView(generic.base.TemplateView):
     template_name = 'module/module_dashboard.html'
@@ -22,6 +24,7 @@ class ModuleDashboardView(generic.base.TemplateView):
         context['module'] = Module.objects.all()
         context['form'] = ModuleForm()
         return context
+
 
 class ModuleDetailsView(generic.base.TemplateView):
     template_name = 'module/module_detail.html'
