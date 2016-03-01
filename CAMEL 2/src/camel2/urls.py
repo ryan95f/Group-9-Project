@@ -30,5 +30,8 @@ urlpatterns = [
     url(r'^user/', include('user.urls', namespace="user")),
 
     # module app
-    url(r'^module/', include('module.urls', namespace="module"))
+    url(r'^module/', include('module.urls', namespace="module")),
+
+    #test homework app
+    url(r'^homework/', include('homework.urls', namespace="homework"))
 ]

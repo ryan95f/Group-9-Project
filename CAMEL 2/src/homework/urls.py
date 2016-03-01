@@ -1,5 +1,7 @@
 from django.conf.urls import include, url
-from . import views
+from homework.views import HomeworkView
 
 app_name = 'homework'
-urlpatterns = []
+urlpatterns = [
+	 url(r'^test/$', HomeworkView.as_view(), name='homework'),
+]
