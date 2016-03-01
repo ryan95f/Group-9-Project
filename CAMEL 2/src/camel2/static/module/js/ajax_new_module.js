@@ -1,12 +1,22 @@
 $(document).ready( function(){
 	$("#form_submit").click( function(){
+        var send = true;
         $('#id_title').css('background-color', "#FFF");
+        $('#id_code').css('background-color', "#FFF");
 		event.preventDefault();
         if(!($('#id_title').val().length > 0)){
             $('#id_title').css('background-color', "#ff4d4d");
-            return;
+            send = false;
         }
-		new_module_request();
+
+        if(!($('#id_code').val().length > 0)){
+            $('#id_code').css('background-color', "#ff4d4d");
+            send = false;
+        }
+        if(send){
+            new_module_request();
+        }
+        return;
 
 	});
 });
@@ -16,7 +26,7 @@ function new_module_request(){
         url : "/module/NewModule/", //endpoint
         type : "POST", // http method
         data : { 
-        	module_code : $('#id_code option:selected').text(),
+        	module_code : $('#id_code').val(),
         	module_year : $('#id_year option:selected').text(),
         	module_title : $('#id_title').val(),
         }, // data sent with the post request

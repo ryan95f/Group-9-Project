@@ -1,12 +1,12 @@
 from django.db import models
 
 from latexbook.models import Book
-from module.options import ACADEMIC_YEARS, MODULE_CODES
+from module.options import ACADEMIC_YEARS
 
 # Create your models here.
 class Module(models.Model):
     """A module."""
-    code = models.CharField(primary_key=True, max_length=7, choices=MODULE_CODES)
+    code = models.CharField(primary_key=True, max_length=7)
     year = models.CharField(max_length=7, choices=ACADEMIC_YEARS)
     title = models.CharField(max_length=64)
 
