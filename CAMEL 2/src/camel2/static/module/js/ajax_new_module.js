@@ -48,7 +48,8 @@ function new_module_request(){
 
         // handle a successful response
         success : function(json) {
-        	module_title : $('#id_title').val(""),
+        	$('#id_title').val("");
+            $('#id_code').val("");
             console.log(json); // log the returned json to the console
             // console.log("success");
             if(json.key_exists){
