@@ -5,6 +5,7 @@ from .node import Node
 
 class CommandNode(Node):
     """A node which gives some Text, or other commands, a semantic meaning."""
+
     the_type = "command"
 
     def __init__(self, children=None):
@@ -13,15 +14,12 @@ class CommandNode(Node):
 
     @classmethod
     def get_start_regex(cls):
-        """Returns the regular expression used to match the start command of the environment."""
+        """Return the regular expression used to match the start command of the environment."""
         return re.compile(r"\\%s\{" % (cls.get_id()))
 
     @classmethod
     def check_latex(cls, latex, nodes):
-        """
-        This classmethod analyses the given latex, returning an instance of the 'CheckLatexReturn' namedtuple if
-        a match is found - else it should return None.
-        """
+        """Analyse the given LaTeX text, returning a list of all matches (CheckLatexReturn)."""
         start_regex = cls.get_start_regex()
 
         start_matches = re.finditer(start_regex, latex)

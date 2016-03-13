@@ -1,5 +1,7 @@
-"""Contains a bunch of unit-tests which will allow us to confirm that our LaTeX Parser works as intended.
-As our LaTeX Parser is completely decoupled from Django, this file should also be.
+"""Contains unit-tests regarding texbookparser.py.
+
+As our LaTeX Parser is completely decoupled from our Django project, these tests must make no reference to any code
+outside the scope of this package.
 
 Check here for information on writing and running tests:
 https://docs.python.org/3/library/unittest.html
@@ -7,8 +9,8 @@ https://docs.python.org/3/library/unittest.html
 
 import unittest
 
-from ..texbookparser import TexBookParser
 from .config.experimental_nodebank import BOOKNODES
+from ..texbookparser import TexBookParser
 
 # For convenience, get all our Node classes here:
 # Get Misc nodes
@@ -39,10 +41,10 @@ tex_book_parser = TexBookParser(BOOKNODES)
 # safe to test any database functionality.
 # Instead, use the 'TestParserAdapter' class which is below.
 class TestParseLatex(unittest.TestCase):
-    """Tests the method 'TexBookParser.parse_latex'"""
+    """Tests the method 'TexBookParser.parse_latex'."""
 
     def test_nodes_command_nested(self):
-        """Tests if the parser works correctly when one command node is nested inside another."""
+        """Test if the parser works correctly when one command node is nested inside another."""
         # Get LaTeX string to test
         test_latex_string = r"\textit{Hello \emph{World}}"
 

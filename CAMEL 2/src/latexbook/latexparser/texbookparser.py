@@ -3,14 +3,12 @@ from collections import namedtuple
 
 
 class TexBookParser(object):
-    """
-    Parses components of a LaTeX book document into various objects for Python to utilise.
-    """
+    """Parses components of a LaTeX book document into various objects for Python to utilise."""
 
     PreambleCapture = namedtuple("PreambleCapture", "key pattern")
 
     def __init__(self, nodes, preamble_captures=None):
-        """Initialises the TexParser object."""
+        """Initialise the new instance of our class."""
         self.nodes = nodes
 
         if preamble_captures is None:
@@ -29,9 +27,7 @@ class TexBookParser(object):
         self.preamble_captures = preamble_captures
 
     def parse(self, latex_text):
-        """
-        Converts the given LaTeX document text into a Python-friendly Book object.
-        """
+        """Convert the given LaTeX document text into a Python-friendly Book object."""
         # Remove comments.
         latex_text = self.prepare_latex_text(latex_text)
 
@@ -53,7 +49,10 @@ class TexBookParser(object):
 
     def prepare_latex_text(self, latex_text):
         """
-        Prepare the LaTeX text for parsing. This includes tasks such as removing the comments.
+        Prepare the LaTeX text so it may be parsed correctly.
+
+        This includes tasks such as:
+            - Removing embedded comments
         """
         # Strip the leading and trailing whitespace characters.
         latex_text = latex_text.strip()
@@ -80,21 +79,21 @@ class TexBookParser(object):
         return latex_text
 
     def read_preamble(self, latex_text):
-        """Returns the preamble for the given LaTeX text."""
+        """Return the preamble for the given LaTeX text."""
         pattern = re.compile(r"(.*)\\begin\{document\}", re.DOTALL)
         match = re.search(pattern, latex_text)
         preamble = match.group(1) if match else ""
         return preamble
 
     def read_body(self, latex_text):
-        """Returns the body for the given LaTeX text."""
+        """Return the body for the given LaTeX text."""
         pattern = re.compile(r"\\begin\{document\}(.*)\\end\{document\}", re.DOTALL)
         match = re.search(pattern, latex_text)
         body = match.group(1) if match else ""
         return body
 
     def parse_preamble(self, preamble):
-        """Parses the preamble text to collect the data."""
+        """Parse the preamble text, collecting the defined data."""
         # Dictionary to contain preamble properties and their declared values.
         preamble_data = {}
 
@@ -115,7 +114,8 @@ class TexBookParser(object):
         return preamble_data
 
     def parse_latex(self, latex):
-        """
+        r"""Parse the body of a LaTeX document, returning an array of all the immediate children as Nodes.
+
         Takes the contents of '\begin{document} ... \end{document}' and generates an tree object representation.
         This method returns the immediate children of the document, with each node holding pointers to
         their own children.
@@ -138,8 +138,9 @@ class TexBookParser(object):
 
         We now create an instance of the node for the current match and, if applicable, we iterate through the
         match's arguments, making sure that they're valid. If the current argument is valid, we make a recursive
-        call and parse the current argument's content string into this method - returning a Python object representation.
-        We make these objects children of a new Argument node, which itself is to be made a child of the current node.
+        call and parse the current argument's content string into this method - returning a Python object
+        representation. We make these objects children of a new Argument node, which itself is to be made a
+        child of the current node.
 
         Similar to earlier in the stack, we create a new Text node and fill its content with everything
         since the last match, or since the end of the most recently popped stack node.

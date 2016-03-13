@@ -4,29 +4,29 @@ from .node import Node
 
 
 class EnvironmentNode(Node):
+    """An abstract class which extends BlockNode."""
+
     the_type = "environment"
 
-    """An abstract class which extends BlockNode."""
     def __init__(self, children=None):
         """Initialise the environment node."""
         super(EnvironmentNode, self).__init__(children=children)
 
     @classmethod
     def get_start_regex(cls):
-        """Returns the regular expression used to match the start command of the environment."""
+        """Return the regular expression used to match the start command of the environment."""
         return r"\\begin\{%s\}" % (cls.get_id())
 
     @classmethod
     def get_end_regex(cls):
-        """Returns the regular expression used to match the end command of the environment."""
+        """Return the regular expression used to match the end command of the environment."""
         return r"\\end\{%s\}" % (cls.get_id())
 
     @classmethod
     def check_latex(cls, latex, nodes):
-        """
-        This classmethod analyses the given latex, returning an instance of the 'CheckLatexReturn' namedtuple if
-        a match is found - else it should return None.
-        As an environment is surrounded between a \begin{...} and an \end{...}, we must capture the latex bounded
+        r"""Analyse the given LaTeX text, returning a list of all matches (CheckLatexReturn).
+
+        As an environment is surrounded between a \begin{...} and an \end{...}, we must capture the LaTeX text bounded
         between the two commands.
         """
         latex_matches = []

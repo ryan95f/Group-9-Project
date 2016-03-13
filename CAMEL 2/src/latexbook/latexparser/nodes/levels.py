@@ -6,6 +6,7 @@ from .util.getpairedregex import get_paired_regex
 
 class LevelNode(Node):
     """An abstract class which extends BlockNode, by implementing a rank hierarchy."""
+
     is_level_node = True  # So we can get ALL level nodes.
 
     # We determine a hierarchical order for the level nodes,
@@ -19,15 +20,12 @@ class LevelNode(Node):
 
     @classmethod
     def get_start_regex(cls):
-        """Returns the regular expression used to match the start command of the level node."""
+        """Return the regular expression used to match the start command of the level node."""
         return re.compile(r"\\%s\{" % (cls.get_id()))
 
     @classmethod
     def check_latex(cls, latex, nodes):
-        """
-        This classmethod analyses the given latex, returning an instance of the 'CheckLatexReturn' namedtuple if
-        a match is found - else it should return None.
-        """
+        """Analyse the given LaTeX text, returning a list of all matches (CheckLatexReturn)."""
         start_regex = cls.get_start_regex()
         argument_start_regex = r"{"
         argument_end_regex = r"}"
@@ -53,7 +51,7 @@ class LevelNode(Node):
                 latex[argument_text_start_index:], argument_start_regex, argument_end_regex
             )
             inner_start_index = argument_text_outer_end_index + argument_text_start_index
-            arguments = (latex[argument_text_start_index:inner_start_index-1], )
+            arguments = (latex[argument_text_start_index:inner_start_index - 1], )
 
             # Check the current match against all other levels. This is done so we can get the end-index to not go past
             # any LevelNode of a superior rank.
@@ -82,6 +80,7 @@ class LevelNode(Node):
 
 class Book(LevelNode):
     """The root node level for the entire tree."""
+
     rank = 0
 
     def __init__(self, children=None):
@@ -91,6 +90,7 @@ class Book(LevelNode):
 
 class Chapter(LevelNode):
     """A chapter level node - has the second highest rank."""
+
     rank = 1
 
     def __init__(self, children=None):
@@ -100,6 +100,7 @@ class Chapter(LevelNode):
 
 class Section(LevelNode):
     """A section level node - has the third highest rank."""
+
     rank = 2
 
     def __init__(self, children=None):
@@ -109,6 +110,7 @@ class Section(LevelNode):
 
 class Subsection(LevelNode):
     """A subsection level node - has the fourth highest rank."""
+
     rank = 3
 
     def __init__(self, children=None):

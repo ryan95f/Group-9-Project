@@ -4,10 +4,13 @@ from django.conf import settings
 
 from latexbook.models import BookNode, TextNode
 
+
 def write_to_django_database(node, parent_node=None):
     """
-    Writes the book (which is a tree data structure) into the Django database.
-    This function adds the children of 'node' through recursive calls.
+    Write a Node, from the latexparser package, into our database.
+
+    We recursively call this function on all the immediate children of the given node - parsing the node itself to each
+    call, so the relation between the child and parent may exist bidirectionally.
     """
     content = node.content if hasattr(node, "content") else None
 
