@@ -32,6 +32,10 @@ urlpatterns = [
     # module app
     url(r'^module/', include('module.urls', namespace="module")),
 
+<<<<<<< HEAD
     #test homework app
+=======
+    # test homework app
+>>>>>>> 815171c1803df45982c7676c351f45ed6a6395c5
     # url(r'^homework/', include('homework.urls', namespace="homework"))
 ]

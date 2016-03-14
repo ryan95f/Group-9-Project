@@ -1,6 +1,4 @@
-"""
-	Defines a configuration of NodeBank that we can use to test the functionality of our LaTeX parser.
-"""
+"""Defines a configuration of NodeBank that we can use to test the functionality of our LaTeX parser."""
 
 # Import our 'Nodes' class.
 from ...nodebank import (
@@ -21,7 +19,7 @@ from .nodes.environments import (
 )
 
 from .nodes.commands import (
-    TextIt, Emph
+    Emph, TextIt
 )
 
 BOOKNODES = NodeBank()
@@ -46,5 +44,5 @@ BOOKNODES.add_class(Proof)
 BOOKNODES.add_class(Verbatim)
 
 # Add text style command nodes.
-BOOKNODES.add_class(TextIt)
 BOOKNODES.add_class(Emph)
+BOOKNODES.add_class(TextIt)

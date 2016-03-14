@@ -2,9 +2,9 @@ import re
 
 
 def get_paired_regex(text, start_regex, end_regex):
-    """
-    Returns the index of where the paired end_regex begins.
-    Assumes the text starts after the initial 'start_regex'.
+    """Return the index of where the paired end_regex begins.
+
+    We assume that the text starts after the initial 'start_regex'.
     """
     regex = re.compile("(" + start_regex + ")|(" + end_regex + ")")
     matches = re.finditer(regex, text)

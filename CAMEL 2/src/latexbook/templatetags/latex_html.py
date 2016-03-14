@@ -4,19 +4,19 @@ from collections import namedtuple
 
 from django import template
 from django.conf import settings
-from django.template import Context
 from django.template.loader import get_template
 from django.template.loader_tags import BlockNode
 
 register = template.Library()
 
+# Used to store the rendered information for a Django BookNode.
 NodeHTML = namedtuple("NodeHTML", "prefix_text suffix_text")
+
 
 @register.assignment_tag(takes_context=True)
 def latex_node_to_html(context, node):
     """
-    Given a Django-MPTT LaTeX node model, this template-tag will return the associated rendered
-    prefix and suffix.
+    Given a Django-MPTT LaTeX node model, this template-tag will return the associated rendered prefix and suffix.
 
     In Django, it is generally considered "bad-practice" to try a manually dissect blocks from a
     template. However, the alternative is to have two files per LaTeX node (Prefix and Suffix)
@@ -42,6 +42,7 @@ def latex_node_to_html(context, node):
             return NodeHTML(prefix_text=prefix_rendered_text, suffix_text=suffix_rendered_text)
         else:
             raise ValueError("Missing template path setting for LaTeX node '{0}'".format(node_id))
+
 
 @register.filter
 def process_children(node):
