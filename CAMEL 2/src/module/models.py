@@ -3,6 +3,7 @@ from django.db import models
 from latexbook.models import Book
 from module.options import ACADEMIC_YEARS
 
+
 # Create your models here.
 class Module(models.Model):
     """A module."""
@@ -15,5 +16,5 @@ class Module(models.Model):
     books = models.ManyToManyField(Book)
 
     def __str__(self):
-    	# String when object requested
-    	return self.code + " - " + self.title
+        # String when object requested
+        return self.code + " - " + self.title

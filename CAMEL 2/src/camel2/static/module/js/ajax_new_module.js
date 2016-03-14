@@ -1,20 +1,29 @@
 $(document).ready( function(){
 	$("#form_submit").click( function(){
         var send = true;
+        var error = "";
         $('#id_title').css('background-color', "#FFF");
         $('#id_code').css('background-color', "#FFF");
-		event.preventDefault();
-        if(!($('#id_title').val().length > 0)){
+		
+        event.preventDefault(); // prevent redirect
+
+        // error handling
+        if((!($('#id_title').val().length > 0)) || (!(new RegExp(/\w/).test($('#id_title').val())))){
             $('#id_title').css('background-color', "#ff4d4d");
             send = false;
+            error += "<p>Please ensure a valid string in entered</p>";
         }
 
-        if(!($('#id_code').val().length > 0)){
+        if((!($('#id_code').val().length > 0)) || (!(new RegExp(/^\M{1}\A{1}\d{4}$/).test($('#id_code').val())))){
             $('#id_code').css('background-color', "#ff4d4d");
             send = false;
+            error += "<p>Please enter valid module code. E.g. MA0000</p>";
         }
-        if(send){
+
+        if(send){ // if flag to send is true
             new_module_request();
+        }else{
+            $('#dash_error').html(error);
         }
         return;
 
@@ -39,7 +48,8 @@ function new_module_request(){
 
         // handle a successful response
         success : function(json) {
-        	module_title : $('#id_title').val(""),
+        	$('#id_title').val("");
+            $('#id_code').val("");
             console.log(json); // log the returned json to the console
             // console.log("success");
             if(json.key_exists){

@@ -1,19 +1,22 @@
 from argparse import FileType
 
-from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
+from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
 from latexbook.latexparser.texbookparser import TexBookParser
-from latexbook.parseradapter import write_to_django_database
 from latexbook.models import BookNode
+from latexbook.parseradapter import write_to_django_database
+
 
 class Command(BaseCommand):
-    help = "Parses a LaTeX book file into a Django-friendly form."
+    """A command for parsing LaTeX files into the LaTeX parser then writing the result into the database."""
+
+    help = "Parses a LaTeX book file into the LaTeX parser then writes the resulting nodes into the database"
 
     def add_arguments(self, parser):
-        """
-        Add arguments for this command.
+        """Add arguments for this command.
+
         See the following:
         https://docs.djangoproject.com/en/1.9/howto/custom-management-commands/
         https://docs.python.org/3/library/argparse.html#module-argparse
@@ -24,6 +27,7 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
+        """Called when the command is executed and ready to be handled."""
         if hasattr(settings, "BOOKNODES"):
             book_nodes = settings.BOOKNODES
 

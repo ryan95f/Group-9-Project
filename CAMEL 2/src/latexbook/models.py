@@ -32,6 +32,7 @@ class BookNode(MPTTModel):
 
 class TextNode(models.Model):
     """Associates some plain-text to a 'text' node from the BookNode model."""
+
     # The id of the 'text' node in the BookNode model.
     book_node = models.OneToOneField(
         BookNode,
@@ -48,7 +49,14 @@ class TextNode(models.Model):
 
 
 class Book(models.Model):
-    """A book."""
+    """
+    A wrapper for BookNode's of the type 'book'.
+
+    This allows us to attach some meta-data for each of our books.
+    It would be better if this model didn't exist and we instead dfined the meta-data within our LaTeX files;
+    cpaturing the data as ArgumentNodes.
+    """
+
     book_root_node = models.OneToOneField(
         BookNode,
         on_delete=models.CASCADE,
