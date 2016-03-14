@@ -1,12 +1,12 @@
 from django.db import models
-from django.contrib.auth.models import User
+from user.models import CamelUser
 
 from latexbook.models import BookNode
 
 class Answer(models.Model):
 	'''Current Student Answer - Allows for latex to be entered'''
 	homework_node = models.ForeignKey(BookNode)
-	user = models.ForeignKey(User)
+	user = models.ForeignKey(CamelUser)
 	student_text = models.TextField()
 	is_readonly = models.BooleanField(default=False)
 
@@ -18,7 +18,7 @@ class Answer(models.Model):
 
 class SingleChoiceAnswer(models.Model):
 	'''Object to hold multiple choice answers'''
-	user = models.ForeignKey(User)
+	user = models.ForeignKey(CamelUser)
 	question = models.ForeignKey(BookNode)
 	choice = models.ForeignKey(BookNode, related_name='mcanswer_choice')
 	is_readonly = models.BooleanField(default=False)
@@ -28,7 +28,7 @@ class SingleChoiceAnswer(models.Model):
 
 class Submission(models.Model):
 	'''Submission of SingleChoiceAnswer or Answer'''
-	user = models.ForeignKey(User)
+	user = models.ForeignKey(CamelUser)
 	assignment = models.ForeignKey(BookNode)
 	is_readonly = models.BooleanField(default=True)
 

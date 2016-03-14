@@ -135,6 +135,8 @@ STATICFILES_DIRS = [
     'camel2/static'
 ]
 
+AUTH_USER_MODEL = 'user.CamelUser'
+
 
 # LaTeXBook
 # Settings are defined in another file.
