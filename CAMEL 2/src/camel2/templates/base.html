@@ -94,7 +94,7 @@
 		{% block breadcrumbs %}
 			&nbsp;
             {% if user.is_authenticated %}
-                <a href="{% url 'user:user_home' user.pk %}">{{ user.username }}</a>
+                <a href="{% url 'user:user_home' user.identifier %}">{{ user.identifier }}</a>
             {% else %}
                 <a href="{% url 'camelcore.views.index' %}">home</a>
             {% endif %}
