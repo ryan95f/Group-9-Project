@@ -25,6 +25,10 @@
 	<p>Status: <b>student</b></p>
 {% endif %}
 
+{% if user.is_teacher %}
+	<p>Status: <b>lecturer</b></p>
+{% endif %}
+
 {% endblock %}
 
 
