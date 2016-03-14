@@ -63,3 +63,75 @@ class TestParseLatex(unittest.TestCase):
         test_structure = tex_book_parser.parse_latex(test_latex_string)
 
         return self.assertEqual(repr(correct_structure), repr(test_structure))
+    
+    def test_nodes_level_section(self):
+        """Test if the parser works correctly for the section node."""
+        # Get LaTeX string to test
+        test_latex_string = r"\section{Hello}"
+
+        # Create the Node components
+        section = Node_Section()
+        argument = Node_Argument()
+        section_text = Node_Text("Hello")
+
+        # Form the tree.
+        section.add_child(argument)
+        argument.add_child(section_text)
+
+        correct_structure = [section]
+        test_structure = tex_book_parser.parse_latex(test_latex_string)
+
+        return self.assertEqual(repr(correct_structure), repr(test_structure))
+    
+    def test_nodes_level_subsection(self):
+        """Test if the parser works correctly for the subsection node."""
+        # Get LaTeX string to test
+        test_latex_string = r"\subsection{Hello}"
+
+        # Create the Node components
+        subsection = Node_Subsection()
+        argument = Node_Argument()
+        subsection_text = Node_Text("Hello")
+
+        # Form the tree.
+        subsection.add_child(argument)
+        argument.add_child(subsection_text)
+
+        correct_structure = [subsection]
+        test_structure = tex_book_parser.parse_latex(test_latex_string)
+
+        return self.assertEqual(repr(correct_structure), repr(test_structure))
+    
+    def test_nodes_environment_verbatim(self):
+        """Test if the parser works correctly for the verbatim nodes."""
+        # Get LaTeX string to test
+        test_latex_string = r"\begin{verbatim} Hello \end{verbatim}"
+
+        # Create the Node components
+        verbatim = Node_Verbatim()
+        verbatim_text = Node_Text("Hello")
+
+        # Form the tree.
+        verbatim.add_child(verbatim_text)
+
+        correct_structure = [verbatim]
+        test_structure = tex_book_parser.parse_latex(test_latex_string)
+
+        return self.assertEqual(repr(correct_structure), repr(test_structure))
+    
+    def test_nodes_environment_proof(self):
+        """Test if the parser works correctly for the proof nodes."""
+        # Get LaTeX string to test
+        test_latex_string = r"\begin{proof} Hello \end{proof}"
+
+        # Create the Node components
+        proof = Node_Proof()
+        proof_text = Node_Text("Hello")
+
+        # Form the tree.
+        proof.add_child(proof_text)
+
+        correct_structure = [proof]
+        test_structure = tex_book_parser.parse_latex(test_latex_string)
+
+        return self.assertEqual(repr(correct_structure), repr(test_structure))
