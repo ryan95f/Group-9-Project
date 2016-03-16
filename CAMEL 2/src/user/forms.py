@@ -1,6 +1,5 @@
 from django import forms
 from user.models import CamelUser
-from django.utils.datastructures import SortedDict
 
 class SignUpForm(forms.Form):
 	identifier = forms.CharField(label='Student Number', max_length=40, required=True)
@@ -13,9 +12,6 @@ class SignUpForm(forms.Form):
 	class Meta:
 		model = CamelUser
 		fields = ()
-
-	def __init__(self, *args, **kwargs):
-		super(SignUpForm, self).__init__(*args, **kwargs)
 
 	def clean_form(self):
 		clean_identifer = self.cleaned_data['identifier']
