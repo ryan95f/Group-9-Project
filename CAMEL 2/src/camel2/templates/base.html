@@ -83,6 +83,7 @@
                     <a href="/user/logout/">Logout</a>
                 {% else %}
                     <a href="/user/login/">Login</a>
+                    <a href="{% url 'user:signup' %}">Sign Up</a>
                 {% endif %}
             </li>
         </ul>
