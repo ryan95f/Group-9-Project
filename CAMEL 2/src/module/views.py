@@ -1,13 +1,16 @@
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
-from django.views import generic
+from django.views.generic import ListView
+from django.views.generic.base import TemplateView
+from django.views.generic.edit import CreateView
+
 
 from module.forms import ModuleForm
 from module.models import Module
 
 
-class ModuleIndexView(generic.ListView):
-    """Blah, blah, blah."""
+class ModuleIndexView(ListView):
+    """View for displaying all modules in CAMEL"""
 
     template_name = 'module/module_index.html'
     context_object_name = 'modules'
@@ -17,8 +20,9 @@ class ModuleIndexView(generic.ListView):
         return Module.objects.all()
 
 
-class ModuleDashboardView(generic.base.TemplateView):
-    """Blah, blah, blah."""
+class ModuleDashboardView(TemplateView):
+    """View for Module Dashboard - requires login
+    see urls.py"""
 
     template_name = 'module/module_dashboard.html'
 
@@ -30,8 +34,8 @@ class ModuleDashboardView(generic.base.TemplateView):
         return context
 
 
-class ModuleDetailsView(generic.base.TemplateView):
-    """Blah, blah, blah."""
+class ModuleDetailsView(TemplateView):
+    """View for getting module specifics"""
 
     template_name = 'module/module_detail.html'
 
@@ -50,10 +54,11 @@ class ModuleDetailsView(generic.base.TemplateView):
 
 
 class AjaxableResponseMixin(object):
-    """Please add docstrings."""
+    """Ajax and non-ajax response class"""
 
     def form_invalid(self, form):
-        """Please add docstrings."""
+        """Valid form method concerning
+         module for ajax and non-ajax post requests"""
         response = super(AjaxableResponseMixin, self).form_invalid(form)
         if self.request.is_ajax():
             return JsonResponse(form.errors, status=400)
@@ -61,7 +66,7 @@ class AjaxableResponseMixin(object):
             return response
 
     def form_valid(self, form):
-        """Please add docstrings."""
+        """Valid form method for new module post request"""
         response = super(AjaxableResponseMixin, self).form_valid(form)
         if self.request.is_ajax():
             data = {
@@ -74,15 +79,15 @@ class AjaxableResponseMixin(object):
             return response
 
 
-class NewModule(AjaxableResponseMixin, generic.edit.CreateView):
-    """Please add docstrings."""
+class NewModule(AjaxableResponseMixin, CreateView):
+    """Add new module View, utilises AjaxableResponseMixin Object"""
 
     model = Module
     template_name = 'module/module_dashboard.html'
     fields = ['code', 'title', 'year']
 
     def get_context_data(self, **kwargs):
-        """Please add docstrings."""
+        """Aquire context data for template"""
         context = super(NewModule, self).get_context_data(**kwargs)
         context['module'] = Module.objects.all()
         context['form'] = ModuleForm

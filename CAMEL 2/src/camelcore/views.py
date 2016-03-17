@@ -1,4 +1,6 @@
 from django.views.generic.base import TemplateView
 
+
 class IndexView(TemplateView):
-	template_name = 'camelcore/index.html'
+    """Displays index (home) page of CAMEL"""
+    template_name = 'camelcore/index.html'

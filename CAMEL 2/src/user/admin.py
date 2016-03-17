@@ -6,6 +6,7 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 from user.models import CamelUser
 
+
 # creation form for creating users from terminal
 class UserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
@@ -18,14 +19,16 @@ class UserCreationForm(forms.ModelForm):
         fields = ()
 
     def clean_password_2(self):
+        '''Check both passswords are clean and compare'''
         # Check that the two password entries match
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
             raise forms.ValidationError("Passwords don't match")
-        return password_2
+        return password2
 
     def save(self, commit=True):
+        '''Add new user to CAMEL'''
         # Save the provided password in hashed format
         user = super(UserCreationForm, self).save(commit=False)
         user.set_password(self.cleaned_data["password1"])
@@ -46,11 +49,13 @@ class UserChangeForm(forms.ModelForm):
         fields = ()
 
     def clean_password(self):
+        '''Method to aquire original password'''
         return self.initial["password"]
 
 
 class UserAdmin(BaseUserAdmin):
-# The forms to add and change user instances
+    """Admin configuration for admin panel for viewing CAMEL user"""
+    # The forms to add and change user instances
     form = UserChangeForm
     add_form = UserCreationForm
 
@@ -60,17 +65,16 @@ class UserAdmin(BaseUserAdmin):
     list_display = ('get_short_name', 'first_name', 'last_name', 'email')
     list_filter = ('is_admin', 'is_an_lecturer', 'is_an_student',)
     fieldsets = (
-        (None, {'fields': ('identifier','password', )}),
+        (None, {'fields': ('identifier', 'password', )}),
         ('Personal info', {'fields': ('identifier', 'first_name', 'last_name', 'email')}),
         ('Permissions', {'fields': ('is_admin', 'is_an_student', 'is_an_lecturer',)}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
     add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': ('identifier', 'first_name', 'last_name', 'email', 'password1', 'password2')}
-        ),
+        (None, {'classes': ('wide',),
+                'fields': ('identifier', 'first_name', 'last_name', 'email', 'password1', 'password2')
+                }),
     )
     search_fields = ('identifier',)
     ordering = ('identifier',)
@@ -81,4 +85,3 @@ admin.site.register(CamelUser, UserAdmin)
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.
 admin.site.unregister(Group)
-

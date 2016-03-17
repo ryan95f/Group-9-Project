@@ -31,6 +31,6 @@ urlpatterns = [
 
     # module app
     url(r'^module/', include('module.urls', namespace="module")),
-    
+
     # url(r'^homework/', include('homework.urls', namespace="homework"))
 ]
