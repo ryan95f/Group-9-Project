@@ -17,10 +17,10 @@
 <div>
 	<h1>{{ module.code }} - {{ module.title }}</h1>
 	{% if learningmaterials %}
-		{% if learningmaterials.BookNode %}
+		{% if learningmaterials.Book %}
 			<h2>Books</h2>
 			<ul>
-				{% for book in learningmaterials.BookNode %}
+				{% for book in learningmaterials.Book %}
 					<a href="{% url 'module:latexbook:booknode_detail' module.pk book.pk %}"><li>{{ book }}</li></a>
 				{% endfor %}
 			</ul>
