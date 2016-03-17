@@ -11,7 +11,7 @@ class BookNodeDetailView(DetailView):
     template_name = "latexbook/booknode_detail_view.html"
 
     def get_context_data(self, **kwargs):
-        """Return context data for displaying the list of objects.."""
+        """Return context data for displaying the list of objects."""
         context = super(BookNodeDetailView, self).get_context_data(**kwargs)
 
         book_node = self.get_object()
@@ -29,7 +29,7 @@ class BookNodeChapterDetailView(DetailView):
     template_name = "latexbook/booknode_chapter_detail_view.html"
 
     def get_context_data(self, **kwargs):
-        """Return context data for displaying the list of objects.."""
+        """Return context data for displaying the list of objects."""
         context = super(BookNodeChapterDetailView, self).get_context_data(**kwargs)
         chapter = self.get_object()
         context["book"] = chapter.parent
