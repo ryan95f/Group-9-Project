@@ -1,7 +1,3 @@
-import re
-
-from django.template import Template, loader
-
 from latexbook.latexparser.nodes.levels import (
     Book as OriginalBook,
     Chapter as OriginalChapter,
@@ -36,7 +32,7 @@ class Section(OriginalSection):
 
 class Subsection(OriginalSubsection):
     """A subsection level node - has the fourth highest rank."""
-    
+
     def __init__(self, children=None):
         """Initialise the section level node."""
         super(Subsection, self).__init__(children=children)
