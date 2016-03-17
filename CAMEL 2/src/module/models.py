@@ -18,3 +18,6 @@ class Module(models.Model):
     def __str__(self):
         # String when object requested
         return self.code + " - " + self.title
+
+    def get_absolute_url(self):
+        return "/"

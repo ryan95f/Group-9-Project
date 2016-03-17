@@ -35,9 +35,9 @@ function new_module_request(){
         url : "/module/NewModule/", //endpoint
         type : "POST", // http method
         data : { 
-        	module_code : $('#id_code').val(),
-        	module_year : $('#id_year option:selected').text(),
-        	module_title : $('#id_title').val(),
+        	code : $('#id_code').val(),
+        	year : $('#id_year option:selected').text(),
+        	title : $('#id_title').val(),
         }, // data sent with the post request
         
         //get the csrf_token
@@ -52,17 +52,13 @@ function new_module_request(){
             $('#id_code').val("");
             console.log(json); // log the returned json to the console
             // console.log("success");
-            if(json.key_exists){
-                alert(json.key_exists + " is already a module");
-            }else{
-            	show_new_module(json);
-            }
 
         },
 
         // handle a non-successful response
         error : function(xhr,errmsg,err) {
             console.log(xhr);
+            alert("Module code already exists");
         }
     });
 }
