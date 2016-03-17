@@ -1,11 +1,9 @@
-from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.views import generic
 
 from module.forms import ModuleForm
 from module.models import Module
-from module.forms import ModuleForm
 
 
 class ModuleIndexView(generic.ListView):
@@ -50,10 +48,12 @@ class ModuleDetailsView(generic.base.TemplateView):
 
         return context
 
-             
+
 class AjaxableResponseMixin(object):
-    
+    """Please add docstrings."""
+
     def form_invalid(self, form):
+        """Please add docstrings."""
         response = super(AjaxableResponseMixin, self).form_invalid(form)
         if self.request.is_ajax():
             return JsonResponse(form.errors, status=400)
@@ -61,6 +61,7 @@ class AjaxableResponseMixin(object):
             return response
 
     def form_valid(self, form):
+        """Please add docstrings."""
         response = super(AjaxableResponseMixin, self).form_valid(form)
         if self.request.is_ajax():
             data = {
@@ -72,14 +73,17 @@ class AjaxableResponseMixin(object):
         else:
             return response
 
-class NewModule(AjaxableResponseMixin, CreateView):
+
+class NewModule(AjaxableResponseMixin, generic.edit.CreateView):
+    """Please add docstrings."""
+
     model = Module
     template_name = 'module/module_dashboard.html'
-    fields = ['code','title','year']
+    fields = ['code', 'title', 'year']
 
     def get_context_data(self, **kwargs):
+        """Please add docstrings."""
         context = super(NewModule, self).get_context_data(**kwargs)
         context['module'] = Module.objects.all()
         context['form'] = ModuleForm
         return context
-
