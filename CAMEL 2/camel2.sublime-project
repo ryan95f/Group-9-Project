@@ -1,0 +1,24 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+	"SublimeLinter":
+    {
+    	"@python": 3,
+    	"linters": {
+	        "flake8": {
+	            "max-line-length": 119,  // As suggested by Django
+	            "show-code": true,
+	            "ignore": [
+	            	"I201",  // Ignore newline between imports
+	            	"D100",  // Ignore docstring for public modules
+	            	"D105",  // Ignore docstring for magic methods
+	            	"D203",  // Ignore new-line before class docstring
+	            ]
+	        }
+	    }
+    }
+}

@@ -5,7 +5,6 @@
 *.toc
 *.thm
 src/camel2/db.sqlite3
-camel2.sublime-project
 camel2.sublime-workspace
 venv_camel2/
 
