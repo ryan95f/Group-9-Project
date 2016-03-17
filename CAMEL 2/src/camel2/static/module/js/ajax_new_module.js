@@ -1,5 +1,5 @@
 $(document).ready( function(){
-	$("#form_submit").click( function(){
+	$("#form_submit").click( function(event){
         var send = true;
         var error = "";
         $('#id_title').css('background-color', "#FFF");
@@ -50,21 +50,23 @@ function new_module_request(){
         success : function(json) {
         	$('#id_title').val("");
             $('#id_code').val("");
-            console.log(json); // log the returned json to the console
+            //console.log(json); // log the returned json to the console
             // console.log("success");
+            show_new_module(json);
 
         },
 
         // handle a non-successful response
         error : function(xhr,errmsg,err) {
-            console.log(xhr);
-            alert("Module code already exists");
+            //console.log(xhr.responseText);
+            alert(xhr.responseText);
         }
     });
 }
 
 function show_new_module(json){
 	// adding module to table
+    console.log()
 	$('#module_table').append(
 		"<tr>" + 
 			"<th>" + json.module_code + "</th>" + 

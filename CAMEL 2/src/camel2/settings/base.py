@@ -136,7 +136,12 @@ STATICFILES_DIRS = [
     'camel2/static'
 ]
 
+# custom user for CAMEL.
+# Found in user/models.py
 AUTH_USER_MODEL = 'user.CamelUser'
+
+# location of login form
+LOGIN_URL = '/user/login/'
 
 
 # LaTeXBook

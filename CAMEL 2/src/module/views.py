@@ -35,19 +35,9 @@ class ModuleDetailsView(generic.base.TemplateView):
         context['module'] = get_object_or_404(Module, pk=kwargs['pk'])
         return context
 
-
-# def new_module(request):
-# 	if(request.method == "POST"):
-# 		try:
-# 			module = Module.objects.get(pk=request.POST['module_code'])
-# 			# return response that module alreay exists
-# 			return JsonResponse({'key_exists' : request.POST['module_code']})
-# 		except ObjectDoesNotExist:
-# 			module = Module(request.POST['module_code'], request.POST['module_year'], request.POST['module_title'])
-# 			module.save()
-# 			return JsonResponse(request.POST)
-#             
+             
 class AjaxableResponseMixin(object):
+    
     def form_invalid(self, form):
         response = super(AjaxableResponseMixin, self).form_invalid(form)
         if self.request.is_ajax():
