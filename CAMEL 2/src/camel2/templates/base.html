@@ -74,15 +74,15 @@
     {% block nav-global %}
         <ul id="nav-global">
             <li id="nav-index"><a href="/">Home</a></li>
-            <li id="nav-modules"><a href="/module/">Modules</a></li>
+            <li id="nav-modules"><a href="{% url 'module:module_index' %}">Modules</a></li>
             {% if user.is_staff %}
                 <li id="nav-review"><a href="{% url 'module:module_dashboard' %}">Module Dashboard</a></li>
             {% endif %}
             <li id="nav-users">
                 {% if user.is_authenticated %}
-                    <a href="/user/logout/">Logout</a>
+                    <a href="{% url 'user:logout' %}">Logout</a>
                 {% else %}
-                    <a href="/user/login/">Login</a>
+                    <a href="{% url 'user:login' %}">Login</a>
                     <a href="{% url 'user:signup' %}">Sign Up</a>
                 {% endif %}
             </li>
@@ -97,7 +97,7 @@
             {% if user.is_authenticated %}
                 <a href="{% url 'user:user_home' user.identifier %}">{{ user.identifier }}</a>
             {% else %}
-                <a href="{% url 'camelcore.views.index' %}">home</a>
+                <a href="{% url 'index' %}">home</a>
             {% endif %}
 		{% endblock %}
 	</div>

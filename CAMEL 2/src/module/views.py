@@ -1,7 +1,9 @@
 from django.shortcuts import get_object_or_404, render
 from django.core.exceptions import ObjectDoesNotExist
-from django.views import generic
+
+from django.views.generic import ListView
 from django.views.generic.edit import CreateView
+from django.views.generic.base import TemplateView
 from django.http import JsonResponse, HttpResponse
 
 from module.models import Module
@@ -9,7 +11,7 @@ from module.forms import ModuleForm
 from latexbook.models import Book
 
 
-class ModuleIndexView(generic.ListView):
+class ModuleIndexView(ListView):
     template_name = 'module/module_index.html'
     context_object_name = 'modules'
 
@@ -17,7 +19,7 @@ class ModuleIndexView(generic.ListView):
         return Module.objects.all()
 
 
-class ModuleDashboardView(generic.base.TemplateView):
+class ModuleDashboardView(TemplateView):
     template_name = 'module/module_dashboard.html'
 
     def get_context_data(self, **kwargs):
@@ -27,7 +29,7 @@ class ModuleDashboardView(generic.base.TemplateView):
         return context
 
 
-class ModuleDetailsView(generic.base.TemplateView):
+class ModuleDetailsView(TemplateView):
     template_name = 'module/module_detail.html'
 
     def get_context_data(self, **kwargs):
