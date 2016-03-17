@@ -5,6 +5,7 @@ from django.views import generic
 
 from module.forms import ModuleForm
 from module.models import Module
+from module.forms import ModuleForm
 
 
 class ModuleIndexView(generic.ListView):
@@ -49,15 +50,36 @@ class ModuleDetailsView(generic.base.TemplateView):
 
         return context
 
+             
+class AjaxableResponseMixin(object):
+    
+    def form_invalid(self, form):
+        response = super(AjaxableResponseMixin, self).form_invalid(form)
+        if self.request.is_ajax():
+            return JsonResponse(form.errors, status=400)
+        else:
+            return response
 
-def new_module(request):
-    """Accept an AJAX request for creating a new module."""
-    if(request.method == "POST"):
-        try:
-            module = Module.objects.get(pk=request.POST['module_code'])
-            # return response that module alreay exists
-            return JsonResponse({'key_exists': request.POST['module_code']})
-        except ObjectDoesNotExist:
-            module = Module(request.POST['module_code'], request.POST['module_year'], request.POST['module_title'])
-            module.save()
-            return JsonResponse(request.POST)
+    def form_valid(self, form):
+        response = super(AjaxableResponseMixin, self).form_valid(form)
+        if self.request.is_ajax():
+            data = {
+                'module_code': self.object.code,
+                'module_title': self.object.title,
+                'module_year': self.object.year,
+            }
+            return JsonResponse(data)
+        else:
+            return response
+
+class NewModule(AjaxableResponseMixin, CreateView):
+    model = Module
+    template_name = 'module/module_dashboard.html'
+    fields = ['code','title','year']
+
+    def get_context_data(self, **kwargs):
+        context = super(NewModule, self).get_context_data(**kwargs)
+        context['module'] = Module.objects.all()
+        context['form'] = ModuleForm
+        return context
+

@@ -17,21 +17,20 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from camelcore.views import index as camelcore_index
+from camelcore.views import IndexView as camelcore_index
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     # go to core to obtain index
-    url(r'^$', camelcore_index, name='index'),
+    url(r'^$', camelcore_index.as_view(), name='index'),
 
     # user app
     url(r'^user/', include('user.urls', namespace="user")),
 
     # module app
     url(r'^module/', include('module.urls', namespace="module")),
-
-    # test homework app
+    
     # url(r'^homework/', include('homework.urls', namespace="homework"))
 ]

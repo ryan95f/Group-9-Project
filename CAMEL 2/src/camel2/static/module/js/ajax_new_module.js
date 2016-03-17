@@ -1,5 +1,5 @@
 $(document).ready( function(){
-	$("#form_submit").click( function(){
+	$("#form_submit").click( function(event){
         var send = true;
         var error = "";
         $('#id_title').css('background-color', "#FFF");
@@ -35,9 +35,9 @@ function new_module_request(){
         url : "/module/NewModule/", //endpoint
         type : "POST", // http method
         data : { 
-        	module_code : $('#id_code').val(),
-        	module_year : $('#id_year option:selected').text(),
-        	module_title : $('#id_title').val(),
+        	code : $('#id_code').val(),
+        	year : $('#id_year option:selected').text(),
+        	title : $('#id_title').val(),
         }, // data sent with the post request
         
         //get the csrf_token
@@ -50,25 +50,23 @@ function new_module_request(){
         success : function(json) {
         	$('#id_title').val("");
             $('#id_code').val("");
-            console.log(json); // log the returned json to the console
+            //console.log(json); // log the returned json to the console
             // console.log("success");
-            if(json.key_exists){
-                alert(json.key_exists + " is already a module");
-            }else{
-            	show_new_module(json);
-            }
+            show_new_module(json);
 
         },
 
         // handle a non-successful response
         error : function(xhr,errmsg,err) {
-            console.log(xhr);
+            //console.log(xhr.responseText);
+            alert(xhr.responseText);
         }
     });
 }
 
 function show_new_module(json){
 	// adding module to table
+    console.log()
 	$('#module_table').append(
 		"<tr>" + 
 			"<th>" + json.module_code + "</th>" + 

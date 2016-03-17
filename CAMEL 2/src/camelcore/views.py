@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.views.generic.base import TemplateView
 
-def index(request):
-    return render(request, 'camelcore/index.html')
+class IndexView(TemplateView):
+	template_name = 'camelcore/index.html'

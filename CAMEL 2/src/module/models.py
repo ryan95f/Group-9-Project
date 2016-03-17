@@ -16,6 +16,9 @@ class Module(models.Model):
     def __str__(self):
         return self.code + " - " + self.title
 
+    def get_absolute_url(self):
+        return "/"
+
 
 class LearningMaterial(models.Model):
     """

@@ -14,9 +14,46 @@
 	<table>
 		{{ form }}
 	</table>
-    <input type="submit" value="submit" />
+    <input id='btn_submit' type="submit" value="submit" />
 </form>
 
+<script type="text/javascript">
+	$(document).ready( function(){
+		// User login error handling
+
+		// when the user clicks the button
+		$('#btn_submit').click( function(event){
+			var send = true; // flag to decide if to stop submission of data
+			
+			// get values from text fields
+			var username = $('#id_username').val();
+			var password = $('#id_password').val();
+
+			// if the username is empty or does not match words & numbers
+			$('#id_username, #id_password').css('background-color', "#fff");
+			if(!(username.length > 0) ||  (!(new RegExp(/\w/).test(username)))){
+				// change colour to red, set flag to false
+				$('#id_username').css('background-color', "#ff4d4d");
+				send = false;
+			}
+
+			// if password is empty
+			if(!(password.length > 0)){
+				// change colour to red, set flag to false
+				$('#id_password').css('background-color', "#ff4d4d");
+				send = false;
+			}
+
+
+			if(!(send)){
+				// if the flag is false, then do not send
+				event.preventDefault(); 
+			}
+		});
+	});
+</script>
+
 {% endblock %}
+
 
 
