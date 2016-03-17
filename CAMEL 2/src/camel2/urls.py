@@ -1,4 +1,4 @@
-"""camel2 URL Configuration
+"""camel2 URL Configuration.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.9/topics/http/urls/
@@ -22,7 +22,7 @@ from camelcore.views import index as camelcore_index
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    
+
     # go to core to obtain index
     url(r'^$', camelcore_index, name='index'),
 
