@@ -135,3 +135,60 @@ class TestParseLatex(unittest.TestCase):
         test_structure = tex_book_parser.parse_latex(test_latex_string)
 
         return self.assertEqual(repr(correct_structure), repr(test_structure))
+
+    def test_nodes_command_Italic(self):
+        test_latex_string = r"\textit{Hello World}"
+
+        italic = Node_TextIt()
+        italic_text = Node_Text("Hello World")
+
+        italic.add_child(italic_text)
+
+        correct_structure = [italic]
+        test_structure = tex_book_parser.parse_latex(test_latex_string)
+
+        return self.assertEqual(repr(correct_structure), repr(test_structure))
+
+    def test_nodes_Emphasis(self):
+        test_latex_string = r"\emph{Hello World}"
+    
+        emphasis = Node_Emph()
+        emph_text = Node_Text("Hello World")
+
+        emphasis.add_child(emph_text)
+
+        correct_structure = [emphasis]
+        test_structure = tex_book_parser.parse_latex(test_latex_string)
+
+        return self.assertEqual(repr(correct_structure), repr(test_structure))
+
+    def test_nodes_command_book(self):
+        """test if parser works correectly with books"""
+        test_latex_string = r"\book{Hello World}"
+
+        book = Node_Book()
+        book_content = Node_Argument()
+        book_text = Node_Text("Hello World")
+
+        book.add_child(book_content)
+        book_content.add_child(book_text)
+
+        correct_structure = [book]
+        test_structure = tex_book_parser.parse_latex(test_latex_string)
+
+        return self.assertEqual(repr(correct_structure), repr(test_structure))
+
+    def test_nodes_command_Chapter(self):
+        test_latex_string = r"\chapter{Hello World}"
+
+        Chapter = Node_Chapter()
+        Chapter_content = Node_Argument()
+        Chapter_text = Node_Text("Hello World")
+
+        Chapter.add_child(Chapter_content)
+        Chapter_content.add_child(Chapter_text)
+
+        correct_structure = [Chapter]
+        test_structure = tex_book_parser.parse_latex(test_latex_string)
+
+        return self.assertEqual(repr(correct_structure), repr(test_structure))
