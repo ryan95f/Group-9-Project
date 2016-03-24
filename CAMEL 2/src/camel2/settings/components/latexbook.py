@@ -93,7 +93,7 @@ from camelcore.latexparser.nodes.commands.reference import (
 )
 
 from camelcore.latexparser.nodes.commands.textstyles import (
-    TextIt, TextBf, Underline, Emph
+     Emph, TextBf, TextIt,  Underline
 )
 
 from camelcore.latexparser.nodes.commands.item import (
@@ -117,132 +117,65 @@ from camelcore.homeworkquiz.latexbook.latexparser.nodes.environments.questiontyp
 # Create the dictionary used to get node templates.
 LATEX_NODE_TEMPLATE_PATHS = {}
 
-
 # This is used to configure our parser, so that we only get build a tree using the nodes we're interested in.
 BOOKNODES = NodeBank()
+
+def add_node_quick(dir, node):
+    """A quick way to add a node into the system."""
+    BOOKNODES.add_class(node)
+    LATEX_NODE_TEMPLATE_PATHS[node.get_id()] = os.path.join(dir, node.get_id() + ".html")
+
+def add_nodes_quick(dir, node_list):
+    """A wrapper around 'add_node_quick' to take an array of nodes."""
+    [add_node_quick(dir, node) for node in node_list]
 
 # Add argument node.
 BOOKNODES.add_class(ArgumentNode)
 BOOKNODES.set_argument_node_id(ArgumentNode.get_id())
 
 # Add content text node.
-BOOKNODES.add_class(TextNode)
+add_node_quick("latexbook/nodes/misc", TextNode)
 BOOKNODES.set_text_node_id(TextNode.get_id())
-LATEX_NODE_TEMPLATE_PATHS[TextNode.get_id()] = "latexbook/nodes/misc"
 
 # Add level nodes.
-BOOKNODES.add_class(Book)
+add_nodes_quick("latexbook/nodes/levels", [Book, Chapter, Section, Subsection])
 BOOKNODES.set_root_node_id(Book.get_id())
-LATEX_NODE_TEMPLATE_PATHS[Book.get_id()] = "latexbook/nodes/levels"
-BOOKNODES.add_class(Chapter)
-LATEX_NODE_TEMPLATE_PATHS[Chapter.get_id()] = "latexbook/nodes/levels"
-BOOKNODES.add_class(Section)
-LATEX_NODE_TEMPLATE_PATHS[Section.get_id()] = "latexbook/nodes/levels"
-BOOKNODES.add_class(Subsection)
-LATEX_NODE_TEMPLATE_PATHS[Subsection.get_id()] = "latexbook/nodes/levels"
 
 # Add box environment nodes.
-BOOKNODES.add_class(Proof)
-LATEX_NODE_TEMPLATE_PATHS[Proof.get_id()] = "latexbook/nodes/environments/box"
-BOOKNODES.add_class(Verbatim)
-LATEX_NODE_TEMPLATE_PATHS[Verbatim.get_id()] = "latexbook/nodes/environments/box"
-BOOKNODES.add_class(Center)
-LATEX_NODE_TEMPLATE_PATHS[Center.get_id()] = "latexbook/nodes/environments/box"
+add_nodes_quick("latexbook/nodes/environments/box", [Proof, Verbatim, Center])
 
 # Add float environment nodes.
-BOOKNODES.add_class(Figure)
-LATEX_NODE_TEMPLATE_PATHS[Figure.get_id()] = "latexbook/nodes/environments/float"
-BOOKNODES.add_class(Subfigure)
-LATEX_NODE_TEMPLATE_PATHS[Subfigure.get_id()] = "latexbook/nodes/environments/float"
-BOOKNODES.add_class(Table)
-LATEX_NODE_TEMPLATE_PATHS[Table.get_id()] = "latexbook/nodes/environments/float"
-BOOKNODES.add_class(Subtable)
-LATEX_NODE_TEMPLATE_PATHS[Subtable.get_id()] = "latexbook/nodes/environments/float"
+add_nodes_quick("latexbook/nodes/environments/float", [Figure, Subfigure, Table, Subtable])
 
 # Add list environment nodes.
-BOOKNODES.add_class(Itemize)
-LATEX_NODE_TEMPLATE_PATHS[Itemize.get_id()] = "latexbook/nodes/environments/list"
-BOOKNODES.add_class(Enumerate)
-LATEX_NODE_TEMPLATE_PATHS[Enumerate.get_id()] = "latexbook/nodes/environments/list"
+add_nodes_quick("latexbook/nodes/environments/list", [Itemize, Enumerate])
 
 # Add mathmode environment nodes.
-BOOKNODES.add_class(Equation)
-LATEX_NODE_TEMPLATE_PATHS[Equation.get_id()] = "latexbook/nodes/environments/mathmode"
-BOOKNODES.add_class(EqnArray)
-LATEX_NODE_TEMPLATE_PATHS[EqnArray.get_id()] = "latexbook/nodes/environments/mathmode"
-BOOKNODES.add_class(Cases)
-LATEX_NODE_TEMPLATE_PATHS[Cases.get_id()] = "latexbook/nodes/environments/mathmode"
-BOOKNODES.add_class(Align)
-LATEX_NODE_TEMPLATE_PATHS[Align.get_id()] = "latexbook/nodes/environments/mathmode"
-BOOKNODES.add_class(Array)
-LATEX_NODE_TEMPLATE_PATHS[Array.get_id()] = "latexbook/nodes/environments/mathmode"
-
+add_nodes_quick("latexbook/nodes/environments/mathmode", [Equation, EqnArray, Cases, Align, Array])
 # Add theorem environment nodes.
-BOOKNODES.add_class(Theorem)
-LATEX_NODE_TEMPLATE_PATHS[Theorem.get_id()] = "latexbook/nodes/environments/theorem"
-BOOKNODES.add_class(Lemma)
-LATEX_NODE_TEMPLATE_PATHS[Lemma.get_id()] = "latexbook/nodes/environments/theorem"
-BOOKNODES.add_class(Corollary)
-LATEX_NODE_TEMPLATE_PATHS[Corollary.get_id()] = "latexbook/nodes/environments/theorem"
-BOOKNODES.add_class(Definition)
-LATEX_NODE_TEMPLATE_PATHS[Definition.get_id()] = "latexbook/nodes/environments/theorem"
-BOOKNODES.add_class(Remark)
-LATEX_NODE_TEMPLATE_PATHS[Remark.get_id()] = "latexbook/nodes/environments/theorem"
-BOOKNODES.add_class(Example)
-LATEX_NODE_TEMPLATE_PATHS[Example.get_id()] = "latexbook/nodes/environments/theorem"
-BOOKNODES.add_class(Exercise)
-LATEX_NODE_TEMPLATE_PATHS[Exercise.get_id()] = "latexbook/nodes/environments/theorem"
+add_nodes_quick("latexbook/nodes/environments/theorem", [Theorem, Lemma, Corollary, Definition, Remark, Example, Exercise])
 
 # Add content command nodes.
-BOOKNODES.add_class(Image)
-LATEX_NODE_TEMPLATE_PATHS[Image.get_id()] = "latexbook/nodes/commands/content"
+add_nodes_quick("latexbook/nodes/commands/content", [Image])
 
 # Add list command nodes.
-BOOKNODES.add_class(Item)
-LATEX_NODE_TEMPLATE_PATHS[Item.get_id()] = "latexbook/nodes/commands/list"
+add_nodes_quick("latexbook/nodes/commands/list", [Item])
 
 # Add reference command nodes.
-BOOKNODES.add_class(Reference)
-LATEX_NODE_TEMPLATE_PATHS[Reference.get_id()] = "latexbook/nodes/commands/reference"
-BOOKNODES.add_class(Citation)
-LATEX_NODE_TEMPLATE_PATHS[Citation.get_id()] = "latexbook/nodes/commands/reference"
-BOOKNODES.add_class(Label)
-LATEX_NODE_TEMPLATE_PATHS[Label.get_id()] = "latexbook/nodes/commands/reference"
+add_nodes_quick("latexbook/nodes/commands/reference", [Reference, Citation, Label])
 
 # Add text-style command nodes.
-BOOKNODES.add_class(TextIt)
-LATEX_NODE_TEMPLATE_PATHS[TextIt.get_id()] = "latexbook/nodes/commands/textstyles"
-BOOKNODES.add_class(TextBf)
-LATEX_NODE_TEMPLATE_PATHS[TextBf.get_id()] = "latexbook/nodes/commands/textstyles"
-BOOKNODES.add_class(Underline)
-LATEX_NODE_TEMPLATE_PATHS[Underline.get_id()] = "latexbook/nodes/commands/textstyles"
-BOOKNODES.add_class(Emph)
-LATEX_NODE_TEMPLATE_PATHS[Emph.get_id()] = "latexbook/nodes/commands/textstyles"
+add_nodes_quick("latexbook/nodes/commands/textstyles", [Emph, TextBf, TextIt, Underline])
 
 
 # BEGIN HomeworkQuiz Setup.
 HQ_NODE_ROOT = "camelcore/homeworkquiz/latexbook/latexparser/nodes"
 
 # Add homework environment nodes.
-BOOKNODES.add_class(Homework)
-LATEX_NODE_TEMPLATE_PATHS[Homework.get_id()] = os.path.join(HQ_NODE_ROOT, "environments/homework")
-BOOKNODES.add_class(Quiz)
-LATEX_NODE_TEMPLATE_PATHS[Quiz.get_id()] = os.path.join(HQ_NODE_ROOT, "environments/homework")
-BOOKNODES.add_class(QuizQuestion)
-LATEX_NODE_TEMPLATE_PATHS[QuizQuestion.get_id()] = os.path.join(HQ_NODE_ROOT, "environments/homework")
+add_nodes_quick(os.path.join(HQ_NODE_ROOT, "environments/homework"), [Homework, Quiz, QuizQuestion])
 
 # Add questiontypes environment nodes.
-BOOKNODES.add_class(SingleChoice)
-LATEX_NODE_TEMPLATE_PATHS[SingleChoice.get_id()] = os.path.join(HQ_NODE_ROOT, "environments/questiontype")
-BOOKNODES.add_class(MultipleChoice)
-LATEX_NODE_TEMPLATE_PATHS[MultipleChoice.get_id()] = os.path.join(HQ_NODE_ROOT, "environments/questiontype")
-BOOKNODES.add_class(MathjaxText)
-LATEX_NODE_TEMPLATE_PATHS[MathjaxText.get_id()] = os.path.join(HQ_NODE_ROOT, "environments/questiontype")
+add_nodes_quick(os.path.join(HQ_NODE_ROOT, "environments/questiontype"), [SingleChoice, MultipleChoice, MathjaxText])
 
 # Add choice command nodes.
-BOOKNODES.add_class(Choice)
-LATEX_NODE_TEMPLATE_PATHS[Choice.get_id()] = os.path.join(HQ_NODE_ROOT, "commands/choice")
-BOOKNODES.add_class(CorrectChoice)
-LATEX_NODE_TEMPLATE_PATHS[CorrectChoice.get_id()] = os.path.join(HQ_NODE_ROOT, "commands/choice")
-BOOKNODES.add_class(TextAnswer)
-LATEX_NODE_TEMPLATE_PATHS[TextAnswer.get_id()] = os.path.join(HQ_NODE_ROOT, "commands/choice")
+add_nodes_quick(os.path.join(HQ_NODE_ROOT, "commands/choice"), [Choice, CorrectChoice, TextAnswer])

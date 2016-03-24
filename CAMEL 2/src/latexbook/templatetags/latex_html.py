@@ -44,7 +44,7 @@ def latex_node_to_html(context, node):
     node_id = node.node_type
     if node_id != settings.BOOKNODES.argument_node_id:
         if node_id in settings.LATEX_NODE_TEMPLATE_PATHS:
-            node_template_path = os.path.join(settings.LATEX_NODE_TEMPLATE_PATHS[node_id], node_id) + ".html"
+            node_template_path = settings.LATEX_NODE_TEMPLATE_PATHS[node_id]
 
             node_template = get_template(node_template_path).template
 
