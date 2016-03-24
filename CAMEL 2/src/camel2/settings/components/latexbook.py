@@ -48,6 +48,8 @@ It is the responsibility of the view to render this tree as intended.
 For more information regarding the parser, refer to 'latexbook/latexparser/texbookparser.py'.
 """
 
+import os
+
 # Import our 'Nodes' class.
 from latexbook.latexparser.nodebank import (
     NodeBank
@@ -98,6 +100,21 @@ from camelcore.latexparser.nodes.commands.item import (
     Item
 )
 
+# Import our HomeworkQuiz nodes.
+from camelcore.homeworkquiz.latexbook.latexparser.nodes.commands.choice import (
+    Choice, CorrectChoice, TextAnswer
+)
+
+from camelcore.homeworkquiz.latexbook.latexparser.nodes.environments.homework import (
+    Homework, Quiz, QuizQuestion
+)
+
+from camelcore.homeworkquiz.latexbook.latexparser.nodes.environments.questiontypes import (
+    SingleChoice, MultipleChoice, MathjaxText
+)
+
+
+# Create the dictionary used to get node templates.
 LATEX_NODE_TEMPLATE_PATHS = {}
 
 
@@ -192,7 +209,7 @@ LATEX_NODE_TEMPLATE_PATHS[Citation.get_id()] = "latexbook/nodes/commands/referen
 BOOKNODES.add_class(Label)
 LATEX_NODE_TEMPLATE_PATHS[Label.get_id()] = "latexbook/nodes/commands/reference"
 
-# Add text style command nodes.
+# Add text-style command nodes.
 BOOKNODES.add_class(TextIt)
 LATEX_NODE_TEMPLATE_PATHS[TextIt.get_id()] = "latexbook/nodes/commands/textstyles"
 BOOKNODES.add_class(TextBf)
@@ -201,3 +218,31 @@ BOOKNODES.add_class(Underline)
 LATEX_NODE_TEMPLATE_PATHS[Underline.get_id()] = "latexbook/nodes/commands/textstyles"
 BOOKNODES.add_class(Emph)
 LATEX_NODE_TEMPLATE_PATHS[Emph.get_id()] = "latexbook/nodes/commands/textstyles"
+
+
+# BEGIN HomeworkQuiz Setup.
+HQ_NODE_ROOT = "camelcore/homeworkquiz/latexbook/latexparser/nodes"
+
+# Add homework environment nodes.
+BOOKNODES.add_class(Homework)
+LATEX_NODE_TEMPLATE_PATHS[Homework.get_id()] = os.path.join(HQ_NODE_ROOT, "environments/homework")
+BOOKNODES.add_class(Quiz)
+LATEX_NODE_TEMPLATE_PATHS[Quiz.get_id()] = os.path.join(HQ_NODE_ROOT, "environments/homework")
+BOOKNODES.add_class(QuizQuestion)
+LATEX_NODE_TEMPLATE_PATHS[QuizQuestion.get_id()] = os.path.join(HQ_NODE_ROOT, "environments/homework")
+
+# Add questiontypes environment nodes.
+BOOKNODES.add_class(SingleChoice)
+LATEX_NODE_TEMPLATE_PATHS[SingleChoice.get_id()] = os.path.join(HQ_NODE_ROOT, "environments/questiontype")
+BOOKNODES.add_class(MultipleChoice)
+LATEX_NODE_TEMPLATE_PATHS[MultipleChoice.get_id()] = os.path.join(HQ_NODE_ROOT, "environments/questiontype")
+BOOKNODES.add_class(MathjaxText)
+LATEX_NODE_TEMPLATE_PATHS[MathjaxText.get_id()] = os.path.join(HQ_NODE_ROOT, "environments/questiontype")
+
+# Add choice command nodes.
+BOOKNODES.add_class(Choice)
+LATEX_NODE_TEMPLATE_PATHS[Choice.get_id()] = os.path.join(HQ_NODE_ROOT, "commands/choice")
+BOOKNODES.add_class(CorrectChoice)
+LATEX_NODE_TEMPLATE_PATHS[CorrectChoice.get_id()] = os.path.join(HQ_NODE_ROOT, "commands/choice")
+BOOKNODES.add_class(TextAnswer)
+LATEX_NODE_TEMPLATE_PATHS[TextAnswer.get_id()] = os.path.join(HQ_NODE_ROOT, "commands/choice")

@@ -1,40 +1,80 @@
 \documentclass{camel}
 
-% module information
-\academicyear{2015-16}
-\modulecode{MA0000}
-\moduletitle{Test Module}
-
-\booknumber{1}
 \booktitle{Test Book}
-\bookauthor{Dafydd Evans}
-\bookversion{v0.1}
+\bookauthor{Braden Marshall}
+\bookversion{1.0}
 
-% macros
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\B}{\mathbb{B}}
-
-%------------------------------------------------
 \begin{document}
-	Start of document
-	\chapter{Does this \textbf{CHAPTER} work?}
-		\section{Example \textit{Section}}
-			Testing a working \textit{Hello \textbf{WORLD} I am \textbf{Braden}}
+	Welcome to the test book!
 
-			\subsection{Example Test}
+	\chapter{First Chapter - \textbf{Bold \textit{BoldItalic}}}
+		Welcome to the first chapter of our test book!
+
+		\section{First Section}
+			Welcome to the first section of our test book!
+			Isn't it \emph{great}?
+
+			\subsection{First Subsection}
+				Welcome to the first subsection of our test book!
+
+				Start verbatim environment:
 				\begin{verbatim}
 					This should \textit{remain} as \textbf{Plain Text}.
 				\end{verbatim}
-				End of verbatim \textit{SWEET}
+				End verbatim environment!
 
-			\subsection{An Equation}
+			\subsection{Second Subsection}
+				The following is an equation - Mathjax should do its thing...
 				\begin{equation}
 					x = \sqrt{16}^2
 				\end{equation}
-		\section{Environment Test}
+
+			\textit{SWEET}, end of first section!
+
+		\section{Another Section}
+			This section will be used to test a few things...
 			\begin{proof}
-				Test Proof \underline{YAAAY}
+				This could be a very \underline{complicated} proof.
 			\end{proof}
+
 		\section{Final Section}
-			This is the final section \textbf{Does it work?}
+			This is the final section!
+			Lets hope everything worked!
+
+	\chapter{Second Chapter}
+		This chapter will be used to test our homeworkquiz app.
+
+		\section{First Test}
+			\begin{homework}
+				Welcome to the first page of example homework.
+				\begin{quiz}
+					\begin{quizquestion}
+						\question{What is 2^8?}
+						\begin{singlechoice}
+							\correctchoice{256}
+							\choice{257}
+							\choice{128}
+							\choice{512}
+						\end{singlechoice}
+					\end{quizquestion}
+
+					\begin{quizquestion}
+						\question{Which countries are in Europe?}
+						\begin{multiplechoice}
+							\correctchoice{England}
+							\correctchoice{France}
+							\choice{Japan}
+							\choice{Canada}
+							\choice{South Africa}
+						\end{multiplechoice}
+					\end{quizquestion}
+
+					\begin{quizquestion}
+						\question{What is the quadratic formula?}
+						\begin{mathjaxtext}
+							\textanswer{x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}}
+						\end{mathjaxtext}
+					\end{quizquestion}
+				\end{quiz}
+			\end{homework}
 \end{document}
