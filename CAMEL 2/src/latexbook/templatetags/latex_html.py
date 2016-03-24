@@ -4,13 +4,31 @@ from collections import namedtuple
 
 from django import template
 from django.conf import settings
+from django.core.exceptions import ImproperlyConfigured
+from django.template.backends.django import Template
+from django.template.context import Context
 from django.template.loader import get_template
-from django.template.loader_tags import BlockNode
+from django.template.loader_tags import BlockNode, ExtendsNode
 
 register = template.Library()
 
 # Used to store the rendered information for a Django BookNode.
 NodeHTML = namedtuple("NodeHTML", "prefix_text suffix_text")
+
+
+def get_template_node(template, name, context=Context()):
+    """
+    Iterate through the nodes of the given template and return the contents of the block with the given name.
+
+    It would be neat if this function could handle template inheritence (via extends), but I was unable to get it
+    working. I have commented out my attempt.
+    """
+    for node in template:
+        if isinstance(node, BlockNode) and node.name == name:
+            return node.render(context)
+        # elif isinstance(node, ExtendsNode):
+        #     return get_template_node(node.get_parent(), name, context)
+    raise ImproperlyConfigured("Unable to find block '%s' within template!" % name)
 
 
 @register.assignment_tag(takes_context=True)
@@ -28,16 +46,17 @@ def latex_node_to_html(context, node):
         if node_id in settings.LATEX_NODE_TEMPLATE_PATHS:
             node_template_path = os.path.join(settings.LATEX_NODE_TEMPLATE_PATHS[node_id], node_id) + ".html"
 
-            prefix_rendered_text = None
-            suffix_rendered_text = None
+            node_template = get_template(node_template_path).template
 
-            node_template = get_template(node_template_path)
-            for node in node_template.template:
-                if isinstance(node, BlockNode):
-                    if node.name == "prefix":
-                        prefix_rendered_text = node.render(context)
-                    elif node.name == "suffix":
-                        suffix_rendered_text = node.render(context)
+            try:
+                prefix_rendered_text = get_template_node(node_template, "prefix", context)
+            except ImproperlyConfigured:
+                prefix_rendered_text = None
+
+            try:
+                suffix_rendered_text = get_template_node(node_template, "suffix", context)
+            except ImproperlyConfigured:
+                suffix_rendered_text = None
 
             return NodeHTML(prefix_text=prefix_rendered_text, suffix_text=suffix_rendered_text)
         else:
