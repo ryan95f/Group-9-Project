@@ -1,4 +1,4 @@
-from camelcore.latexparser.nodes.commands.item import ItemNode
+from camelcore.latexbook.latexparser.nodes.commands.item import ItemNode
 
 
 class Choice(ItemNode):

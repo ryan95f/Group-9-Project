@@ -134,7 +134,7 @@ BOOKNODES.add_class(ArgumentNode)
 BOOKNODES.set_argument_node_id(ArgumentNode.get_id())
 
 # Add content text node.
-add_node_quick("latexbook/latexparser/nodes/misc", TextNode)
+add_node_quick("camelcore/latexbook/latexparser/nodes/misc", TextNode)
 BOOKNODES.set_text_node_id(TextNode.get_id())
 
 # Add level nodes.
