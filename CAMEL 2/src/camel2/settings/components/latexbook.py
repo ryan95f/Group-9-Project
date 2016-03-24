@@ -56,47 +56,47 @@ from latexbook.latexparser.nodebank import (
 )
 
 # Import all the nodes that we want the parser to utilise.
-from camelcore.latexparser.nodes.node import (
+from camelcore.latexbook.latexparser.nodes.node import (
     ArgumentNode, TextNode
 )
 
-from camelcore.latexparser.nodes.levels import (
+from camelcore.latexbook.latexparser.nodes.levels import (
     Book, Chapter, Section, Subsection
 )
 
-from camelcore.latexparser.nodes.environments.box import (
+from camelcore.latexbook.latexparser.nodes.environments.box import (
     Proof, Verbatim, Center
 )
 
-from camelcore.latexparser.nodes.environments.float import (
+from camelcore.latexbook.latexparser.nodes.environments.float import (
     Figure, Subfigure, Table, Subtable,
 )
 
-from camelcore.latexparser.nodes.environments.list import (
+from camelcore.latexbook.latexparser.nodes.environments.list import (
     Itemize, Enumerate
 )
 
-from camelcore.latexparser.nodes.environments.mathmode import (
+from camelcore.latexbook.latexparser.nodes.environments.mathmode import (
     Equation, EqnArray, Cases, Align, Array
 )
 
-from camelcore.latexparser.nodes.environments.theorem import (
+from camelcore.latexbook.latexparser.nodes.environments.theorem import (
     Theorem, Lemma, Corollary, Definition, Remark, Example, Exercise
 )
 
-from camelcore.latexparser.nodes.commands.content import (
+from camelcore.latexbook.latexparser.nodes.commands.content import (
     Image
 )
 
-from camelcore.latexparser.nodes.commands.reference import (
+from camelcore.latexbook.latexparser.nodes.commands.reference import (
     Reference, Citation, Label
 )
 
-from camelcore.latexparser.nodes.commands.textstyles import (
+from camelcore.latexbook.latexparser.nodes.commands.textstyles import (
      Emph, TextBf, TextIt,  Underline
 )
 
-from camelcore.latexparser.nodes.commands.item import (
+from camelcore.latexbook.latexparser.nodes.commands.item import (
     Item
 )
 
@@ -134,38 +134,38 @@ BOOKNODES.add_class(ArgumentNode)
 BOOKNODES.set_argument_node_id(ArgumentNode.get_id())
 
 # Add content text node.
-add_node_quick("latexbook/nodes/misc", TextNode)
+add_node_quick("latexbook/latexparser/nodes/misc", TextNode)
 BOOKNODES.set_text_node_id(TextNode.get_id())
 
 # Add level nodes.
-add_nodes_quick("latexbook/nodes/levels", [Book, Chapter, Section, Subsection])
+add_nodes_quick("camelcore/latexbook/latexparser/nodes/levels", [Book, Chapter, Section, Subsection])
 BOOKNODES.set_root_node_id(Book.get_id())
 
 # Add box environment nodes.
-add_nodes_quick("latexbook/nodes/environments/box", [Proof, Verbatim, Center])
+add_nodes_quick("camelcore/latexbook/latexparser/nodes/environments/box", [Proof, Verbatim, Center])
 
 # Add float environment nodes.
-add_nodes_quick("latexbook/nodes/environments/float", [Figure, Subfigure, Table, Subtable])
+add_nodes_quick("camelcore/latexbook/latexparser/nodes/environments/float", [Figure, Subfigure, Table, Subtable])
 
 # Add list environment nodes.
-add_nodes_quick("latexbook/nodes/environments/list", [Itemize, Enumerate])
+add_nodes_quick("camelcore/latexbook/latexparser/nodes/environments/list", [Itemize, Enumerate])
 
 # Add mathmode environment nodes.
-add_nodes_quick("latexbook/nodes/environments/mathmode", [Equation, EqnArray, Cases, Align, Array])
+add_nodes_quick("camelcore/latexbook/latexparser/nodes/environments/mathmode", [Equation, EqnArray, Cases, Align, Array])
 # Add theorem environment nodes.
-add_nodes_quick("latexbook/nodes/environments/theorem", [Theorem, Lemma, Corollary, Definition, Remark, Example, Exercise])
+add_nodes_quick("camelcore/latexbook/latexparser/nodes/environments/theorem", [Theorem, Lemma, Corollary, Definition, Remark, Example, Exercise])
 
 # Add content command nodes.
-add_nodes_quick("latexbook/nodes/commands/content", [Image])
+add_nodes_quick("camelcore/latexbook/latexparser/nodes/commands/content", [Image])
 
 # Add list command nodes.
-add_nodes_quick("latexbook/nodes/commands/list", [Item])
+add_nodes_quick("camelcore/latexbook/latexparser/nodes/commands/list", [Item])
 
 # Add reference command nodes.
-add_nodes_quick("latexbook/nodes/commands/reference", [Reference, Citation, Label])
+add_nodes_quick("camelcore/latexbook/latexparser/nodes/commands/reference", [Reference, Citation, Label])
 
 # Add text-style command nodes.
-add_nodes_quick("latexbook/nodes/commands/textstyles", [Emph, TextBf, TextIt, Underline])
+add_nodes_quick("camelcore/latexbook/latexparser/nodes/commands/textstyles", [Emph, TextBf, TextIt, Underline])
 
 
 # BEGIN HomeworkQuiz Setup.
