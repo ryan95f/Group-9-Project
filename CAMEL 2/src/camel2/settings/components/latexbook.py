@@ -1,3 +1,6 @@
+# Probably best not to worry about this here...
+# flake8: noqa
+
 """
 To avoid over-complicating our base settings file, our LaTeXBook settings get their own file!
 This module simply defines each Node that we intend to capture when parsing a LaTeX document body.
