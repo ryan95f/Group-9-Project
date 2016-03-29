@@ -1,8 +1,9 @@
+{% load homework_tags %}
 {% block prefix %}
 	<label for="XYZ">
 {% endblock %}
 
 {% block suffix %}
 	</label>
-	<input type="radio" name="singlechoice" id="XYZ" value="choice" />
+	<input type="radio" name="singlechoice" class="XYZ" id="XYZ" value="{{ children|clean_string }}" />
 {% endblock %}

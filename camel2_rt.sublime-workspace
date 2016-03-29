@@ -1,0 +1,199 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 150.0,
+		"selected_items":
+		[
+			[
+				"Control: Ins",
+				"Package Control: Install Package"
+			],
+			[
+				"In",
+				"Package Control: Install Package"
+			],
+			[
+				"Control:in",
+				"Package Control: Install Package"
+			],
+			[
+				"Control:rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"Control:I",
+				"Package Control: Install Package"
+			],
+			[
+				"Control:In",
+				"Package Control: Install Package"
+			],
+			[
+				"Control: In",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 153.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Ryan/Documents/GitHub/Group-9-Project/CAMEL 2/camel2.sublime-project",
+		"/C/Users/Ryan/Documents/GitHub/Group-9-Project/CAMEL 2/src/user/views.py",
+		"/C/Program Files/Sublime Text 2/sublime_plugin.py",
+		"/C/Users/Ryan/Documents/GitHub/Group-9-Project/CAMEL 2/src/user/urls.py",
+		"/C/Users/Ryan/Documents/GitHub/Group-9-Project/CAMEL 2/src/module/views.py",
+		"/C/Users/Ryan/Documents/GitHub/Group-9-Project/CAMEL 2/src/module/models.py",
+		"/C/Users/Ryan/Documents/GitHub/Group-9-Project/CAMEL 2/src/module/urls.py",
+		"/C/Users/Ryan/Documents/GitHub/Group-9-Project/CAMEL 2/src/camel2/static/module/js/ajax_new_module.js",
+		"/C/Users/Ryan/Documents/GitHub/Group-9-Project/CAMEL 2/src/module/forms.py",
+		"/C/Users/Ryan/Documents/GitHub/Group-9-Project/CAMEL 2/src/user/admin.py",
+		"/C/Users/Ryan/Documents/GitHub/Group-9-Project/CAMEL 2/src/module/tests.py",
+		"/C/Users/Ryan/Documents/GitHub/Group-9-Project/CAMEL 2/src/user/models.py",
+		"/C/Users/Ryan/Documents/GitHub/Group-9-Project/CAMEL 2/src/user/forms.py",
+		"/C/Users/Ryan/Documents/Current Work/Informatics Coursework/Ontology.txt",
+		"/C/Users/Ryan/Documents/University Folder/Year 2/Algorithms And Data Structures/Algorithms & Data Structures - Lab 4/my answer/RandomString.java",
+		"/C/Users/Ryan/Google Drive/My Stuff/University Archive/Informatics/v1/Ideas.txt",
+		"/C/Users/Ryan/Documents/GitHub/Group-9-Project/CAMEL 2/src/camel2/templates/user/login.html",
+		"/C/Users/Ryan/Documents/GitHub/Group-9-Project/CAMEL 2/README.md",
+		"/C/Users/Ryan/Documents/University Folder/Year 2/Informatics/CM2203 Reading List.txt",
+		"/C/Users/Ryan/Documents/GitHub/Group-9-Project/CAMEL 2/src/camel2/settings/base.py",
+		"/C/Users/Ryan/Documents/GitHub/Group-9-Project/CAMEL 2/src/user/__init__.py",
+		"/C/Users/Ryan/Documents/General Files/Information/Ryan95Z Email.txt",
+		"/C/Users/Ryan/Documents/General Files/Ryan95Z Email.txt",
+		"/C/Users/Ryan/Downloads/Ontology.txt",
+		"/C/Users/Ryan/Google Drive/My Stuff/University Archive/Informatics/Ideas.txt",
+		"/C/Users/Ryan/Google Drive/My Stuff/University Archive/Informatics/Ideas_2.txt",
+		"/C/Users/Ryan/Downloads/Test.java",
+		"/D/eula.1028.txt",
+		"/C/Users/Ryan/Documents/University Folder/Year 2/Human Computer Interaction/Completed HCI Coursework - Part 1/balsamiq_url.txt",
+		"/C/Users/Ryan/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Users/Ryan/AppData/Roaming/Sublime Text 2/Packages/User/Package Control.sublime-settings",
+		"/C/Users/Ryan/Documents/University Folder/Year 2/Algorithms And Data Structures/Completed Data Structures Coursework/Submission/RobinHood.java"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"POST",
+			"CamelUser",
+			"			\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

@@ -1,4 +1,8 @@
 from django.db import models
+# from django.contrib.contenttypes.fields import GenericForeignKey
+# from django.contrib.contenttypes.models import ContentType
+from latexbook.models import BookNode
+from user.models import CamelUser
 
 # We shouldn't be directly importing any of our other apps.
 # It contradicts the fact that our apps are meant to be decoupled; a point we have fairly emphasised throughout our
@@ -24,45 +28,36 @@ from django.db import models
 # Django's contenttypes framework is quite handy for this kind of stuff! :)
 # https://docs.djangoproject.com/en/1.9/ref/contrib/contenttypes/
 
-from user.models import CamelUser
-from latexbook.models import BookNode
-
-
-class Answer(models.Model):
-    '''Current Student Answer - Allows for latex to be entered'''
-    homework_node = models.ForeignKey(BookNode)
-    user = models.ForeignKey(CamelUser)
-    student_text = models.TextField()
-    is_readonly = models.BooleanField(default=False)
-
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.user.pk
-
 
 class SingleChoiceAnswer(models.Model):
-    '''Object to hold multiple choice answers'''
-    user = models.ForeignKey(CamelUser)
-    question = models.ForeignKey(BookNode)
-    choice = models.ForeignKey(BookNode, related_name='mcanswer_choice')
-    is_readonly = models.BooleanField(default=False)
+    """Model for holding the data that is related
+    to an answer that is entered by a user for Single Choice"""
+    # note: will update to make it more generic
+    # Done this way to get logic understood
+    answer = models.CharField(max_length=20)
+    user = models.ForeignKey(CamelUser, default=None)
+    node = models.ForeignKey(BookNode, default=None)
+    created = models.DateTimeField(auto_now=True)
+    save_date = models.DateTimeField(auto_now=True)
+    submitted_date = models.DateTimeField(auto_now=True)
+    is_submitted = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user.pk
+        return self.answer
 
 
-class Submission(models.Model):
-    '''Submission of SingleChoiceAnswer or Answer'''
-    user = models.ForeignKey(CamelUser)
-    assignment = models.ForeignKey(BookNode)
-    is_readonly = models.BooleanField(default=True)
-
+class JaxAnswer(models.Model):
+    """Model for holding the answer that is entered
+    for a mathjax answer"""
+    # note: will update to make it more generic
+    # Done this way to get logic understood
+    answer = models.CharField(max_length=100)
+    user = models.ForeignKey(CamelUser, default=None)
+    node = models.ForeignKey(BookNode, default=None)
     created = models.DateTimeField(auto_now_add=True)
+    save_date = models.DateTimeField(auto_now=True)
+    submitted_date = models.DateTimeField(auto_now_add=True)
+    is_submitted = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user.pk
-
-    class Meta:
-        ordering = ['created']
+        return self.answer

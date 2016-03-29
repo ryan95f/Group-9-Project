@@ -1,10 +1,9 @@
-{% extends "latexbook/booknode_detail_view.html" %}
+{% extends "camelcore/index.html" %}
 {% load staticfiles %}
 
 {% block title %}
-	Chapter
+	Question
 {% endblock %}
-
 
 {% block breadcrumbs %}
 	{{ block.super }}
@@ -14,13 +13,7 @@
 
 
 {% block content-main %}
-	<h1>{{ book }}</h1>
+	<h1>Question</h1>
 	{% include 'latexbook/recurselatextree.html' with root_node=chapter %}
 
 {% endblock %}
-
-
-
-
-
-

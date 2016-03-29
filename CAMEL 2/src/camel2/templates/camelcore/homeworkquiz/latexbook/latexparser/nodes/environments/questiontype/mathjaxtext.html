@@ -1,7 +1,26 @@
+{% load staticfiles %}
+
 {% block prefix %}
-	<div class='latex_environment_questiontype_mathjaxtext'>
+	<form id="answer_form" action="{% url 'homeworkquiz:jaxquestion'  node.parent.pk %}" method="POST">{% csrf_token %}
+		<div class='latex_environment_questiontype_mathjaxtext'>
 {% endblock %}
 
 {% block suffix %}
-	</div>
+		</div>
+		{% if user.is_authenticated %}
+			{% if show %}
+				{% if previous_answer.is_submitted %}
+					<p>Submitted on {{ previous_answer.submitted_date }}</p>
+				{% else %}
+					<input value="Submit" type="Submit">
+					<button id="btn_save">Save</button>
+					<input id="user" type="hidden" name="user" value="{{ user.identifier }}">
+					<input id="node" type="hidden" name="node" value="{{ node.parent.pk }}">
+					<script type="text/javascript" src="{% static 'homeworkquiz/js/jaxanswer_ajax.js' %}"></script>
+				{% endif %}
+			{% else %}
+				<a href="{% url 'homeworkquiz:do_question' node.parent.pk %}">Start</a>
+			{% endif %}
+		{% endif %}
+	</form>
 {% endblock %}

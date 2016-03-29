@@ -1,7 +1,18 @@
 {% block prefix %}
-	<fieldset class='latex_environment_questiontype_multiplechoice'>
+	<form id="answer_form" action="{% url 'homeworkquiz:multiquestion'  node.parent.pk %}" method="POST">{% csrf_token %}
+		<fieldset class='latex_environment_questiontype_multiplechoice'>
 {% endblock %}
 
 {% block suffix %}
-	</fieldset>
+			</fieldset>
+		{% if user.is_authenticated %}
+			{% if show %}
+				<input value="Submit" type="Submit">
+				<input type="hidden" name="user" value="{{ user.identifier }}">
+				<button>Save</button>
+			{% else %}
+				<a href="{% url 'homeworkquiz:do_question' node.parent.pk %}">Start</a>
+			{% endif %}
+		{% endif %}
+	</form>
 {% endblock %}

@@ -4,4 +4,19 @@
 
 {% block suffix %}
 	</li>
+	{% if show %}
+		<p id="answer_box">Your Answer: {{ previous_answer.answer }}</p>
+		<textarea style="width:100%; resize: none;" name="jax_answer"></textarea>
+		<script type="text/javascript">
+			$(document).ready( function(){
+				setAnswer("{{ previous_answer.answer }}")
+				
+				function setAnswer(answer){
+					// function to load answer entered previously 
+					// into textarea
+					$('textarea').attr("value", answer);
+				}
+			});
+		</script>
+	{% endif %}
 {% endblock %}
