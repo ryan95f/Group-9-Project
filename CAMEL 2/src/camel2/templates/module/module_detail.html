@@ -16,17 +16,16 @@
 {% block content-main %}
 <div>
 	<h1>{{ module.code }} - {{ module.title }}</h1>
-	{% if learningmaterials %}
-		{% if learningmaterials.Book %}
-			<h2>Books</h2>
+	<h2>Books</h2>
+	{% if learningmaterials and learningmaterials.Book %}
 			<ul>
 				{% for book in learningmaterials.Book %}
 					<a href="{% url 'module:latexbook:booknode_detail' module.pk book.pk %}"><li>{{ book }}</li></a>
 				{% endfor %}
 			</ul>
-		{% endif %}
 	{% else %}
-		<p>No learning materials are currently available for this module!</p>
+		<p>No books are currently available for this module!</p>
 	{% endif %}
+	<a href="{% url 'module:latexbook:bookcreate_form' module.pk %}">Create new book</a>
 </div>
 {% endblock %}
