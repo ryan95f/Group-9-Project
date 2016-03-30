@@ -1,12 +1,7 @@
 from argparse import FileType
 
-from django.conf import settings
-from django.core.management.base import BaseCommand, CommandError
-from django.db import transaction
-
-from latexbook.latexparser.texbookparser import TexBookParser
-from latexbook.models import BookNode
-from latexbook.parseradapter import write_to_django_database
+from django.core.management.base import BaseCommand
+from latexbook.parseradapter import write_document_into_database
 
 
 class Command(BaseCommand):
@@ -28,18 +23,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         """Called when the command is executed and ready to be handled."""
-        if hasattr(settings, "BOOKNODES"):
-            book_nodes = settings.BOOKNODES
-
-            latex_file = options["latex_file"]
-            latex_document = latex_file.read()
-
-            parser = TexBookParser(book_nodes)
-            book_node = parser.parse(latex_document)
-
-            with transaction.atomic():
-                with BookNode.objects.disable_mptt_updates():
-                    write_to_django_database(book_node)
-                BookNode.objects.rebuild()
-        else:
-            raise CommandError("BOOKNODES could not be aquired from your settings!")
+        latex_file = options["latex_file"]
+        latex_document = latex_file.read()
+        write_document_into_database(latex_document)

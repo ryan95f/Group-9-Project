@@ -1,11 +1,28 @@
 """A few utilities which are used to help make our LaTeX parser work well with Django."""
 
 from django.conf import settings
+from django.db import transaction
 
+from latexbook.latexparser.texbookparser import TexBookParser
 from latexbook.models import BookNode, TextNode
 
 
-def write_to_django_database(node, parent_node=None):
+def write_document_into_database(latex_document):
+    """Parse the given LaTeX document text and write the resulting nodes into the database."""
+    book_nodes = settings.BOOKNODES
+
+    parser = TexBookParser(book_nodes)
+    book_node = parser.parse(latex_document)
+
+    with transaction.atomic():
+        with BookNode.objects.disable_mptt_updates():
+            write_node_into_database(book_node)
+        BookNode.objects.rebuild()
+
+    return book_node
+
+
+def write_node_into_database(node, parent_node=None):
     """
     Write a Node, from the latexparser package, into our database.
 
@@ -36,4 +53,4 @@ def write_to_django_database(node, parent_node=None):
         # A non-text node could have children.
         if hasattr(node, "children"):
             for child in node.children:
-                write_to_django_database(node=child, parent_node=book_node)
+                write_node_into_database(node=child, parent_node=book_node)
