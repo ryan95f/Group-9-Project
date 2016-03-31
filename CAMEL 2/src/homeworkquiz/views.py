@@ -78,6 +78,13 @@ class GeneralSave(object):
             current_answer.save()
         return current_answer
 
+    def submit_answer(self, submitModel):
+        """Method to submit answer when answer object is provided"""
+        submitModel.is_submitted = True
+        submitModel.submitted_date = timezone.now()
+        submitModel.save()
+        return submitModel
+
 
 class SingleChoiceSaveView(View):
     """View to save an redirect after answer has been saved and
@@ -91,9 +98,7 @@ class SingleChoiceSaveView(View):
         if(request.is_ajax()):
             return JsonResponse({'singlechoice': single_model.answer})
         else:
-            single_model.is_submitted = True
-            single_model.submitted_date = timezone.now()
-            single_model.save()
+            s.submit_answer(single_model)
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
@@ -116,7 +121,5 @@ class JaxSaveView(View):
         if(request.is_ajax()):
             return JsonResponse({'jax_answer': clean_jax})
         else:
-            jax_object.is_submitted = True
-            jax_object.submitted_date = timezone.now()
-            jax_object.save()
+            s.submit_answer(jax_object)
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
