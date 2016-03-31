@@ -1,28 +1,7 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic.detail import DetailView
 
-from .forms import BookForm, BookNodeForm
 from .models import BookNode
-
-
-def book_create_view(request, **kwargs):
-    """CUNTER."""
-    if request.method == "POST":
-        book_form = BookForm(request.POST, request.FILES)
-        node_form = BookNodeForm(request.POST, request.FILES)
-        if book_form.is_valid() and node_form.is_valid():
-            book_node = node_form.save()
-            book_form.data["book_root_node"] = book_node
-            book_form.save()
-            return HttpResponseRedirect("/")
-    else:
-        book_form = BookForm()
-        node_form = BookNodeForm()
-    return render(request, "latexbook/book_create_form_view.html", {
-        "book_form": book_form,
-        "node_form": node_form
-    })
 
 
 class BookNodeDetailView(DetailView):
