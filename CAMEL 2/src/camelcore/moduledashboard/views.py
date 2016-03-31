@@ -17,7 +17,7 @@ def book_create_view(request, **kwargs):
     else:
         book_form = BookForm()
         node_form = BookNodeForm()
-    return render(request, "latexbook/book_create_form_view.html", {
+    return render(request, "camelcore/moduledashboard/book_create_form_view.html", {
         "book_form": book_form,
         "node_form": node_form
     })

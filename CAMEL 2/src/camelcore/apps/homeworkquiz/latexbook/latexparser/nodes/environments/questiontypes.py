@@ -1,7 +1,7 @@
 """The various question types that shall be captured from the inputted LaTeX documents."""
 
 
-from camelcore.latexbook.latexparser.nodes.environments.list import ListEnvironmentNode
+from camelcore.apps.latexbook.latexparser.nodes.environments.list import ListEnvironmentNode
 
 
 class SingleChoice(ListEnvironmentNode):
