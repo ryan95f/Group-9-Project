@@ -1,10 +1,12 @@
 {% block prefix %}
 	<form id="answer_form" action="{% url 'homeworkquiz:multiquestion'  node.parent.pk %}" method="POST">{% csrf_token %}
 		<fieldset class='latex_environment_questiontype_multiplechoice'>
+		<table>
 {% endblock %}
 
 {% block suffix %}
-			</fieldset>
+		</table>
+		</fieldset>
 		{% if user.is_authenticated %}
 			{% if show %}
 				<input value="Submit" type="Submit">

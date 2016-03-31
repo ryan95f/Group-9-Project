@@ -31,6 +31,7 @@ class QuestionDetailView(DetailView):
         answer_models = [JaxAnswer, SingleChoiceAnswer]
         context = super(QuestionDetailView, self).get_context_data(**kwargs)
         node = self.get_object()
+        context["previous_page"] = self.request.META.get('HTTP_REFERER')
         context["chapter"] = node.get_descendants(include_self=True)
         context["show"] = True
 

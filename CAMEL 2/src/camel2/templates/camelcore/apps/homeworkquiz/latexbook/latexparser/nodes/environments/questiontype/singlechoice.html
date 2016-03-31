@@ -3,9 +3,11 @@
 {% block prefix %}
 	<form id="answer_form" action="{% url 'homeworkquiz:singlequestion'  node.parent.pk %}" method="POST">{% csrf_token %}
 		<fieldset class='latex_environment_questiontype_singlechoice'>
+		<table>
 {% endblock %}
 
 {% block suffix %}
+		</table>
 		</fieldset>
 		{% if user.is_authenticated %}
 			{% if show %}
