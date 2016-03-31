@@ -5,32 +5,32 @@ The `urlpatterns` list routes URLs to views. For more information please see:
 Examples:
 Function views
     1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
+    2. Add a URL to urlpatterns:  url(r"^$", views.home, name="home")
 Class-based views
     1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
+    2. Add a URL to urlpatterns:  url(r"^$", Home.as_view(), name="home")
 Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Import the include() function: from django.conf.urls import url, include
-    3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
+    3. Add a URL to urlpatterns:  url(r"^blog/", include(blog_urls))
 """
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from camelcore.views import IndexView as camelcore_index
-
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    # Django Admin
+    url(r"^admin/", admin.site.urls),
 
-    # go to core to obtain index
-    url(r'^$', camelcore_index.as_view(), name='index'),
+    # Project-specific
+    url(r"^", include("camelcore.urls", namespace="camelcore")),
 
-    # user app
-    url(r'^user/', include('user.urls', namespace="user")),
+    # User app
+    url(r"^user/", include("user.urls", namespace="user")),
 
-    # module app
-    url(r'^module/', include('module.urls', namespace="module")),
+    # Module app
+    url(r"^module/", include("module.urls", namespace="module")),
 
-    url(r'^homework/', include('homeworkquiz.urls', namespace="homeworkquiz"))
+    # Homework app
+    url(r"^homework/", include("homeworkquiz.urls", namespace="homeworkquiz"))
 ]
