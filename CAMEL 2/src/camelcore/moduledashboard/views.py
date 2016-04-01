@@ -18,12 +18,6 @@ def book_create_view(request, **kwargs):
         if book_form.is_valid() and node_form.is_valid():
             book_node = node_form.save()
 
-            # The following print gives us:
-            # book <class 'latexbook.models.BookNode'> [<BookNode: textnode>, <BookNode: chapter>,...
-            # <BookNode: chapter>] 256
-            # This is expected...
-            print(book_node, type(book_node), book_node.get_children(), book_node.id)
-
             new_book = book_form.save(commit=False)
             new_book.book_root_node = book_node
             new_book.save()
