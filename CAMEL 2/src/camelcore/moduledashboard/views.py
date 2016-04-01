@@ -1,4 +1,3 @@
-from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 
@@ -18,14 +17,24 @@ def book_create_view(request, **kwargs):
         node_form = BookNodeForm(request.POST, request.FILES)
         if book_form.is_valid() and node_form.is_valid():
             book_node = node_form.save()
-            book_form.data["book_root_node"] = book_node
-            new_book = book_form.save()
+
+            # The following print gives us:
+            # book <class 'latexbook.models.BookNode'> [<BookNode: textnode>, <BookNode: chapter>,...
+            # <BookNode: chapter>] 256
+            # This is expected...
+            print(book_node, type(book_node), book_node.get_children(), book_node.id)
+
+            new_book = book_form.save(commit=False)
+            new_book.book_root_node = book_node
+            new_book.save()
 
             learning_material = LearningMaterial()
             learning_material.material_content_object = new_book
-            # Instance needs to have a primary key value before a many-to-many relationship can be used.
+
+            # Instance requires a primary key value before a many-to-many relationship can be used.
+            # So we must save the model instance first!
             learning_material.save()
-            #learning_material.modules.add(module)
+            learning_material.modules.add(module)
             return HttpResponseRedirect("/")
     else:
         book_form = BookForm()
