@@ -12,11 +12,11 @@ def write_document_into_database(latex_document):
     book_nodes = settings.BOOKNODES
 
     parser = TexBookParser(book_nodes)
-    book_node = parser.parse(latex_document)
+    node = parser.parse(latex_document)
 
     with transaction.atomic():
         with BookNode.objects.disable_mptt_updates():
-            write_node_into_database(book_node)
+            book_node = write_node_into_database(node)
         BookNode.objects.rebuild()
 
     return book_node
@@ -54,3 +54,5 @@ def write_node_into_database(node, parent_node=None):
         if hasattr(node, "children"):
             for child in node.children:
                 write_node_into_database(node=child, parent_node=book_node)
+
+    return book_node
