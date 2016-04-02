@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 
 # Create your models here.
 from mptt.models import MPTTModel, TreeForeignKey
@@ -71,3 +73,10 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title + " by " + self.author
+
+
+@receiver(post_delete, sender=Book)
+def clear_book_booknodes(sender, **kwargs):
+    """Clear out the root BookNode entry when a book is deleted."""
+    book_instance = kwargs["instance"]
+    book_instance.book_root_node.delete()

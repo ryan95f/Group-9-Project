@@ -1,7 +1,9 @@
+from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 
 from latexbook.forms import LatexBookForm
+from latexbook.models import Book
 from module.models import LearningMaterial, Module
 
 
@@ -29,3 +31,26 @@ def book_create_view(request, **kwargs):
     return render(request, "camelcore/moduledashboard/book_create_form_view.html", {
         "form": latex_book_form
     })
+
+
+def book_delete_view(request, **kwargs):
+    """Delete the Book LearningMaterial for the given Module.
+
+    If no other Modules use this Book, it is deleted entirely.
+    """
+    module = get_object_or_404(Module, pk=kwargs["module_pk"])
+    book = get_object_or_404(Book, pk=kwargs["book_pk"])
+
+    book_object_type = ContentType.objects.get_for_model(Book)
+    learning_material = LearningMaterial.objects.filter(
+        material_content_type__pk=book_object_type.id,
+        material_object_id=book.pk,
+    ).first()
+
+    learning_material.modules.remove(module)
+
+    if learning_material.modules.count() == 0:
+        learning_material.delete()  # Book delete can't cascade
+        book.delete()
+
+    return HttpResponseRedirect("/")
