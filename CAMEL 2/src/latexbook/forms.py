@@ -33,7 +33,7 @@ class LatexBookForm(BaseBookFormMixin, BaseLatexFormMixin):
 
     def save(self, commit=True):
         """Save the Model instances."""
-        new_book = super(LatexBookForm, self).save(commit=commit)
+        new_book = super(LatexBookForm, self).save(commit=False)
 
         parser_node = self.cleaned_data["latex_file"]
         root_node = write_node_into_database(root_node=parser_node, commit=commit)
