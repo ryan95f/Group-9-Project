@@ -1,7 +1,7 @@
 from argparse import FileType
 
 from django.core.management.base import BaseCommand
-from latexbook.parseradapter import write_document_into_database
+from latexbook.parseradapter import parse_document, write_node_into_database
 
 
 class Command(BaseCommand):
@@ -25,4 +25,5 @@ class Command(BaseCommand):
         """Called when the command is executed and ready to be handled."""
         latex_file = options["latex_file"]
         latex_document = latex_file.read()
-        write_document_into_database(latex_document)
+        parser_node = parse_document(latex_document)
+        write_node_into_database(parser_node)

@@ -16,8 +16,7 @@
 {% block content-main %}
 	<h1>Create New Book</h1>
 	<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
-		{{ book_form.as_p }}
-		{{ node_form.as_p }}
+		{{ form.as_p }}
 		<input type="submit" value="Submit Book" />
 	</form>
 {% endblock %}
