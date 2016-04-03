@@ -35,6 +35,9 @@ class BookNodeChapterDetailView(DetailView):
         context["book"] = chapter.parent
         # .get_descendants(include_self=True) used to make it recurse and
         # ensure correct  object type (Do not change).
+        context["module_number"] = self.kwargs["module_pk"]
+        context["book_number"] = self.kwargs["book_pk"]
+        context["chapter_number"] = chapter.pk
         context["chapter"] = chapter.get_descendants(include_self=True)
         return context
 

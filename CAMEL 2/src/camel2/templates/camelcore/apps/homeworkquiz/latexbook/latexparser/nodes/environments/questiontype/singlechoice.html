@@ -1,7 +1,7 @@
 {% load staticfiles %}
 
 {% block prefix %}
-	<form id="answer_form" action="{% url 'homeworkquiz:singlequestion'  node.parent.pk %}" method="POST">{% csrf_token %}
+	<form id="answer_form" action="{% url 'homeworkquiz:singlequestion' node.parent.pk %}" method="POST">{% csrf_token %}
 		<fieldset class='latex_environment_questiontype_singlechoice'>
 		<table>
 {% endblock %}
@@ -21,7 +21,7 @@
 					<script type="text/javascript" src="{% static 'homeworkquiz/js/singleanswer_ajax.js' %}"></script>
 				{% endif %}
 			{% else %}
-				<a href="{% url 'homeworkquiz:do_question' node.parent.pk %}">Start</a>
+				<a href="{% url 'homeworkquiz:do_question' module_number book_number chapter_number node.parent.pk %}">Start</a>
 			{% endif %}
 		{% endif %}
 	</form>

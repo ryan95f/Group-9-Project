@@ -65,3 +65,13 @@ class JaxAnswer(GenericAnswerModel):
 
     def __str__(self):
         return self.answer
+
+
+class MultiChoiceAnswer(GenericAnswerModel):
+    """Model for holding the answer that is entered
+    for a multiple choice answer. Inherits GenericAnswerModel which
+    contains core information"""
+    answer = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.answer

@@ -1,5 +1,5 @@
 {% block prefix %}
-	<form id="answer_form" action="{% url 'homeworkquiz:multiquestion'  node.parent.pk %}" method="POST">{% csrf_token %}
+	<form id="answer_form" action="{% url 'homeworkquiz:multiquestion' node.parent.pk %}" method="POST">{% csrf_token %}
 		<fieldset class='latex_environment_questiontype_multiplechoice'>
 		<table>
 {% endblock %}
@@ -13,7 +13,7 @@
 				<input type="hidden" name="user" value="{{ user.identifier }}">
 				<button>Save</button>
 			{% else %}
-				<a href="{% url 'homeworkquiz:do_question' node.parent.pk %}">Start</a>
+				<a href="{% url 'homeworkquiz:do_question' module_number book_number chapter_number node.parent.pk %}">Start</a>
 			{% endif %}
 		{% endif %}
 	</form>

@@ -31,7 +31,9 @@ class QuestionDetailView(DetailView):
         answer_models = [JaxAnswer, SingleChoiceAnswer]
         context = super(QuestionDetailView, self).get_context_data(**kwargs)
         node = self.get_object()
-        context["previous_page"] = self.request.META.get('HTTP_REFERER')
+        context["module_number"] = self.kwargs["module_pk"]
+        context["book_number"] = self.kwargs["book_pk"]
+        context["chapter_number"] = self.kwargs["chapter_pk"]
         context["chapter"] = node.get_descendants(include_self=True)
         context["show"] = True
 
@@ -100,7 +102,7 @@ class SingleChoiceSaveView(View):
             return JsonResponse({'singlechoice': single_model.answer})
         else:
             s.submit_answer(single_model)
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        return HttpResponseRedirect("/homework/question/" + str(single_model.node.pk))
 
 
 # cannot complete this one until check boxes are used for multiple choice
@@ -123,4 +125,4 @@ class JaxSaveView(View):
             return JsonResponse({'jax_answer': clean_jax})
         else:
             s.submit_answer(jax_object)
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        return HttpResponseRedirect("/homework/question/" + str(jax_object.node.pk))
