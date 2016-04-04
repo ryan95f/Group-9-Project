@@ -13,8 +13,11 @@ $(document).ready( function(){
 function save_answer(){
     /* function to make ajax request to save function.*/
 	var node = $('#node').val();
+    var book = $('#book').val();
+    var chapter = $('#chapter').val();
+    var module = $('#module').val();
 	$.ajax({
-        url : "/homework/save-jax/" + node + "/", //endpoint
+        url : "/module/" + module + "/book/" + book + "/chapter/" +  chapter + "/save-jax/" + node + "/", //endpoint
         type : "POST", // http method
         data : { 
         	user :$('#user').val(),

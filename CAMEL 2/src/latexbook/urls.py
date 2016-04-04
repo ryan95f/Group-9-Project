@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 
 from latexbook.views import BookNodeChapterDetailView, BookNodeDetailView, show_test
 
@@ -10,6 +10,10 @@ urlpatterns = [
         r"^book/(?P<book_pk>[0-9]+)/chapter/(?P<pk>[0-9]+)/$",
         BookNodeChapterDetailView.as_view(),
         name="booknode_chapter_detail"
+    ),
+    url(
+        r"^book/(?P<book_pk>[0-9]+)/chapter/(?P<chapter_pk>[0-9]+)/",
+        include("homeworkquiz.urls", namespace="homeworkquiz")
     ),
     url(r"test/$", show_test, name="test")
 ]

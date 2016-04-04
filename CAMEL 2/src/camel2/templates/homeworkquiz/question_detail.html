@@ -8,7 +8,11 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	>
-	<a href=".">{{ chapter|first }}</a>
+	<a href="{% url 'module:latexbook:booknode_detail' module_number book_number %}">book</a>
+	>
+	<a href="{% url 'module:latexbook:booknode_chapter_detail' module_number book_number chapter_number %}">chapter</a>
+	>
+	<a href=".">question</a>
 {% endblock %}
 
 

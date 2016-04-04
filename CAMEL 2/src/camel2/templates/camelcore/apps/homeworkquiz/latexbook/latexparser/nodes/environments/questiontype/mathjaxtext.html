@@ -1,7 +1,7 @@
 {% load staticfiles %}
 
 {% block prefix %}
-	<form id="answer_form" action="{% url 'homeworkquiz:jaxquestion' node.parent.pk %}" method="POST">{% csrf_token %}
+	<form id="answer_form" action="{% url 'module:latexbook:homeworkquiz:jaxquestion' module_number book_number chapter_number node.parent.pk %}" method="POST">{% csrf_token %}
 		<div class='latex_environment_questiontype_mathjaxtext'>
 {% endblock %}
 
@@ -16,10 +16,13 @@
 					<button id="btn_save">Save</button>
 					<input id="user" type="hidden" name="user" value="{{ user.identifier }}">
 					<input id="node" type="hidden" name="node" value="{{ node.parent.pk }}">
+					<input id="chapter" type="hidden" name="chapter" value="{{ chapter_number }}">
+					<input id="book" type="hidden" name="book" value="{{ book_number }}">
+					<input id="module" type="hidden" name="module" value="{{ module_number }}">
 					<script type="text/javascript" src="{% static 'homeworkquiz/js/jaxanswer_ajax.js' %}"></script>
 				{% endif %}
 			{% else %}
-				<a href="{% url 'homeworkquiz:do_question' module_number book_number chapter_number node.parent.pk %}">Start</a>
+				<a href="{% url 'module:latexbook:homeworkquiz:do_question' module_number book_number chapter_number node.parent.pk %}">Start</a>
 			{% endif %}
 		{% endif %}
 	</form>

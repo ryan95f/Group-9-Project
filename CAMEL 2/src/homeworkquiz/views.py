@@ -94,10 +94,10 @@ class SingleChoiceSaveView(View):
     submitted. Used in Ajax requests (for save). Assumes if not
     ajax then submit. """
 
-    def post(self, request, node_pk):
+    def post(self, request, **kwargs):
         """Method executed when POST request is made to view"""
         s = GeneralSave(SingleChoiceAnswer, request.POST['singlechoice'].strip())
-        single_model = s.save_answer(request, node_pk)
+        single_model = s.save_answer(request, self.kwargs['node_pk'])
         if(request.is_ajax()):
             return JsonResponse({'singlechoice': single_model.answer})
         else:
@@ -116,11 +116,11 @@ class JaxSaveView(View):
     submitted. Used in Ajax requests (for save). Assumes if not
     ajax then submit. """
 
-    def post(self, request, node_pk):
+    def post(self, request, **kwargs):
         """Method executed when POST request is made to view"""
         clean_jax = escape(request.POST['jax_answer'])
         s = GeneralSave(JaxAnswer, clean_jax)
-        jax_object = s.save_answer(request, node_pk)
+        jax_object = s.save_answer(request, self.kwargs['node_pk'])
         if(request.is_ajax()):
             return JsonResponse({'jax_answer': clean_jax})
         else:

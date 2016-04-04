@@ -9,9 +9,6 @@ urlpatterns = [
     url(r'^save-multi/(?P<node_pk>\d+)/$', save_answer, name="multiquestion"),
     url(r'^save-single/(?P<node_pk>\d+)/$', SingleChoiceSaveView.as_view(), name="singlequestion"),
 
-    # see note on template
-    url(
-        r'^(?P<module_pk>\w+)/(?P<book_pk>\d+)/(?P<chapter_pk>\d+)/question/(?P<pk>\d+)/$',
-        login_required(QuestionDetailView.as_view()), name="do_question"
-    )
+    # url for question answering page
+    url(r'^question/(?P<pk>\d+)/$', login_required(QuestionDetailView.as_view()), name="do_question")
 ]
