@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
-from homeworkquiz.views import save_answer, SingleChoiceSaveView, JaxSaveView, QuestionDetailView
+from homeworkquiz.views import save_answer, SingleChoiceSaveView, JaxSaveView, QuestionDetailView, DeadlineSetView
 
 app_name = 'homeworkquiz'
 urlpatterns = [
@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^save-single/(?P<node_pk>\d+)/$', SingleChoiceSaveView.as_view(), name="singlequestion"),
 
     # url for question answering page
-    url(r'^question/(?P<pk>\d+)/$', login_required(QuestionDetailView.as_view()), name="do_question")
+    url(r'^question/(?P<pk>\d+)/$', login_required(QuestionDetailView.as_view()), name="do_question"),
+    url(r'^deadline/(?P<pk>\d+)/$', DeadlineSetView.as_view(), name="set_deadline")
 ]

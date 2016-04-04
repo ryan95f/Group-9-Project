@@ -75,3 +75,8 @@ class MultiChoiceAnswer(GenericAnswerModel):
 
     def __str__(self):
         return self.answer
+
+
+class Deadline(models.Model):
+    node = models.OneToOneField(BookNode, default=None, primary_key=True)
+    deadline_date = models.DateTimeField(auto_now_add=False)

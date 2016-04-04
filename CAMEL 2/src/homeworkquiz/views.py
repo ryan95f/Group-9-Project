@@ -1,13 +1,16 @@
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
+from django.core.urlresolvers import reverse
 
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import FormView
 from django.views.generic import View
 
 from django.utils import timezone
 from django.utils.html import escape
 
-from homeworkquiz.models import SingleChoiceAnswer, JaxAnswer
+from homeworkquiz.models import SingleChoiceAnswer, JaxAnswer, Deadline
+from homeworkquiz.forms import DeadlineForm
 from user.models import CamelUser
 from latexbook.models import BookNode
 
@@ -16,6 +19,37 @@ def save_answer(request, node_pk):
     """ temp function, placeholder view for unimplemented questions
     currently in use for Multi answers"""
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+class DeadlineSetView(FormView):
+    form_class = DeadlineForm
+    template_name = 'homeworkquiz/set_deadline.html'
+    model = Deadline
+    success_url = "/"
+
+    def form_valid(self, form):
+        clean_form = form.clean_form()
+        try:
+            saved_deadline_object = self.model.objects.get(pk=clean_form['node'])
+            saved_deadline_object.deadline_date = clean_form['date']
+            # saved_deadline_object.save()
+        except self.model.DoesNotExist:
+            deadline_object = self.model(
+                node=BookNode.objects.get(pk=clean_form['node']),
+                deadline_date=clean_form['date']
+            )
+            # deadline_object.save()
+        return HttpResponseRedirect(reverse('module:latexbook:homeworkquiz:question'), {''})
+
+    def get_context_data(self, **kwargs):
+        context = super(DeadlineSetView, self).get_context_data(**kwargs)
+        context['question'] = BookNode.objects.get(pk=self.kwargs['pk']).get_descendants(include_self=True)
+        context["module_number"] = self.kwargs["module_pk"]
+        context['question_number'] = self.kwargs['pk']
+        context["book_number"] = self.kwargs["book_pk"]
+        context["chapter_number"] = self.kwargs["chapter_pk"]
+        context["deadline"] = True
+        return context
 
 
 class QuestionDetailView(DetailView):
@@ -102,7 +136,7 @@ class SingleChoiceSaveView(View):
             return JsonResponse({'singlechoice': single_model.answer})
         else:
             s.submit_answer(single_model)
-        return HttpResponseRedirect("/homework/question/" + str(single_model.node.pk))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 # cannot complete this one until check boxes are used for multiple choice
@@ -125,4 +159,4 @@ class JaxSaveView(View):
             return JsonResponse({'jax_answer': clean_jax})
         else:
             s.submit_answer(jax_object)
-        return HttpResponseRedirect("/homework/question/" + str(jax_object.node.pk))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

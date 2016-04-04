@@ -1,5 +1,5 @@
 from django.contrib import admin
-from homeworkquiz.models import SingleChoiceAnswer, JaxAnswer
+from homeworkquiz.models import SingleChoiceAnswer, JaxAnswer, MultiChoiceAnswer, Deadline
 
 
 class AnswerAdmin(admin.ModelAdmin):
@@ -14,3 +14,5 @@ class AnswerAdmin(admin.ModelAdmin):
 
 admin.site.register(SingleChoiceAnswer, AnswerAdmin)
 admin.site.register(JaxAnswer, AnswerAdmin)
+admin.site.register(MultiChoiceAnswer, AnswerAdmin)
+admin.site.register(Deadline)
