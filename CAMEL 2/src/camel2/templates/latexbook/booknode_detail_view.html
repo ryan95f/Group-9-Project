@@ -9,7 +9,11 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	>
-	<a href=".">{{ book }}</a>
+	<a href="{% url 'module:module_index' %}">Modules</a>
+	>
+	<a href="{% url 'module:module_detail' module_number %}">{{ module_number }}</a>
+	>
+	<a href="{% url 'module:latexbook:booknode_detail' module_number book.pk %}">book</a>
 {% endblock %}
 
 

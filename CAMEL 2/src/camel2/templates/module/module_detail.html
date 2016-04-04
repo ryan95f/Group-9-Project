@@ -10,7 +10,7 @@
 	>
 	<a href="{% url 'module:module_index' %}">Modules</a>
 	>
-	<a href="{% url 'module:module_detail' module.pk %}">{{ module }}</a>
+	<a href="{% url 'module:module_detail' module.pk %}">{{ module.pk }}</a>
 {% endblock %}
 
 {% block content-main %}
