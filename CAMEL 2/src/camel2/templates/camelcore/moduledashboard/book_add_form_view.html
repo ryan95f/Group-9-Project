@@ -1,0 +1,29 @@
+{% extends "camelcore/index.html" %}
+{% load staticfiles %}
+
+{% block title %}
+	Book
+{% endblock %}
+
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	>
+	<a href=".">{{ book }}</a>
+{% endblock %}
+
+
+{% block content-main %}
+	<h1>Add Existing Book</h1>
+	{% if learningmaterials and learningmaterials.Book %}
+			<ul>
+				{% for book in learningmaterials.Book %}
+					<li>
+						<a href="{% url 'camelcore:module_dashboard:add_book' module.pk book.pk %}">Add {{ book }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+	{% else %}
+		<p>There are no existing books available that can be added to this module!</p>
+	{% endif %}
+{% endblock %}

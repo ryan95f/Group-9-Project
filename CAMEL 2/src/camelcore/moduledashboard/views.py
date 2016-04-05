@@ -7,6 +7,47 @@ from latexbook.models import Book
 from module.models import LearningMaterial, Module
 
 
+def book_add_detail_view(request, **kwargs):
+    """View used to display all existing books that can be added as a learning material."""
+    module = get_object_or_404(Module, pk=kwargs["module_pk"])
+
+    current_learning_materials = {}
+    for learning_material in module.learningmaterial_set.all():
+        material = learning_material.material_content_object
+        material_class = material.__class__.__name__
+        current_learning_materials.setdefault(material_class, []).append(material)
+
+    learning_materials = {}
+    for learning_material in LearningMaterial.objects.all():
+        material = learning_material.material_content_object
+        material_class = material.__class__.__name__
+
+        if material_class not in current_learning_materials \
+                or material not in current_learning_materials[material_class]:
+            learning_materials.setdefault(material.__class__.__name__, []).append(material)
+
+    return render(request, "camelcore/moduledashboard/book_add_form_view.html", {
+        "module": module,
+        "learningmaterials": learning_materials
+    })
+
+
+def book_add_view(request, **kwargs):
+    """View used to add an existing book as a learning material."""
+    module = get_object_or_404(Module, pk=kwargs["module_pk"])
+    book = get_object_or_404(Book, pk=kwargs["book_pk"])
+
+    book_object_type = ContentType.objects.get_for_model(Book)
+    learning_material = LearningMaterial.objects.filter(
+        material_content_type__pk=book_object_type.id,
+        material_object_id=book.pk,
+    ).first()
+
+    learning_material.modules.add(module)
+
+    return HttpResponseRedirect("/")
+
+
 def book_create_view(request, **kwargs):
     """View used to create a new book and upload it as a learning material.
 

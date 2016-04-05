@@ -29,7 +29,7 @@
 	{% else %}
 		<p>No books are currently available for this module!</p>
 	{% endif %}
-	<a href="{% url 'camelcore:module_dashboard:add_book' module.pk %}">Add existing book</a> |
+	<a href="{% url 'camelcore:module_dashboard:add_detail_book' module.pk %}">Add existing book</a> |
 	<a href="{% url 'camelcore:module_dashboard:create_book' module.pk %}">Add a new book</a>
 </div>
 {% endblock %}
