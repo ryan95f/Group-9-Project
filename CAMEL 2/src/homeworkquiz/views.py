@@ -95,6 +95,7 @@ class QuestionDetailView(DetailView):
         context["chapter"] = node.get_descendants(include_self=True)
         context["show"] = True
 
+        # find the relevent model to display
         for m in answer_models:
             try:
                 result = m.objects.get(
@@ -104,6 +105,14 @@ class QuestionDetailView(DetailView):
                 context['previous_answer'] = result
             except m.DoesNotExist:
                 pass
+
+        try:  # find if a deadline has been set for this node
+            deadline = Deadline.objects.get(pk=BookNode.objects.get(pk=node.pk))
+            context['deadline'] = deadline.deadline_date
+            # compare the dates last to get most accuare time of load
+            context['late'] = (timezone.now() > deadline.deadline_date)
+        except Deadline.DoesNotExist:
+            context['deadline'] = None
         return context
 
 
@@ -160,7 +169,14 @@ class SingleChoiceSaveView(View):
             return JsonResponse({'singlechoice': single_model.answer})
         else:
             s.submit_answer(single_model)
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        return HttpResponseRedirect(
+            reverse('module:latexbook:booknode_chapter_detail',
+                    args=(
+                        self.kwargs["module_pk"],
+                        self.kwargs['book_pk'],
+                        self.kwargs['chapter_pk']),
+                    )
+        )
 
 
 # cannot complete this one until check boxes are used for multiple choice
@@ -183,4 +199,11 @@ class JaxSaveView(View):
             return JsonResponse({'jax_answer': clean_jax})
         else:
             s.submit_answer(jax_object)
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        return HttpResponseRedirect(
+            reverse('module:latexbook:booknode_chapter_detail',
+                    args=(
+                        self.kwargs["module_pk"],
+                        self.kwargs['book_pk'],
+                        self.kwargs['chapter_pk']),
+                    )
+        )
