@@ -22,26 +22,50 @@ def save_answer(request, node_pk):
 
 
 class DeadlineSetView(FormView):
+    """View to open form to add deadline to a booknode for
+    a quizquestion."""
     form_class = DeadlineForm
     template_name = 'homeworkquiz/set_deadline.html'
     model = Deadline
-    success_url = "/"
+
+    def get_initial(self, **kwargs):
+        """Sets the form fields to have any existing data
+        prior to rendering the template."""
+        initial = super(DeadlineSetView, self).get_initial()
+        try:
+            a = self.model.objects.get(pk=BookNode.objects.get(pk=self.kwargs['pk']))
+            initial['node'] = a.node.pk
+            initial['date'] = a.deadline_date
+        except self.model.DoesNotExist:
+            initial['node'] = self.kwargs['pk']
+        return initial
 
     def form_valid(self, form):
+        """Method that is executed when form that is send to back-end
+        meets the requirements proposed by the corrisponding form. Creates
+        or edits a Deadline object to add it to DB."""
         clean_form = form.clean_form()
         try:
             saved_deadline_object = self.model.objects.get(pk=clean_form['node'])
             saved_deadline_object.deadline_date = clean_form['date']
-            # saved_deadline_object.save()
+            saved_deadline_object.save()
         except self.model.DoesNotExist:
             deadline_object = self.model(
                 node=BookNode.objects.get(pk=clean_form['node']),
                 deadline_date=clean_form['date']
             )
-            # deadline_object.save()
-        return HttpResponseRedirect(reverse('module:latexbook:homeworkquiz:question'), {''})
+            deadline_object.save()
+        return HttpResponseRedirect(
+            reverse('module:latexbook:booknode_chapter_detail',
+                    args=(
+                        self.kwargs["module_pk"],
+                        self.kwargs['book_pk'],
+                        self.kwargs['chapter_pk']),
+                    )
+        )
 
     def get_context_data(self, **kwargs):
+        """Return context data for requested template"""
         context = super(DeadlineSetView, self).get_context_data(**kwargs)
         context['question'] = BookNode.objects.get(pk=self.kwargs['pk']).get_descendants(include_self=True)
         context["module_number"] = self.kwargs["module_pk"]

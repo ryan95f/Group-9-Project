@@ -87,3 +87,7 @@ class CamelUser(AbstractBaseUser):
     @property
     def is_teacher(self):
         return self.is_an_lecturer
+
+    @property
+    def is_camel_staff(self):
+        return (self.is_an_lecturer or self.is_staff)
