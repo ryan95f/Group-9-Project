@@ -1,6 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
+
 from django.core.urlresolvers import reverse
+from django.core.exceptions import PermissionDenied
 
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import FormView
@@ -11,6 +13,7 @@ from django.utils.html import escape
 
 from homeworkquiz.models import SingleChoiceAnswer, JaxAnswer, Deadline
 from homeworkquiz.forms import DeadlineForm
+
 from user.models import CamelUser
 from latexbook.models import BookNode
 
@@ -21,7 +24,18 @@ def save_answer(request, node_pk):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-class DeadlineSetView(FormView):
+class StaffRequiredMixin(object):
+    """Object that allows staff access to the specific view.
+    Displays error 403 if access not allowed"""
+
+    def dispatch(self, request, *args, **kwargs):
+        """Method that check current user has correct permission"""
+        if not request.user.is_camel_staff:
+            raise PermissionDenied
+        return super(StaffRequiredMixin, self).dispatch(request, *args, **kwargs)
+
+
+class DeadlineSetView(StaffRequiredMixin, FormView):
     """View to open form to add deadline to a booknode for
     a quizquestion."""
     form_class = DeadlineForm

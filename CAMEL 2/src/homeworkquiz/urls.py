@@ -11,5 +11,5 @@ urlpatterns = [
 
     # url for question answering page
     url(r'^question/(?P<pk>\d+)/$', login_required(QuestionDetailView.as_view()), name="do_question"),
-    url(r'^deadline/(?P<pk>\d+)/$', DeadlineSetView.as_view(), name="set_deadline")
+    url(r'^deadline/(?P<pk>\d+)/$', login_required(DeadlineSetView.as_view()), name="set_deadline")
 ]
