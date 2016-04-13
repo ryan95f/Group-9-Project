@@ -1,7 +1,9 @@
 {% load staticfiles %}
 
 {% block prefix %}
-	<form id="answer_form" action="{% url 'module:latexbook:homeworkquiz:jaxquestion' module_number book_number chapter_number node.parent.pk %}" method="POST">{% csrf_token %}
+	{% if not review %}
+		<form id="answer_form" action="{% url 'module:latexbook:homeworkquiz:jaxquestion' module_number book_number chapter_number node.parent.pk %}" method="POST">{% csrf_token %}
+	{% endif %}
 		<div class='latex_environment_questiontype_mathjaxtext'>
 	
 {% endblock %}
@@ -28,9 +30,11 @@
 				{% endif %}
 			{% else %}
 				{% if not deadline %}
-					<a href="{% url 'module:latexbook:homeworkquiz:do_question' module_number book_number chapter_number node.parent.pk %}">Start</a>
-					{% if user.is_camel_staff %}
-						<a href="{% url 'module:latexbook:homeworkquiz:set_deadline' module_number book_number chapter_number node.parent.pk %}">Set Deadline</a>
+					{% if not review %}
+						<a href="{% url 'module:latexbook:homeworkquiz:do_question' module_number book_number chapter_number node.parent.pk %}">Start</a>
+						{% if user.is_camel_staff %}
+							<a href="{% url 'module:latexbook:homeworkquiz:set_deadline' module_number book_number chapter_number node.parent.pk %}">Set Deadline</a>
+						{% endif %}
 					{% endif %}
 				{% endif %}
 			{% endif %}

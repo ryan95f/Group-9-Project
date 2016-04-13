@@ -47,8 +47,8 @@ INSTALLED_APPS = [
     # module section of application
     'module',
     # homework section of application
-    # Disabled until other applications are more refined.
     'homeworkquiz',
+    'review',
 ]
 
 MIDDLEWARE_CLASSES = [

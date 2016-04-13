@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+	Cardiff Maths e-Learning
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	>
+	<a href="{% url 'review:index' %}">Review</a>
+	>
+	<a href="{% url 'review:book_index' module.pk %}">{{ module.pk }}</a>
+{% endblock %}
+
+{% block content-main %}
+	<h1>All Books for {{ module.pk }}</h1>
+	{% if learningmaterials and learningmaterials.Book %}
+			<ul>
+				{% for book in learningmaterials.Book %}
+					<li>
+						<a href="{% url 'review:book_questions' module.pk book.pk %}">{{ book }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+	{% else %}
+		<p>No books are currently available for this module!</p>
+	{% endif %}
+{% endblock %}

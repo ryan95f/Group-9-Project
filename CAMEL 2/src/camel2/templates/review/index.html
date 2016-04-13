@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+	Cardiff Maths e-Learning
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	>
+	<a href="{% url 'review:index' %}">Review</a>
+{% endblock %}
+
+{% block content-main %}
+	<h1>Modules that can be reviewed</h1>
+	{% for m in modules %}
+		<h3><a href="{% url 'review:book_index' m.pk %}">{{ m }}</a></h3>
+	{% endfor %}
+{% endblock %}

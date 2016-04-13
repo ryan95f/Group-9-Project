@@ -31,5 +31,8 @@ urlpatterns = [
     url(r"^module/", include("module.urls", namespace="module")),
 
     # Homework app
-    url(r"^homework/", include("homeworkquiz.urls", namespace="homeworkquiz"))
+    url(r"^homework/", include("homeworkquiz.urls", namespace="homeworkquiz")),
+
+    # review app
+    url(r"^review/", include("review.urls", namespace="review")),
 ]
