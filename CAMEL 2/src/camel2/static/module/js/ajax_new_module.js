@@ -17,7 +17,7 @@ $(document).ready( function(){
         if((!($('#id_code').val().length > 0)) || (!(new RegExp(/^\M{1}\A{1}\d{4}$/).test($('#id_code').val())))){
             $('#id_code').css('background-color', "#ff4d4d");
             send = false;
-            error += "<p>Please enter valid mathematics module code. E.g. MA0000</p>";
+            error += "<p>Please enter a valid mathematics module code. E.g. MA0000</p>";
         }
 
         if(send){ // if flag to send is true
