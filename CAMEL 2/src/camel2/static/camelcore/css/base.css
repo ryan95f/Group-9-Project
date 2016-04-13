@@ -392,8 +392,9 @@ body, th, td {
     bottom:0;
     right:0;
     font-family:"Trebuchet MS",sans-serif;
+    font-size: 15 ;
     white-space:nowrap;
-	height:60px;
+    height:62px;
 }
 #nav-global li {
     display:block;
@@ -618,6 +619,7 @@ body {
 }
 #breadcrumbs {
     background:#D7D9F7;
+    font-size: 15;
 }
 #columnwrap {
     background:#fff;
@@ -741,5 +743,7 @@ div.form_block{
     padding: 4px;
 }
 
-.error_message{color: red;}
+.error_message{
+    color: red;
+}
 
