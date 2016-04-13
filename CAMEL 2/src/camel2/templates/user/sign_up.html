@@ -20,11 +20,11 @@
 	var password_match = false;
 	$(document).ready( function(){
 		$('#id_password2').focusout( function(){ // when password2 text box has lost focus.
-			var confirm_passowrd = $(this).val();
+			var confirm_password = $(this).val();
 			var initial_password = $('#id_password1').val();
 			
 			//if both passwords are not empty and both do not match
-			if(((confirm_passowrd.length > 0) &&(initial_password.length > 0)) && !(initial_password == confirm_passowrd)){
+			if(((confirm_password.length > 0) &&(initial_password.length > 0)) && !(initial_password == confirm_password)){
 				// if the passwords do not match
 				$(this).css('background-color', "#ff4d4d");
 				$('#id_password1').css('background-color', "#ff4d4d");
