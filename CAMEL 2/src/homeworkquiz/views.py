@@ -11,17 +11,17 @@ from django.views.generic import View
 from django.utils import timezone
 from django.utils.html import escape
 
-from homeworkquiz.models import SingleChoiceAnswer, JaxAnswer, Deadline
+from homeworkquiz.models import SingleChoiceAnswer, MultiChoiceAnswer, JaxAnswer, Deadline
 from homeworkquiz.forms import DeadlineForm
 
 from user.models import CamelUser
 from latexbook.models import BookNode
 
 
-def save_answer(request, node_pk):
-    """ temp function, placeholder view for unimplemented questions
-    currently in use for Multi answers"""
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+# def save_answer(request, node_pk):
+#     """ temp function, placeholder view for unimplemented questions
+#     currently in use for Multi answers"""
+#     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 class StaffRequiredMixin(object):
@@ -100,7 +100,7 @@ class QuestionDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         """Return context data for displaying the list of objects."""
-        answer_models = [JaxAnswer, SingleChoiceAnswer]
+        answer_models = [JaxAnswer, SingleChoiceAnswer, MultiChoiceAnswer]
         context = super(QuestionDetailView, self).get_context_data(**kwargs)
         node = self.get_object()
         context["module_number"] = self.kwargs["module_pk"]
@@ -193,10 +193,28 @@ class SingleChoiceSaveView(View):
         )
 
 
-# cannot complete this one until check boxes are used for multiple choice
-# class MultiChoiceSave(View):
-#     def post(self, request, node_pk):
-#         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+class MultiChoiceSave(View):
+    def post(self, request, **kwargs):
+        answers = request.POST.getlist('multiplechoice')
+        clean_answer = ''
+        for ans in answers:
+            clean_answer += ans + ','
+
+        s = GeneralSave(MultiChoiceAnswer, clean_answer)
+        multi_model = s.save_answer(request, self.kwargs['node_pk'])
+        if(request.is_ajax()):
+            return JsonResponse({'multiplechoice': multi_model.answer})
+        else:
+            s.submit_answer(multi_model)
+            pass
+        return HttpResponseRedirect(
+            reverse('module:latexbook:booknode_chapter_detail',
+                    args=(
+                        self.kwargs["module_pk"],
+                        self.kwargs['book_pk'],
+                        self.kwargs['chapter_pk']),
+                    )
+        )
 
 
 class JaxSaveView(View):

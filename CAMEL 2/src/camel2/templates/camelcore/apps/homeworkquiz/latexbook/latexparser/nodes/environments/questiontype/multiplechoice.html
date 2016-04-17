@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 {% block prefix %}
 	{% if not review %}
 		<form id="answer_form" action="{% url 'module:latexbook:homeworkquiz:multiquestion' module_number book_number chapter_number node.parent.pk %}" method="POST">{% csrf_token %}
@@ -11,9 +13,22 @@
 		</fieldset>
 		{% if user.is_authenticated %}
 			{% if show %}
-				<input value="Submit" type="Submit">
-				<input type="hidden" name="user" value="{{ user.identifier }}">
-				<button>Save</button>
+				{% if previous_answer.is_submitted %}
+					<p>Submitted on {{ previous_answer.submitted_date }}</p>
+				{% else %}
+					{% if not late %}
+						<input value="Submit" type="Submit">
+						<button id="btn_save">Save</button>
+						<input id="user" type="hidden" name="user" value="{{ user.identifier }}">
+						<input id="node" type="hidden" name="node" value="{{ node.parent.pk }}">
+						<input id="chapter" type="hidden" name="chapter" value="{{ chapter_number }}">
+						<input id="book" type="hidden" name="book" value="{{ book_number }}">
+						<input id="module" type="hidden" name="module" value="{{ module_number }}">
+						<script type="text/javascript" src="{% static 'homeworkquiz/js/multianswer_ajax.js' %}"></script>
+					{% else %}
+						<p><b>This question cannot be answered as it has been past the deadline above</b></p>
+					{% endif %}
+				{% endif %}
 			{% else %}
 				{% if not deadline %}
 					{% if not review %}
@@ -26,4 +41,17 @@
 			{% endif %}
 		{% endif %}
 	</form>
+	<script type="text/javascript">
+		$(document).ready( function(){
+			var ans = "{{ previous_answer.answer }}".slice(0,-1).split(",");
+			console.log(ans)
+			$('.XYZ').each(function(i){
+				for(var i = 0; i < ans.length; ++i){
+					if($(this).attr("value") == ans[i]){
+						$(this).attr('checked', true);
+					}
+				}
+			});	
+		});
+	</script>
 {% endblock %}
