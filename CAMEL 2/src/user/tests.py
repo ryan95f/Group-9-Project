@@ -4,7 +4,7 @@ from .models import *
 # Create your tests here.
 class TestUserModels(unittest.TestCase):
     
-    #test that super users are created correctly
+    #test that superusers are created correctly
     def test_create_superuser(self):
         test = CamelUserManager()
         test.model = CamelUser
