@@ -12,7 +12,13 @@ class AnswerAdmin(admin.ModelAdmin):
         ('Permissions', {'fields': ('is_submitted',)}),
     )
 
+
+class DeadlineAdmin(admin.ModelAdmin):
+    """Model for deadlines to be displayed on the Django admin panel.
+    Used only for the Deadline model"""
+    list_display = ('node', 'node_pk', 'deadline_date', )
+
 admin.site.register(SingleChoiceAnswer, AnswerAdmin)
 admin.site.register(JaxAnswer, AnswerAdmin)
 admin.site.register(MultiChoiceAnswer, AnswerAdmin)
-admin.site.register(Deadline)
+admin.site.register(Deadline, DeadlineAdmin)

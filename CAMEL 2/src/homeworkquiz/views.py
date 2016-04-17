@@ -18,12 +18,6 @@ from user.models import CamelUser
 from latexbook.models import BookNode
 
 
-# def save_answer(request, node_pk):
-#     """ temp function, placeholder view for unimplemented questions
-#     currently in use for Multi answers"""
-#     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-
-
 class StaffRequiredMixin(object):
     """Object that allows staff access to the specific view.
     Displays error 403 if access not allowed"""
@@ -171,7 +165,7 @@ class GeneralSave(object):
 
 
 class SingleChoiceSaveView(View):
-    """View to save an redirect after answer has been saved and
+    """View to save an redirect after answer has been saved or
     submitted. Used in Ajax requests (for save). Assumes if not
     ajax then submit. """
 
@@ -194,13 +188,25 @@ class SingleChoiceSaveView(View):
 
 
 class MultiChoiceSave(View):
+    """View to save an redirect after multi-choice answer has been saved or
+    submitted. Used in Ajax requests (for save). Assumes if not
+    ajax then submit. """
+
     def post(self, request, **kwargs):
-        answers = request.POST.getlist('multiplechoice')
+        """Method executed when POST request is made to view"""
+        if(request.is_ajax()):
+            # ajax request automatically adds [] when entered
+            answers = request.POST.getlist('multiplechoice[]')
+        else:
+            answers = request.POST.getlist('multiplechoice')
+
+        # clean array so that it can be saved
         clean_answer = ''
         for ans in answers:
             clean_answer += ans + ','
 
         s = GeneralSave(MultiChoiceAnswer, clean_answer)
+        # save answer
         multi_model = s.save_answer(request, self.kwargs['node_pk'])
         if(request.is_ajax()):
             return JsonResponse({'multiplechoice': multi_model.answer})
@@ -218,7 +224,7 @@ class MultiChoiceSave(View):
 
 
 class JaxSaveView(View):
-    """View to save an redirect after jax answer has been saved and
+    """View to save an redirect after jax answer has been saved or
     submitted. Used in Ajax requests (for save). Assumes if not
     ajax then submit. """
 
