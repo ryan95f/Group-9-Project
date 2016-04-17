@@ -105,6 +105,10 @@ from camelcore.apps.homeworkquiz.latexbook.latexparser.nodes.commands.choice imp
     Choice, CorrectChoice, TextAnswer
 )
 
+from camelcore.apps.homeworkquiz.latexbook.latexparser.nodes.commands.mchoice import (
+    MChoice, MCorrectChoice
+)
+
 from camelcore.apps.homeworkquiz.latexbook.latexparser.nodes.environments.homework import (
     Homework, Quiz, QuizQuestion
 )
@@ -181,3 +185,6 @@ add_nodes_quick(os.path.join(HQ_NODE_ROOT, "environments/questiontype"), [Single
 
 # Add choice command nodes.
 add_nodes_quick(os.path.join(HQ_NODE_ROOT, "commands/choice"), [Choice, CorrectChoice, TextAnswer])
+
+# Add multiple choice command nodes.
+add_nodes_quick(os.path.join(HQ_NODE_ROOT, "commands/mchoice"), [MChoice, MCorrectChoice])
