@@ -1,5 +1,0 @@
-///////////////////////
-// Possible Dango Bugs:
-///////////////////////
-
-Django admin module add: Year was only accepting max of 6 characters, needed to be 7 
