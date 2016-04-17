@@ -6,7 +6,7 @@ class MChoice(ItemNode):
 
     def __init__(self, children=None):
         """Initialise the node."""
-        super(Choice, self).__init__(children=children)
+        super(MChoice, self).__init__(children=children)
 
 
 class MCorrectChoice(ItemNode):
@@ -14,4 +14,4 @@ class MCorrectChoice(ItemNode):
 
     def __init__(self, children=None):
         """Initialise the node."""
-        super(CorrectChoice, self).__init__(children=children)
+        super(MCorrectChoice, self).__init__(children=children)
