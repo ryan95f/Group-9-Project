@@ -19,6 +19,3 @@ In order to use the latex parser:
 ```sh
  py manage.py migrate --run-syncdb
 ```
-
-![CAMEL][logo]
-[logo]:https://github.com/Ryan95Z/Group-9-Project/blob/master/Archive/CAMEL2/media/camel_logo_reversed.png

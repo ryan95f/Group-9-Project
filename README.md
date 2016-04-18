@@ -9,8 +9,6 @@ CAMEL E - Learning System developed Group 9
 ### Install extra python modules for camel to work
 ```sh
  pip install django-mptt
- pip install django-debug-toolbar
- pip install django-extensions
  pip install Pillow
 ```
 
