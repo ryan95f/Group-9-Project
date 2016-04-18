@@ -1,8 +1,0 @@
-\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}
-\contentsline {chapter}{\numberline {2}Figures}{3}{chapter.2}
-\contentsline {chapter}{\numberline {3}Lists}{4}{chapter.3}
-\contentsline {chapter}{\numberline {4}Labels, References and Citations}{5}{chapter.4}
-\contentsline {chapter}{\numberline {5}Homeworks}{6}{chapter.5}
-\contentsline {chapter}{\numberline {6}Theorems}{7}{chapter.6}
-\contentsline {chapter}{\numberline {7}MathJax}{8}{chapter.7}
-\contentsfinish 
