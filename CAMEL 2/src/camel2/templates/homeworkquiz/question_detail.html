@@ -23,6 +23,9 @@
 {% block content-main %}
 	<h1>Question</h1>
 	<p>The deadline for this question is: <b>{{ deadline }}</b></p>
+	{% if previous_answer.is_submitted %}
+		<p>Correct:  <b>{{ previous_answer.correct }}</b></p>
+	{% endif %}
 	{% include 'latexbook/recurselatextree.html' with root_node=chapter %}
 
 	<a href="{% url 'module:latexbook:booknode_chapter_detail' module_number book_number chapter_number %}">Go Back</a>

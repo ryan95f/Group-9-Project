@@ -27,6 +27,7 @@ class SingleChoiceAnswer(GenericAnswerModel):
     to an answer that is entered by a user for Single Choice.
     Inherits GenericAnswerModel which contains core information"""
     answer = models.CharField(max_length=20)
+    correct = models.BooleanField(default=False)
 
     def __str__(self):
         return self.answer
@@ -47,6 +48,7 @@ class MultiChoiceAnswer(GenericAnswerModel):
     for a multiple choice answer. Inherits GenericAnswerModel which
     contains core information"""
     answer = models.CharField(max_length=200)
+    correct = models.BooleanField(default=False)
 
     def __str__(self):
         return self.answer
@@ -59,7 +61,7 @@ class Deadline(models.Model):
     deadline_date = models.DateTimeField(auto_now_add=False)
 
     def __str__(self):
-        return self.deadline_date
+        return str(self.deadline_date)
 
     def node_pk(self):
         """Method to return primary key of node"""

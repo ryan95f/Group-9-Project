@@ -15,7 +15,7 @@ from homeworkquiz.models import SingleChoiceAnswer, MultiChoiceAnswer, JaxAnswer
 from homeworkquiz.forms import DeadlineForm
 
 from user.models import CamelUser
-from latexbook.models import BookNode
+from latexbook.models import BookNode, TextNode
 
 
 class StaffRequiredMixin(object):
@@ -176,6 +176,17 @@ class SingleChoiceSaveView(View):
         if(request.is_ajax()):
             return JsonResponse({'singlechoice': single_model.answer})
         else:
+            # do automarking on the question
+            all_nodes = BookNode.objects.get(pk=self.kwargs['node_pk']).get_descendants()
+            book_nodes = all_nodes.filter(node_type='correctchoice').get_descendants()
+
+            # getting the correct answer through queries
+            correct_answer = TextNode.objects.get(book_node=book_nodes[0]).content
+
+            # compare to see if correct
+            single_model.correct = (str(single_model.answer) == str(correct_answer))
+
+            # submit answer
             s.submit_answer(single_model)
         return HttpResponseRedirect(
             reverse('module:latexbook:booknode_chapter_detail',
@@ -211,8 +222,30 @@ class MultiChoiceSave(View):
         if(request.is_ajax()):
             return JsonResponse({'multiplechoice': multi_model.answer})
         else:
+            # auto marking answer to see if correct
+            all_nodes = BookNode.objects.get(pk=self.kwargs['node_pk']).get_descendants()
+
+            # getting all correct answers
+            book_nodes = all_nodes.filter(node_type='mcorrectchoice').get_descendants()
+
+            # create an array of answers
+            answers = multi_model.answer[:-1].split(",")
+            correct = 0
+
+            # loop through each answer and check to see if it is correct
+            # increase correct count by 1
+            for ans in answers:
+                for a in book_nodes:
+                    text_answer = TextNode.objects.get(book_node=a).content
+                    if(str(ans) == str(text_answer)):
+                        correct += 1
+
+            # if the lengths match then is correct
+            # student needs to get all right answers and no wrong answers
+            multi_model.correct = (len(answers) == correct)
+
+            # submit answer
             s.submit_answer(multi_model)
-            pass
         return HttpResponseRedirect(
             reverse('module:latexbook:booknode_chapter_detail',
                     args=(
