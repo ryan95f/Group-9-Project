@@ -392,8 +392,9 @@ body, th, td {
     bottom:0;
     right:0;
     font-family:"Trebuchet MS",sans-serif;
+    font-size: 15;
     white-space:nowrap;
-	height:60px;
+	height:62px;
 }
 #nav-global li {
     display:block;
@@ -412,8 +413,9 @@ body, th, td {
 /* breadcrumbs */
 #breadcrumbs {
 	font:italic 90%/1.2em "Trebuchet MS",sans-serif;
-    line-height:15px;
+    line-height:18px;
     border:1px solid #000;
+    font-size: 15;
 }
 
 /* columnwrap: contains main-column and sidebar */
