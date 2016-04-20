@@ -3,6 +3,7 @@ from django.http import JsonResponse
 
 from django.core.urlresolvers import reverse
 from django.core.exceptions import PermissionDenied
+from django.shortcuts import get_object_or_404
 
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import FormView
@@ -41,9 +42,14 @@ class DeadlineSetView(StaffRequiredMixin, FormView):
         prior to rendering the template."""
         initial = super(DeadlineSetView, self).get_initial()
         try:
-            a = self.model.objects.get(pk=BookNode.objects.get(pk=self.kwargs['pk']))
-            initial['node'] = a.node.pk
-            initial['date'] = a.deadline_date
+            deadline = self.model.objects.get(
+                pk=get_object_or_404(
+                    BookNode, pk=self.kwargs['pk'],
+                    node_type="quizquestion"
+                )
+            )
+            initial['node'] = deadline.node.pk
+            initial['date'] = deadline.deadline_date
         except self.model.DoesNotExist:
             initial['node'] = self.kwargs['pk']
         return initial
@@ -75,7 +81,9 @@ class DeadlineSetView(StaffRequiredMixin, FormView):
     def get_context_data(self, **kwargs):
         """Return context data for requested template"""
         context = super(DeadlineSetView, self).get_context_data(**kwargs)
-        context['question'] = BookNode.objects.get(pk=self.kwargs['pk']).get_descendants(include_self=True)
+        context['question'] = get_object_or_404(
+            BookNode, pk=self.kwargs['pk'],
+            node_type="quizquestion").get_descendants(include_self=True)
         context["module_number"] = self.kwargs["module_pk"]
         context['question_number'] = self.kwargs['pk']
         context["book_number"] = self.kwargs["book_pk"]
@@ -108,7 +116,7 @@ class QuestionDetailView(DetailView):
             try:
                 result = m.objects.get(
                     user=CamelUser.objects.get(identifier=self.request.user.identifier),
-                    node=BookNode.objects.get(pk=node.pk)
+                    node=get_object_or_404(BookNode, pk=node.pk, node_type="quizquestion"),
                 )
                 context['previous_answer'] = result
             except m.DoesNotExist:
@@ -141,7 +149,7 @@ class GeneralSave(object):
             # use existing object to save if found
             current_answer = self._model.objects.get(
                 user=CamelUser.objects.get(identifier=request.POST['user']),
-                node=BookNode.objects.get(pk=node_pk)
+                node=get_object_or_404(BookNode, pk=node_pk, node_type="quizquestion"),
             )
             current_answer.answer = self._answer
             current_answer.save_date = timezone.now()
@@ -151,7 +159,7 @@ class GeneralSave(object):
             current_answer = self._model(
                 answer=self._answer,
                 user=CamelUser.objects.get(identifier=request.POST['user']),
-                node=BookNode.objects.get(pk=node_pk)
+                node=get_object_or_404(BookNode, pk=node_pk, node_type="quizquestion"),
             )
             current_answer.save()
         return current_answer
@@ -235,8 +243,8 @@ class MultiChoiceSave(View):
             # loop through each answer and check to see if it is correct
             # increase correct count by 1
             for ans in answers:
-                for a in book_nodes:
-                    text_answer = TextNode.objects.get(book_node=a).content
+                for node in book_nodes:
+                    text_answer = TextNode.objects.get(book_node=node).content
                     if(str(ans) == str(text_answer)):
                         correct += 1
 

@@ -55,7 +55,7 @@ class ReviewBookView(StaffRequiredMixin, View):
     def get(self, request, **kwargs):
         """Method to get the questions for the selected book. Finds
         root node then filters out all nodes that are not questions"""
-        book = Book.objects.get(pk=kwargs['book_pk'])
+        book = get_object_or_404(Book, pk=kwargs['book_pk'])
 
         # use book and get its root note
         root = BookNode.objects.get(level=0, pk=book.book_root_node.pk).get_descendants()
@@ -78,12 +78,12 @@ class ReviewQuestionView(StaffRequiredMixin, View):
     def get(self, request, **kwargs):
         """Method that will get the answers for a given question"""
         models = [SingleChoiceAnswer, JaxAnswer, MultiChoiceAnswer]
-        question = BookNode.objects.get(pk=kwargs['question_pk'])
+        question = get_object_or_404(BookNode, pk=kwargs['question_pk'], node_type="quizquestion")
 
         # go through each model to see if any questions exist for it
         for m in models:
             student_answers = m.objects.all().filter(
-                node=BookNode.objects.get(pk=kwargs['question_pk'])
+                node=question,
             )
 
             # if answers found then break loop
