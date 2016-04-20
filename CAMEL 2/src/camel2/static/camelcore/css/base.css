@@ -392,9 +392,8 @@ body, th, td {
     bottom:0;
     right:0;
     font-family:"Trebuchet MS",sans-serif;
-    font-size: 15 ;
     white-space:nowrap;
-    height:62px;
+	height:60px;
 }
 #nav-global li {
     display:block;
@@ -619,7 +618,6 @@ body {
 }
 #breadcrumbs {
     background:#D7D9F7;
-    font-size: 15;
 }
 #columnwrap {
     background:#fff;
@@ -668,9 +666,7 @@ a:hover {
     text-decoration: none;
 }
 #nav-global a:hover {
-    color:#ffffff;
-    background-color: #006699;
-/* SHAK EDIT */
+    color:#4c50cb;
 }
 #content-main a:hover {
     color:blue;
@@ -745,7 +741,9 @@ div.form_block{
     padding: 4px;
 }
 
-.error_message{
-    color: red;
+.error_message{color: red;}
+#nav-global a:hover {
+    color:#ffffff;
+    background-color: #006699;
+/* SHAK EDIT */
 }
-
