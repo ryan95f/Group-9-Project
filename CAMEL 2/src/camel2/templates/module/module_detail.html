@@ -22,14 +22,18 @@
 				{% for book in learningmaterials.Book %}
 					<li>
 						<a href="{% url 'module:latexbook:booknode_detail' module.pk book.pk %}">{{ book }}</a>
-						<a href="{% url 'camelcore:module_dashboard:delete_book' module.pk book.pk %}">Delete</a>
+						{% if user.is_camel_staff %}
+							<a href="{% url 'camelcore:module_dashboard:delete_book' module.pk book.pk %}">Delete</a>
+						{% endif %}
 					</li>
 				{% endfor %}
 			</ul>
 	{% else %}
 		<p>No books are currently available for this module!</p>
 	{% endif %}
-	<a href="{% url 'camelcore:module_dashboard:add_detail_book' module.pk %}">Add existing book</a> |
-	<a href="{% url 'camelcore:module_dashboard:create_book' module.pk %}">Add a new book</a>
+	{% if user.is_camel_staff %}
+		<a href="{% url 'camelcore:module_dashboard:add_detail_book' module.pk %}">Add existing book</a> |
+		<a href="{% url 'camelcore:module_dashboard:create_book' module.pk %}">Add a new book</a>
+	{% endif %}
 </div>
 {% endblock %}
