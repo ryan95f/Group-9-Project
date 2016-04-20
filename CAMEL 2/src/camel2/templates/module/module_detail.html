@@ -16,17 +16,19 @@
 {% block content-main %}
 <div>
 	<h1>{{ module.code }} - {{ module.title }}</h1>
+	
 	<div class="books">
 	<h2 id="booktitle">Books</h2>
-	
+
 	{% if learningmaterials and learningmaterials.Book %}
 			<ul>
 				{% for book in learningmaterials.Book %}
 					<li>
 						<a href="{% url 'module:latexbook:booknode_detail' module.pk book.pk %}">{{ book }}</a>
 						{% if user.is_camel_staff %}
-						
+
 						<input type="button" id="delete_btn" onclick="location.href='{% url 'camelcore:module_dashboard:delete_book' module.pk book.pk %}';" value="Delete"/>
+					
 						{% endif %}
 					</li>
 				{% endfor %}
