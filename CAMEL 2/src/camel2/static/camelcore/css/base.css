@@ -668,7 +668,9 @@ a:hover {
     text-decoration: none;
 }
 #nav-global a:hover {
-    color:#4c50cb;
+    color:#ffffff;
+    background-color: #006699;
+/* SHAK EDIT */
 }
 #content-main a:hover {
     color:blue;
