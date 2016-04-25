@@ -26,7 +26,7 @@
 					<li>
 						<a href="{% url 'module:latexbook:booknode_detail' module.pk book.pk %}">{{ book }}</a>
 						{% if user.is_camel_staff %}
-
+						
 						<input type="button" id="delete_btn" onclick="location.href='{% url 'camelcore:module_dashboard:delete_book' module.pk book.pk %}';" value="Delete"/>
 					
 						{% endif %}

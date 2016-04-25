@@ -365,7 +365,7 @@ body, th, td {
 #header {
     position:relative;
     height:55px;
-	background:#D7D9F7;
+	background:#BBBBBB;
 	border-left:1px solid #000;
 	border-right:1px solid #000;
 	border-bottom:1px solid #000;
@@ -407,15 +407,15 @@ body, th, td {
     display:block;
     float:left;
     padding:30px 16px 10px 16px;
-	background:d7d9f7;
+	background:#BBBBBB;
 }
 
 /* breadcrumbs */
 #breadcrumbs {
 	font:italic 90%/1.2em "Trebuchet MS",sans-serif;
-    line-height:18px;
+    line-height:26px;
     border:1px solid #000;
-    font-size: 15;
+    font-size: 14;
 }
 
 /* columnwrap: contains main-column and sidebar */
@@ -619,7 +619,7 @@ body {
 	background:#e9f9ed;
 }
 #breadcrumbs {
-    background:#D7D9F7;
+    background:#EFEDE3;
 }
 #columnwrap {
     background:#fff;
@@ -629,36 +629,40 @@ body {
     color:black;
 }
 .sidebar {
-    background-color:#D7D9F7;
+    background-color:#EFEDE3;
 	color:black;
 }
 #content-secondary {
-    background:#D7D9F7;
+    background:#EFEDE3;
     color:black;
 }
 #browse-horizontal {
-    background:#D7D9F7;
+    background:#EFEDE3;
     color:black;
 }
 
 /* links */
 a:link, a:visited { 
-    color:#a60514; 
+    color:#00748B; 
     text-decoration: none;
 }
 #nav-global a {
-    background:#D7D9F7; /* same as header background */
+    background:#BBBBBB; /* same as header background */
+}
+#nav-global a:link, #nav-global a:visited {
+    color: white;
+    font-weight: bold;
 }
 #content-main a:link, #content-main a:visited {
-    color:#a60514;
+    color:#00748B;
     text-decoration:underline;
 }
 #content-secondary a:link, #content-secondary a:visited {
-    color:#a60514;
+    color:#00748B;
     text-decoration:none;
 }
 #browse-horizontal a:link, #browse-horizontal a:visited, #content-related a:link, #content-related a:visited {
-    color:#a60514;
+    color:#00748B;
     text-decoration:none;
 }
 
@@ -750,7 +754,8 @@ div.form_block{
 
 #nav-global a:hover {
     color:#ffffff;
-    background-color: #006699;
+    background-color: #00748B;
+    text-decoration: underline;
 /* SHAK EDIT */
 }
 
@@ -760,12 +765,12 @@ div.form_block{
 }
 
 #delete_btn {
-    margin-left: 2.5em;
+    margin-left: 1.5em;
 }
 
 .books {
-    border: 2px solid #000000;
-    border-radius: 3em;
+    border: 1px solid #000000;
+    border-radius: 1.5em;
     padding:1em;
 
 }
