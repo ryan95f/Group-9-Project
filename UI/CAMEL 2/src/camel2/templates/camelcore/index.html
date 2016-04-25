@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+	Cardiff Maths e-Learning
+{% endblock %}
+
+{% block breadcrumbs-root %}
+{% endblock %}
+
+{% block backdrop %}
+<header>
+    <div class="container">
+      <center>
+          <img src="{% static 'camelcore/img/camel_logo.png' %}">
+        </body>
+        <h1>Welcome to <span>C<sup>a</sup>M<sub>e</sub>L</span></h1>
+        <h3>Cardiff University Mathematics E-Learning </h3>
+
+        <div style="margin-top:3em;">
+          <a href="{% url 'user:login' %}" class="btn btn-primary btn-lg" role="button">Login</a>
+          <a href="{% url 'user:signup' %}" class="btn btn-default btn-lg" role="button">Sign Up</a>
+        </div>
+      </center>
+    </div>
+  </header>
+{% endblock %}
+
+{% block nav-main%}
+{% endblock %}
+
+{% block content-root %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+
+
+

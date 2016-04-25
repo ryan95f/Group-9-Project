@@ -1,0 +1,17 @@
+{% verbatim %}
+	Could not get the template tag to obtain inherited blocks :(
+	{% extends 'camelcore/homeworkquiz/latexbook/latexparser/nodes/commands/choice/correctchoice.html' %}
+{% endverbatim %}
+
+{% block prefix %}
+	<tr>
+		<td><label for="XYZ">
+{% endblock %}
+
+{% block suffix %}
+	</label></td>
+	{% if show %}
+		<td><input type="radio" name="singlechoice" id="XYZ" value="{{ children }}" checked /></td>
+	{% endif %}
+	</tr>
+{% endblock %}

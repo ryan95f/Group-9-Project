@@ -1,0 +1,80 @@
+\documentclass{camel}
+
+\booktitle{Test Book}
+\bookauthor{Braden Marshall}
+\bookversion{1.0}
+
+\begin{document}
+	Welcome to the test book!
+
+	\chapter{First Chapter - \textbf{Bold \textit{BoldItalic}}}
+		Welcome to the first chapter of our test book!
+
+		\section{First Section}
+			Welcome to the first section of our test book!
+			Isn't it \emph{great}?
+
+			\subsection{First Subsection}
+				Welcome to the first subsection of our test book!
+
+				Start verbatim environment:
+				\begin{verbatim}
+					This should \textit{remain} as \textbf{Plain Text}.
+				\end{verbatim}
+				End verbatim environment!
+
+			\subsection{Second Subsection}
+				The following is an equation - Mathjax should do its thing...
+				\begin{equation}
+					x = \sqrt{16}^2
+				\end{equation}
+
+			\textit{SWEET}, end of first section!
+
+		\section{Another Section}
+			This section will be used to test a few things...
+			\begin{proof}
+				This could be a very \underline{complicated} proof.
+			\end{proof}
+
+		\section{Final Section}
+			This is the final section!
+			Lets hope everything worked!
+
+	\chapter{Second Chapter}
+		This chapter will be used to test our homeworkquiz app.
+
+		\section{First Test}
+			\begin{homework}
+				Welcome to the first page of example homework.
+				\begin{quiz}
+					\begin{quizquestion}
+						\question{What is 2^8?}
+						\begin{singlechoice}
+							\correctchoice{256}
+							\choice{257}
+							\choice{128}
+							\choice{512}
+						\end{singlechoice}
+					\end{quizquestion}
+
+					\begin{quizquestion}
+						\question{Which countries are in Europe?}
+						\begin{multiplechoice}
+							\mcorrectchoice{England}
+							\mcorrectchoice{France}
+							\mchoice{Japan}
+							\mchoice{Canada}
+							\mchoice{South Africa}
+						\end{multiplechoice}
+					\end{quizquestion}
+
+					\begin{quizquestion}
+						\question{What is the quadratic formula?}
+						\begin{mathjaxtext}
+							\textanswer{x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}}
+						\end{mathjaxtext}
+					\end{quizquestion}
+				\end{quiz}
+			\end{homework}
+\end{document}

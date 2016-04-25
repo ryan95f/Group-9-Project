@@ -1,0 +1,37 @@
+{% extends "Base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+	Book
+{% endblock %}
+
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	>
+	<a href="{% url 'module:module_index' %}">Modules</a>
+	>
+	<a href="{% url 'module:module_detail' module_number %}">{{ module_number }}</a>
+	>
+	<a href="{% url 'module:latexbook:booknode_detail' module_number book.pk %}">book</a>
+{% endblock %}
+
+
+{% block content-main %}
+	<h1>{{ book }}</h1>
+	<ul>
+		{% if chapters|length > 0 %}
+			{% for chapter in chapters %}
+				<li>{{ forloop.counter }}). <a href="{% url 'module:latexbook:booknode_chapter_detail' module_number book.pk chapter.pk %}">{{ chapter }}</a></li>
+			{% endfor %}
+		{% else %}
+			This book has no chapters!
+		{% endif %}
+	</ul>
+{% endblock %}
+
+
+
+
+
+

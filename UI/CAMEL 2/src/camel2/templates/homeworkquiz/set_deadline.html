@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block title %}
+	Set Question Deadline
+{% endblock %}
+
+{% block content-main %}
+	<h1>Set Question Deadline</h1>
+		<p>You are currently setting the deadline for the following question: </p>
+		{% include 'latexbook/recurselatextree.html' with root_node=question %}
+		<div class="inner_step">
+			<form action="" method="post">{% csrf_token %}
+    		{{ form }}
+    		<input type="submit" value="Add Deadline" />
+		</form>
+	</div>
+	<a href="{% url 'module:latexbook:booknode_chapter_detail' module_number book_number chapter_number %}">Go Back</a>
+{% endblock %}

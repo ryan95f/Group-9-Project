@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+	Cardiff Maths e-Learning
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+{% endblock %}
+
+{% block content-main %}
+<div>
+	<h1>Add a Module</h1>
+	<p>Add a new module to the course. If module number does not exists currently, please contact site administrator.</p>
+	<form action="{% url 'module:new_module' %}" method="post">
+	<div class="form_block">
+		{% csrf_token %}
+		{{ form }}
+		<input id="form_submit" type="submit" value="Add Module" />
+	</div><br>
+	<div id="dash_error" class="error_message"></div>
+</form>
+<table id="module_table" border="1">
+	<tr>
+		<th>Module Code</th>
+		<th>Module Year</th>
+		<th>Module Title</th>
+		<th>Module Options</button></th>
+	</tr>
+	{% if module|length > 0 %}
+	<h1>Modules Available</h1>
+		
+		{% for mo in module %}
+			<tr>
+				<th>{{ mo.code }}</th>
+				<th>{{ mo.year }}</th>
+				<th>{{ mo.title }}</th>
+				<th><button>Edit {{ mo.code }}</button></th>
+			</tr>
+		{% endfor %}
+	{% else %}
+		<h1>No Modules Available</h1>
+		<p><i>Please create a new module</i></p>
+	{% endif %}
+	</table>
+<script type="text/javascript" src="{% static 'module/js/ajax_new_module.js' %}"></script>
+</div>
+{% endblock %}

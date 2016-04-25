@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+	Question
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	>
+	<a href="{% url 'module:module_index' %}">Modules</a>
+	>
+	<a href="{% url 'module:module_detail' module_number %}">{{ module_number }}</a>
+	>
+	<a href="{% url 'module:latexbook:booknode_detail' module_number book_number %}">book</a>
+	>
+	<a href="{% url 'module:latexbook:booknode_chapter_detail' module_number book_number chapter_number %}">chapter</a>
+	>
+	<a href=".">question</a>
+{% endblock %}
+
+
+{% block content-main %}
+	<h1>Question</h1>
+	<p>The deadline for this question is: <b>{{ deadline }}</b></p>
+	{% if previous_answer.is_submitted %}
+		<p>Correct:  <b>{{ previous_answer.correct }}</b></p>
+	{% endif %}
+	{% include 'latexbook/recurselatextree.html' with root_node=chapter %}
+
+	<a href="{% url 'module:latexbook:booknode_chapter_detail' module_number book_number chapter_number %}">Go Back</a>
+{% endblock %}
