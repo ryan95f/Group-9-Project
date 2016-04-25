@@ -32,9 +32,9 @@
 			{% else %}
 				{% if not deadline %}
 					{% if not review %}
-						<a href="{% url 'module:latexbook:homeworkquiz:do_question' module_number book_number chapter_number node.parent.pk %}">Start</a>
+						<a href="{% url 'module:latexbook:homeworkquiz:do_question' module_number book_number chapter_number node.parent.pk %}" class="btn btn-primary">Start</a>
 						{% if user.is_camel_staff %}
-							<a href="{% url 'module:latexbook:homeworkquiz:set_deadline' module_number book_number chapter_number node.parent.pk %}">Set Deadline</a>
+							<a href="{% url 'module:latexbook:homeworkquiz:set_deadline' module_number book_number chapter_number node.parent.pk %}" class="btn btn-primary">Set Deadline</a>
 						{% endif %}
 					{% endif %}
 				{% endif %}

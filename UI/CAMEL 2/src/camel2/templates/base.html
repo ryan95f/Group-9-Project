@@ -106,7 +106,7 @@
   {% endblock %}
 
    {% block breadcrumbs-root %}
-  <div id="breadcrumbs" style="margin-top: 55px;">
+  <div id="breadcrumbs">
     {% block breadcrumbs %}
       &nbsp;
             {% if user.is_authenticated %}
@@ -120,7 +120,7 @@
 
   {% block content-root %}
   <div class="container">
-    <div class="row" style="margin-top: 55px; margin-bottom:100px;">
+    <div class="row" style="margin-top:20px; margin-bottom:100px;">
       {% block content-main %}
 
       {% endblock %}
@@ -168,19 +168,6 @@
     $('body,html').animate({scrollTop:posi},700);
   })
 
-
-  $( document ).ready(function() {
-    $("[rel='tooltip']").tooltip();    
-
-    $('.thumbnail').hover(
-      function(){
-        $(this).find('.caption').fadeIn(250);
-      },
-      function(){
-        $(this).find('.caption').fadeOut(205);
-      }
-      );
-  });
   </script>
 </body>
 </html>
