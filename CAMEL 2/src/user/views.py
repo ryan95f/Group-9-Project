@@ -8,7 +8,7 @@ from django.views.generic.base import TemplateView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 
-from user.models import CamelUser
+from user.models import CamelUser, CamelUserManager
 from user.forms import SignUpForm
 
 
@@ -21,14 +21,27 @@ class UserView(FormView):
 
     def form_valid(self, form):
         '''Method to add and login new students if valid form'''
+        user_manager = CamelUserManager()
+        user_manager.model = CamelUser
+
         clean_data = form.clean_form()
         self.user_identifier = clean_data['identifier']
-        new_user = CamelUser(
-            identifier=clean_data['identifier'], first_name=clean_data['first_name'],
-            last_name=clean_data['last_name'], is_an_student=True, is_an_lecturer=False, email=clean_data['email']
-        )
-        new_user.set_password(clean_data['password1'])
-        new_user.save()
+
+        # checks to see that user identifier has not been registered
+        try:
+            user_manager.create_student(
+                identifier=clean_data['identifier'], first_name=clean_data['first_name'],
+                last_name=clean_data['last_name'], email=clean_data['email'], password=clean_data['password1']
+            )
+        except ValueError:
+            # if it has been registered then redirect back to signup page
+            return render(self.request, self.template_name, {
+                'pk': self.user_identifier,
+                'form': form,
+                'error': str(self.user_identifier) + " has already been registered"
+            })
+
+        # login the student into camel
         auth = authenticate(username=clean_data['identifier'], password=clean_data['password1'])
         login(self.request, auth)
         return render(self.request, 'user/userhome.html', self.get_context_data())

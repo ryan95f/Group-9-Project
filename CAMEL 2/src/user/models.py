@@ -9,6 +9,10 @@ class CamelUserManager(BaseUserManager):
         if(not(identifier and first_name and last_name)):
             raise ValueError('Users must enter id number, first and last names')
 
+        identifier_exists = self.model.objects.filter(identifier=identifier)
+        if(identifier_exists.count() > 0):
+            raise ValueError('This user identifier has already been registered')
+
         user = self.model(
             identifier=identifier,
             first_name=first_name,
@@ -20,6 +24,32 @@ class CamelUserManager(BaseUserManager):
 
         user.set_password(password)
         user.save(using=self._db)
+        return user
+
+    def create_student(self, identifier, first_name, last_name, email, password=None):
+        """Method for creating students in CAMEL"""
+        user = self.create_user(
+            identifier=identifier,
+            first_name=first_name,
+            last_name=last_name,
+            student=True,
+            lecturer=False,
+            email=email,
+            password=password
+        )
+        return user
+
+    def create_lecturer(self, identifier, first_name, last_name, email, password=None):
+        """Method for creating lecturers in CAMEL"""
+        user = self.create_user(
+            identifier=identifier,
+            first_name=first_name,
+            last_name=last_name,
+            student=False,
+            lecturer=True,
+            email=email,
+            password=password
+        )
         return user
 
     def create_superuser(self, identifier, first_name, last_name, email, password=None):
@@ -45,7 +75,6 @@ class CamelUser(AbstractBaseUser):
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
-        unique=True,
     )
     first_name = models.CharField(max_length=40)
     last_name = models.CharField(max_length=40)

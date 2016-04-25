@@ -77,7 +77,6 @@
             <li id="nav-modules"><a href="{% url 'module:module_index' %}">Modules</a></li>
             {% if user.is_camel_staff %}
                 <li id="nav-review"><a href="{% url 'review:index' %}">Review</a></li>
-                <li id="nav-module"><a href="{% url 'module:module_dashboard' %}">Module Dashboard</a></li>
             {% endif %}
             <li id="nav-users">
                 {% if user.is_authenticated %}
