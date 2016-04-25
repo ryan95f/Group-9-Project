@@ -12,7 +12,17 @@ from user.models import CamelUser, CamelUserManager
 from user.forms import SignUpForm
 
 
-class UserView(FormView):
+class AlreadyLoggedInMixin(object):
+    """Object to redirect a user if they have logged in"""
+
+    def dispatch(self, request, *args, **kwargs):
+        """Method that check current user has correct permission"""
+        if request.user.is_authenticated():
+            return HttpResponseRedirect('/')
+        return super(AlreadyLoggedInMixin, self).dispatch(request, *args, **kwargs)
+
+
+class UserView(AlreadyLoggedInMixin, FormView):
     """A view form for adding new students to CAMEL"""
 
     template_name = 'user/sign_up.html'
@@ -53,7 +63,7 @@ class UserView(FormView):
         return context
 
 
-class LoginView(FormView):
+class LoginView(AlreadyLoggedInMixin, FormView):
     '''A view to login users for CAMEL'''
     template_name = 'user/login.html'
     form_class = AuthenticationForm
