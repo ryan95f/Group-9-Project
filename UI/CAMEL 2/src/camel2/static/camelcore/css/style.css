@@ -7,7 +7,12 @@ h1, h2, h3, h4, h5, h6, p {
 }
 header {
 	background:url(../img/Desert6.jpg) no-repeat;
-	height:700px;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: fixed;
+	height:100%;
 	width:100%;
 	/* padding-top:10px;
 	padding-bottom:50px;
