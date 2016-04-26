@@ -1,9 +1,9 @@
 {% block prefix %}
-	<li class='latex_command_item_item'>
+	<li class='latex_command_item_item'>$
 {% endblock %}
 
 {% block suffix %}
-	</li>
+	$</li>
 	{% if show %}
 		<p id="answer_box">Your Answer: {{ previous_answer.answer }}</p>
 		<textarea style="width:100%; resize: none;" name="jax_answer"></textarea>
