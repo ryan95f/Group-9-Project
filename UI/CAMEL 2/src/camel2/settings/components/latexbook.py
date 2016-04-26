@@ -101,6 +101,10 @@ from camelcore.apps.latexbook.latexparser.nodes.commands.item import (
 )
 
 # Import our HomeworkQuiz nodes.
+from camelcore.apps.homeworkquiz.latexbook.latexparser.nodes.commands.question import (
+    Question
+)
+
 from camelcore.apps.homeworkquiz.latexbook.latexparser.nodes.commands.choice import (
     Choice, CorrectChoice, TextAnswer
 )
@@ -182,6 +186,9 @@ add_nodes_quick(os.path.join(HQ_NODE_ROOT, "environments/homework"), [Homework, 
 
 # Add questiontypes environment nodes.
 add_nodes_quick(os.path.join(HQ_NODE_ROOT, "environments/questiontype"), [SingleChoice, MultipleChoice, MathjaxText])
+
+# Add question command nodes.
+add_nodes_quick(os.path.join(HQ_NODE_ROOT, "commands/question"), [Question])
 
 # Add choice command nodes.
 add_nodes_quick(os.path.join(HQ_NODE_ROOT, "commands/choice"), [Choice, CorrectChoice, TextAnswer])
