@@ -4,7 +4,17 @@ body {
 }
 h1, h2, h3, h4, h5, h6, p {
 	font-family: 'Duru Sans', Open Sans Light;
+	
 }
+
+h1, .h1 {
+	border-bottom: 1px solid #eee;
+}
+
+h2, .h2 {
+	border-bottom: 1px solid #eee;	
+}
+
 header {
 	background:url(../img/Desert6.jpg) no-repeat;
 	-webkit-background-size: cover;
@@ -20,6 +30,7 @@ header {
 }
 header h1 {
 	font-size: 60px;
+	border-bottom: 1px solid #eee;
 	/*margin-top: 120px;*/
 }
 
@@ -95,5 +106,39 @@ footer h4 {
     z-index:10;
 }
 
+.latex_environment_questiontype_mathjaxtext{
+	padding-bottom: 1em;
+	padding-top: 1em;
+}
 
+p {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
 
+li {
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+#delete_btn {
+	margin-left: 2em;
+	margin-bottom: 2px;
+}
+
+.error_message {
+	padding: none;
+	margin: none;
+}
+
+table {
+	padding: 1em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+th {
+
+	padding-bottom: 0.5em;
+	padding-top: 0.5em;
+}
