@@ -135,11 +135,11 @@ textarea {
     outline: 0;  
     font-family: 'Abel', sans-serif;
     width: 200px;  
-    box-shadow: rgba(0,0,0, 0.3) 0px 0px 2px;  
+    /*box-shadow: rgba(0,0,0, 0.3) 0px 0px 2px;  
     -moz-box-shadow: rgba(0,0,0, 0.3) 0px 0px 2px;  
     -webkit-box-shadow: rgba(0,0,0, 0.3) 0px 0px 2px;  
     background: -webkit-gradient(linear, left top, left 25, from(#eeeeeE), to(#FFFFFF));  
-    background: -moz-linear-gradient(top, #111111, #FFFFFF 25px);  
+    background: -moz-linear-gradient(top, #111111, #FFFFFF 25px);*/  
 }
 
 input:hover, textarea:hover,  

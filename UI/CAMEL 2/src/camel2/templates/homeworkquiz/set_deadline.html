@@ -13,7 +13,7 @@
 		<div class="inner_step">
 			<form action="" method="post">{% csrf_token %}
     		{{ form }}
-    		<input type="submit" value="Add Deadline" />
+    		<input type="submit" class="btn btn-primary" value="Add Deadline" />
 		</form>
 	</div>
 	<a href="{% url 'module:latexbook:booknode_chapter_detail' module_number book_number chapter_number %}">Go Back</a>
