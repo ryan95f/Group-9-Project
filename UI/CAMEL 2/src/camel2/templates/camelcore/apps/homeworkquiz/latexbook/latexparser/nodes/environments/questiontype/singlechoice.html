@@ -17,13 +17,13 @@
 					<p>Submitted on {{ previous_answer.submitted_date }}</p>
 				{% else %}
 					{% if not late %}
-						<input id="btn_submit" value="Submit" type="Submit">
+						<input id="btn_submit" class="btn btn-primary" value="Submit" type="Submit">
 						<input id="user" type="hidden" name="user" value="{{ user.identifier }}">
 						<input id="node" type="hidden" name="node" value="{{ node.parent.pk }}">
 						<input id="chapter" type="hidden" name="chapter" value="{{ chapter_number }}">
 						<input id="book" type="hidden" name="book" value="{{ book_number }}">
 						<input id="module" type="hidden" name="module" value="{{ module_number }}">
-						<button id="btn_save">Save</button>
+						<button id="btn_save" class="btn btn-primary" >Save</button>
 						<script type="text/javascript" src="{% static 'homeworkquiz/js/singleanswer_ajax.js' %}"></script>
 					{% else %}
 						<p><b>This question cannot be answered as it has been past the deadline above</b></p>
