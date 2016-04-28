@@ -46,5 +46,5 @@ function save_answer(){
 
 function update_screen(){
     // alert user to indicate it has been saved
-	alert("Answer Saved");
+	alert("Answer saved.");
 }

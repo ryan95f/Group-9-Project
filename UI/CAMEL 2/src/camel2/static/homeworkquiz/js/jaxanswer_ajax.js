@@ -50,5 +50,5 @@ function update_screen(json){
 	$('#answer_box').html('Your Answer: ' + json.jax_answer);
     // update the mathjax after request
     MathJax.Hub.Queue(["Typeset",MathJax.Hub,'answer_box']);
-	alert("Answer Saved");
+	alert("Answer saved.");
 }
