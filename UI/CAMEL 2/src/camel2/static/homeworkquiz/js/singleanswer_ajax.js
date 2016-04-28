@@ -2,13 +2,34 @@ $(document).ready( function(){
 	$('#btn_save').click( function( event ){
 		event.preventDefault();
 
-		// error handling needs to be added here
+        // error handling
+        if(!check_answer()){
+            alert("Error: You must select an answer to save");
+            return;
+        }
 
 		save_answer();
 	});
 
 
 });
+
+$('#btn_submit').click( function( event ){
+    if(!check_answer()){
+        alert("Error: You must select an answer to submit");
+        event.preventDefault();
+        return;
+    }
+});
+
+function check_answer(){
+     var n = $( "input:checked" ).length;
+     if (n > 0){
+        return true;
+     }
+     return false;
+}
+
 
 function save_answer(){
     /* function to make ajax request to save function.*/
