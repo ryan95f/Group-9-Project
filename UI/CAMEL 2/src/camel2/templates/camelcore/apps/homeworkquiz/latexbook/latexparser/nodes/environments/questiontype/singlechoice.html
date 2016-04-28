@@ -17,7 +17,7 @@
 					<p>Submitted on {{ previous_answer.submitted_date }}</p>
 				{% else %}
 					{% if not late %}
-						<input value="Submit" type="Submit">
+						<input id="btn_submit" value="Submit" type="Submit">
 						<input id="user" type="hidden" name="user" value="{{ user.identifier }}">
 						<input id="node" type="hidden" name="node" value="{{ node.parent.pk }}">
 						<input id="chapter" type="hidden" name="chapter" value="{{ chapter_number }}">
