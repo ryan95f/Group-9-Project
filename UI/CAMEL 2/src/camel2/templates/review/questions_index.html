@@ -18,9 +18,11 @@
 {% block content-main %}
 <h1>All Questions for Book '{{ book.title }}'</h1>
 	{% for q in questions %}
-		{% include 'latexbook/recurselatextree.html' with root_node=q.get_descendants %}
-		<a href="{% url 'review:question' module_pk book.pk q.pk %}">See Answers</a>
-		<br><br>
+		<div class="review-block">
+			{% include 'latexbook/recurselatextree.html' with root_node=q.get_descendants %}
+			<a href="{% url 'review:question' module_pk book.pk q.pk %}">See Answers</a>
+			<br><br>
+		</div>
 	{% endfor %}
 
 {% endblock %}

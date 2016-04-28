@@ -28,6 +28,7 @@ header {
 	padding-bottom:50px;
 	*/color: #fff;
 }
+
 header h1 {
 	font-size: 60px;
 	border-bottom: 1px solid #eee;
@@ -35,13 +36,27 @@ header h1 {
 }
 
 #breadcrumbs{
+
 	margin-top: 90px;
+
 	margin-left: 20px; 
 	margin-right: 20px; 
 }
 
 #breadcrumbs > a{
 	font-size: 15px;
+}
+
+.review-block{
+	border: 1px solid black;
+	margin: 10px;
+	padding: 3px;
+}
+
+.inner_step{
+	border: 1px solid black;
+	margin: 10px;
+	padding: 5px;
 }
 
 .question{border: 1px solid black;
@@ -143,8 +158,7 @@ li {
 }
 
 #delete_btn {
-	margin-left: 2em;
-	margin-bottom: 2px;
+    margin-left: 2.5em;
 }
 
 .error_message {
