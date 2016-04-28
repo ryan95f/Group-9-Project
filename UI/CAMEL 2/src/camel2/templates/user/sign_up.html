@@ -37,10 +37,10 @@
 		$('#id_identifier').change( function(){ 
 			var identifier = $('#id_identifier').val();
 			
-			if((identifier.length > 0) && !(new RegExp(/^[0-9a-zA-Z]+$/).test(identifier))){
+			if((identifier.length > 0) && !(new RegExp(/^[cC][0-9]{8}$/).test(identifier))){
 
 				$('#id_identifier').css('background-color', "#ff4d4d");
-				$('div.#correct_identifier_format_error').find('span').html("Your student number is not in the correct format. It may only contain numbers and letters.");
+				$('div.#correct_identifier_format_error').find('span').html("Your student number is not in the correct format. It must be in the form c12345678 or C12345678.");
 				correct_identifier_format = false;
 
 			}else{
