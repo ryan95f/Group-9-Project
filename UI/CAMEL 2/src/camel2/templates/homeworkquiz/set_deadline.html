@@ -21,7 +21,7 @@
 <script type="text/javascript">
 	$(document).ready( function(){
 		$('#btn_add_deadline').click( function(event){
-			if(!(this.deadline_date|length > 0)){
+			if(!($('#id_date').val().length > 0 )){
 				alert("You must enter a date for the deadline to take effect.");
 				event.preventDefault();
 			}
