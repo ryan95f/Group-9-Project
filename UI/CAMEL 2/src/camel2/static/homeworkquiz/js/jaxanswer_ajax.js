@@ -2,13 +2,34 @@ $(document).ready( function(){
 	$('#btn_save').click( function( event ){
 		event.preventDefault();
 
-		// error handling needs to be added here
+		// error handling
+        if(!check_answer()){
+            alert("Error - No answer entered");
+            return;
+        }
 
 		save_answer();
 	});
 
 
 });
+
+$('#btn_submit').click( function( event ){
+    if(!check_answer()){
+        alert("Error - No answer entered");
+        event.preventDefault();
+        return;
+    }
+});
+
+function check_answer(){
+    if($('textarea').val().length > 0){
+        return true;
+    }
+
+    return false;
+}
+
 
 function save_answer(){
     /* function to make ajax request to save function.*/
