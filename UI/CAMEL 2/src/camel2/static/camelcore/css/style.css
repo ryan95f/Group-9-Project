@@ -36,11 +36,9 @@ header h1 {
 }
 
 #breadcrumbs{
-<<<<<<< HEAD
-	margin-top: none;
-=======
+
 	margin-top: 90px;
->>>>>>> origin/master
+
 	margin-left: 20px; 
 	margin-right: 20px; 
 }
