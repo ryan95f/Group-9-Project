@@ -19,7 +19,7 @@
         <div id = "correct_identifier_format_error"><span></span></div>
         <div id = "correct_email_format_error"><span></span></div>
 		<div id = "correct_first_name_format_error"><span></span></div>
-		<div id = "correct_first_name_format_error"><span></span></div>
+		<div id = "correct_last_name_format_error"><span></span></div>
 		<div id = "password_match_error"><span></span></div>
     </div> 
 
@@ -101,7 +101,6 @@
 			var last_name = $('#id_last_name').val();
 			
 			if((last_name.length > 0) && !(new RegExp(/^[a-zA-Z'-]+$/).test(last_name))){
-
 				$('#id_last_name').css('background-color', "#ff4d4d");
 				$('div.#correct_last_name_format_error').find('span').html("Your last name is not in the correct format. It may only contain letters, apostrophes or hyphens.");
 				correct_last_name_format = false;
