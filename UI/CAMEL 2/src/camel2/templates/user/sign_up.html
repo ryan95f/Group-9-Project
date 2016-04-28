@@ -150,14 +150,6 @@
 				}
 			}
 		});
-
-		$('#btn_signup').click( function(event){
-		if(!(correct_identifier_format) && !(correct_email_format) && !(correct_first_name_format) && !(correct_last_name_format) && !(password_match)){ // if all fields are non-empty and in the correct format (par password)
-			alert("Error: Some fields are missing or in the wrong format. Please correct these before continuing.");
-			event.preventDefault();
-			}
-		});
-
 	});
 
 </script>
