@@ -149,6 +149,23 @@
 				}
 			}
 		});
+		$('#btn_signup').click( function(event){
+			var send = true;
+
+			if(!(($('#id_identifier').val().length > 0) && ($('#id_email').val().length > 0) && ($('#id_first_name').val().length > 0) && ($('#id_last_name').val().length > 0) && ($('#id_password1').val().length > 0) && ($('#id_password2').val().length > 0))){
+				send = false;
+			}
+
+			if(!((correct_identifier_format_error) && (correct_email_format_error) && (correct_first_name_format_error) && (correct_last_name_format_error) && (password_match_error))){
+				send = false;
+			}
+
+			if(!send){
+				alert("Some fields are empty or entered incorrectly. Please revise before continuing.");
+				event.preventDefault();	
+			}
+			
+		});
 	});
 
 </script>
