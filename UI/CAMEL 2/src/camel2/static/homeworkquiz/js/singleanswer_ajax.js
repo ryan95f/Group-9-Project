@@ -4,7 +4,7 @@ $(document).ready( function(){
 
         // error handling
         if(!check_answer()){
-            alert("Error - No answer is selected");
+            alert("Error: You must select an answer to save");
             return;
         }
 
@@ -16,7 +16,7 @@ $(document).ready( function(){
 
 $('#btn_submit').click( function( event ){
     if(!check_answer()){
-        alert("Error - No answer is selected");
+        alert("Error: You must select an answer to submit");
         event.preventDefault();
         return;
     }
