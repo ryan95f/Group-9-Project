@@ -150,6 +150,9 @@ li {
 .error_message {
 	padding: none;
 	margin: none;
+	color: red;
+	font-weight: bold;
+
 }
 
 table {

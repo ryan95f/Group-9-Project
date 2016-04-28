@@ -14,30 +14,152 @@
 		{{ form }}
 	</table>
     <input id="btn_signup" type="submit" value="Submit" /><br>
-    <p><b>{{ error }}</b></p>
+
+    <div id="errors" class="error_message"> 
+        <div id = "correct_identifier_format_error"><span></span></div>
+        <div id = "correct_email_format_error"><span></span></div>
+		<div id = "correct_first_name_format_error"><span></span></div>
+		<div id = "correct_first_name_format_error"><span></span></div>
+		<div id = "password_match_error"><span></span></div>
+    </div> 
+
 </form>
 <script type="text/javascript">
 	// globals
+	var correct_identifier_format = false;
+	var correct_email_format = false;
+	var correct_first_name_format = false;
+	var correct_last_name_format = false;
 	var password_match = false;
+
 	$(document).ready( function(){
-		$('#id_password2').focusout( function(){ // when password2 text box has lost focus.
-			var confirm_password = $(this).val();
+
+		$('#id_identifier').change( function(){ 
+			var identifier = $('#id_identifier').val();
+			
+			if((identifier.length > 0) && !(new RegExp(/^[0-9a-zA-Z]+$/).test(identifier))){
+
+				$('#id_identifier').css('background-color', "#ff4d4d");
+				$('div.#correct_identifier_format_error').find('span').html("Your student number is not in the correct format. It may only contain numbers and letters.");
+				correct_identifier_format = false;
+
+			}else{
+
+				$('#id_identifier').css('background-color', "#fff");
+				$('div.#correct_identifier_format_error').find('span').html("");
+				if(identifier.length > 0){
+					correct_identifier_format = true;
+				}else{
+					correct_identifier_format = false;
+				}
+			}
+		});
+
+		$('#id_email').change( function(){ 
+			var email = $('#id_email').val();
+			
+			if((email.length > 0) && !(new RegExp(/^[0-9a-zA-Z]+\@[a-zA-Z]+\.[a-zA-Z.]+$/).test(email))){
+
+				$('#id_email').css('background-color', "#ff4d4d");
+				$('div.#correct_email_format_error').find('span').html("Your student email is not in the correct format. It must be in the form: Example_email@example.com (or .co.uk, .ac.uk, etc).");
+				correct_email_format = false;
+
+			}else{
+
+				$('#id_email').css('background-color', "#fff");
+				$('div.#correct_email_format_error').find('span').html("");
+				if(email.length > 0){
+					correct_email_format = true;
+				}else{
+					correct_email_format = false;
+				}
+			}
+		});
+
+		$('#id_first_name').change( function(){ 
+			var first_name = $('#id_first_name').val();
+			
+			if((first_name.length > 0) && !(new RegExp(/^[a-zA-Z'-]+$/).test(first_name))){
+
+				$('#id_first_name').css('background-color', "#ff4d4d");
+				$('div.#correct_first_name_format_error').find('span').html("Your first name is not in the correct format. It may only contain letters, numbers, apostrophes or hyphens.");
+				correct_first_name_format = false;
+
+			}else{
+
+				$('#id_first_name').css('background-color', "#fff");
+				$('div.#correct_first_name_format_error').find('span').html("");
+				if(first_name.length > 0){
+					correct_first_name_format = true;
+				}else{
+					correct_first_name_format = false;
+				}
+			}
+		});
+
+		$('#id_last_name').change( function(){ 
+			var last_name = $('#id_last_name').val();
+			
+			if((last_name.length > 0) && !(new RegExp(/^[a-zA-Z'-]+$/).test(last_name))){
+
+				$('#id_last_name').css('background-color', "#ff4d4d");
+				$('div.#correct_last_name_format_error').find('span').html("Your last name is not in the correct format. It may only contain letters, numbers, apostrophes or hyphens.");
+				correct_last_name_format = false;
+
+			}else{
+
+				$('#id_last_name').css('background-color', "#fff");
+				$('div.#correct_last_name_format_error').find('span').html("");
+				if(last_name.length > 0){
+					correct_last_name_format = true;
+				}else{
+					correct_last_name_format = false;
+				}
+			}
+		});
+
+		$( "#id_password1" ).change(function() { // when password1 text box value changes, and loses focus.
+			$('#id_password2').change();
+		});
+
+		$('#id_password2').change( function(){ // when password2 text box value changes, and loses focus.
+
+			var confirm_password = $('#id_password2').val();
 			var initial_password = $('#id_password1').val();
 			
 			//if both passwords are not empty and both do not match
-			if(((confirm_password.length > 0) &&(initial_password.length > 0)) && !(initial_password == confirm_password)){
+			if(((confirm_password.length > 0) && (initial_password.length > 0)) && !(initial_password == confirm_password)){
 				// if the passwords do not match
-				$(this).css('background-color', "#ff4d4d");
+				$('#id_password2').css('background-color', "#ff4d4d");
 				$('#id_password1').css('background-color', "#ff4d4d");
+				$('div.#password_match_error').find('span').html("Your passwords do not match."); // adds password match error message
 				password_match = false;
+				correct_password_format = false;
 			}else{
 				// if the passwords match
-				$(this).css('background-color', "#fff");
+				$('#id_password2').css('background-color', "#fff");
 				$('#id_password1').css('background-color', "#fff");
-				password_match = true;
+				$('div.#password_match_error').find('span').html(""); // removes password match error message
+
+				if((confirm_password.length > 0) && (initial_password.length > 0)){
+					password_match = true;
+
+				}else{
+					password_match = false;
+
+				}
 			}
 		});
+
+		$('#btn_signup').click( function(event){
+		if(!(correct_identifier_format) && (correct_email_format) && (correct_first_name_format) &&(correct_last_name_format) && (password_match)){ // if all fields are non-empty and in the correct format (par password)
+			alert("Error: Some fields are missing or in the wrong format. Please correct these before continuing.");
+			event.preventDefault();
+			}
+		});
+
 	});
+
 </script>
 {% endblock %}
 
