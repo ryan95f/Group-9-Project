@@ -19,15 +19,15 @@
 Identifier: <b>{{ user.identifier }}</b>
 <br></br>
 {% if user.is_staff %}
-	Status: <b>staff</b>
+	Status: <b>staff</b><br></br>
 {% endif %}
-<br></br>
+
 {% if user.is_an_student %}
-	Status: <b>student</b>
+	Status: <b>student</b><br></br>
 {% endif %}
-<br></br>
+
 {% if user.is_teacher %}
-	Status: <b>lecturer</b>
+	Status: <b>lecturer</b><br></br>
 	
 {% endif %}
 </p>

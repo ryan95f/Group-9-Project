@@ -37,6 +37,9 @@
 			<div class="inner_step">
 				<span><b>Student Number:</b> {{ ans.user }}</span><br>
 				<span><b>Answer:</b> {{ ans.answer }}</span><br>
+				{% if ans.is_submitted %}
+						<span><b>Correct:</b>{{ ans.correct }}</span><br>
+				{% endif %}
 				<span><b>Submitted:</b> {{ ans.is_submitted }}</span>
 			</div><br>
 		{% endfor %}
