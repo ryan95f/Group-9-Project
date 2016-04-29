@@ -7,7 +7,7 @@ class DeadlineForm(forms.Form):
     node = forms.CharField(
         widget=forms.TextInput(attrs={'readonly': 'readonly'})
     )
-    
+
     date = forms.DateTimeField(
         widget=forms.TextInput(attrs={'placeholder': 'yyyy-mm-dd H:M'})
     )
