@@ -1,0 +1,13 @@
+{% load homework_tags %}
+{% block prefix %}
+	<tr>
+		<td><label for="XYZ">
+{% endblock %}
+
+{% block suffix %}
+		</label></td>
+	{% if show %}
+		<td><input type="radio" name="singlechoice" class="XYZ" id="XYZ" value="{{ children|clean_string }}" /></td>
+	{% endif %}
+	</tr>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+	Cardiff Maths e-Learning
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	>
+	<a href="{% url 'module:module_index' %}">Modules</a>
+{% endblock %}
+
+
+{% block content-main %}
+<div>
+	<h1>{{ book }}</h1>
+</div>
+
+{% endblock %}

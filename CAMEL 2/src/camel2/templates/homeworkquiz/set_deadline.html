@@ -1,4 +1,4 @@
-{% extends "camelcore/index.html" %}
+{% extends "base.html" %}
 {% load staticfiles %}
 
 
@@ -13,8 +13,19 @@
 		<div class="inner_step">
 			<form action="" method="post">{% csrf_token %}
     		{{ form }}
-    		<input type="submit" value="Add Deadline" />
+    		<input id = "btn_add_deadline" type="submit" class="btn btn-primary" value="Add Deadline" />
 		</form>
-	</div>
+		</div>
 	<a href="{% url 'module:latexbook:booknode_chapter_detail' module_number book_number chapter_number %}">Go Back</a>
+
+<script type="text/javascript">
+	$(document).ready( function(){
+		$('#btn_add_deadline').click( function(event){
+			if(!($('#id_date').val().length > 0 )){
+				alert("You must enter a date for the deadline to take effect.");
+				event.preventDefault();
+			}
+		});
+	});
+</script>
 {% endblock %}

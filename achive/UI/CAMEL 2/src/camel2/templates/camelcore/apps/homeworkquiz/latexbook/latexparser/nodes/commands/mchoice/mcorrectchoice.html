@@ -1,0 +1,18 @@
+{% load homework_tags %}
+{% verbatim %}
+	Could not get the template tag to obtain inherited blocks :(
+	{% extends 'camelcore/homeworkquiz/latexbook/latexparser/nodes/commands/choice/correctchoice.html' %}
+{% endverbatim %}
+
+{% block prefix %}
+	<tr>
+		<td><label for="XYZ">
+{% endblock %}
+
+{% block suffix %}
+	</label></td>
+	{% if show %}
+		<td><input type="checkbox" name="multiplechoice" class="XYZ" id="XYZ" value="{{ children|clean_string }}" /></td>
+	{% endif %}
+	</tr>
+{% endblock %}

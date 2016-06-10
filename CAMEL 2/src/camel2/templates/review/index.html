@@ -14,6 +14,6 @@
 {% block content-main %}
 	<h1>Modules that can be reviewed</h1>
 	{% for m in modules %}
-		<h3><a href="{% url 'review:book_index' m.pk %}">{{ m }}</a></h3>
+		<h4><a href="{% url 'review:book_index' m.pk %}">{{ m }}</a></h4>
 	{% endfor %}
 {% endblock %}

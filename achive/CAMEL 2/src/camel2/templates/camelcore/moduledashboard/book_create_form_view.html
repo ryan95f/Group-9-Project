@@ -1,0 +1,22 @@
+{% extends "camelcore/index.html" %}
+{% load staticfiles %}
+
+{% block title %}
+	Book
+{% endblock %}
+
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	>
+	<a href=".">{{ book }}</a>
+{% endblock %}
+
+
+{% block content-main %}
+	<h1>Create New Book</h1>
+	<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Submit Book" />
+	</form>
+{% endblock %}

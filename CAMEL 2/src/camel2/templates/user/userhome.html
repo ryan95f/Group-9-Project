@@ -1,4 +1,4 @@
-{% extends "camelcore/index.html" %}
+{% extends "base.html" %}
 {% load staticfiles %}
 
 {% block title %}
@@ -15,19 +15,22 @@
 {% block content-main %}
 <h2>User Dashboard</h3>
 
-<p>Identifier: <b>{{ user.identifier }}</b></p>
-
+<p>
+Identifier: <b>{{ user.identifier }}</b>
+<br></br>
 {% if user.is_staff %}
-	<p>Status: <b>staff</b></p>
+	Status: <b>staff</b><br></br>
 {% endif %}
 
 {% if user.is_an_student %}
-	<p>Status: <b>student</b></p>
+	Status: <b>student</b><br></br>
 {% endif %}
 
 {% if user.is_teacher %}
-	<p>Status: <b>lecturer</b></p>
+	Status: <b>lecturer</b><br></br>
+	
 {% endif %}
+</p>
 
 {% endblock %}
 

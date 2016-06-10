@@ -1,0 +1,26 @@
+{% extends "latexbook/booknode_detail_view.html" %}
+{% load staticfiles %}
+
+{% block title %}
+	Chapter
+{% endblock %}
+
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	>
+	<a href=".">{{ chapter|first }}</a>
+{% endblock %}
+
+
+{% block content-main %}
+	<h1>{{ book }}</h1>
+	{% include 'latexbook/recurselatextree.html' with root_node=chapter %}
+
+{% endblock %}
+
+
+
+
+
+

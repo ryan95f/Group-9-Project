@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+	Cardiff Maths e-Learning
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	>
+	<a href="{% url 'module:module_index' %}">Modules</a>
+	>
+	<a href="{% url 'module:module_detail' module.pk %}">{{ module.pk }}</a>
+{% endblock %}
+
+{% block content-main %}
+<div>
+	<h1>{{ module.code }} - {{ module.title }}</h1>
+	
+	<div class="books">
+	<h2 id="booktitle">Books</h2>
+
+	{% if learningmaterials and learningmaterials.Book %}
+			<ul>
+				{% for book in learningmaterials.Book %}
+					<li>
+						<a href="{% url 'module:latexbook:booknode_detail' module.pk book.pk %}">{{ book }}</a>
+						{% if user.is_camel_staff %}
+						
+						<input type="button" id="delete_btn" onclick="location.href='{% url 'camelcore:module_dashboard:delete_book' module.pk book.pk %}';" value="Delete"/>
+					
+						{% endif %}
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% else %}
+		<p>No books are currently available for this module!</p>
+	{% endif %}
+	{% if user.is_camel_staff %}
+	<br></br>
+		<a href="{% url 'camelcore:module_dashboard:create_book' module.pk %}">Add a new book</a>&nbsp;&nbsp;|&nbsp;
+		<a href="{% url 'camelcore:module_dashboard:add_detail_book' module.pk %}">Add existing book</a> 
+	{% endif %}
+</div>
+{% endblock %}

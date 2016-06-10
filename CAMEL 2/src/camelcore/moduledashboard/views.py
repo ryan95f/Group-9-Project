@@ -1,5 +1,6 @@
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, render
 
 from latexbook.forms import LatexBookForm
@@ -45,7 +46,7 @@ def book_add_view(request, **kwargs):
 
     learning_material.modules.add(module)
 
-    return HttpResponseRedirect("/")
+    return HttpResponseRedirect(reverse('module:module_index'))
 
 
 def book_create_view(request, **kwargs):
@@ -66,7 +67,7 @@ def book_create_view(request, **kwargs):
             # the model instance first!
             learning_material.save()
             learning_material.modules.add(module)
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect(reverse('module:module_index'))
     else:
         latex_book_form = LatexBookForm()
     return render(request, "camelcore/moduledashboard/book_create_form_view.html", {
@@ -94,4 +95,4 @@ def book_delete_view(request, **kwargs):
         learning_material.delete()  # Book delete can't cascade
         book.delete()
 
-    return HttpResponseRedirect("/")
+    return HttpResponseRedirect(reverse('module:module_index'))

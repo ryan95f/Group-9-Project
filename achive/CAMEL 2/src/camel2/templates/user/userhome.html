@@ -1,0 +1,38 @@
+{% extends "camelcore/index.html" %}
+{% load staticfiles %}
+
+{% block title %}
+	Cardiff Maths e-Learning
+{% endblock %}
+
+
+{% block breadcrumbs %}
+	&nbsp;
+	<a href="{% url 'user:user_home' user.identifier %}">{{ user.identifier }}</a>
+{% endblock %}
+
+
+{% block content-main %}
+<h2>User Dashboard</h3>
+
+<p>Identifier: <b>{{ user.identifier }}</b></p>
+
+{% if user.is_staff %}
+	<p>Status: <b>staff</b></p>
+{% endif %}
+
+{% if user.is_an_student %}
+	<p>Status: <b>student</b></p>
+{% endif %}
+
+{% if user.is_teacher %}
+	<p>Status: <b>lecturer</b></p>
+{% endif %}
+
+{% endblock %}
+
+
+
+
+
+

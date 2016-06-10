@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+	Cardiff Maths e-Learning
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	>
+	<a href="{% url 'review:index' %}">Review</a>
+	>
+	<a href="{% url 'review:book_index' module_pk %}">{{ module_pk }}</a>
+	>
+	<a href="{% url 'review:book_questions' module_pk book_pk %}">Book</a>
+	>
+	<a href="{% url 'review:question' module_pk book_pk question.pk %}">Question</a>
+{% endblock %}
+
+{% block content-main %}
+	<h1>Question Review</h1>
+	<p>Question Deadline: <b>{{ question.deadline.deadline_date }}</b></p>
+	
+	{% include 'latexbook/recurselatextree.html' with root_node=question.get_descendants %}
+	<h3>Student Answers:</h3>
+	{% if answers|length > 0 %}
+	
+		{% for ans in answers%}
+			<div class="inner_step">
+				<p><b>Student Number:</b> {{ ans.user }}</p>
+				<p><b>Answer:</b> {{ ans.answer }}</p>
+				<p><b>Submitted:</b> {{ ans.is_submitted }}</p>
+			</div><br>
+		{% endfor %}
+	{% else %}
+		<h4>No Students have given answers</h4><br>
+	{% endif %}
+	<a href="{% url 'review:book_questions' module_pk book_pk %}">Go Back</a>
+{% endblock %}

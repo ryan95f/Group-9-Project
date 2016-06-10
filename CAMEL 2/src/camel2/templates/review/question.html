@@ -19,21 +19,32 @@
 
 {% block content-main %}
 	<h1>Question Review</h1>
-	<p>Question Deadline: <b>{{ question.deadline.deadline_date }}</b></p>
+	<div class="review-block">
+		{% if question.deadline.deadline_date|length == 0 %}
+			<p>Question Deadline: <b>None</b></p>
+		{% else %}
+			<p>Question Deadline: <b>{{ question.deadline.deadline_date }}</b></p>
+		{% endif %}
+	
 	
 	{% include 'latexbook/recurselatextree.html' with root_node=question.get_descendants %}
+
+	</div>
 	<h3>Student Answers:</h3>
 	{% if answers|length > 0 %}
 	
 		{% for ans in answers%}
 			<div class="inner_step">
-				<p><b>Student Number:</b> {{ ans.user }}</p>
-				<p><b>Answer:</b> {{ ans.answer }}</p>
-				<p><b>Submitted:</b> {{ ans.is_submitted }}</p>
+				<span><b>Student Number:</b> {{ ans.user }}</span><br>
+				<span><b>Answer:</b> {{ ans.answer }}</span><br>
+				{% if ans.is_submitted %}
+						<span><b>Correct:</b>{{ ans.correct }}</span><br>
+				{% endif %}
+				<span><b>Submitted:</b> {{ ans.is_submitted }}</span>
 			</div><br>
 		{% endfor %}
 	{% else %}
 		<h4>No Students have given answers</h4><br>
 	{% endif %}
 	<a href="{% url 'review:book_questions' module_pk book_pk %}">Go Back</a>
-{% endblock %}
+{% endblock %}																								

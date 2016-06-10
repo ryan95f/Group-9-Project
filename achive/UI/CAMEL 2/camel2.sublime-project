@@ -1,0 +1,21 @@
+{
+	"SublimeLinter":
+	{
+		"@python": 3,
+		"linters":
+		{
+			"flake8":
+			{
+				"ignore":
+				[
+					"I201",
+					"D100",
+					"D105",
+					"D203"
+				],
+				"max-line-length": 119,
+				"show-code": true
+			}
+		}
+	}
+}

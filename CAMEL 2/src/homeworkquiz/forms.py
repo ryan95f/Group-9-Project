@@ -4,7 +4,10 @@ from django import forms
 class DeadlineForm(forms.Form):
     """Form that is used to get deadline from the UI. Takes in the node
     and the date."""
-    node = forms.CharField()
+    node = forms.CharField(
+        widget=forms.TextInput(attrs={'readonly': 'readonly'})
+    )
+
     date = forms.DateTimeField(
         widget=forms.TextInput(attrs={'placeholder': 'yyyy-mm-dd H:M'})
     )
